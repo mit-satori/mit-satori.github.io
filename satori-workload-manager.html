@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Running your AI training jobs on Satori &mdash; MIT Satori User Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-workload-manager.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ai-frameworks.html">IBM Watson Machine Learning Community Edition (WMLCE)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#install-anaconda">[1] Install Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-setting-up-the-software-repository">[2] WMLCE: Setting up the software repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-creating-and-activate-conda-environments-recommended">[3] WMLCE: Creating and activate conda environments (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-installing-all-frameworks-at-the-same-time">[4] WMLCE: Installing all frameworks at the same time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation">[5] WMLCE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#controlling-wmlce-release-packages">Controlling WMLCE release packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#additional-conda-channels">Additional conda channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai">The WML CE Supplementary channel is available at: https://anaconda.org/powerai/.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access">The WML CE Early Access channel is available at: https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIT Satori User Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Running your AI training jobs on Satori</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-workload-manager.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure align-default" id="id1">
+<img alt="Satori" src="_images/lsf.png" />
+<p class="caption"><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="running-your-ai-training-jobs-on-satori">
+<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Permalink to this headline">¶</a></h1>
+<p>Computational work on Satori is performed within jobs managed by a
+workload manager (IBM LSF). A typical job consists of several
+components:</p>
+<ul class="simple">
+<li>A submission script</li>
+<li>An executable file (python sript or C/C++ script)</li>
+<li>Training data needed by the ML/DL script</li>
+<li>Output files created by the training/inference job</li>
+</ul>
+<p>There are two types for jobs:</p>
+<ul class="simple">
+<li>interactive / online</li>
+<li>batch</li>
+</ul>
+<p>In general, the process for running a batch job is to:</p>
+<ul class="simple">
+<li>Prepare executables and input files</li>
+<li>Modify provided LSF job template for the batch script or write a new
+one</li>
+<li>Submit the batch script to the WOrkload Manager</li>
+<li>Monitor the job’s progress before and during execution</li>
+</ul>
+<div class="section" id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Most users will find batch jobs to be the easiest way to interact with
+the system, since they permit you to hand off a job to the scheduler and
+then work on other tasks; however, it is sometimes preferable to run
+interactively on the system. This is especially true when developing,
+modifying, or debugging a code.</p>
+<p>Since all compute resources are managed/scheduled by LSF, it is not
+possible to simply log into the system and begin running a parallel code
+interactively. You must request the appropriate resources from the
+system and, if necessary, wait until they are available. This is done
+with an “interactive batch” job. Interactive batch jobs are submitted
+via the command line, which supports the same options that are passed
+via #BSUB parameters in a batch script. The final options on the command
+line are what makes the job “interactive batch”: -Is followed by a shell
+name. For example, to request an interactive batch job (with bash as the
+shell) equivalent to the sample batch script above, you would use the
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q interactive -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
+</pre></div>
+</div>
+<p>This will request an AC922 node with 4x GPUs from the Satori (normal
+queue) for 3 hours.</p>
+</div>
+<div class="section" id="batch-scripts">
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
+<p>The most common way to interact with the batch system is via batch jobs.
+A batch job is simply a shell script with added directives to request
+various resources from or provide certain information to the batch
+scheduling system. Aside from the lines containing LSF options, the
+batch script is simply the series commands needed to set up and run your
+AI job.</p>
+<p>To submit a batch script, use the bsub command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub &lt; myjob.lsf
+</pre></div>
+</div>
+<p>As an example, consider the following batch script for 4x V100 GPUs
+(single AC922 node):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;keras-job-name&quot;</span>
+<span class="c1">#BSUB -o &quot;keras-job-name_o.%J&quot;</span>
+<span class="c1">#BSUB -e &quot;keras-job-name_e.%J&quot;</span>
+<span class="c1">#BSUB -n 4</span>
+<span class="c1">#BSUB -R &quot;span[ptile=4]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normal&quot;</span>
+<span class="c1">#BSUB -x</span>
+
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/&lt;your_user_name&gt;
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.6.2
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+
+<span class="nb">cd</span> <span class="nv">$HOME2</span>/projects
+python Keras-ResNet50-training.py --batch<span class="o">=</span><span class="m">64</span>
+</pre></div>
+</div>
+<p>In the above template you can change:</p>
+<ul class="simple">
+<li>line 2-4: with your desire job name, but remember to keep _o for the
+job output file and _e for the file with the related job errors</li>
+<li>line 5: “-n 4” here you can consider the no of GPUs you need,
+multiple of 4 (ie. - n 4, -n 8, -n 16, ….)</li>
+<li>line 11: add your MIT assigned username folder name from the
+/nobackup/users/</li>
+<li>line 12: change to your conda virtual environment defined at
+installation of WMLCE</li>
+<li>line 17-18: change as need for what you will want to run and from
+where</li>
+</ul>
+<p>For your convienenice additional LSF batch job templates have been
+created to cover distributed deep learning trainings across Satori
+cluster:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf" target="_blank">Pytorch with IBM Distributed Deep Learning Library
+(DDL)</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-multinode.lsf" target="_blank">TensorFlow with IBM Distributed Deep Learning Library
+(DDL)</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)
+backend</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-horovod-multinode.lsf" target="_blank">TensorFlow with Horovod + IBM Distributed Deep Learning Library
+(DDL)
+backend</a></li>
+</ul>
+<div class="section" id="job-states">
+<h3>Job States<a class="headerlink" href="#job-states" title="Permalink to this headline">¶</a></h3>
+<p>A job will progress through a number of states through its lifetime. The
+states you’re most likely to see are:</p>
+<ul class="simple">
+<li>PEND: Job is pending</li>
+<li>RUN: Job is running</li>
+<li>DONE: Job completed normally (with an exit code of 0)</li>
+<li>EXIT: Job completed abnormally</li>
+<li>PSUSP: Job was suspended (either by the user or an administrator)
+while pending</li>
+<li>USUSP: Job was suspended (either by the user or an administrator)
+after starting</li>
+<li>SSUSP: Job was suspended by the system after starting</li>
+</ul>
+</div>
+<div class="section" id="monitoring-jobs">
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
+<p>LSF provides several utilities with which you can monitor jobs. These
+include monitoring the queue, getting details about a particular job,
+viewing STDOUT/STDERR of running jobs, and more.</p>
+<p>The most straightforward monitoring is with the bjobs command. This
+command will show the current queue, including both pending and running
+jobs. Running bjobs -l will provide much more detail about a job (or
+group of jobs). For detailed output of a single job, specify the job id
+after the -l. For example, for detailed output of job 12345, you can run
+bjobs -l 12345 . Other options to bjobs are shown below. In general, if
+the command is specified with -u all it will show information for all
+users/all jobs. Without that option, it only shows your jobs. Note that
+this is not an exhaustive list. See man bjobs for more information.</p>
+<ul class="simple">
+<li>bjobs Show your current jobs in the queue</li>
+<li>bjobs -u all Show currently queued jobs for all users</li>
+<li>bjobs -P ABC123 Shows currently-queued jobs for project ABC123</li>
+<li>bjobs -UF Don’t format output (might be useful if you’re using the
+output in a script)</li>
+<li>bjobs -a Show jobs in all states, including recently finished jobs</li>
+<li>bjobs -l Show long/detailed output</li>
+<li>bjobs -l 12345 Show long/detailed output for jobs 12345</li>
+<li>bjobs -d Show details for recently completed jobs</li>
+<li>bjobs -s Show suspended jobs, including the reason(s) they’re
+suspended</li>
+<li>bjobs -r Show running jobs</li>
+<li>bjobs -p Show pending jobs</li>
+<li>bjobs -w Use “wide” formatting for output</li>
+</ul>
+<p>If you want to check the STDOUT/STDERR of a currently running job, you
+can do so with the bpeek command. The command supports several options:</p>
+<ul class="simple">
+<li>bpeek -J jobname Show STDOUT/STDERR for the job you’ve most recently
+submitted with the name jobname</li>
+<li>bpeek 12345 Show STDOUT/STDERR for job 12345</li>
+<li>bpeek -f … Used with other options. Makes bpeek use tail -f and exit
+once the job completes.</li>
+</ul>
+</div>
+<div class="section" id="scheduling-policy">
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline">¶</a></h3>
+<p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
+order. This often does not make effective use of the system. A large job
+may be next in line to run. If the system is using a strict FIFO queue,
+many processors sit idle while the large job waits to run. Backfilling
+would allow smaller, shorter jobs to use those otherwise idle resources,
+and with the proper algorithm, the start time of the large job would not
+be delayed. While this does make more effective use of the system, it
+indirectly encourages the submission of smaller jobs.</p>
+</div>
+<div class="section" id="batch-queue-policy">
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline">¶</a></h3>
+<p>The batch queue is the default queue for production work on Satori. It
+enforces the following policies: Limit of (4) eligible-to-run jobs per
+user. Jobs in excess of the per user limit above will be placed into a
+held state, but will change to eligible-to-run at the appropriate time.
+Users may have only (100) jobs queued at any state at any time.
+Additional jobs will be rejected at submit time.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, MIT Satori Project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
