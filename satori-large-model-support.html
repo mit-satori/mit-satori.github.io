@@ -1,0 +1,281 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IBM Large Model Support (LMS) &mdash; MIT Satori User Documentation  documentation</title>
+  
+
+  
+  
+  
+  
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-large-model-support.html"/>
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ai-frameworks.html">IBM Watson Machine Learning Community Edition (WMLCE)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#install-anaconda">[1] Install Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-setting-up-the-software-repository">[2] WMLCE: Setting up the software repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-creating-and-activate-conda-environments-recommended">[3] WMLCE: Creating and activate conda environments (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-installing-all-frameworks-at-the-same-time">[4] WMLCE: Installing all frameworks at the same time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wmlce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation">[5] WMLCE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#controlling-wmlce-release-packages">Controlling WMLCE release packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#additional-conda-channels">Additional conda channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai">The WML CE Supplementary channel is available at: https://anaconda.org/powerai/.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access">The WML CE Early Access channel is available at: https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIT Satori User Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>IBM Large Model Support (LMS)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-large-model-support.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ibm-large-model-support-lms">
+<h1>IBM Large Model Support (LMS)<a class="headerlink" href="#ibm-large-model-support-lms" title="Permalink to this headline">¶</a></h1>
+<p>Allow seamlessly moves layers of a model between the GPU and CPU to
+overcome GPU memory limits allows training of:</p>
+<ul class="simple">
+<li>Deeper models</li>
+<li>Higher resolution data</li>
+<li>Larger batch sizes</li>
+</ul>
+<p>Satori nodes have a fast NVLink 2.0 connection between the CPU and GPU,
+which allows for data swapping with minimal overhead compared with
+traditional x86 GPU accelerated systems where PCIe Gen3 is available for
+connection between the CPU and GPU.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example for enable TFLMSv2 in TensorFlow</span>
+<span class="c1"># ----------------------------------------</span>
+<span class="c1"># Import the TF LMS module</span>
+from tensorflow_large_model_support import LMS
+<span class="c1"># Instantiate the LMS object, with maximum swapping parameters</span>
+<span class="c1"># If you wanted to make use of the auto-tuning feature simply</span>
+<span class="c1"># initialise the LMS object without any arguments</span>
+<span class="c1"># e.g. lms_hook = LMS()</span>
+<span class="nv">lms_hook</span> <span class="o">=</span> LMS<span class="o">(</span><span class="nv">swapout_threshold</span><span class="o">=</span><span class="m">1</span>,
+               <span class="nv">swapin_ahead</span><span class="o">=</span><span class="m">0</span>,
+               <span class="nv">swapin_groupby</span><span class="o">=</span><span class="m">0</span>,
+               <span class="nv">sync_mode</span><span class="o">=</span><span class="m">0</span><span class="o">)</span>
+<span class="c1"># Make LMS aware of the train_batch_size parameter</span>
+lms_hook.batch_size <span class="o">=</span> FLAGS.train_batch_size
+<span class="c1"># Include the lms_hook object in the estimator hooks list</span>
+estimator.train<span class="o">(</span><span class="nv">input_fn</span><span class="o">=</span>train_input_fn,
+                <span class="nv">max_steps</span><span class="o">=</span>num_train_steps,
+                <span class="nv">hooks</span><span class="o">=[</span>lms_hook<span class="o">])</span>
+</pre></div>
+</div>
+<p>NOTE: TFLMSv2 introduces four hyper-parameters to work with. Typically
+you don’t need to worry about them, as LMS introduces an auto-tuning
+feature which automatically evaluates your computational graph and sets
+appropriate values for these hyper-parameters, based upon estimated
+memory consumption throughout training. However manual tuning allows for
+closer control- squeezing out maximum performance. The four
+hyper-parameters introduced are:</p>
+<ul class="simple">
+<li>swapout_threshold: The number of tensors to hold within GPU memory
+before pushing them to system memory.</li>
+<li>swapin_ahead: The larger swapin_ahead is, the earlier a tensor is
+swapped in to the GPU memory from the host memory.</li>
+<li>swapin_groupby: Multiple swap-in operations of the same tensor will
+be grouped or fused into one swap-in operation for better performance
+if they are close to each other (the distance between them is within
+swapin_groupby).</li>
+<li>sync_mode: Whether to do synchronisation between data transfer and
+kernel computation or not.</li>
+</ul>
+<p>Documentation and Tutorial:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS5SF7_1.6.2/navigation/wmlce_getstarted_tflmsv2.html" target="_blank">LMS in
+TensorFlow</a></li>
+<li><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS5SF7_1.6.2/navigation/wmlce_getstarted_pytorch.html#wmlce_getstarted_pytorch__lms_section" target="_blank">LMS in
+Pytorch</a></li>
+</ul>
+<p>Examples:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/IBM/powerai/tree/master/examples/tensorflow_large_model_support/v2" target="_blank">Simple Keras/TensorFlow with syntetic
+data</a>
+for high resolution images</li>
+<li><a class="reference external" href="https://github.com/smatzek/3DUnetCNN" target="_blank">3D U-Net with Keras/TensorFlow for Medical
+Images</a></li>
+<li><a class="reference external" href="https://github.com/mtbrandy/pytorch/wiki/Large-Model-Support#example" target="_blank">ResNet with LMS in
+Pytorch</a></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, MIT Satori Project
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
