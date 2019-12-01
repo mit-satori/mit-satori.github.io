@@ -121,7 +121,8 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Example machine learning LSF jobs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-multi-node-pythorch-example">A multi-node, pythorch example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-multi-node-pytorch-example">A multi-node, pytorch example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-multi-node-pytorch-example-with-the-horovod-conda-environment">A multi-node, pytorch example with the horovod conda environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../satori-doc-examples-contributing.html">Contributing documentation and examples</a></li>
@@ -208,10 +209,15 @@ across multiple GPUs.</div></blockquote>
 <a class="reference external" href="https://raw.githubusercontent.com/IBM/powerai/master/examples/tensorflow_large_model_support/v2/Keras_ManyModel.py" target="_blank">https://raw.githubusercontent.com/IBM/powerai/master/examples/tensorflow_large_model_support/v2/Keras_ManyModel.py</a> ,
 launches Caffe on a single node and with 4 GPUs allocated.</div></blockquote>
 </div>
-<div class="section" id="a-multi-node-pythorch-example">
-<h2>A multi-node, pythorch example<a class="headerlink" href="#a-multi-node-pythorch-example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="a-multi-node-pytorch-example">
+<h2>A multi-node, pytorch example<a class="headerlink" href="#a-multi-node-pytorch-example" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div>The LSF batch script here, <a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf" target="_blank">https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf</a> , launches pytorch on multiple nodes, each with multiple GPUs.</div></blockquote>
+</div>
+<div class="section" id="a-multi-node-pytorch-example-with-the-horovod-conda-environment">
+<h2>A multi-node, pytorch example with the horovod conda environment<a class="headerlink" href="#a-multi-node-pytorch-example-with-the-horovod-conda-environment" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>The LSF batch script here, <a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf</a> , launches pytorch on multiple nodes, each with multiple GPUs and using the horovod ( <a class="reference external" href="https://horovod.readthedocs.io/" target="_blank">https://horovod.readthedocs.io/</a> ) based conda environment.</div></blockquote>
 </div>
 </div>
 
