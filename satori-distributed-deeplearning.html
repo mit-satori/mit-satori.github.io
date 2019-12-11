@@ -241,26 +241,21 @@ for a better integration</li>
 <li>Pytorch</li>
 </ul>
 <p>How to get Horovod with DDL? follow bellow instructions (optional 0 - 2 if you have already install WMLCE):</p>
-<p>0. Add ppc64le conda channel for WMLCE
-.. code:: bash</p>
-<blockquote>
-<div>conda config –prepend channels <a class="reference external" href="https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/" target="_blank">https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/</a></div></blockquote>
-<p>1. Create Conda Virtual Environment
-.. code:: bash</p>
-<blockquote>
-<div>conda create –name horovod python=3.6</div></blockquote>
-<p>2. Install WMLCE (TF, Pytorch, DDL etc)
-.. code:: bash</p>
-<blockquote>
-<div>conda install powerai</div></blockquote>
-<p>3. Install the packages to build Horovod
-.. code:: bash</p>
-<blockquote>
-<div>conda install gxx_linux-ppc64le=7.3.0 cffi cudatoolkit-dev</div></blockquote>
-<p>4. Install Horovod with DDL backend
-.. code:: bash</p>
-<blockquote>
-<div>HOROVOD_CUDA_HOME=$CONDA_PREFIX HOROVOD_GPU_ALLREDUCE=DDL pip install horovod –no-cache-dir</div></blockquote>
+<ol class="arabic simple" start="0">
+<li>Add ppc64le conda channel for WMLCE</li>
+</ol>
+<ol class="arabic simple">
+<li>Create Conda Virtual Environment</li>
+</ol>
+<ol class="arabic simple" start="2">
+<li>Install WMLCE (TF, Pytorch, DDL etc)</li>
+</ol>
+<ol class="arabic simple" start="3">
+<li>Install the packages to build Horovod</li>
+</ol>
+<ol class="arabic simple" start="4">
+<li>Install Horovod with DDL backend</li>
+</ol>
 <p>Original IBM DDL paper, can be found at this URL:
 <a class="reference external" href="https://arxiv.org/pdf/1708.02188.pdf" target="_blank">https://arxiv.org/pdf/1708.02188.pdf</a></p>
 </div>
