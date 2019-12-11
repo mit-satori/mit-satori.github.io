@@ -244,18 +244,34 @@ for a better integration</li>
 <ol class="arabic simple" start="0">
 <li>Add ppc64le conda channel for WMLCE</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
+</pre></div>
+</div>
 <ol class="arabic simple">
 <li>Create Conda Virtual Environment</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name horovod <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+</pre></div>
+</div>
 <ol class="arabic simple" start="2">
 <li>Install WMLCE (TF, Pytorch, DDL etc)</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install powerai
+</pre></div>
+</div>
 <ol class="arabic simple" start="3">
 <li>Install the packages to build Horovod</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install gxx_linux-ppc64le<span class="o">=</span><span class="m">7</span>.3.0 cffi cudatoolkit-dev
+</pre></div>
+</div>
 <ol class="arabic simple" start="4">
 <li>Install Horovod with DDL backend</li>
 </ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>DDL pip install horovod --no-cache-dir
+</pre></div>
+</div>
 <p>Original IBM DDL paper, can be found at this URL:
 <a class="reference external" href="https://arxiv.org/pdf/1708.02188.pdf" target="_blank">https://arxiv.org/pdf/1708.02188.pdf</a></p>
 </div>
