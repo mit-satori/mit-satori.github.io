@@ -298,6 +298,10 @@ https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>DDL pip install horovod --no-cache-dir
 </pre></div>
 </div>
+<p>or with NCCL direct support (recomanded for Pytorch)</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env <span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_NCCL_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>NCCL <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCCL pip install --no-cache horovod
+</pre></div>
+</div>
 <p>Original IBM DDL paper, can be found at this URL:
 <a class="reference external" href="https://arxiv.org/pdf/1708.02188.pdf" target="_blank">https://arxiv.org/pdf/1708.02188.pdf</a></p>
 </div>
