@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Satori Login &mdash; MIT Satori User Documentation  documentation</title>
+  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-ssh.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-portal.html"/>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="satori-portal.html" />
-    <link rel="prev" title="Satori Basics" href="satori-basics.html" /> 
+    <link rel="next" title="Training for faster onboarding in the system HW and SW architecture" href="satori-training.html" />
+    <link rel="prev" title="Satori Login" href="satori-ssh.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,14 +82,14 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#getting-help">Getting help?</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Satori Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satori-workload-manager.html">Running your AI training jobs on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-workload-manager.html#interactive-jobs">Interactive Jobs</a></li>
@@ -197,14 +197,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Satori Login</li>
+      <li>&lt;no title&gt;</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-ssh.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-portal.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -218,57 +218,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="satori-login">
-<h1>Satori Login<a class="headerlink" href="#satori-login" title="Permalink to this headline">¶</a></h1>
-<div class="figure align-default">
-<img alt="Satori Login" src="http://www.sldcassam.in/images/login.png" />
-</div>
-<ul class="simple">
-<li>Login to Satori cluster is done via SSHv2 as follow:</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh your_username@satori-login-001.mit.edu
-</pre></div>
-</div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh your_username@satori-login-002.mit.edu
-</pre></div>
-</div>
-<ul class="simple">
-<li>To copy files from your workstation to Satori you can use SCP,
-<a class="reference external" href="https://winscp.net/eng/download.php" target="_blank">WinSCP</a>,
-<a class="reference external" href="https://cyberduck.io/download/" target="_blank">Cyberduck</a> etc</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp &lt;local-file.py&gt; your_username@satori-login-001.mit.edu:
-</pre></div>
-</div>
-<ul class="simple">
-<li>For example:</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp ResNet50-Keras.py florin@satori-login-002.mit.edu:
-ssh florin@satori-login-002.mit.edu
-conda activate wmlce-1.6.2
-python ResNet50-Keras.py
-</pre></div>
-</div>
-<p>As general rules:</p>
-<ul class="simple">
-<li>satori-login-001.mit.edu - shuld be used for submiting training jobs
-and related activities</li>
-<li>satori-login-002.mit.edu - shuld be used for transfering large
-files/datasets and compiling software requireing nvcc, gcc, XL
-compiler etc</li>
-<li>if one login-node will not be available try the second one</li>
-<li>dont’t run trainings of login nodes</li>
-</ul>
-<p>In case you want to work with Jupiter Notebooks, you will need to
-forward Jupiter HTTP ports to your own workstation via SSHv2 tunneling.
-This can be done like this: (Note FQDN == Fully Qualified Domain Name like nodeXXXX  for the node you are running on (E.g. node0014)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">10001</span>:&lt;compute_node_FQDN&gt;:10001 your_username@satori-login-001.mit.edu
-conda activate wmlce-1.6.2
-jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<span class="o">=</span><span class="m">10001</span>
-</pre></div>
-</div>
-</div>
-
+  
 
            </div>
            
@@ -277,10 +227,10 @@ jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<sp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="satori-portal.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="satori-training.html" class="btn btn-neutral float-right" title="Training for faster onboarding in the system HW and SW architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="satori-basics.html" class="btn btn-neutral float-left" title="Satori Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="satori-ssh.html" class="btn btn-neutral float-left" title="Satori Login" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
