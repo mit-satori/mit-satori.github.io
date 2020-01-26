@@ -220,17 +220,23 @@
   <div class="section" id="creating-your-own-jupyter-kernels-for-ood-portal">
 <h1>Creating your own Jupyter kernels for OOD portal<a class="headerlink" href="#creating-your-own-jupyter-kernels-for-ood-portal" title="Permalink to this headline">¶</a></h1>
 <p>The OOD portal has a set of centrally installed Jupyter kernels that
-include common software. The software aims to cover most
+include common software. The aims is to cover most
 things needed for frequently used tools. If you start using
 the portal extensively, sometimes you will come across
 packages that are missing and see a message like this image</p>
 <a class="reference internal image-reference" href="../_images/module-not-found.png"><img alt="Module not found message" src="../_images/module-not-found.png" style="width: 400px;" /></a>
-<p>When this happens it is possible to create a custom kernel yourself.
-This kernel will then be included in the OOD menu for your account. That kernel can
-include any available software you want. You can also request that the
-module be added to one of the standard environments or that a new standard environment
-be added. Sometimes, however, getting a module added to the standard environment
-requires waiting or the module may conflict with something else.</p>
+<p>This is a sad moment, but inevtiable because people keep creating new and exciting
+packages and it is hard for the central repository to keep up.
+Fortunately it is possible to create a custom kernel yourself.
+This kernel will then be included in the OOD launcher options for your account alongside
+the standard kernels. A kernel you create can
+include any available software you can figure out how to install. The instructions on this
+page show you how to go about creating your own kernel.</p>
+<p><em>Note</em> you can also request that
+modules be added to one of the standard environments or that a new standard environment
+be added. The standard modues do evolve and new software is added as it the administration
+group becomes aware of them. Sometimes, however, getting a module added to the standard environment
+requires waiting a little, or the module may conflict with something else.</p>
 <p>By learning how to add your own kernels you can avoid having to wait and work around
 any incompatibilities. You can also gather customized, versioned sets of tools into
 a standard kernels that can then be shared within a group working on a common
@@ -328,9 +334,9 @@ python -m ipykernel install --user --name=${CKNAME}
 </li>
 </ol>
 </div>
-<div class="section" id="some-additional-steps">
-<h3>Some additional steps<a class="headerlink" href="#some-additional-steps" title="Permalink to this headline">¶</a></h3>
-<p>Additionally we might want to include a Julia interactive environment and an Octave interactive environment. We should document how to do that here:</p>
+<div class="section" id="some-additional-steps-for-julia-and-octave">
+<h3>Some additional steps for Julia and Octave<a class="headerlink" href="#some-additional-steps-for-julia-and-octave" title="Permalink to this headline">¶</a></h3>
+<p>Additionally we might want to include a Julia interactive environment and an Octave interactive environment. This section should document more about how how to do that here:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">julia</span><span class="o">/</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">julia</span> <span class="o">-</span><span class="n">E</span> <span class="s1">&#39;using Pkg; Pkg.add(&quot;IJulia&quot;)&#39;</span>
 </pre></div>
@@ -339,7 +345,7 @@ python -m ipykernel install --user --name=${CKNAME}
 <div class="section" id="files-and-directories">
 <h3>Files and directories<a class="headerlink" href="#files-and-directories" title="Permalink to this headline">¶</a></h3>
 <blockquote>
-<div><p>There are several files and directories that are useful to know about:</p>
+<div><p>There are several files and directories that are useful to know about. This section could provide some details on these:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">cnh</span><span class="o">-</span><span class="n">awesome</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">environment</span><span class="o">/</span>
 <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">cnh</span><span class="o">-</span><span class="n">awesome</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">environment</span><span class="o">/</span><span class="n">kernel</span><span class="o">.</span><span class="n">json</span>
 <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">julia</span><span class="o">-</span><span class="mf">1.3</span>
