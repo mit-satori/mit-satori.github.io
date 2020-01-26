@@ -282,8 +282,8 @@ it is malfunction at the moment!</li>
 <li>Once connected through ssh if you are familiar with tools like LSF you can start
 interactive or batch scripts e.g.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -ISp -tty -q default /bin/bash
-bsub -q default &lt; myjobscript.lsf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -ISp -tty -q short /bin/bash
+bsub -q short &lt; myjobscript.lsf
 </pre></div>
 </div>
 <p>If you are not familiar with LSF and cluster there are tutorial examples in other pages
@@ -296,7 +296,7 @@ and related activities</li>
 files/datasets and compiling software requireing nvcc, gcc, XL
 compiler etc</li>
 <li>if one login-node will not be available try the second one</li>
-<li>don’t run trainings on login nodes</li>
+<li>don’t run large computations on the login nodes</li>
 </ul>
 </div>
 </div>
