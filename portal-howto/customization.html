@@ -264,19 +264,20 @@ can be carried out when logged in from an ssh session, for example via the comma
 environment is placed in a new directory under the scratch space <code class="docutils literal notranslate"><span class="pre">/nobackup/users/cnh/projects/condas</span></code> belonging to
 the account <code class="docutils literal notranslate"><span class="pre">cnh</span></code>. The new environment is named <code class="docutils literal notranslate"><span class="pre">cnh-awesome-new-environment</span></code>. These values can be changed for
 different accounts and ways of organizing files. The command sequence starts with <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">deactivate</span></code> to prevent
-inadvertantly overwriting and existing conda environment. If conda is not already activted then the message <code class="docutils literal notranslate"><span class="pre">conda:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code> may be printed. That is OK.</p>
-<blockquote>
-<div>conda deactivate
+inadvertantly overwriting and existing conda environment. If conda is not already activted then the message <code class="docutils literal notranslate"><span class="pre">conda:</span> <span class="pre">command</span> <span class="pre">not</span> <span class="pre">found</span></code> may be printed. That is OK:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>conda deactivate
 CKNAME=cnh-awesome-new-environment
 CKUSER=cnh
 CKROOT=projects/condas
 mkdir -p /nobackup/users/${CKUSER}/$CKROOT}/${ENAME}
 cd /nobackup/users/${CKUSER}/$CKROOT}/${ENAME}
-wget <a class="reference external" href="https://repo.continuum.io/miniconda/Miniconda2-4.7.12.1-Linux-ppc64le.sh" target="_blank">https://repo.continuum.io/miniconda/Miniconda2-4.7.12.1-Linux-ppc64le.sh</a>
+wget https://repo.continuum.io/miniconda/Miniconda2-4.7.12.1-Linux-ppc64le.sh
 chmod +x Miniconda2-4.7.12.1-Linux-ppc64le.sh
-./Miniconda2-4.7.12.1-Linux-ppc64le.sh -b -p <cite>pwd</cite>/miniconda3
-export PATH=”<cite>pwd</cite>/miniconda3/bin:$PATH”</div></blockquote>
-<p><strong>NOTE</strong> The conda commands tend to hard code path names as part of their installation. So, once the create step is complete, renaming or moving <a href="#id1"><span class="problematic" id="id2">``</span></a>/nobackup/users/cnh/projects/condas/cnh-awesome-new-environment``will break the setup.</p>
+./Miniconda2-4.7.12.1-Linux-ppc64le.sh -b -p `pwd`/miniconda3
+export PATH=&quot;`pwd`/miniconda3/bin:$PATH&quot;
+</pre></div>
+</div>
+<p><strong>NOTE</strong> The conda commands tend to hard code full path names as part of their installation. So, once the create step is complete, renaming or moving <a href="#id1"><span class="problematic" id="id2">``</span></a>/nobackup/users/cnh/projects/condas/cnh-awesome-new-environment``will break the setup.</p>
 </div>
 </div>
 </div>
