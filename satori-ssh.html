@@ -245,6 +245,13 @@
 <li>Enter (in hours) how long you would like the app to run for.</li>
 <li>Click launch, wait for app to begin running on a compute node and finally, select “Connect to Jupyter”!</li>
 </ol>
+<p>the web portal also has sub-menus for</p>
+<ol class="arabic simple">
+<li>a terminal on the front-end node (<strong>Clusters</strong> menu)</li>
+<li>a running job monitoring window (<strong>Jobs</strong> menu). This is also has a batch job preparation form, but
+it is malfunction at the moment!</li>
+<li>a file browsing and transfer client (<strong>Files</strong> menu)</li>
+</ol>
 </div>
 <div class="section" id="ssh-login">
 <h2>SSH Login<a class="headerlink" href="#ssh-login" title="Permalink to this headline">¶</a></h2>
@@ -269,14 +276,19 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li>For example:</li>
+<li>Once connected through ssh if you are familiar with tools like LSF you can start
+interactive or batch scripts.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp ResNet50-Keras.py florin@satori-login-002.mit.edu:
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -ISp -tty -q normal /bin/bash
+
+scp ResNet50-Keras.py florin@satori-login-002.mit.edu:
 ssh florin@satori-login-002.mit.edu
 conda activate wmlce-1.6.2
 python ResNet50-Keras.py
 </pre></div>
 </div>
+<p>If you are not familiar with LSF and cluster use take a look at the tutorial examples in other sections
+of this document.</p>
 <p>As general rules:</p>
 <ul class="simple">
 <li>satori-login-001.mit.edu - shuld be used for submiting training jobs
@@ -287,14 +299,6 @@ compiler etc</li>
 <li>if one login-node will not be available try the second one</li>
 <li>don’t run trainings on login nodes</li>
 </ul>
-<p>In case you want to work with Jupiter Notebooks, you will need to
-forward Jupiter HTTP ports to your own workstation via SSHv2 tunneling.
-This can be done like this: (Note FQDN == Fully Qualified Domain Name like nodeXXXX  for the node you are running on (E.g. node0014)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">10001</span>:&lt;compute_node_FQDN&gt;:10001 your_username@satori-login-001.mit.edu
-conda activate wmlce-1.6.2
-jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<span class="o">=</span><span class="m">10001</span>
-</pre></div>
-</div>
 </div>
 </div>
 
