@@ -274,10 +274,12 @@ CKUSER=cnh
 CKROOT=projects/condas
 conda deactivate
 mkdir -p /nobackup/users/${CKUSER}/${CKROOT}/${CKNAME}
-cd /nobackup/users/${CKUSER}/$CKROOT}/${CKNAME}
+cd /nobackup/users/${CKUSER}/${CKROOT}/${CKNAME}
 wget https://repo.continuum.io/miniconda/Miniconda2-4.7.12.1-Linux-ppc64le.sh
 chmod +x Miniconda2-4.7.12.1-Linux-ppc64le.sh
 ./Miniconda2-4.7.12.1-Linux-ppc64le.sh -b -p `pwd`/miniconda3
+. miniconda3/etc/profile.d/conda.sh
+conda config --prepend channels https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
 </pre></div>
 </div>
 <p><strong>NOTE</strong> - the conda commands tend to hard code full path names as part of their installation. So, once the <strong>Create</strong> step
@@ -296,11 +298,13 @@ conda create -y --name ${CKNAME} python=3.6
 conda activate ${CKNAME}
 </pre></div>
 </div>
-<p><strong>NOTE</strong> - the conda environment <em>activate</em> step applies to the terminal shell session in which
+<p><strong>NOTE</strong> - the conda environment <strong>activate</strong> step applies to the terminal shell session in which
 the <strong>activate</strong> commands are run. If you start a new terminal or shell you will need to rerun the activate step before
 exectuing the <strong>install</strong> commands.</p>
 </li>
-<li><p class="first"><strong>Install.</strong> Once the conda environment has been <strong>created</strong> and is <strong>activated</strong> in the terminal shell.</p>
+<li><p class="first"><strong>Install.</strong> Once the conda environment has been <strong>created</strong> and is <strong>activated</strong> in the terminal shell the final step
+involves running install commands in the shell. In the example shown here we will install the IBM <code class="docutils literal notranslate"><span class="pre">powerai</span> <span class="pre">``</span>
+<span class="pre">software</span> <span class="pre">stack</span> <span class="pre">and</span> <span class="pre">add</span> <span class="pre">``patsy</span></code> (<a class="reference external" href="https://anaconda.org/anaconda/patsy" target="_blank">https://anaconda.org/anaconda/patsy</a>), <code class="docutils literal notranslate"><span class="pre">seaborn</span></code>, <code class="docutils literal notranslate"><span class="pre">statsmodels</span></code> and <code class="docutils literal notranslate"><span class="pre">netcdf4</span></code> (<a class="reference external" href="https://anaconda.org/anaconda/netcdf4" target="_blank">https://anaconda.org/anaconda/netcdf4</a>).</p>
 </li>
 </ol>
 </div>
