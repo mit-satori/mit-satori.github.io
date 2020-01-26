@@ -302,8 +302,11 @@ compiler etc</li>
 need to forward Jupyter HTTP ports to your own workstation via SSHv2 tunneling.
 This can be done like this: (Note FQDN == Fully Qualified Domain Name like nodeXXXX  for the node you are running on (E.g. node0014)</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">10001</span>:&lt;compute_node_FQDN&gt;:10001 your_username@satori-login-001.mit.edu
-conda activate wmlce-1.6.2
 jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<span class="o">=</span><span class="m">10001</span>
+</pre></div>
+</div>
+<p>if you do this, remember to activate whatever conda enviroment you wish to use before starting <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> e.g</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate wmlce-1.6.2
 </pre></div>
 </div>
 </div>
