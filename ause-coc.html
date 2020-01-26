@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Satori Basics &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Acceptable Use and Code of Conduct &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-basics.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/ause-coc.html"/>
   
 
   
@@ -37,8 +37,7 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Satori Login" href="satori-ssh.html" />
-    <link rel="prev" title="Satori Quick Start Info" href="index.html" /> 
+    <link rel="prev" title="Getting help on Satori" href="satori-getting-help.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -83,10 +82,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Satori Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-is-satori">What is Satori?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-can-i-get-an-account">How can I get an account?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#getting-help">Getting help?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a><ul>
@@ -159,9 +158,9 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#tips-and-tricks">Tips and Tricks</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="ause-coc.html">Acceptable Use and Code of Conduct</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#acceptable-use-guidelines">Acceptable Use Guidelines</a></li>
-<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#code-of-conduct">Code of Conduct</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Acceptable Use and Code of Conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#acceptable-use-guidelines">Acceptable Use Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-of-conduct">Code of Conduct</a></li>
 </ul>
 </li>
 </ul>
@@ -209,14 +208,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Satori Basics</li>
+      <li>Acceptable Use and Code of Conduct</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-basics.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/ause-coc.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -230,27 +229,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="satori-basics">
-<h1>Satori Basics<a class="headerlink" href="#satori-basics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-satori">
-<h2>What is Satori?<a class="headerlink" href="#what-is-satori" title="Permalink to this headline">¶</a></h2>
-<p>Satori is a GPU dense, high-performance Power 9 system developed as a collaboration between MIT and IBM.
-It has 64 1TB memory Power 9 nodes. Each node hosts four NVidia V100 32GB memory GPU cards. Within a
-node GPUs are linked by an NVLink2 network thst supports nearly to 200GB/s bi-directional transfer
-between GPUs. A 100Gb/s Infiniband network with microsecond user space latency connects the cluster
-nodes togehter.</p>
+  <div class="section" id="acceptable-use-and-code-of-conduct">
+<h1>Acceptable Use and Code of Conduct<a class="headerlink" href="#acceptable-use-and-code-of-conduct" title="Permalink to this headline">¶</a></h1>
+<p>Satori is operated by the MIT Research Computing Project ( <a class="reference external" href="https://researchcomputing.mit.edu" target="_blank">https://researchcomputing.mit.edu</a>)
+and certain appropriate common sense rules apply to working on it.</p>
+<div class="section" id="acceptable-use-guidelines">
+<h2>Acceptable Use Guidelines<a class="headerlink" href="#acceptable-use-guidelines" title="Permalink to this headline">¶</a></h2>
+<p>The Satori resource is intended for reasearch associated with MIT projects or collaborations around
+MIT research projects. That can cover a lot of things, but all account holders are expected
+to use judgement and apply common sense to their use of the system. The system is not
+to be used to support commercial activities or for non-MIT related activities. It is not
+to be used for anything that might be construed as illegal or criminal. Datasets on
+the system must have been obtained legitimately and the system is not to be used
+for working with unanonymized data. If you are unsure about a planned use please feel
+free to contact <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a>.</p>
+<p>Account holders should not share accounts and should take reasonable precautions to ensure
+that credentials for accessing the system (passwords, ssh keys etc…) are kept secure.
+All account holders agree to respect requests from support staff around how they use
+the system. The support staff may, as needed, impose whatever policies are required
+to ensure the system runs well for all projects on the system.</p>
 </div>
-<div class="section" id="how-can-i-get-an-account">
-<h2>How can I get an account?<a class="headerlink" href="#how-can-i-get-an-account" title="Permalink to this headline">¶</a></h2>
-<p><strong>Satori is currently in a beta test phase</strong>. Access requires active MIT Kerberos credentials (available to all students, employees and sponsored guest accounts <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ). To have your kereberos account activated on Satori during the beta test phase please contact with Chris Hill ( <a class="reference external" href="mailto:cnh&#37;&#52;&#48;mit&#46;edu" target="_blank">cnh<span>&#64;</span>mit<span>&#46;</span>edu</a> ) or John Cohn ( <a class="reference external" href="mailto:johncohn&#37;&#52;&#48;us&#46;ibm&#46;com" target="_blank">johncohn<span>&#64;</span>us<span>&#46;</span>ibm<span>&#46;</span>com</a> ).</p>
-<p>Once beta testing is complete, anyone with active MIT Kerberos credentials (i.e. all students, employees and sponsored
-guest account <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ) will be able to connect to Satori via a portal and a
-starter account will be created. A starter account will be provided somewhat limited access by default. Once a starter account has been created, an account holder can be added as a member to one or more research groups. Different research groups can provide larger scale access to their members.</p>
-</div>
-<div class="section" id="getting-help">
-<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
-<p>If you are stuck and can’t find an answer in the web pages please feel free to
-email our support address <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a> with questions and requests.</p>
+<div class="section" id="code-of-conduct">
+<h2>Code of Conduct<a class="headerlink" href="#code-of-conduct" title="Permalink to this headline">¶</a></h2>
+<p>The Satori system is a shared resource used by a wide community. All people involved in
+its use and operations are should try their utmost to be courteous at all times. Members of the
+Satori  community should be respectful toward one another, and endeavor to ensure a
+welcoming and collegial environment for all. Account holders are also expected to respect
+privacy of others activities on the system, and not to try to gain access to parts of the
+system they are not authorized to access.</p>
 </div>
 </div>
 
@@ -262,10 +268,8 @@ email our support address <a class="reference external" href="mailto:satori-supp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="satori-ssh.html" class="btn btn-neutral float-right" title="Satori Login" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-      
-        <a href="index.html" class="btn btn-neutral float-left" title="Satori Quick Start Info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="satori-getting-help.html" class="btn btn-neutral float-left" title="Getting help on Satori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
