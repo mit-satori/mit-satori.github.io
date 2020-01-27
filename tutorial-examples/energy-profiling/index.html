@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Intergrated energy use profiling &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -82,7 +82,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -150,7 +150,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../satori-tutorial-examples.html">Green Up Hackathon IAP 2020</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../satori-tutorial-examples.html">Green Up Hackathon IAP 2020</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../index.html">Tutorial Examples</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pytorch-style-transfer/index.html">Pytorch Style Transfer</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../pytorch-style-transfer/index.html#description">Description</a></li>
@@ -168,7 +168,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../index.html#measuring-resource-use">Measuring Resource Use</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#measuring-resource-use">Measuring Resource Use</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Intergrated energy use profiling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#useful-references">Useful references</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="../nvprof-profiling/index.html">Profiling code with nvprof</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../nvprof-profiling/index.html#description">Description</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../nvprof-profiling/index.html#commands-to-run-the-examples">Commands to run the examples</a></li>
@@ -240,7 +247,7 @@
         
           <li><a href="../index.html">Tutorial Examples</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Intergrated energy use profiling</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -261,7 +268,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="intergrated-energy-use-profiling">
+<h1>Intergrated energy use profiling<a class="headerlink" href="#intergrated-energy-use-profiling" title="Permalink to this headline">¶</a></h1>
+<p>Florin Manaila  ( <a class="reference external" href="mailto:florin&#46;manaila&#37;&#52;&#48;de&#46;ibm&#46;com" target="_blank">florin<span>&#46;</span>manaila<span>&#64;</span>de<span>&#46;</span>ibm<span>&#46;</span>com</a> )</p>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>This example shows how to gather detailed energy use information for a code. The example employs several
+commands that will interfere with other workloads and so should only be used on whole nodes under exclusive
+access. The example uses a Tensorflow Convolutional Neural Network benchmark that assumes that a conda
+virtual environment based on WMLCE powerai is active.</p>
+</div>
+<div class="section" id="commands-to-run-this-example">
+<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this headline">¶</a></h2>
+<p>The example can be run interactively on a single node or in batch mode on multiple nodes.
+Running interactively on multiple nodes is possible in principle but requires
+loggin to each node to set up the hardware and to restore its state at the end. This is better
+done from a script.</p>
+<div class="section" id="running-on-a-single-node">
+<h3>Running on a single node<a class="headerlink" href="#running-on-a-single-node" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="code-and-input-data-repositories-for-this-example">
+<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="useful-references">
+<h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
 
            </div>
            
