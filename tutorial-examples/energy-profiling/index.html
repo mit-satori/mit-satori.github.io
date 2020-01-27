@@ -325,10 +325,11 @@ chmod +x *.sh
 </div>
 </li>
 <li><p class="first">start your application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ddlrun -v ./launch.sh python $HOME2/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   ddlrun -v ./launch.sh python $HOME2/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+
+in this case the application is a Tensor Flow benchmark, but any application can be used.
 </pre></div>
 </div>
-<p>in this case the application is a Tensor Flow benchmark, but any application can be used.</p>
 </li>
 </ol>
 </div></blockquote>
