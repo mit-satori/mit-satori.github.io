@@ -293,6 +293,19 @@ done from a script.</p>
 </pre></div>
 </div>
 </li>
+<li><p class="first">once the node is available set up the environment</p>
+<blockquote>
+<div><p>EPUNAME=cnh
+EPCROOT=/nobackup/users/${EPUNAME}/projects/condas/cnh-awesome-new-environment
+module load perftools
+mkdir -p /nobackup/users/${EPUNAME}/four-way-energy
+cd /nobackup/users/${EPUNAME}/four-way-energy
+. ${EPCROOT}/miniconda3/etc/profile.d/conda.sh
+conda activate cnh-awesome-new-environment
+export EGO_TOP=/opt/ibm/spectrumcomputing
+git clone</p>
+</div></blockquote>
+</li>
 </ol>
 </div>
 </div>
