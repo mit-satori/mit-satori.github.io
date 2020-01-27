@@ -330,9 +330,21 @@ chmod +x *.sh
 </div>
 <p>in this case the application is a Tensor Flow benchmark, but any application can be used.</p>
 </li>
+<li><p class="first">once the application is finished then clean up:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">reset</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </div></blockquote>
 <ul>
+<li><p class="first">The power history (recorded as snapshots every 3 seconds) will be written to a file with name
+begining <code class="docutils literal notranslate"><span class="pre">energy-consumption.out.</span></code> followed by the LSF job id. This file can be listed to the
+screen e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="mi">7843_0</span>
+</pre></div>
+</div>
+</li>
 <li><p class="first"><strong>Example all in one batch script</strong>. To see an example all in one script of the above steps for measuring power and
 capturing energy use use the following commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">.</span><span class="n">git</span>
