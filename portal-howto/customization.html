@@ -377,7 +377,17 @@ greatly accelerate TSNE dimensionality reduction
 ( see - <a class="reference external" href="https://medium.com/rapids-ai/tsne-with-gpus-hours-to-seconds-9d9c17c941db" target="_blank">https://medium.com/rapids-ai/tsne-with-gpus-hours-to-seconds-9d9c17c941db</a> ), so it may be neded at some point e.g.
 when an import like <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">cuml.manifold</span> <span class="pre">import</span> <span class="pre">TSNE</span></code> fails. Rather than going through the entire <strong>Create</strong>,
 <strong>Activate</strong>, <strong>Install</strong> sequence from scratch we can update in a Terminal within Jupyter and then reestart our
-kernel. The commands for this are</p>
+kernel. The commands for this are:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>CKNAME=cnh-awesome-new-environment
+CKUSER=cnh
+CKROOT=projects/condas
+cd /nobackup/users/${CKUSER}/${CKROOT}/${CKNAME}
+export PATH=&quot;`pwd`/miniconda3/bin:$PATH&quot;
+. miniconda3/etc/profile.d/conda.sh
+conda activate ${CKNAME}
+conda install cuml
+</pre></div>
+</div>
 <p>when this completes we can restart the kernel and the new package will be avaiable.</p>
 </div>
 <div class="section" id="some-additional-steps-for-julia-and-octave">
