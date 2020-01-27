@@ -291,7 +291,7 @@ one node and using four GPUs.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">once the node is available set up the environment under your account. The example here shows
+<li><p class="first">once the node is available, set up the environment under your account. The example here shows
 using account <code class="docutils literal notranslate"><span class="pre">cnh</span></code> with a suitable conda environment installed
 in <code class="docutils literal notranslate"><span class="pre">/nobackup/users/cnh/projects/condas/cnh-awesome-new-environment</span></code>. Different accounts are free to use
 different paths and naming rules:</p>
@@ -314,7 +314,24 @@ chmod +x *.sh
 </pre></div>
 </div>
 </li>
+<li><p class="first">Once the environment is all set</p>
+</li>
 </ol>
+<blockquote>
+<div><ol class="arabic">
+<li><p class="first">set the power monitoring script running:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">start your application:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ddlrun -v ./launch.sh python $HOME2/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+</pre></div>
+</div>
+<p>in this case the application is a Tensor Flow benchmark, but any application can be used.</p>
+</li>
+</ol>
+</div></blockquote>
 <ul>
 <li><p class="first"><strong>Example all in one batch script</strong>. To see an example all in one script of the above steps for measuring power and
 capturing energy use use the following commands:</p>
