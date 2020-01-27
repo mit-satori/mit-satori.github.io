@@ -289,7 +289,11 @@ can be downloaded on a desktop/laptop with the profiler installed.</p>
 <blockquote>
 <div><code class="docutils literal notranslate"><span class="pre">Note</span> <span class="pre">that</span> <span class="pre">CUDA</span> <span class="pre">10.2</span> <span class="pre">is</span> <span class="pre">the</span> <span class="pre">last</span> <span class="pre">release</span> <span class="pre">to</span> <span class="pre">support</span> <span class="pre">macOS</span> <span class="pre">and</span> <span class="pre">future</span> <span class="pre">releases</span> <span class="pre">of</span> <span class="pre">CUDA</span> <span class="pre">may</span> <span class="pre">not</span> <span class="pre">support</span> <span class="pre">macOS</span></code></div></blockquote>
 <p>( see- <a class="reference external" href="https://docs.nvidia.com/cuda/cuda-installation-guide-mac-os-x/index.html#system-requirements" target="_blank">https://docs.nvidia.com/cuda/cuda-installation-guide-mac-os-x/index.html#system-requirements</a> ) and it appears
-that OSX 10.15.2 (the most recent Catalina) is not supported.</p>
+that OSX 10.15.2 (the most recent Catalina) is not supported. For this situation the best option is to use non-visual mode
+at the command line on Satori. A good command for this is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nvprof</span> <span class="o">--</span><span class="nb">print</span><span class="o">-</span><span class="n">gpu</span><span class="o">-</span><span class="n">trace</span> <span class="o">-</span><span class="n">o</span> <span class="n">results</span><span class="o">.</span><span class="n">nvprof</span> <span class="o">./</span><span class="n">vector</span><span class="o">-</span><span class="n">add</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="useful-references">
 <h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this headline">¶</a></h2>
