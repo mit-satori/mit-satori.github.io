@@ -330,6 +330,18 @@ chmod +x *.sh
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
+<dl class="docutils">
+<dt>if things work as expected this should create a file that logs power use from a background script <code class="docutils literal notranslate"><span class="pre">read_inst_power_cons.sh</span></code> and you should be able to see the power readings using the command <code class="docutils literal notranslate"><span class="pre">cat</span></code></dt><dd><p>like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cnh-awesome-new-environment) [cnh@node0047 four-way-energy]$ cat energy-consumption.out.7877_0
+ 1580143466:     Instantaneous power reading:                   497 Watts
+ 1580143470:     Instantaneous power reading:                   555 Watts
+ 1580143473:     Instantaneous power reading:                   557 Watts
+ 1580143476:     Instantaneous power reading:                   559 Watts
+ 1580143480:     Instantaneous power reading:                   469 Watts
+</pre></div>
+</div>
+</dd>
+</dl>
 </li>
 <li><p class="first">start your application:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>ddlrun -v ./launch.sh python $HOME2/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
