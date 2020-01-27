@@ -383,14 +383,14 @@ intensive part of the calculation starts e.g</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">we can now do the same with a four gpu application:</p>
+<li><p class="first">we can now try and do the same with a four gpu application:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/tensorflow/benchmarks
 cd benchmarks
 git checkout 1ef603fd7e568ff75127ec07f160808fcc59911c
 cd ..
 conda install gxx_linux-ppc64le=7.3.0 cffi cudatoolkit-dev
 HOROVOD_CUDA_HOME=$CONDA_PREFIX HOROVOD_GPU_ALLREDUCE=DDL pip install horovod --no-cache-dir
-ddlrun -v ./launch.sh python $HOME2/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+ddlrun -v ./launch.sh python /nobackup/users/florin/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
 </pre></div>
 </div>
 <p>in this case the application is a Tensor Flow benchmark, but any application can be used. <strong>NOTE</strong> as before we
@@ -399,7 +399,7 @@ need to be built for a specific configuraiton. We pass the environment variables
 select the configuraiton. We also need to use the pip ( ) installation tool for Horovod, not conda. There
 is no clear reason why Horovod could not be in Conda, but sometimes computing is like that!</p>
 <p>Again, while the application is running we can check out the power log and we can make a plot from
-the log too.</p>
+the log too. Unfortunately this example doesn’t quite work yet!</p>
 </li>
 <li><p class="first">once the application is finished then finish power logging using the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">reset</span><span class="o">.</span><span class="n">sh</span>
