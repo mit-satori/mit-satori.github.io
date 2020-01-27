@@ -286,6 +286,14 @@ loggin to each node to set up the hardware and to restore its state at the end. 
 done from a script.</p>
 <div class="section" id="running-on-a-single-node">
 <h3>Running on a single node<a class="headerlink" href="#running-on-a-single-node" title="Permalink to this headline">¶</a></h3>
+<p>The following commands can be used</p>
+<ol class="arabic">
+<li><p class="first">request a whole node from the scheduler:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsub</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="o">-</span><span class="n">R</span> <span class="s2">&quot;span[ptile=4]&quot;</span> <span class="o">-</span><span class="n">gpu</span> <span class="s2">&quot;num=4&quot;</span> <span class="o">-</span><span class="n">Is</span> <span class="n">bash</span>
+</pre></div>
+</div>
+</li>
+</ol>
 </div>
 </div>
 <div class="section" id="code-and-input-data-repositories-for-this-example">
