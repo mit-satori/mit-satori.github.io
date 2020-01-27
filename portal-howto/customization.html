@@ -368,6 +368,18 @@ python -m ipykernel install --user --name=${CKNAME}
 </li>
 </ol>
 </div>
+<div class="section" id="an-added-bonus-updating-on-the-fly">
+<h3>An added bonus - updating on the fly<a class="headerlink" href="#an-added-bonus-updating-on-the-fly" title="Permalink to this headline">¶</a></h3>
+<p>Once you have created a new kernel conda environment it is ownde by your account, so it can be updated if needed. This
+is unlike the standard system kernels which are currently read-only. For example in the example above the kernel
+environment does not include <code class="docutils literal notranslate"><span class="pre">cuml</span></code> ( <a class="reference external" href="https://anaconda.org/rapidsai/cuml" target="_blank">https://anaconda.org/rapidsai/cuml</a> ). The <code class="docutils literal notranslate"><span class="pre">cuml</span></code> package can be used to
+greatly accelerate TSNE dimensionality reduction
+( see - <a class="reference external" href="https://medium.com/rapids-ai/tsne-with-gpus-hours-to-seconds-9d9c17c941db" target="_blank">https://medium.com/rapids-ai/tsne-with-gpus-hours-to-seconds-9d9c17c941db</a> ), so it may be neded at some point e.g.
+when an import like <code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">cuml.manifold</span> <span class="pre">import</span> <span class="pre">TSNE</span></code> fails. Rather than going through the entire <strong>Create</strong>,
+<strong>Activate</strong>, <strong>Install</strong> sequence from scratch we can update in a Terminal within Jupyter and then reestart our
+kernel. The commands for this are</p>
+<p>when this completes we can restart the kernel and the new package will be avaiable.</p>
+</div>
 <div class="section" id="some-additional-steps-for-julia-and-octave">
 <h3>Some additional steps for Julia and Octave<a class="headerlink" href="#some-additional-steps-for-julia-and-octave" title="Permalink to this headline">¶</a></h3>
 <p>Additionally we might want to include a Julia interactive environment and an Octave interactive environment. This section should document more about how that works. This content is still under development:</p>
