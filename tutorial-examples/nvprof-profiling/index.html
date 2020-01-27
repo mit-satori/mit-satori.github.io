@@ -272,7 +272,8 @@ and what resources they are using. It can work for compiled CUDA code and for Py
 <div class="section" id="commands-to-run-the-examples">
 <h2>Commands to run the examples<a class="headerlink" href="#commands-to-run-the-examples" title="Permalink to this headline">¶</a></h2>
 <p>To run the example we start in a shell on the login/front-end node, then run in a short interactive session. This
-generates profiling information that can then be analysed. The commands needed are:</p>
+generates profiling information that can then be analysed. The commands needed for a simple illustrative cuda program
+are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">de9e934a2315fd2551a794d40255d301</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cp</span> <span class="n">de9e934a2315fd2551a794d40255d301</span><span class="o">/</span><span class="n">vector</span><span class="o">-</span><span class="n">add</span><span class="o">.</span><span class="n">cu</span> <span class="o">.</span>
 <span class="n">rm</span> <span class="o">-</span><span class="n">fr</span> <span class="n">de9e934a2315fd</span> <span class="n">d2551a794d40255d301</span>
@@ -282,7 +283,8 @@ generates profiling information that can then be analysed. The commands needed a
 </pre></div>
 </div>
 <p>The resulting profile can be examined visually on a laptop/desktop with the NVIDIA Visual Profiler
-installed ( see - <a class="reference external" href="https://developer.nvidia.com/nvidia-visual-profiler" target="_blank">https://developer.nvidia.com/nvidia-visual-profiler</a> ). The profile</p>
+installed ( see - <a class="reference external" href="https://developer.nvidia.com/nvidia-visual-profiler" target="_blank">https://developer.nvidia.com/nvidia-visual-profiler</a> ). The profile file <code class="docutils literal notranslate"><span class="pre">results.nvprof</span></code>
+can be downloaded on a desktop/laptop with the profiler installed.</p>
 </div>
 <div class="section" id="useful-references">
 <h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this headline">¶</a></h2>
