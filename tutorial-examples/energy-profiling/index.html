@@ -319,77 +319,71 @@ one node and using four GPUs.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">once the node is available, set up the environment under your account. The example here shows
-using account <code class="docutils literal notranslate"><span class="pre">cnh</span></code> with a suitable conda environment installed
-in <code class="docutils literal notranslate"><span class="pre">/nobackup/users/cnh/projects/condas/cnh-awesome-new-environment</span></code>. Different accounts are free to use
-different paths and naming rules:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>EPUNAME=cnh
-EPCROOT=/nobackup/users/${EPUNAME}/projects/condas/cnh-awesome-new-environment
-module load perftools
-mkdir -p /nobackup/users/${EPUNAME}/four-way-energy
-cd /nobackup/users/${EPUNAME}/four-way-energy
-. ${EPCROOT}/miniconda3/etc/profile.d/conda.sh
-conda activate cnh-awesome-new-environment
-export EGO_TOP=/opt/ibm/spectrumcomputing
-git clone https://gist.github.com/bff35521a2fa0c499578c98751be1b3c.git
-cp bff35521a2fa0c499578c98751be1b3c/launch.sh .
-cp bff35521a2fa0c499578c98751be1b3c/main_script_commands .
-cp bff35521a2fa0c499578c98751be1b3c/reset.sh .
-cp bff35521a2fa0c499578c98751be1b3c/setup.sh .
-cp bff35521a2fa0c499578c98751be1b3c/read_inst_power_cons.sh .
-rm -fr bff35521a2fa0c499578c98751be1b3c
-chmod +x *.sh
+<li><p class="first">once the node is available, set up the environment under your account. eg:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">wmlce</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">2</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Once the environment is all set</p>
+<li><p class="first">create a sub directory for the run e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">powertest</span><span class="p">;</span> <span class="n">cd</span> <span class="n">powertest</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">load the power profiling tools:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">perftools</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">launch</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">main_script_commands</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">reset</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
+<span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">read_inst_power_cons</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
+<span class="n">rm</span> <span class="o">-</span><span class="n">fr</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span>
+<span class="n">chmod</span> <span class="o">+</span><span class="n">x</span> <span class="o">*.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Once the environment is all set, beginin running the power monitoring script</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If things work as expected this should create a file that logs power use
+you should be able to see the power  readings using the command <code class="docutils literal notranslate"><span class="pre">cat</span></code> like this:</p>
+<p>cat energy-consumption.out.&lt;###&gt;
+where &lt;###&gt; is your job number. You should see:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1580143466</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">497</span> <span class="n">Watts</span>
+<span class="mi">1580143470</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">555</span> <span class="n">Watts</span>
+<span class="mi">1580143473</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">557</span> <span class="n">Watts</span>
+<span class="mi">1580143476</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">559</span> <span class="n">Watts</span>
+<span class="mi">1580143480</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">469</span> <span class="n">Watts</span>
+</pre></div>
+</div>
 </li>
 </ol>
 <blockquote>
 <div><ol class="arabic">
-<li><p class="first">set the power monitoring script running:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-<p>if things work as expected this should create a file that logs power use from a background
-script <code class="docutils literal notranslate"><span class="pre">read_inst_power_cons.sh</span></code> and you should be able to see the power
-readings using the command <code class="docutils literal notranslate"><span class="pre">cat</span></code> like this:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cnh-awesome-new-environment) [cnh@node0047 four-way-energy]$ cat energy-consumption.out.7877_0
- 1580143466:     Instantaneous power reading:                   497 Watts
- 1580143470:     Instantaneous power reading:                   555 Watts
- 1580143473:     Instantaneous power reading:                   557 Watts
- 1580143476:     Instantaneous power reading:                   559 Watts
- 1580143480:     Instantaneous power reading:                   469 Watts
-</pre></div>
-</div>
-</li>
 <li><p class="first">now we can start an application. First lets use the example from <code class="docutils literal notranslate"><span class="pre">https://github.com/johncohn/pytorchstyletransfer_satori.git</span></code> as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">johncohn</span><span class="o">/</span><span class="n">pytorchstyletransfer_satori</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">pytorchstyletransfer_satori</span><span class="o">.</span><span class="n">git</span>
+<span class="n">cd</span> <span class="n">pytorchstyletransfer_satori</span>
 <span class="n">conda</span> <span class="n">install</span> <span class="n">nbconvert</span>
 <span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">script</span> <span class="n">TorchTransfer</span><span class="o">.</span><span class="n">ipynb</span>
 <span class="n">python</span> <span class="n">TorchTransfer</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p><strong>NOTE</strong> the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nbconvert</span></code> above is only needed once and may not be needed at all. It is here because
-I found that <code class="docutils literal notranslate"><span class="pre">cnh-awesome-new-environment</span></code> was missing the <code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> command.</p>
-<p>While the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">TorchTransfer.py</span></code> step is executing you can open another terminal (for example using
-<a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> ) and look at the <code class="docutils literal notranslate"><span class="pre">read_inst_power_cons.sh</span></code> output e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">four</span><span class="o">-</span><span class="n">way</span><span class="o">-</span><span class="n">energy</span><span class="o">/</span>
-<span class="n">cat</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.</span><span class="mi">7877_0</span>
-</pre></div>
-</div>
-<p><strong>NOTE</strong> the directory path <code class="docutils literal notranslate"><span class="pre">/nobackup/users/cnh/four-way-energy/</span></code> will be different for your tests
-and so will the job number <code class="docutils literal notranslate"><span class="pre">7877</span></code>. The output should show an increase in energy use once the GPU compute
-intensive part of the calculation starts e.g</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1580144216</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">484</span> <span class="n">Watts</span>
-<span class="mi">1580144220</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">497</span> <span class="n">Watts</span>
-<span class="mi">1580144223</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">577</span> <span class="n">Watts</span>
-<span class="mi">1580144227</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">686</span> <span class="n">Watts</span>
-<span class="mi">1580144230</span><span class="p">:</span>     <span class="n">Instantaneous</span> <span class="n">power</span> <span class="n">reading</span><span class="p">:</span>                   <span class="mi">743</span> <span class="n">Watts</span>
+<p><strong>NOTE</strong> the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nbconvert</span></code> above is only needed once.</p>
+</li>
+</ol>
+</div></blockquote>
+<ol class="arabic">
+<li><p class="first">While the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">TorchTransfer.py</span></code> step is executing you can open another terminal  using <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a>  and look at the output. To do that cd to the dirctory you started the  job in (e.g.  powertest/pytorchstyletransfer_satori) and type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.&lt;</span><span class="c1">###&gt;</span>
+<span class="n">where</span> <span class="o">&lt;</span><span class="c1">###&gt; is your job number.</span>
 </pre></div>
 </div>
 </li>
+</ol>
+<blockquote>
+<div><ol class="arabic">
 <li><p class="first">we can now try and do the same with a four gpu application:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/tensorflow/benchmarks
 cd benchmarks
