@@ -359,48 +359,42 @@ where &lt;###&gt; is your job number. You should see:</p>
 </pre></div>
 </div>
 </li>
-</ol>
-<blockquote>
-<div><ol class="arabic">
 <li><p class="first">now we can start an application. First lets use the example from <code class="docutils literal notranslate"><span class="pre">https://github.com/johncohn/pytorchstyletransfer_satori.git</span></code> as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">johncohn</span><span class="o">/</span><span class="n">pytorchstyletransfer_satori</span><span class="o">.</span><span class="n">git</span>
-<span class="n">cd</span> <span class="n">pytorchstyletransfer_satori</span>
-<span class="n">conda</span> <span class="n">install</span> <span class="n">nbconvert</span>
-<span class="n">jupyter</span> <span class="n">nbconvert</span> <span class="o">--</span><span class="n">to</span> <span class="n">script</span> <span class="n">TorchTransfer</span><span class="o">.</span><span class="n">ipynb</span>
-<span class="n">python</span> <span class="n">TorchTransfer</span><span class="o">.</span><span class="n">py</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    git clone https://github.com/johncohn/pytorchstyletransfer_satori.git
+    cd pytorchstyletransfer_satori
+    conda install nbconvert
+    jupyter nbconvert --to script TorchTransfer.ipynb
+    python TorchTransfer.py
+
+**NOTE** the ``conda install nbconvert`` above is only needed once.
 </pre></div>
 </div>
-<p><strong>NOTE</strong> the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nbconvert</span></code> above is only needed once.</p>
 </li>
-</ol>
-</div></blockquote>
-<ol class="arabic">
 <li><p class="first">While the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">TorchTransfer.py</span></code> step is executing you can open another terminal  using <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a>  and look at the output. To do that cd to the dirctory you started the  job in (e.g.  powertest/pytorchstyletransfer_satori) and type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.&lt;</span><span class="c1">###&gt;</span>
 <span class="n">where</span> <span class="o">&lt;</span><span class="c1">###&gt; is your job number.</span>
 </pre></div>
 </div>
 </li>
-</ol>
-<blockquote>
-<div><ol class="arabic">
 <li><p class="first">we can now try and do the same with a four gpu application:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/tensorflow/benchmarks
-cd benchmarks
-git checkout 1ef603fd7e568ff75127ec07f160808fcc59911c
-cd ..
-conda install gxx_linux-ppc64le=7.3.0 cffi cudatoolkit-dev
-HOROVOD_CUDA_HOME=$CONDA_PREFIX HOROVOD_GPU_ALLREDUCE=DDL pip install horovod --no-cache-dir
-ddlrun -v ./launch.sh python /nobackup/users/florin/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    git clone https://github.com/tensorflow/benchmarks
+    cd benchmarks
+    git checkout 1ef603fd7e568ff75127ec07f160808fcc59911c
+    cd ..
+    conda install gxx_linux-ppc64le=7.3.0 cffi cudatoolkit-dev
+    HOROVOD_CUDA_HOME=$CONDA_PREFIX HOROVOD_GPU_ALLREDUCE=DDL pip install horovod --no-cache-dir
+    ddlrun -v ./launch.sh python /nobackup/users/florin/hpms/tf_cnn_benchmarks/tf_cnn_benchmarks.py --model resnet50 --batch_size 128 --variable_update=horovod --num_batches=1000 --use_fp16
+
+in this case the application is a Tensor Flow benchmark, but any application can be used. **NOTE** as before we
+only need to add the ``conda install`` steps once. There is also another wrinkle in this example. The Horovod modules
+need to be built for a specific configuraiton. We pass the environment variables to ``pip install`` to
+select the configuraiton. We also need to use the pip ( ) installation tool for Horovod, not conda. There
+is no clear reason why Horovod could not be in Conda, but sometimes computing is like that!
+
+Again, while the application is running we can check out the power log and we can make a plot from
+the log too. Unfortunately this example doesn&#39;t quite work yet!
 </pre></div>
 </div>
-<p>in this case the application is a Tensor Flow benchmark, but any application can be used. <strong>NOTE</strong> as before we
-only need to add the <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span></code> steps once. There is also another wrinkle in this example. The Horovod modules
-need to be built for a specific configuraiton. We pass the environment variables to <code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span></code> to
-select the configuraiton. We also need to use the pip ( ) installation tool for Horovod, not conda. There
-is no clear reason why Horovod could not be in Conda, but sometimes computing is like that!</p>
-<p>Again, while the application is running we can check out the power log and we can make a plot from
-the log too. Unfortunately this example doesn’t quite work yet!</p>
 </li>
 <li><p class="first">once the application is finished then finish power logging using the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">reset</span><span class="o">.</span><span class="n">sh</span>
@@ -408,7 +402,6 @@ the log too. Unfortunately this example doesn’t quite work yet!</p>
 </div>
 </li>
 </ol>
-</div></blockquote>
 <ul>
 <li><p class="first">The power history (recorded as snapshots every 3 seconds) will be written to a file with name
 begining <code class="docutils literal notranslate"><span class="pre">energy-consumption.out.</span></code> followed by the LSF job id. This file can be listed to the
