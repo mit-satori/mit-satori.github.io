@@ -338,7 +338,7 @@ line are what makes the job “interactive batch”: -Is followed by a shell
 name. For example, to request an interactive batch job (with bash as the
 shell) equivalent to the sample batch script above, you would use the
 command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q interactive -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
 </pre></div>
 </div>
 <p>This will request an AC922 node with 4x GPUs from the Satori (normal
