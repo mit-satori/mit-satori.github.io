@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
+  <title>How do I set up a basic conda environment? &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -82,7 +82,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -138,14 +138,15 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../satori-public-datasets.html">Satori Public Datasets</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html">How can I see disk usage?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="../../portal-howto/customization.html#steps-to-create-a-kernel">Steps to create a kernel</a></li>
 </ul>
 </li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">How do I set up a basic conda environment?</a></li>
 </ul>
 </li>
 </ul>
@@ -273,7 +274,7 @@
         
           <li><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>How do I set up a basic conda environment?</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -294,7 +295,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>Log in and then:</p>
+  <div class="section" id="how-do-i-set-up-a-basic-conda-environment">
+<h1>How do I set up a basic conda environment?<a class="headerlink" href="#how-do-i-set-up-a-basic-conda-environment" title="Permalink to this headline">¶</a></h1>
+<p>Log in and then:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-ppc64le.sh
 sh Anaconda3-2019.10-Linux-ppc64le.sh -f -p /nobackup/users/$(whoami)/anaconda3
 source ~/.bashrc
@@ -309,6 +312,7 @@ conda install -c conda-forge jupyterlab
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bsub -W 3:00 -q normal -gpu “num=4” -R “select[type=any]” -Ip bash
 conda activate wmlce-1.6.2
 </pre></div>
+</div>
 </div>
 
 
