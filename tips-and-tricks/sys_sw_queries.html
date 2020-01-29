@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>What Linux distribution version am I running? &mdash; MIT Satori User Documentation  documentation</title>
+  <title>System software queries &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -277,7 +277,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>What Linux distribution version am I running?</li>
+      <li>System software queries</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -298,8 +298,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="what-linux-distribution-version-am-i-running">
-<h1>What Linux distribution version am I running?<a class="headerlink" href="#what-linux-distribution-version-am-i-running" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="system-software-queries">
+<h1>System software queries<a class="headerlink" href="#system-software-queries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-linux-distribution-version-am-i-running">
+<h2>What Linux distribution version am I running?<a class="headerlink" href="#what-linux-distribution-version-am-i-running" title="Permalink to this headline">¶</a></h2>
 <p>The following commands can be used:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /etc/redhat-release
 </pre></div>
@@ -310,14 +312,14 @@
 </div>
 </div>
 <div class="section" id="what-linux-kernel-level-am-i-running">
-<h1>What Linux kernel level am I running?<a class="headerlink" href="#what-linux-kernel-level-am-i-running" title="Permalink to this headline">¶</a></h1>
+<h2>What Linux kernel level am I running?<a class="headerlink" href="#what-linux-kernel-level-am-i-running" title="Permalink to this headline">¶</a></h2>
 <p>The following command works:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname -r
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-software-levels-are-installed-on-the-system">
-<h1>What software levels are installed on the system?<a class="headerlink" href="#what-software-levels-are-installed-on-the-system" title="Permalink to this headline">¶</a></h1>
+<h2>What software levels are installed on the system?<a class="headerlink" href="#what-software-levels-are-installed-on-the-system" title="Permalink to this headline">¶</a></h2>
 <p>The Module utility is used to install packages on the system. The following will give you a list of available software:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module spider
 </pre></div>
@@ -329,6 +331,74 @@
 <p>and to see the packages installed, issue:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda list
 </pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="system-hardware-queries">
+<h1>System hardware queries<a class="headerlink" href="#system-hardware-queries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-my-cpu-configuration">
+<h2>What is my CPU configuration?<a class="headerlink" href="#what-is-my-cpu-configuration" title="Permalink to this headline">¶</a></h2>
+<p>The lscpu command will give you information such as
+architecture, model name, sockets, cores per socket, threads per core, min/max CPU clockspeed, caches sizes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lscpu
+</pre></div>
+</div>
+</div>
+<div class="section" id="whow-much-ram-is-there-on-my-nodes">
+<h2>WHow much RAM is there on my nodes?<a class="headerlink" href="#whow-much-ram-is-there-on-my-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The amount of RAM that is expected to be available on a system is summarized elsewhere. The command to interrogate a node for the total available memory is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep MemTotal /proc/meminfo
+</pre></div>
+</div>
+<p>Note that for Satori system, this will include the available GPU RAM as well.</p>
+</div>
+<div class="section" id="what-smt-mode-are-my-nodes-in">
+<h2>What SMT mode are my nodes in?<a class="headerlink" href="#what-smt-mode-are-my-nodes-in" title="Permalink to this headline">¶</a></h2>
+<p>The command to interrogate a node for the SMT mode is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ppc64_cpu --smt
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-cpu-governor-is-in-effect-on-my-nodes">
+<h2>What CPU governor is in effect on my nodes?<a class="headerlink" href="#what-cpu-governor-is-in-effect-on-my-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The command to establish the governor in effect for a node is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>frequency-info <span class="p">|</span> grep -A <span class="m">2</span> <span class="s2">&quot;current policy&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">
+<h2>What are the logical IDs and UUIDs for the GPUs on my nodes?<a class="headerlink" href="#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes" title="Permalink to this headline">¶</a></h2>
+<p>There should be four operational GPUs on every node. The command to obtain a brief pertinent summary for a node is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -L
+</pre></div>
+</div>
+<p>A less terse summary may be obtained from</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
+</pre></div>
+</div>
+<p>Detailed information may be obtained from</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -q
+</pre></div>
+</div>
+</div>
+<div class="section" id="what-is-the-ibm-model-of-my-system">
+<h2>What is the IBM model of my system?<a class="headerlink" href="#what-is-the-ibm-model-of-my-system" title="Permalink to this headline">¶</a></h2>
+<p>It can also be obtained from the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep <span class="s2">&quot;model&quot;</span> /proc/cpuinfo
+</pre></div>
+</div>
+</div>
+<div class="section" id="which-logical-cpus-belong-to-which-socket">
+<h2>Which logical CPUs belong to which socket?<a class="headerlink" href="#which-logical-cpus-belong-to-which-socket" title="Permalink to this headline">¶</a></h2>
+<p>Each integrated circuit die on the system is a NUMA node in the output of the command</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl --hardware
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl -H
+</pre></div>
+</div>
+<p>which will list the available logical CPUs and the NUMA nodes to which they belong.</p>
 </div>
 </div>
 
