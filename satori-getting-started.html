@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Singularity for Satorians &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Starting up on Satori &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/singularity.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-getting-started.html"/>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contributed documentation and examples" href="satori-doc-examples-contributing.html" />
-    <link rel="prev" title="Satori Public Datasets" href="satori-public-datasets.html" /> 
+    <link rel="next" title="Training for faster onboarding in the system HW and SW architecture" href="satori-training.html" />
+    <link rel="prev" title="Satori Login" href="satori-ssh.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -94,13 +94,13 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#logging-in-to-satori">Logging in to Satori</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#the-satori-portal">The Satori Portal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#setting-up-your-environment">Setting up Your Environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#transferring-files">Transferring Files</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Starting up on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-your-account">Getting Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#shared-hpc-clusters">Shared HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-to-satori">Logging in to Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-satori-portal">The Satori Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-your-environment">Setting up Your Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transferring-files">Transferring Files</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
@@ -147,11 +147,11 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Singularity for Satorians</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#fast-start">Fast start</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#other-notes">Other notes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#interactive-allocation">Interactive Allocation:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#non-interactive-batch-mode">Non interactive / batch mode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="singularity.html">Singularity for Satorians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#fast-start">Fast start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#other-notes">Other notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#interactive-allocation">Interactive Allocation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-doc-examples-contributing.html">Contributed documentation and examples</a><ul>
@@ -288,14 +288,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Singularity for Satorians</li>
+      <li>Starting up on Satori</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/singularity.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-getting-started.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -309,117 +309,74 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="singularity-for-satorians">
-<h1>Singularity for Satorians<a class="headerlink" href="#singularity-for-satorians" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="fast-start">
-<h2>Fast start<a class="headerlink" href="#fast-start" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="starting-up-on-satori">
+<h1>Starting up on Satori<a class="headerlink" href="#starting-up-on-satori" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getting-your-account">
+<h2>Getting Your Account<a class="headerlink" href="#getting-your-account" title="Permalink to this headline">¶</a></h2>
+<p>Satori is available to all MIT students and staff with an active Kerberos ID. The first step to using Satori
+is to activate your account. To do that, go to the portal page (<a class="reference external" href="https://satori-portal.mit.edu/" target="_blank">https://satori-portal.mit.edu/</a>). Click the
+“Authenticate with Globus” button, and you’ll be asked to select an organization. Select
+“Massachusetts Institute of Technology” and click “Continue”. You’ll be taken to your MIT Kerberos login
+page, where you should log in. Follow the prompts (you’ll be asked if you want to associate with an existing
+Globus login, if you don’t use Globus you can ignore this and press left button) and follow the instructions
+on the screen. Your account should be activated at this point.</p>
+</div>
+<div class="section" id="shared-hpc-clusters">
+<h2>Shared HPC Clusters<a class="headerlink" href="#shared-hpc-clusters" title="Permalink to this headline">¶</a></h2>
+<p>Satori is an HPC-style shared cluster. You are sharing this resources with a number of other researchers,
+staff, and students so it is important that you read this page and use the system as intended.</p>
+<p>Being a cluster, there are several machines connected together with a network. We refer to these as <strong>nodes</strong>.
+Most nodes in the cluster are referred to as <strong>compute nodes</strong>, this is where the computation is done on the
+system (where you will run your code). When you log into the system at the command line you are on a special
+purpose node called the <strong>login node</strong>, or the <strong>head node</strong>. The login node, as its name suggests, is where
+you log in and is for editing code and files, installing packages and software, downloading data, and starting
+jobs to run your code on one of the compute nodes.</p>
+<p>Each job is started using a piece of software called the scheduler, which is a resource manager for the system.
+You let it know what resources you need and what you want to run, and the scheduler will find those resources and
+start your job on them. When your job completes those resources are relinquished. The scheduler is what ensures
+that no two jobs are using the same resources, so it is very important not to run anything unless it is submitted
+properly through the scheduler. You should not run anything on the login/head node.</p>
+</div>
+<div class="section" id="logging-in-to-satori">
+<h2>Logging in to Satori<a class="headerlink" href="#logging-in-to-satori" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to log into and use Satori. The first is through the portal, where you can view the files
+in your home directory, start a shell, and use Jupyter Lab. The second is through ssh. Take a look at the
+<a class="reference external" href="https://mit-satori.github.io/satori-ssh.html" target="_blank">Satori Login</a> page for more information.</p>
+</div>
+<div class="section" id="the-satori-portal">
+<h2>The Satori Portal<a class="headerlink" href="#the-satori-portal" title="Permalink to this headline">¶</a></h2>
+<p>Once you’ve logged into the portal, you’ll see a few tabs at the top of the page. You can:</p>
 <ul class="simple">
-<li>Pull your image</li>
+<li><strong>View the Files in your Home Directory:</strong> Click on Files -&gt; Home Directory. From here you can download and upload files. Also can also drag and drop files from your computer into this window to transfer them to the system.</li>
+<li><strong>View your Active Jobs:</strong> Click on Jobs -&gt; Active Jobs. Here you can see a list of all of your currently running jobs. You can click on the arrow to the left of each line to see more information about the job.</li>
+<li><strong>Start a Shell:</strong> Click on Clusters -&gt; Satori Shell Access. This will open a shell in a new browser tab that will be on the login node. From here you can submit a batch job or start an interactive session to run your code.</li>
+<li><strong>Start a Jupyter Notebook:</strong> Click on Interactive Apps -&gt; Jupyter Notebook. From here you can create a new Jupyter Lab instance. The <a class="reference external" href="https://mit-satori.github.io/satori-ssh.html" target="_blank">Satori Login</a> page describes which  options you should choose when starting Jupyter Lab.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_ARCHITECTURE</span><span class="o">=</span>ppc64le
-singularity pull docker://centos:7
-</pre></div>
+<p>If you haven’t used an HPC system before, you may want to start by using Jupyter Lab in the portal. If you select
+the options described on the <a class="reference external" href="https://mit-satori.github.io/satori-ssh.html" target="_blank">Satori Login</a> page your environment
+should be set up to run many of the popular machine learning frameworks in the Jupyter Notebooks.</p>
 </div>
+<div class="section" id="setting-up-your-environment">
+<h2>Setting up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways we manage software and environemnts in Satori. The first is conda, which is the general package
+manager for the second. The second are environment modules.</p>
+<ol class="arabic simple">
+<li><strong>Environment Modules</strong>: Environment modules are pre-packaged environments for software, tools, and libraries. It allows you to load and unload these as you go. It’s always good to check to see if a module exists for a tool before installing it yourself. To see the full set of modules available, first load the spack module (<cite>module load spack</cite>), then run the <cite>module avail</cite> command. A few common module commands are:</li>
+</ol>
 <ul class="simple">
-<li>Get an allocation, for example:</li>
+<li><cite>module avail</cite>: Shows the available modules</li>
+<li><cite>module load MODULENAME</cite>: Load the module MODULENAME</li>
+<li><cite>module list</cite>: List the modules that you have loaded</li>
+<li><cite>module rm MODULENAME</cite> or <cite>module unload MODULENAME</cite>: Unload the module MODULENAME</li>
+<li><cite>module switch MODULE1 MODULE2</cite>: Unload MODULE1 and load MODULE2</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
-</pre></div>
+<p>2. <strong>Conda</strong>: Conda is the package manager for the system. The thing to know when you create your conda
+environment is that you want to make sure you are getting your packages from the right channel. We have
+in depth instructions on how to properly set up a conda environment on the <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html" target="_blank">WMLCE</a>
+page. Steps 1-3 will show you how to create and properly set up a conda environment</p>
 </div>
-<ul class="simple">
-<li>Submit your payload</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> centos_7.sif ls /
-</pre></div>
-</div>
-</div>
-<div class="section" id="other-notes">
-<h2>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Pull your image</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>If you are using an existing image, confirm that arch is <strong>ppc64le</strong></li>
-</ul>
-</div></blockquote>
-</div>
-<div class="section" id="interactive-allocation">
-<h2>Interactive Allocation:<a class="headerlink" href="#interactive-allocation" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Get an allocation (for interactive allocation):</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>Consider the size of your workload, do you need CPU? memory? GPU?</li>
-<li>These are all specified in the bsub request, here is a good <a class="footnote-reference" href="#id4" id="id1">[1]</a></li>
-<li>For example, here is a <cite>bsub</cite> to request allocation for <strong>4 GPUS</strong>, via the <strong>normal</strong> queue, launching an interactive session using <strong>bash</strong> as terminal</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>Submit your payload</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>Using interactive allocation, we are allocated a node - your interactions with singularity will be generally standard , just like you would in any environments</li>
-<li>Remember you do not have <cite>sudo</cite> access on this cluster, this might impact your workflow</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> centos_7.sif ls /
-</pre></div>
-</div>
-</div></blockquote>
-</div>
-<div class="section" id="non-interactive-batch-mode">
-<h2>Non interactive / batch mode<a class="headerlink" href="#non-interactive-batch-mode" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Workflow is similar to interactive allocation, however we need to create an application profile prior to submitting the workload</li>
-<li>This mode might be better for headless / non-interactive workloads as the resources can be more easily allocated to the workload</li>
-<li>Create an application profile <a class="footnote-reference" href="#id5" id="id2">[2]</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>For example</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Begin Application
-<span class="nv">NAME</span> <span class="o">=</span> singapp
-<span class="nv">CONTAINER</span> <span class="o">=</span> singularity<span class="o">[</span>image<span class="o">(</span>centos_7.sif<span class="o">)]</span>
-<span class="nv">DESCRIPTION</span> <span class="o">=</span> Singularity User Service
-End Application
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>Submit the workload via the application profile <a class="footnote-reference" href="#id6" id="id3">[3]</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li>For example</li>
-</ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsub</span> <span class="o">-</span><span class="n">app</span> <span class="n">singapp</span> <span class="o">./</span><span class="n">myjob</span><span class="o">.</span><span class="n">sh</span>
-</pre></div>
-</div>
-</div></blockquote>
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>(<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_command_ref/bsub.man_top.1.html" target="_blank">https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_command_ref/bsub.man_top.1.html</a>)</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id5" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>(<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_container/lsf_singularity_config.html" target="_blank">https://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_container/lsf_singularity_config.html</a>).</td></tr>
-</tbody>
-</table>
-<table class="docutils footnote" frame="void" id="id6" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>(<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_container/lsf_singularity_use.html" target="_blank">https://www.ibm.com/support/knowledgecenter/en/SSWRJV_10.1.0/lsf_container/lsf_singularity_use.html</a>).</td></tr>
-</tbody>
-</table>
+<div class="section" id="transferring-files">
+<h2>Transferring Files<a class="headerlink" href="#transferring-files" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -431,10 +388,10 @@ End Application
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="satori-doc-examples-contributing.html" class="btn btn-neutral float-right" title="Contributed documentation and examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="satori-training.html" class="btn btn-neutral float-right" title="Training for faster onboarding in the system HW and SW architecture" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="satori-public-datasets.html" class="btn btn-neutral float-left" title="Satori Public Datasets" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="satori-ssh.html" class="btn btn-neutral float-left" title="Satori Login" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
