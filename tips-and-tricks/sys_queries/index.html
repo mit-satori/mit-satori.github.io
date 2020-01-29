@@ -36,7 +36,9 @@
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Green Up IAP 2020 Material" href="../../satori-tutorial-examples.html" />
+    <link rel="prev" title="How do I set up a basic conda environment?" href="../carlos-quick-start-commands/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,7 +82,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -152,8 +154,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html">How can I see disk usage?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
@@ -161,6 +163,35 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../carlos-quick-start-commands/index.html">How do I set up a basic conda environment?</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">System software queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-linux-distribution-version-am-i-running">What Linux distribution version am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-linux-kernel-level-am-i-running">What Linux kernel level am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-software-levels-are-installed-on-the-system">What software levels are installed on the system?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#system-hardware-queries">System hardware queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-my-cpu-configuration">What is my CPU configuration?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#whow-much-ram-is-there-on-my-nodes">WHow much RAM is there on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-smt-mode-are-my-nodes-in">What SMT mode are my nodes in?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-cpu-governor-is-in-effect-on-my-nodes">What CPU governor is in effect on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">What are the logical IDs and UUIDs for the GPUs on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#what-is-the-ibm-model-of-my-system">What is the IBM model of my system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#which-logical-cpus-belong-to-which-socket">Which logical CPUs belong to which socket?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#questions-about-my-jobs">Questions about my jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">How can I establish which logical CPU IDs my process is bound to?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-i-see-the-output-of-my-job-before-it-completes">Can I see the output of my job before it completes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">I have a job waiting in the queue, and I want to modify the options I had selected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#i-have-submitted-my-job-several-times-but-i-get-no-output">I have submitted my job several times, but I get no output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-set-a-time-limit-on-my-job">How do I set a time limit on my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">Can I make a job’s startup depend on the completion of a previous one?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-select-a-specific-set-of-hosts-for-my-job">How do I select a specific set of hosts for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -293,6 +324,8 @@
   <ul class="wy-breadcrumbs">
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a> &raquo;</li>
         
       <li>System software queries</li>
     
@@ -567,6 +600,15 @@ env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</sp
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../satori-tutorial-examples.html" class="btn btn-neutral float-right" title="Green Up IAP 2020 Material" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../carlos-quick-start-commands/index.html" class="btn btn-neutral float-left" title="How do I set up a basic conda environment?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
