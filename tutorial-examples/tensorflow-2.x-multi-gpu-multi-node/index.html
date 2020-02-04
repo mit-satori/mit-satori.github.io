@@ -221,6 +221,7 @@
 </li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0">Prerequisites if you are not yet running TensorFlow 2.0</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#commands-to-run-this-example">Commands to run this example</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#what-s-going-on-here">What’s going on here?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
@@ -358,33 +359,30 @@
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
 <p>Ported the TensorFlow example to run on Satori</p>
 </div>
+<div class="section" id="prerequisites-if-you-are-not-yet-running-tensorflow-2-0">
+<h2>Prerequisites if you are not yet running TensorFlow 2.0<a class="headerlink" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0" title="Permalink to this headline">¶</a></h2>
+<p>Install TensorFlow 2.0 as described here =&gt; IMPORTANT &lt;= this might change, please ask John or Chris =&gt; <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" target="_blank">https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access</a> =&gt; it is important that you name your environment wmlce-ea</p>
+</div>
 <div class="section" id="commands-to-run-this-example">
 <h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li>Login to Satori Login Node</li>
-<li>wget <a class="reference external" href="https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py" target="_blank">https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py</a></li>
-<li>chmod 755 multi_worker_with_keras.py</li>
-<li>Install TensorFlow 2.0 as described here =&gt; IMPORTANT &lt;= this might change, please ask John or Chris =&gt; <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" target="_blank">https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access</a></li>
-<li>bsub -W 3:00 -q normal -n 8 -gpu “num=4” -R “span[ptile=4]” -Ip bash (note down the nodes you are getting (e.g. node0046, node0055))</li>
-<li>conda activate wmlce-ea</li>
+<li>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></li>
+<li>chmod 755 multi_worker_with_keras_numpyArrays.py</li>
+<li>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></li>
+<li>chmod 755 multi_worker_with_keras_runner.py</li>
+<li>bsub -W 3:00 -q normalx -x  -n 8  -gpu “num=4” -R “span[ptile=4]” -I “while (true) do ls &gt; /dev/null; done” (replace 2586 with a number smaller equals than 256 :)</li>
+<li>login to a new shell</li>
+<li>nodes=`bjobs <a href="#id1"><span class="problematic" id="id2">|</span></a>grep 4*node <a href="#id3"><span class="problematic" id="id4">|</span></a>awk -F”*” ‘{print $2}’ <a href="#id5"><span class="problematic" id="id6">|</span></a>awk -F”.” ‘{print $1}’`</li>
+<li>echo $nodes <a href="#id7"><span class="problematic" id="id8">|</span></a>python multi_worker_with_keras_runner.py</li>
 </ol>
-<p>#. paste and execute the following (replace node0046 and node0053 with your nodes) into the terminal
-TF_CONFIG=’{“cluster”: {“worker”: [“node0046:12345”, “node0053:12345”]}, “task”: {“index”: 0, “type”: “worker”}}’</p>
-<ol class="arabic simple">
-<li>python multi_worker_with_keras.py</li>
-<li>Go back to your first terminal window where “YOUR” node0046 node resides</li>
-</ol>
-<p>#. paste and execute the following (replace node0046 and node0053 with your nodes) into the terminal
-TF_CONFIG=’{“cluster”: {“worker”: [“node0046:12345”, “node0053:12345”]}, “task”: {“index”: 1, “type”: “worker”}}’
-PLEASE NOTE THAT THE INDEX HAS CHANGED</p>
-<ol class="arabic simple">
-<li>python multi_worker_with_keras.py</li>
-</ol>
-<p>Wait until training starts on both terminal windows (it should now)</p>
+<p>Wait until training starts, please run different new terminals on your worker nodes to observe what’s happening</p>
+<p>watch -n 0.1 nvidia-smi</p>
 </div>
 <div class="section" id="what-s-going-on-here">
 <h2>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Permalink to this headline">¶</a></h2>
-<p>Both scripts start a Service component which communicates with the other scripts in the background for parameter averaging.</p>
+<p>All scrips running on all nodes start a Service component which communicates with the other scripts in the background for parameter averaging.</p>
+<p>See <a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a> for more information</p>
 </div>
 <div class="section" id="code-and-input-data-repositories-for-this-example">
 <h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this headline">¶</a></h2>
@@ -394,7 +392,8 @@ PLEASE NOTE THAT THE INDEX HAS CHANGED</p>
 <div class="section" id="useful-references">
 <h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/" target="_blank">https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/</a>
-<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy" target="_blank">https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy</a></p>
+<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy" target="_blank">https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy</a>
+<a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a></p>
 </div>
 </div>
 
