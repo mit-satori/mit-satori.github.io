@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Portal queries &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -82,7 +82,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -163,8 +163,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../../satori-doc-examples-contributing.html">FAQ</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
+<li class="toctree-l1 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html">FAQ</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html">How can I see disk usage?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
@@ -199,6 +199,10 @@
 <li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Portal queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#i-see-no-active-sessions-in-my-interactive-sessions">I see no active sessions in My Interactive Sessions?</a></li>
 </ul>
 </li>
 </ul>
@@ -337,7 +341,7 @@
         
           <li><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Portal queries</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -358,7 +362,14 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>##</p>
+  <div class="section" id="portal-queries">
+<h1>Portal queries<a class="headerlink" href="#portal-queries" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="i-see-no-active-sessions-in-my-interactive-sessions">
+<h2>I see no active sessions in My Interactive Sessions?<a class="headerlink" href="#i-see-no-active-sessions-in-my-interactive-sessions" title="Permalink to this headline">¶</a></h2>
+<p>Some accounts find that after clicking the <cite>Launch</cite> button, they see “Session was successfully created”, but there are still no active sessions in My Interactive Sessions even after refreshing the page, restart the browser, and trying many times.</p>
+<p>There is an issue with setting a default shell to zsh. This is a known issue with the current OOD setup. A temporary workaround is to change the default shell to bash.</p>
+</div>
+</div>
 
 
            </div>
