@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>System software queries &mdash; MIT Satori User Documentation  documentation</title>
+  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/tips-and-tricks/sys_queries/index.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/tips-and-tricks/ondemand_portal_queries/index.html"/>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="../ondemand_portal_queries/index.html" />
-    <link rel="prev" title="How do I set up a basic conda environment?" href="../carlos-quick-start-commands/index.html" /> 
+    <link rel="next" title="Green Up IAP 2020 Material" href="../../satori-tutorial-examples.html" />
+    <link rel="prev" title="System software queries" href="../sys_queries/index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -82,7 +82,7 @@
               
             
             
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -163,8 +163,8 @@
 <li class="toctree-l2"><a class="reference internal" href="../../singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html">FAQ</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../satori-doc-examples-contributing.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html">How can I see disk usage?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
@@ -172,33 +172,33 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../carlos-quick-start-commands/index.html">How do I set up a basic conda environment?</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">System software queries</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-linux-distribution-version-am-i-running">What Linux distribution version am I running?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-linux-kernel-level-am-i-running">What Linux kernel level am I running?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-software-levels-are-installed-on-the-system">What software levels are installed on the system?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sys_queries/index.html">System software queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-linux-distribution-version-am-i-running">What Linux distribution version am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-linux-kernel-level-am-i-running">What Linux kernel level am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-software-levels-are-installed-on-the-system">What software levels are installed on the system?</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#system-hardware-queries">System hardware queries</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#what-is-my-cpu-configuration">What is my CPU configuration?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#whow-much-ram-is-there-on-my-nodes">WHow much RAM is there on my nodes?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-smt-mode-are-my-nodes-in">What SMT mode are my nodes in?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-cpu-governor-is-in-effect-on-my-nodes">What CPU governor is in effect on my nodes?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">What are the logical IDs and UUIDs for the GPUs on my nodes?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#what-is-the-ibm-model-of-my-system">What is the IBM model of my system?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#which-logical-cpus-belong-to-which-socket">Which logical CPUs belong to which socket?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sys_queries/index.html#system-hardware-queries">System hardware queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-is-my-cpu-configuration">What is my CPU configuration?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#whow-much-ram-is-there-on-my-nodes">WHow much RAM is there on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-smt-mode-are-my-nodes-in">What SMT mode are my nodes in?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-cpu-governor-is-in-effect-on-my-nodes">What CPU governor is in effect on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">What are the logical IDs and UUIDs for the GPUs on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#what-is-the-ibm-model-of-my-system">What is the IBM model of my system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#which-logical-cpus-belong-to-which-socket">Which logical CPUs belong to which socket?</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#questions-about-my-jobs">Questions about my jobs</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">How can I establish which logical CPU IDs my process is bound to?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#can-i-see-the-output-of-my-job-before-it-completes">Can I see the output of my job before it completes?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">I have a job waiting in the queue, and I want to modify the options I had selected</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#i-have-submitted-my-job-several-times-but-i-get-no-output">I have submitted my job several times, but I get no output</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-do-i-set-a-time-limit-on-my-job">How do I set a time limit on my job?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">Can I make a job’s startup depend on the completion of a previous one?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-do-i-select-a-specific-set-of-hosts-for-my-job">How do I select a specific set of hosts for my job?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sys_queries/index.html#questions-about-my-jobs">Questions about my jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">How can I establish which logical CPU IDs my process is bound to?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#can-i-see-the-output-of-my-job-before-it-completes">Can I see the output of my job before it completes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">I have a job waiting in the queue, and I want to modify the options I had selected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#i-have-submitted-my-job-several-times-but-i-get-no-output">I have submitted my job several times, but I get no output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#how-do-i-set-a-time-limit-on-my-job">How do I set a time limit on my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">Can I make a job’s startup depend on the completion of a previous one?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#how-do-i-select-a-specific-set-of-hosts-for-my-job">How do I select a specific set of hosts for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../sys_queries/index.html#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
 </ul>
 </li>
 </ul>
@@ -337,14 +337,14 @@
         
           <li><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a> &raquo;</li>
         
-      <li>System software queries</li>
+      <li>&lt;no title&gt;</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/tips-and-tricks/sys_queries/index.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/tips-and-tricks/ondemand_portal_queries/index.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -358,252 +358,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="system-software-queries">
-<h1>System software queries<a class="headerlink" href="#system-software-queries" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-linux-distribution-version-am-i-running">
-<h2>What Linux distribution version am I running?<a class="headerlink" href="#what-linux-distribution-version-am-i-running" title="Permalink to this headline">¶</a></h2>
-<p>The following commands can be used:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /etc/redhat-release
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsb_release -a
-</pre></div>
-</div>
-</div>
-<div class="section" id="what-linux-kernel-level-am-i-running">
-<h2>What Linux kernel level am I running?<a class="headerlink" href="#what-linux-kernel-level-am-i-running" title="Permalink to this headline">¶</a></h2>
-<p>The following command works:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname -r
-</pre></div>
-</div>
-</div>
-<div class="section" id="what-software-levels-are-installed-on-the-system">
-<h2>What software levels are installed on the system?<a class="headerlink" href="#what-software-levels-are-installed-on-the-system" title="Permalink to this headline">¶</a></h2>
-<p>The Module utility is used to install packages on the system. The following will give you a list of available software:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module spider
-</pre></div>
-</div>
-<p>If you want to see information about your conda environment, you can issue:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda info
-</pre></div>
-</div>
-<p>and to see the packages installed, issue:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda list
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="system-hardware-queries">
-<h1>System hardware queries<a class="headerlink" href="#system-hardware-queries" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-my-cpu-configuration">
-<h2>What is my CPU configuration?<a class="headerlink" href="#what-is-my-cpu-configuration" title="Permalink to this headline">¶</a></h2>
-<p>The lscpu command will give you information such as
-architecture, model name, sockets, cores per socket, threads per core, min/max CPU clockspeed, caches sizes:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lscpu
-</pre></div>
-</div>
-</div>
-<div class="section" id="whow-much-ram-is-there-on-my-nodes">
-<h2>WHow much RAM is there on my nodes?<a class="headerlink" href="#whow-much-ram-is-there-on-my-nodes" title="Permalink to this headline">¶</a></h2>
-<p>The amount of RAM that is expected to be available on a system is summarized elsewhere. The command to interrogate a node for the total available memory is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep MemTotal /proc/meminfo
-</pre></div>
-</div>
-<p>Note that for Satori system, this will include the available GPU RAM as well.</p>
-</div>
-<div class="section" id="what-smt-mode-are-my-nodes-in">
-<h2>What SMT mode are my nodes in?<a class="headerlink" href="#what-smt-mode-are-my-nodes-in" title="Permalink to this headline">¶</a></h2>
-<p>The command to interrogate a node for the SMT mode is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ppc64_cpu --smt
-</pre></div>
-</div>
-</div>
-<div class="section" id="what-cpu-governor-is-in-effect-on-my-nodes">
-<h2>What CPU governor is in effect on my nodes?<a class="headerlink" href="#what-cpu-governor-is-in-effect-on-my-nodes" title="Permalink to this headline">¶</a></h2>
-<p>The command to establish the governor in effect for a node is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>frequency-info <span class="p">|</span> grep -A <span class="m">2</span> <span class="s2">&quot;current policy&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">
-<h2>What are the logical IDs and UUIDs for the GPUs on my nodes?<a class="headerlink" href="#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes" title="Permalink to this headline">¶</a></h2>
-<p>There should be four operational GPUs on every node. The command to obtain a brief pertinent summary for a node is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -L
-</pre></div>
-</div>
-<p>A less terse summary may be obtained from</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi
-</pre></div>
-</div>
-<p>Detailed information may be obtained from</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -q
-</pre></div>
-</div>
-</div>
-<div class="section" id="what-is-the-ibm-model-of-my-system">
-<h2>What is the IBM model of my system?<a class="headerlink" href="#what-is-the-ibm-model-of-my-system" title="Permalink to this headline">¶</a></h2>
-<p>It can also be obtained from the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep <span class="s2">&quot;model&quot;</span> /proc/cpuinfo
-</pre></div>
-</div>
-</div>
-<div class="section" id="which-logical-cpus-belong-to-which-socket">
-<h2>Which logical CPUs belong to which socket?<a class="headerlink" href="#which-logical-cpus-belong-to-which-socket" title="Permalink to this headline">¶</a></h2>
-<p>Each integrated circuit die on the system is a NUMA node in the output of the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl --hardware
-</pre></div>
-</div>
-<p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl -H
-</pre></div>
-</div>
-<p>which will list the available logical CPUs and the NUMA nodes to which they belong.</p>
-</div>
-</div>
-<div class="section" id="questions-about-my-jobs">
-<h1>Questions about my jobs<a class="headerlink" href="#questions-about-my-jobs" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">
-<h2>How can I establish which logical CPU IDs my process is bound to?<a class="headerlink" href="#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to" title="Permalink to this headline">¶</a></h2>
-<p>Establish your process’s ID (PID) using, e.g., the ps command,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ps -ef <span class="p">|</span> grep <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
-</pre></div>
-</div>
-<p>and then use the taskset command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>taskset -acp PID
-</pre></div>
-</div>
-<p>against the retrieved PID.</p>
-</div>
-<div class="section" id="can-i-see-the-output-of-my-job-before-it-completes">
-<h2>Can I see the output of my job before it completes?<a class="headerlink" href="#can-i-see-the-output-of-my-job-before-it-completes" title="Permalink to this headline">¶</a></h2>
-<p>Yes. The command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bpeek
-</pre></div>
-</div>
-<p>will cat the current output of your job to screen. If your job generates a lot of output, you may prefer to pipe it through other commands: e.g.,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bpeek <span class="p">|</span> tail
-bpeek <span class="p">|</span> more
-bpeek <span class="p">|</span> less
-bpeek <span class="p">|</span> grep ...
-</pre></div>
-</div>
-<p>to control the output or filter it down to what you find interesting.</p>
-</div>
-<div class="section" id="i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">
-<h2>I have a job waiting in the queue, and I want to modify the options I had selected<a class="headerlink" href="#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected" title="Permalink to this headline">¶</a></h2>
-<p>You can use the bmod command to do this in many cases. The only alternative is to bkill your job and resubmit it with the options you prefer edited in.</p>
-</div>
-<div class="section" id="i-have-submitted-my-job-several-times-but-i-get-no-output">
-<h2>I have submitted my job several times, but I get no output<a class="headerlink" href="#i-have-submitted-my-job-several-times-but-i-get-no-output" title="Permalink to this headline">¶</a></h2>
-<p>There can be several reasons for this: for instance</p>
-<p>You may have failed to submit the job properly: e.g., you forgot to use the appropriate redirection: i.e., you issued
-bsub myBatchScript
-instead of the correct form
-bsub &lt; myBatchScript</p>
-<p>In your batch script or command line, you may have failed to use one of options (-e, -eo, -o, -oo) that specify the filename that is to capture the stderr and/or stdout streams from your job. In such cases, LSF attempts to mail the output to you; if mail is not set up on the system, your output will never arrive by this route.</p>
-<p>The output is not in the directory or filesystem you expect it to be in: this can happen for several reasons; three are:
-You did not specify a pathname for the output filename of your job, but you used the -cwd option of bsub to change the current working directory of your job; your output will then be in the directory that you specified with the -cwd option.
-You used a filesystem that has the same pathname on several nodes—e.g., /tmp or an NVMe filesystem—that is not a shared filesystem.
-You have exhausted your filespace quota.</p>
-</div>
-<div class="section" id="how-do-i-set-a-time-limit-on-my-job">
-<h2>How do I set a time limit on my job?<a class="headerlink" href="#how-do-i-set-a-time-limit-on-my-job" title="Permalink to this headline">¶</a></h2>
-<p>Use the -W [h:]m group of the bsub option: e.g., to set a (wall-clock) limit of 90 minutes, use either one of</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -W 1:30</span>
-<span class="c1">#BSUB -W 90</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">
-<h2>Can I make a job’s startup depend on the completion of a previous one?<a class="headerlink" href="#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one" title="Permalink to this headline">¶</a></h2>
-<p>Yes. LSF provides significant functionality in this context. As a trivial example, consider the following, where the #BSUB -w “done (first_job)” in second_job ensures that it will only start after first_job is done:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat first_job.lsf
-<span class="c1">#BSUB -J first_job</span>
-<span class="c1">#BSUB -e &quot;first_job.stderr.\%J&quot;</span>
-<span class="c1">#BSUB -o &quot;first_job.stdout.\%J&quot;</span>
-<span class="c1">#BSUB -q &quot;normal&quot;</span>
-<span class="c1">#BSUB -R &quot;affinity[core]&quot;</span>
-<span class="c1">#BSUB -M &quot;40&quot;</span>
-<span class="c1">#BSUB -R &quot;rusage[mem=40]&quot;</span>
-<span class="c1">#BSUB -x</span>
-
-<span class="nb">echo</span> -n <span class="s2">&quot;Job first_job started: &quot;</span><span class="p">;</span> date
-sleep <span class="m">180</span>
-<span class="nb">echo</span> -n <span class="s2">&quot;Job first_job ended:   &quot;</span><span class="p">;</span> date
-$ cat second_job.lsf
-<span class="c1">#BSUB -J second_job</span>
-<span class="c1">#BSUB -e &quot;second_job.stderr.\%J&quot;</span>
-<span class="c1">#BSUB -o &quot;second_job.stdout.\%J&quot;</span>
-<span class="c1">#BSUB -q &quot;normal&quot;</span>
-<span class="c1">#BSUB -R &quot;affinity[core]&quot;</span>
-<span class="c1">#BSUB -M &quot;40&quot;</span>
-<span class="c1">#BSUB -R &quot;rusage[mem=40]&quot;</span>
-<span class="c1">#BSUB -w &quot;done (first_job)&quot;</span>
-<span class="c1">#BSUB -x</span>
-
-<span class="nb">echo</span> -n <span class="s2">&quot;Job second_job started: &quot;</span><span class="p">;</span> date
-$ bsub &lt; first_job.lsf<span class="p">;</span> bsub &lt; second_job.lsf
-Job &lt;<span class="m">34445</span>&gt; is submitted to queue &lt;normal&gt;.
-Job &lt;<span class="m">34446</span>&gt; is submitted to queue &lt;normal&gt;.
-</pre></div>
-</div>
-<p>The second job will start almost immediately after the completion on the first job. You can use the bjobs command to check the status of the jobs.</p>
-</div>
-<div class="section" id="how-do-i-select-a-specific-set-of-hosts-for-my-job">
-<h2>How do I select a specific set of hosts for my job?<a class="headerlink" href="#how-do-i-select-a-specific-set-of-hosts-for-my-job" title="Permalink to this headline">¶</a></h2>
-<p>By default, your jobs can be scheduled to any of the hosts that are available to your queue, which may be listed with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bqueues -l queue_name <span class="p">|</span> grep HOSTS
-</pre></div>
-</div>
-<p>To ensure that jobs are scheduled to some subset of these, add the bsub group -m “hostname1 hostname2 hostname3 … hostnamen”; for instance, to choose from the three hosts node0002, node0042, node0051 in a batch script, add the #BSUB line</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -m &quot;node0002, node0042, node0051&quot;</span>
-</pre></div>
-</div>
-<p>Note that the items in the double-quoted list are delimited by white space.</p>
-<p>To select a specific node to be the first one in the allocation, follow its hostname by an exclamation mark: e.g.,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -m &quot;node0002, node0042, node0051!&quot;</span>
-</pre></div>
-</div>
-<p>will ensure that node0002 will be the first node in the allocation list.</p>
-</div>
-<div class="section" id="how-do-i-deselect-specific-nodes-for-my-job">
-<h2>How do I deselect specific nodes for my job?<a class="headerlink" href="#how-do-i-deselect-specific-nodes-for-my-job" title="Permalink to this headline">¶</a></h2>
-<p>To ensure that jobs are not scheduled to specific nodes, say node0034 and node0045, one can add a #BSUB statement such as the following:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -R &quot;select[hname!=node0034&amp;&amp;hname!=node0045]&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="my-jobs-runtime-environment-is-different-from-what-i-expected">
-<h2>My job’s runtime environment is different from what I expected<a class="headerlink" href="#my-jobs-runtime-environment-is-different-from-what-i-expected" title="Permalink to this headline">¶</a></h2>
-<p>By default, LSF preserves the user’s submit-time environment. If this is not desirable, add the group -L shell_pathname to your bsub command or, e.g.,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
-</pre></div>
-</div>
-<p>to your batch script so that your batch job starts in a “pristine” bash shell.</p>
-</div>
-<div class="section" id="i-want-to-know-precisely-what-my-jobs-runtime-environment-is">
-<h2>I want to know precisely what my job’s runtime environment is<a class="headerlink" href="#i-want-to-know-precisely-what-my-jobs-runtime-environment-is" title="Permalink to this headline">¶</a></h2>
-<p>For serial, POSIX threads, or OpenMP jobs, simply add the line</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env
-</pre></div>
-</div>
-<p>to your job script after the #BSUB lines.</p>
-<p>For jobs that employ Spectrum MPI or OpenMPI, do the above, and, in addition, modify the generic invocation</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun ./my_exe my_opts &lt; my_inp &gt; my_out
-</pre></div>
-</div>
-<p>to</p>
-<p>mpirun helper.sh &gt; my_out</p>
-<p>where the content of helper.sh (which must be executable: i.e., chmod +x helper.sh) is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</span><span class="si">}</span>
-./my_exe my_opts &lt; my_inp &gt; my_out
-</pre></div>
-</div>
-<p>This will generate one file env.${OMPI_COMM_WORLD_RANK} for every extant value of ${OMPI_COMM_WORLD_RANK} in the job.</p>
-</div>
-</div>
+  <p>##</p>
 
 
            </div>
@@ -613,10 +368,10 @@ env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</sp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ondemand_portal_queries/index.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../../satori-tutorial-examples.html" class="btn btn-neutral float-right" title="Green Up IAP 2020 Material" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../carlos-quick-start-commands/index.html" class="btn btn-neutral float-left" title="How do I set up a basic conda environment?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../sys_queries/index.html" class="btn btn-neutral float-left" title="System software queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
