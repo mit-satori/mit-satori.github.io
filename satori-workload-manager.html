@@ -417,10 +417,11 @@ command:</p>
 </div>
 <p>This will request an AC922 node with 4x GPUs from the Satori (normal
 queue) for 3 hours.</p>
-<p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use
-.. code:: bash</p>
-<blockquote>
-<div>bsub -W 3:00 -x -q normalx -gpu “num=4:mode=exclusive_process” -Is /bin/bash</div></blockquote>
+<p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -x -q normalx -gpu <span class="s2">&quot;num=4:mode=exclusive_process&quot;</span> -Is /bin/bash
+</pre></div>
+</div>
+<p>this will request exclusive use of an interactive node with 4GPU’s</p>
 </div>
 <div class="section" id="batch-scripts">
 <h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
@@ -470,44 +471,54 @@ installation of WMLCE</li>
 where</li>
 </ul>
 <p>As above, if you need to request exclusive use of the gpus on the node you can do the following in your template</p>
-<p>$ bsub &lt; template-16GPUs.lsf</p>
-<p>— template-16GPUs.lsf —
-#BSUB -L /bin/bash
-#BSUB -J “template-16GPUs”
-#BSUB -o “template-16GPUs_o.%J”
-#BSUB -e “template-16GPUs_e.%J”
-#BSUB -n 16
-#BSUB -R “span[ptile=4]”
-#BSUB -gpu “num=4”
-#BSUB -q “normalx”
-#BSUB -x</p>
-<p>#
-# Setup User Environement (Python, WMLCE virtual environment etc)
-#
-HOME2=/nobackup/users/&lt;user-name&gt;
-PYTHON_VIRTUAL_ENVIRONMENT=wmlce-1.6.2
-CONDA_ROOT=$HOME2/anaconda3</p>
-<p>source ${CONDA_ROOT}/etc/profile.d/conda.sh
-conda activate $PYTHON_VIRTUAL_ENVIRONMENT
-export EGO_TOP=/opt/ibm/spectrumcomputing</p>
-<p>#
-# Cleaning CUDA_VISIBLE_DEVICES
-#
-cat &gt; launch.sh &lt;&lt; EoF_s
-#! /bin/sh
-export CUDA_VISIBLE_DEVICES=0,1,2,3
-exec $*
-EoF_s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bsub &lt; template-16GPUs.lsf
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--- template-16GPUs.lsf ---
+<span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;template-16GPUs&quot;</span>
+<span class="c1">#BSUB -o &quot;template-16GPUs_o.%J&quot;</span>
+<span class="c1">#BSUB -e &quot;template-16GPUs_e.%J&quot;</span>
+<span class="c1">#BSUB -n 16</span>
+<span class="c1">#BSUB -R &quot;span[ptile=4]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normalx&quot;</span>
+<span class="c1">#BSUB -x</span>
+
+<span class="c1">#</span>
+<span class="c1"># Setup User Environement (Python, WMLCE virtual environment etc)</span>
+<span class="c1">#</span>
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/&lt;user-name&gt;
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.6.2
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+<span class="nb">export</span> <span class="nv">EGO_TOP</span><span class="o">=</span>/opt/ibm/spectrumcomputing
+
+<span class="c1">#</span>
+<span class="c1"># Cleaning CUDA_VISIBLE_DEVICES</span>
+<span class="c1">#</span>
+cat &gt; launch.sh <span class="s">&lt;&lt; EoF_s</span>
+<span class="s">#! /bin/sh</span>
+<span class="s">export CUDA_VISIBLE_DEVICES=0,1,2,3</span>
+<span class="s">exec \$*</span>
+<span class="s">EoF_s</span>
 chmod +x launch.sh
-mpirun –tag-output ./setup.sh</p>
-<p>#
-# Runing the training/inference job
-# (change only the script name and options after python command)
-#</p>
-<dl class="docutils">
-<dt>ddlrun –mpiarg “-x EGO_TOP” -v </dt><dd>./launch.sh python &lt;python-script-name-here&gt;</dd>
-</dl>
-<hr class="docutils" />
+mpirun --tag-output ./setup.sh
+
+
+<span class="c1">#</span>
+<span class="c1"># Runing the training/inference job</span>
+<span class="c1"># (change only the script name and options after python command)</span>
+<span class="c1">#</span>
+
+ddlrun --mpiarg <span class="s2">&quot;-x EGO_TOP&quot;</span> -v <span class="se">\</span>
+  ./launch.sh python &lt;python-script-name-here&gt;
+
+-------------------------
+</pre></div>
+</div>
 <p>For your convienenice additional LSF batch job templates have been
 created to cover distributed deep learning trainings across Satori
 cluster:</p>
