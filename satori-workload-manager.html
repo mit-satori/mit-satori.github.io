@@ -470,9 +470,7 @@ installation of WMLCE</li>
 <li>line 17-18: change as need for what you will want to run and from
 where</li>
 </ul>
-<p>As above, if you need to request exclusive use of the gpus on the node you can do the following in your template</p>
-<p>As an example, consider the following batch script for 4x V100 GPUs requested for exclusive use
-(single AC922 node):</p>
+<p>if you need to request exclusive use of the gpus fr the example above  you can do the following in your template</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
 <span class="c1">#BSUB -J &quot;keras-job-name&quot;</span>
 <span class="c1">#BSUB -o &quot;keras-job-name_o.%J&quot;</span>
