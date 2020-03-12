@@ -8,14 +8,14 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Satori Login &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Julia on Satori &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
   
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-ssh.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-julia.html"/>
   
 
   
@@ -37,8 +37,8 @@
   <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Starting up on Satori" href="satori-getting-started.html" />
-    <link rel="prev" title="Satori Basics" href="satori-basics.html" /> 
+    <link rel="next" title="Example machine learning LSF jobs" href="lsf-templates/satori-lsf-ml-examples.html" />
+    <link rel="prev" title="IBM Large Model Support (LMS)" href="satori-large-model-support.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -89,9 +89,9 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#getting-help">Getting help?</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Satori Login</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#web-portal-login">Web Portal Login</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ssh-login">SSH Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#web-portal-login">Web Portal Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
@@ -142,9 +142,9 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satori-large-model-support.html">IBM Large Model Support (LMS)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="satori-julia.html">Julia on Satori</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-help">Getting help?</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Julia on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
@@ -346,14 +346,14 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>Satori Login</li>
+      <li>Julia on Satori</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-ssh.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-julia.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -367,90 +367,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="satori-login">
-<h1>Satori Login<a class="headerlink" href="#satori-login" title="Permalink to this headline">¶</a></h1>
-<p>You can connect to Satori through</p>
-<ul class="simple">
-<li>a web portal, or</li>
-<li>plain ssh from a terminal or a terminal client like PuTTY (<a class="reference external" href="https://www.putty.org" target="_blank">https://www.putty.org</a>).</li>
-</ul>
-<div class="section" id="web-portal-login">
-<h2>Web Portal Login<a class="headerlink" href="#web-portal-login" title="Permalink to this headline">¶</a></h2>
-<p>To use the web portal</p>
-<ol class="arabic simple">
-<li>Navigate to <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> in your favorite web browser.</li>
-<li>Select the Globus Auth button.</li>
-<li>When redirected to globus, authenticate via Massachusetts Institute of Technology.</li>
-<li>When successfully logged in, you will be redirected back to Satori Portal!</li>
-</ol>
-<p>you can then launch Jupyter notebook environments running on GPUs</p>
-<ol class="arabic simple">
-<li>Select “Jupyter Notebook” from the “Interactive Apps” dropdown in the top navbar. You can also select “My Interactive Sessions”.</li>
-<li>At the prompt to launch a Jupyter notebook, select the “Anaconda 2019.10 PowerAI [Experimental]” option in the “Choose Anaconda Environment” section.</li>
-<li>Enter (in hours) how long you would like the app to run for.</li>
-<li>Click launch, wait for app to begin running on a compute node and finally, select “Connect to Jupyter”!</li>
-</ol>
-<p>the web portal also has sub-menus for</p>
-<ol class="arabic simple">
-<li>a terminal on the front-end node (<strong>Clusters</strong> menu)</li>
-<li>a running job monitoring window (<strong>Jobs</strong> menu). This is also has a batch job preparation form, but
-it is malfunction at the moment!</li>
-<li>a file browsing and transfer client (<strong>Files</strong> menu)</li>
-</ol>
-</div>
-<div class="section" id="ssh-login">
-<h2>SSH Login<a class="headerlink" href="#ssh-login" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default">
-<img alt="Satori Login" src="http://www.sldcassam.in/images/login.png" />
-</div>
-<ul class="simple">
-<li>Login to Satori cluster is done via SSHv2 as follow:</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh your_username@satori-login-001.mit.edu
+  <div class="section" id="julia-on-satori">
+<h1>Julia on Satori<a class="headerlink" href="#julia-on-satori" title="Permalink to this headline">¶</a></h1>
+<p>Julia’s PowerPC support is currently limited and community based, if you run into
+issues please leave a note on the #julia channel on the Satori Slack.</p>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load julia
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh your_username@satori-login-002.mit.edu
-</pre></div>
 </div>
-<ul class="simple">
-<li>To copy files from your workstation to Satori you can use SCP,
-<a class="reference external" href="https://winscp.net/eng/download.php" target="_blank">WinSCP</a>,
-<a class="reference external" href="https://cyberduck.io/download/" target="_blank">Cyberduck</a> etc</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp &lt;local-file.py&gt; your_username@satori-login-001.mit.edu:
-</pre></div>
-</div>
-<ul class="simple">
-<li>Once connected through ssh if you are familiar with tools like LSF you can start
-interactive or batch scripts e.g.</li>
-</ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -ISp -tty -q short /bin/bash
-bsub -q short &lt; myjobscript.lsf
-</pre></div>
-</div>
-<p>If you are not familiar with LSF and cluster there are tutorial examples in other pages
-of this document that can help show how to get started.</p>
-<p>As general rules:</p>
-<ul class="simple">
-<li>satori-login-001.mit.edu - shuld be used for submiting training jobs
-and related activities</li>
-<li>satori-login-002.mit.edu - shuld be used for transfering large
-files/datasets and compiling software requireing nvcc, gcc, XL
-compiler etc</li>
-<li>if one login-node will not be available try the second one</li>
-<li>don’t run large computations on the login nodes</li>
-</ul>
-<p>In case you want to work with Jupyter Notebooks but cannot use the <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> portal, you will
-need to forward Jupyter HTTP ports to your own workstation via SSHv2 tunneling.
-This can be done like this: (Note FQDN == Fully Qualified Domain Name like nodeXXXX  for the node you are running on (E.g. node0014)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -L <span class="m">10001</span>:&lt;compute_node_FQDN&gt;:10001 your_username@satori-login-001.mit.edu
-jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<span class="o">=</span><span class="m">10001</span>
-</pre></div>
-</div>
-<p>if you do this, remember to activate whatever conda enviroment you wish to use before starting <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> e.g</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate wmlce-1.6.2
-</pre></div>
-</div>
+<div class="section" id="getting-help">
+<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>The Julia community has several help channels available, if you have generic
+Julia question the <a class="reference external" href="https://discourse.julialang.org" target="_blank">Julia Discourse</a>  or <a class="reference external" href="https://slackinvite.julialang.org/" target="_blank">Julia Slack</a>
+are the best place to quickly get answers.</p>
+<p>If you have Satori/PowerPC specific questions feel free to reach out to vchuravy either on the Satori Slack or mail.</p>
 </div>
 </div>
 
@@ -462,10 +394,10 @@ jupyter notebook --ip<span class="o">=</span>&lt;compute_node_FQDN&gt; --port<sp
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="satori-getting-started.html" class="btn btn-neutral float-right" title="Starting up on Satori" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lsf-templates/satori-lsf-ml-examples.html" class="btn btn-neutral float-right" title="Example machine learning LSF jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="satori-basics.html" class="btn btn-neutral float-left" title="Satori Basics" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="satori-large-model-support.html" class="btn btn-neutral float-left" title="IBM Large Model Support (LMS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
