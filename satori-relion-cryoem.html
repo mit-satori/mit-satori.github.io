@@ -382,10 +382,19 @@
 <p>Data should be transferred to:
 /nobackup/users/<code class="docutils literal notranslate"><span class="pre">your_kerbos_id</span></code> .
 Use satori-login-002.mit.edu</p>
-<ul class="simple">
-<li>To access the Relion GUI<ol class="arabic">
-<li>Login:</li>
-<li>Submit a fake job to access a node:</li>
+<ul>
+<li><p class="first">To access the Relion GUI</p>
+<ol class="arabic">
+<li><p class="first">Login:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y username@satori-login-002.mit.edu
+</pre></div>
+</div>
+</li>
+<li><p class="first">Submit a fake job to access a node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -x -q normalx sleep <span class="m">7200</span>
+</pre></div>
+</div>
+</li>
 </ol>
 </li>
 </ul>
