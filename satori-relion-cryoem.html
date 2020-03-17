@@ -421,10 +421,12 @@ Use satori-login-002.mit.edu</p>
 </li>
 <li><p class="first">Use “Print” command to print job commands to terminal.</p>
 </li>
-<li><p class="first">Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the –n and –j values. Save submission script. Make sure paths for “–o” already exist.</p>
+<li><p class="first">Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the <code class="docutils literal notranslate"><span class="pre">--n</span></code> and <code class="docutils literal notranslate"><span class="pre">--j</span></code> values. Save submission script. Make sure paths for <code class="docutils literal notranslate"><span class="pre">--o</span></code> already exist.</p>
 </li>
 <li><p class="first">Execute job</p>
-<p>bsub&lt; run</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub&lt; run
+</pre></div>
+</div>
 </li>
 <li><p class="first">Check job is running with bjobs. Submission script generates a log file.</p>
 </li>
