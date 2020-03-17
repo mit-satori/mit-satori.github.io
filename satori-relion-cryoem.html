@@ -432,7 +432,30 @@ Use satori-login-002.mit.edu</p>
 </li>
 </ol>
 </li>
+<li><p class="first">Example job</p>
+</li>
 </ul>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;Relion&quot;</span>
+<span class="c1">#BSUB -o &quot;Relion.%J&quot;</span>
+<span class="c1">#BSUB -n 40</span>
+<span class="c1">#BSUB -R &quot;span[ptile=40]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normal&quot;</span>
+
+<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+
+<span class="c1">#source ~/anaconda3/bin/activate</span>
+<span class="c1">#conda activate CryoEM</span>
+
+<span class="nb">unset</span> CUDA_VISIBLE_DEVICES
+<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="s2">&quot;0,1,2,3&quot;</span>
+<span class="o">(</span><span class="nb">time</span> -p mpirun -bind-to none -n <span class="m">9</span> relion_refine_mpi --j <span class="m">4</span> --gpu --pool <span class="m">50</span> --dont_combine_weights_via_disc --scratch_dir /dev/shm  --o Refine3D/job005 --auto_refine --split_random_halves --i squirrel2.star --ref Import/job004/postprocess_refine850_resampled_775.mrc --firstiter_cc --ini_high <span class="m">40</span>  --ctf --ctf_corrected_ref --particle_diameter <span class="m">340</span> --flatten_solvent --zero_mask --oversampling <span class="m">1</span> --healpix_order <span class="m">2</span> --auto_local_healpix_order <span class="m">4</span> --offset_range <span class="m">5</span> --offset_step <span class="m">2</span> --sym C1 --low_resol_join_halves <span class="m">40</span> --norm --scale<span class="o">)</span> &gt;run_21x8.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="other-notes">
 <h2>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
