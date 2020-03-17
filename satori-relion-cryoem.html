@@ -391,11 +391,35 @@ Use satori-login-002.mit.edu</p>
 </div>
 </li>
 <li><p class="first">Submit a fake job to access a node:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -x -q normalx -gpu <span class="s2">&quot;num=1&quot;</span> sleep <span class="m">7200</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -q normal sleep <span class="m">7200</span>
 </pre></div>
 </div>
 </li>
+<li><p class="first">Use bjobs to determine the node of the job ie:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>JOBID   USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
+<span class="m">45954</span>   seyvos  RUN   normal     service0002 node0028.in sleep <span class="m">7200</span> Mar <span class="m">10</span> <span class="m">13</span>:50
+</pre></div>
+</div>
+</li>
+<li><p class="first">Login into the node:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -X node0028
+</pre></div>
+</div>
+</li>
+<li><p class="first">Add paths to access relion libraries:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/ibm/spectrum_mpi/profilesupport/lib:/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Open Relion by typing:</p>
+</li>
 </ol>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>relion
+</pre></div>
+</div>
+</div></blockquote>
 </li>
 </ul>
 </div>
