@@ -413,13 +413,22 @@ Use satori-login-002.mit.edu</p>
 </div>
 </li>
 <li><p class="first">Open Relion by typing:</p>
-</li>
-</ol>
-<blockquote>
-<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>relion
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>relion
 </pre></div>
 </div>
-</div></blockquote>
+</li>
+<li><p class="first">Use GUI to configure your job.</p>
+</li>
+<li><p class="first">Use “Print” command to print job commands to terminal.</p>
+</li>
+<li><p class="first">Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the –n and –j values. Save submission script. Make sure paths for “–o” already exist.</p>
+</li>
+<li><p class="first">Execute job</p>
+<p>bsub&lt; run</p>
+</li>
+<li><p class="first">Check job is running with bjobs. Submission script generates a log file.</p>
+</li>
+</ol>
 </li>
 </ul>
 </div>
