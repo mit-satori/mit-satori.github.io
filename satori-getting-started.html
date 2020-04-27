@@ -491,8 +491,10 @@ testing, debugging, figuring out your workflow, or interactive data exploration.
 to Satori, it can be helpful to first run it in an interactive session, so you can iteratively make edits and
 rerun your code, without waiting for new resources each time. However, once you have a script that you are fairly
 confident will run without need for intervention, it’s time to move on to a batch job.</p>
-<p>Visit the <a class="reference external" href="https://mit-satori.github.io/satori-workload-manager.html#interactive-jobs" target="_blank">Interactive Jobs</a>
-section to see how to start an interactive session.</p>
+<p>Visit the <a class="reference external" href="https://mit-satori.github.io/satori-workload-manager-using-lsf.html#interactive-jobs" target="_blank">Interactive Jobs</a>
+section to see how to start an interactive session using the exisitng LSF workload manager.</p>
+<p><strong>Note</strong> Satori is in the process of being migrated to the SLURM Workload manager. Visit the <a class="reference external" href="https://mit-satori.github.io/satori-workload-manager-using-slurm.html#interactive-jobs" target="_blank">Interactive Jobs</a>
+section to see how to start an interactive session using the new  SLURM workload manager.</p>
 </div>
 <div class="section" id="running-batch-jobs">
 <h3>Running Batch Jobs<a class="headerlink" href="#running-batch-jobs" title="Permalink to this headline">¶</a></h3>
@@ -500,8 +502,9 @@ section to see how to start an interactive session.</p>
 you submit that to the scheduler using a submission or batch script. From there, the scheduler will decide when
 and where to run your script, and when your script comes to completion or runs into an error the job will end.</p>
 <p>Visit the <a class="reference external" href="https://mit-satori.github.io/satori-workload-manager.html#batch-scripts" target="_blank">Batch Jobs</a>
-section to see how to submit a batch job, as well as some sample submission scripts and other information on
-monitoring batch jobs.</p>
+section to see how to submit a batch job using the existing LSF workload manager , as well as some sample submission scripts and other information on monitoring batch jobs.</p>
+<p><strong>Note</strong> Satori is in the process of being migrated to the SLURM Workload manager. Visit the <a class="reference external" href="https://mit-satori.github.io/satori-workload-manager-using-slurm.html#batch-scripts" target="_blank">Batch Jobs</a>
+section to see how to submit a batch job using the new SLURM workload manager , as well as some sample submission scripts and other information on monitoring batch jobs.</p>
 <p>One of the most common questions on batch jobs is how to know what is going on with them, how does the user
 know if there is an error or monitor the output of the job. In your submission script you specify where you
 want the errors and output for your job. Print statements in your code can be very useful for debugging or
