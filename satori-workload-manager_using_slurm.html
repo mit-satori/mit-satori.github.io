@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Running your AI training jobs on Satori using SLURM &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -352,7 +352,7 @@
     
       <li><a href="index.html">Docs</a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Running your AI training jobs on Satori using SLURM</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -373,7 +373,205 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <p>test</p>
+  <div class="section" id="running-your-ai-training-jobs-on-satori-using-slurm">
+<h1>Running your AI training jobs on Satori using SLURM<a class="headerlink" href="#running-your-ai-training-jobs-on-satori-using-slurm" title="Permalink to this headline">¶</a></h1>
+<p>Computational work on Satori is quickly being migrated to use the SLURM  workload manager. A typical job consists of several
+components:</p>
+<ul class="simple">
+<li>A submission script</li>
+<li>An executable file (python sript or C/C++ script)</li>
+<li>Training data needed by the ML/DL script</li>
+<li>Output files created by the training/inference job</li>
+</ul>
+<p>There are two types for jobs:</p>
+<ul class="simple">
+<li>interactive / online</li>
+<li>batch</li>
+</ul>
+<p>In general, the process for running a batch job is to:</p>
+<ul class="simple">
+<li>Prepare executables and input files</li>
+<li>Modify provided SLURM job template for the batch script or write a new
+one</li>
+<li>Submit the batch script to the Workload Manager</li>
+<li>Monitor the job’s progress before and during execution</li>
+</ul>
+<div class="section" id="a-note-on-exclusivity">
+<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this headline">¶</a></h2>
+<p>To make best use of Satori’s GPU resource  default job submissiosn are not exclusive. That means that unless you ask otherwise, the GPUs on the node(s) you are assigned may already be in use by another user. That means if you request a node  with 2GPU’s  the 2 other GPUs on that node may be engaged by anohther job. This allows us to more efficently allocate all of the GPU resources. This may require some additional checkign to make sure you can uniquly use  all of the GPU’s on a machine. If you’re in doubt, you can request the node to be ‘exclusive’ . See below on how to request exclusive access  in an interactive and batch situation.</p>
+</div>
+<div class="section" id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Most users will find batch jobs to be the easiest way to interact with
+the system, since they permit you to hand off a job to the scheduler and
+then work on other tasks; however, it is sometimes preferable to run
+interactively on the system. This is especially true when developing,
+modifying, or debugging code.</p>
+<p>Since all compute resources are managed/scheduled by SLURM, it is not
+possible to simply log into the system and begin running a parallel code
+interactively. You must request the appropriate resources from the
+system and, if necessary, wait until they are available. This is done
+with an “interactive batch” job. Interactive batch jobs are submitted
+via the command line, which supports the same options that are passed
+via <strong>#SBATCH</strong> parameters in a batch script. The final options on the command
+line are what makes the job “interactive batch”: -Is followed by a shell
+name. For example, to request an interactive batch job (with bash as the
+shell) equivalent to the sample batch script above, you would use the
+command:</p>
+<p>This will request an AC922 node with 4x GPUs from the Satori (normal
+queue) for 1 hour.</p>
+<p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --exclusive --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -I --pty /bin/bash
+</pre></div>
+</div>
+<p>this will request exclusive use of an interactive node with 4GPU’s</p>
+</div>
+<div class="section" id="batch-scripts">
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
+<p>The most common way to interact with the batch system is via batch jobs.
+A batch job is simply a shell script with added directives to request
+various resources from or provide certain information to the batch
+scheduling system. Aside from the lines containing SLURM options, the
+batch script is simply the series commands needed to set up and run your
+AI job.</p>
+<p>To submit a batch script, use the bsub command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch myjob.slurm
+</pre></div>
+</div>
+<p>As an example, consider the following batch script for 4x V100 GPUs
+(single AC922 node):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J myjob_4GPUs</span>
+<span class="c1">#SBATCH -o myjob_4GPUs_%j.out</span>
+<span class="c1">#SBATCH -e myjob_4GPUs_%j.err</span>
+<span class="c1">#SBATCH --mail-user=florin@mit.edu</span>
+<span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --gpus-per-node=4</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+<span class="c1">#SBATCH --mem=0</span>
+<span class="c1">#SBATCH --time=24:00:00</span>
+<span class="c1">#SBATCH --exclusive</span>
+
+<span class="c1">## User python environment</span>
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/<span class="k">$(</span>whoami<span class="k">)</span>
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.7.0
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+
+<span class="c1">## Activate WMLCE virtual environment</span>
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+<span class="nb">ulimit</span> -s unlimited
+
+<span class="c1">## Creating SLURM nodes list</span>
+<span class="nb">export</span> <span class="nv">NODELIST</span><span class="o">=</span>nodelist.$
+srun -l bash -c <span class="s1">&#39;hostname&#39;</span> <span class="p">|</span>  sort -k <span class="m">2</span> -u <span class="p">|</span> awk -vORS<span class="o">=</span>, <span class="s1">&#39;{print $2&quot;:4&quot;}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/,$//&#39;</span> &gt; <span class="nv">$NODELIST</span>
+
+<span class="c1">## Number of total processes</span>
+<span class="nb">echo</span> <span class="s2">&quot; &quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot; Nodelist:= &quot;</span> <span class="nv">$SLURM_JOB_NODELIST</span>
+<span class="nb">echo</span> <span class="s2">&quot; Number of nodes:= &quot;</span> <span class="nv">$SLURM_JOB_NUM_NODES</span>
+<span class="nb">echo</span> <span class="s2">&quot; NGPUs per node:= &quot;</span> <span class="nv">$SLURM_GPUS_PER_NODE</span>
+<span class="nb">echo</span> <span class="s2">&quot; Ntasks per node:= &quot;</span>  <span class="nv">$SLURM_NTASKS_PER_NOD</span>
+
+
+<span class="c1">####    Use MPI for communication with Horovod - this can be hard-coded during installation as well.</span>
+<span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
+<span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
+<span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
+<span class="nb">export</span> <span class="nv">NCCL_DEBUG</span><span class="o">=</span>DEBUG
+
+<span class="nb">echo</span> <span class="s2">&quot; Running on multiple nodes and GPU devices&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span> <span class="s2">&quot; Run started at:- &quot;</span>
+date
+
+<span class="c1">## Horovod execution</span>
+horovodrun -np <span class="nv">$SLURM_NTASKS</span> -H <span class="sb">`</span>cat <span class="nv">$NODELIST</span><span class="sb">`</span> python /data/ImageNet/pytorch_mnist.py
+
+<span class="nb">echo</span> <span class="s2">&quot;Run completed at:- &quot;</span>
+date
+</pre></div>
+</div>
+<p>In the above template you can change:</p>
+<ul class="simple">
+<li>line 2-4: with your desire job name, but remember to keep _out for the
+job output file and _err for the file with the related job errors</li>
+<li>line 7: “–gres=gpu:4” here you can consider the no of GPUs you need <strong>per node</strong> <em>e.g.</em> a value of 1 means you want only
+1 GPU on each node, a value of 4 means you want all GPUS’s on the node.</li>
+<li>line 9: “–nodes=1” here you put how many nodes you need. <em>e.g.</em> a value of 1 means 1 node, a value of 2 means 2 nodes,
+etc. <strong>Note:</strong> the total number of GPUS is the product of the “–gres” and the “–nodes” settings. <em>e.g.</em> a value of
+“–gres=gpu:4” and “–nodes=2” = 4 x 2 = 8 GPU’s in total.</li>
+<li>line 12: “–time=24:00:00” indicates the maximum run time you wish to allow. <strong>Note</strong> If thi snumber sis lareger than the
+runtime limit of the queue you are in, your job will be terminated at the queue limit. <strong>It is good practivce to make use
+of checkpointing in order not to lose your work if your job is terminated.</strong></li>
+<li>line 13: “–exclusive” means that you want full use of the GPUS on the nodes you are reserving. Leaving this out allows
+the GPU resources you’re not using on the node to be shared.</li>
+<li>line 17: change to your conda virtual environment defined at nstallation of WMLCE (or other conda environment)</li>
+<li>line 49: change as need for what you will want to run and from where. <strong>Note</strong> while horovod isn’t strictly needed for
+single node runs, we recommend it in case you need to expand to more nodes.</li>
+</ul>
+<p>For your convienenice additional SLURM batch job templates have been
+created to cover distributed deep learning trainings across Satori
+cluster. You can find them <a href="#id1"><span class="problematic" id="id2">`</span></a>here &lt;<a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">https://github.com/mit-satori/getting-started/tree/master/slurm-templates</a>&gt;</p>
+<ul class="simple">
+<li></li>
+<li>Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)backend</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><a href="#id3"><span class="problematic" id="id4">`</span></a>Pytorch singal node, 1 GPU</li>
+</ul>
+</div></blockquote>
+<p>&lt;<a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf</a>&gt;`__</p>
+<div class="section" id="monitoring-jobs">
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
+<p>SLURM provides several utilities with which you can monitor jobs. These
+include monitoring the queue, getting details about a particular job,
+viewing STDOUT/STDERR of running jobs, and more.</p>
+<p>The most straightforward monitoring is the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>squeue
+</pre></div>
+</div>
+<p>This command will show the current queue, including both pending and running
+jobs.</p>
+</div>
+<div class="section" id="canceling-jobs">
+<h3>Canceling Jobs<a class="headerlink" href="#canceling-jobs" title="Permalink to this headline">¶</a></h3>
+<p>SLURM allows you to kill jobs you’ve already submitted by using the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel &lt;jobnumber&gt;
+</pre></div>
+</div>
+<p>where &lt;jobnumber&gt; is the slurm job number see wiht you submit the job or found by running squeue.</p>
+</div>
+<div class="section" id="scheduling-policy">
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline">¶</a></h3>
+<p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
+order. This often does not make effective use of the system. A large job
+may be next in line to run. If the system is using a strict FIFO queue,
+many processors sit idle while the large job waits to run. Backfilling
+would allow smaller, shorter jobs to use those otherwise idle resources,
+and with the proper algorithm, the start time of the large job would not
+be delayed. While this does make more effective use of the system, it
+indirectly encourages the submission of smaller jobs.</p>
+</div>
+<div class="section" id="batch-queue-policy">
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline">¶</a></h3>
+<p>The batch queue is the default queue for production work on Satori. It
+enforces the following policies: Limit of (4) eligible-to-run jobs per
+user. Jobs in excess of the per user limit above will be placed into a
+held state, but will change to eligible-to-run at the appropriate time.
+Users may have only (100) jobs queued at any state at any time.
+Additional jobs will be rejected at submit time.</p>
+</div>
+<div class="section" id="priority-queue-policy">
+<h3>Priority Queue Policy<a class="headerlink" href="#priority-queue-policy" title="Permalink to this headline">¶</a></h3>
+<p>We are setting up a small number of priority queues that will be used for jobs with urgent time constraints such as paper deadlines. To request acccess to the priority queue please email <cite>support-satori&#64;techsquare.com &lt;mailto://support-satori&#64;techsquare.com&gt;</cite> and indicate the deadlien you are facing, and the duration you will need priority access.</p>
+<p>Priority queues will initially be set up in two configureations, 1 Node with 4 GPUs and 2 Nodes with 8 GPU’s. Job run  length will be capped at 24 hours so please use checkpointing. There will be a limit of 4 parallel jobs per user running during peak times. If these queue setting do not meet your project goals, please email <cite>support-satori&#64;techsquare.com &lt;mailto://support-satori&#64;techsquare.com&gt;</cite> with your needed requirments and we will consider them.</p>
+</div>
+</div>
+</div>
 
 
            </div>
