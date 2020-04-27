@@ -526,8 +526,8 @@ the GPU resources you’re not using on the node to be shared.</li>
 <li>line 17: change to your conda virtual environment defined at nstallation of WMLCE (or other conda environment)</li>
 <li>line 49: change as need for what you will want to run and from where. <strong>Note</strong> while horovod isn’t strictly needed for
 single node runs, we recommend it in case you need to expand to more nodes.</li>
+<li>The Horovod communication from MPI to NCCL2; In case of the MPI, allgather allocates an output tensor which is proportionate to the number of processes participating in the training. Useful when you find yourself running out of GPU memory and you can force allgather to happen on CPU by passing device_sparse=’/cpu:0’ to hvd.DistributedOptimizer.</li>
 </ul>
-<p>The Horovod communication from MPI to NCCL2; In case of the MPI, allgather allocates an output tensor which is proportionate to the number of processes participating in the training. Useful when you find yourself running out of GPU memory and you can force allgather to happen on CPU by passing device_sparse=’/cpu:0’ to hvd.DistributedOptimizer.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
 <span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
 <span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
