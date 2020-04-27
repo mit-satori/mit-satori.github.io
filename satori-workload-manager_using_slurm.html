@@ -512,19 +512,7 @@ the GPU resources you’re not using on the node to be shared.</li>
 <li>line 49: change as need for what you will want to run and from where. <strong>Note</strong> while horovod isn’t strictly needed for
 single node runs, we recommend it in case you need to expand to more nodes.</li>
 </ul>
-<p>For your convienenice additional SLURM batch job templates have been
-created to cover distributed deep learning trainings across Satori
-cluster. You can find them <a href="#id1"><span class="problematic" id="id2">`</span></a>here &lt;<a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">https://github.com/mit-satori/getting-started/tree/master/slurm-templates</a>&gt;</p>
-<ul class="simple">
-<li></li>
-<li>Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)backend</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
-<li><a href="#id3"><span class="problematic" id="id4">`</span></a>Pytorch singal node, 1 GPU</li>
-</ul>
-</div></blockquote>
-<p>&lt;<a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf</a>&gt;`__</p>
+<p>For your convienenice additional SLURM batch job templates have been created to cover distributed deep learning trainings across Satori cluster. You can find them <a href="#id1"><span class="problematic" id="id2">`</span></a>here &lt;<a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">https://github.com/mit-satori/getting-started/tree/master/slurm-templates</a>&gt;</p>
 <div class="section" id="monitoring-jobs">
 <h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
 <p>SLURM provides several utilities with which you can monitor jobs. These
@@ -567,8 +555,8 @@ Additional jobs will be rejected at submit time.</p>
 </div>
 <div class="section" id="priority-queue-policy">
 <h3>Priority Queue Policy<a class="headerlink" href="#priority-queue-policy" title="Permalink to this headline">¶</a></h3>
-<p>We are setting up a small number of priority queues that will be used for jobs with urgent time constraints such as paper deadlines. To request acccess to the priority queue please email <cite>support-satori&#64;techsquare.com &lt;mailto://support-satori&#64;techsquare.com&gt;</cite> and indicate the deadlien you are facing, and the duration you will need priority access.</p>
-<p>Priority queues will initially be set up in two configureations, 1 Node with 4 GPUs and 2 Nodes with 8 GPU’s. Job run  length will be capped at 24 hours so please use checkpointing. There will be a limit of 4 parallel jobs per user running during peak times. If these queue setting do not meet your project goals, please email <cite>support-satori&#64;techsquare.com &lt;mailto://support-satori&#64;techsquare.com&gt;</cite> with your needed requirments and we will consider them.</p>
+<p>We are setting up a small number of priority queues that will be used for jobs with urgent time constraints such as paper deadlines. To request acccess to the priority queue please email &lt;<a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a>&gt; and indicate the deadlien you are facing, and the duration you will need priority access.</p>
+<p>Priority queues will initially be set up in two configureations, 1 Node with 4 GPUs and 2 Nodes with 8 GPU’s. Job run  length will be capped at 24 hours so please use checkpointing. There will be a limit of 4 parallel jobs per user running during peak times. If these queue setting do not meet your project goals, please email &lt;<a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a>&gt; with your needed requirments and we will consider them.</p>
 </div>
 </div>
 </div>
