@@ -598,6 +598,9 @@ sleep <span class="m">60</span>
 </pre></div>
 </div>
 <p>submitting this job, for example, as</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --exclusive --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 foo.slurm
+</pre></div>
+</div>
 <p>will create a series of jobs that runs one after another. Together with checkpointing this sort of
 approach can be used to run extended workloads in an largely automated manner. The Slurm <a class="reference external" href="https://slurm.schedmd.com/documentation.html" target="_blank">documentation</a> describes many
 features for managing sequences of jobs. Some more involved examples can be found at the <a class="reference external" href="https://hpc.nih.gov/docs/job_dependencies.html" target="_blank">NIH Biowulf</a> site.</p>
