@@ -589,18 +589,15 @@ the system. These can be useful for urgent time constraints such as paper deadli
 <h3>Running jobs in series<a class="headerlink" href="#running-jobs-in-series" title="Permalink to this headline">¶</a></h3>
 <p>Slurm provides numerous mechanisms for chaining jobs together to run unattended in sequence. A simple example of this sort
 of job is shown below</p>
-<p><code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">#!/bin/bash</span>
-<span class="pre">MYSCRIPT=/home/${USER}/foo.slurm</span>
-<span class="pre">MYSUBDIR=/home/${USER}</span>
-<span class="pre">JID=${SLURM_JOB_ID}</span>
-<span class="pre">ssh</span> <span class="pre">service0001</span> <span class="pre">&quot;cd</span> <span class="pre">$MYSUBDIR;</span> <span class="pre">pwd;</span> <span class="pre">sbatch</span> <span class="pre">--dependency=afterok:${JID}</span> <span class="pre">${MYSCRIPT}&quot;</span>
-<span class="pre">sleep</span> <span class="pre">60</span>
-<span class="pre">`</span></code></p>
-<p>submitting this job, for example, as
-<code class="docutils literal notranslate"><span class="pre">`</span>
-<span class="pre">sbatch</span> <span class="pre">--gres=gpu:4</span> <span class="pre">-N</span> <span class="pre">1</span> <span class="pre">--exclusive</span> <span class="pre">--mem=1T</span> <span class="pre">--time</span> <span class="pre">1:00:00</span> <span class="pre">foo.slurm</span>
-<span class="pre">`</span></code></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nv">MYSCRIPT</span><span class="o">=</span>/home/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>/foo.slurm
+<span class="nv">MYSUBDIR</span><span class="o">=</span>/home/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+<span class="nv">JID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>
+ssh service0001 <span class="s2">&quot;cd </span><span class="nv">$MYSUBDIR</span><span class="s2">; pwd; sbatch --dependency=afterok:</span><span class="si">${</span><span class="nv">JID</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">MYSCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
+sleep <span class="m">60</span>
+</pre></div>
+</div>
+<p>submitting this job, for example, as</p>
 <p>will create a series of jobs that runs one after another. Together with checkpointing this sort of
 approach can be used to run extended workloads in an largely automated manner. The Slurm <a class="reference external" href="https://slurm.schedmd.com/documentation.html" target="_blank">documentation</a> describes many
 features for managing sequences of jobs. Some more involved examples can be found at the <a class="reference external" href="https://hpc.nih.gov/docs/job_dependencies.html" target="_blank">NIH Biowulf</a> site.</p>
