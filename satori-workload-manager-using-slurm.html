@@ -133,7 +133,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#canceling-jobs">Canceling Jobs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#scheduling-policy">Scheduling Policy</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#batch-queue-policy">Batch Queue Policy</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#priority-queue-policy">Priority Queue Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#queue-policies">Queue Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-jobs-in-series">Running jobs in series</a></li>
 </ul>
 </li>
 </ul>
@@ -571,17 +572,38 @@ indirectly encourages the submission of smaller jobs.</p>
 </div>
 <div class="section" id="batch-queue-policy">
 <h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline">¶</a></h3>
-<p>The batch queue is the default queue for production work on Satori. It
-enforces the following policies: Limit of (4) eligible-to-run jobs per
-user. Jobs in excess of the per user limit above will be placed into a
-held state, but will change to eligible-to-run at the appropriate time.
-Users may have only (100) jobs queued at any state at any time.
-Additional jobs will be rejected at submit time.</p>
+<p>New users are granted access to a default batch queue. It
+enforces the following policies: Limit of (1) executing job per
+user with a maximum wall time of 12 hours. Jobs in excess of the per
+user limit above will be placed into a
+queued state, and will change to eligible-to-run at the appropriate time.</p>
 </div>
-<div class="section" id="priority-queue-policy">
-<h3>Priority Queue Policy<a class="headerlink" href="#priority-queue-policy" title="Permalink to this headline">¶</a></h3>
-<p>We are setting up a small number of priority queues that will be used for jobs with urgent time constraints such as paper deadlines. To request acccess to the priority queue please email <a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a> and indicate the deadlien you are facing, and the duration you will need priority access.</p>
-<p>Priority queues will initially be set up in two configureations, 1 Node with 4 GPUs and 2 Nodes with 8 GPU’s. Job run  length will be capped at 24 hours so please use checkpointing. There will be a limit of 4 parallel jobs per user running during peak times. If these queue setting do not meet your project goals, please email <a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a> with your needed requirments and we will consider them.</p>
+<div class="section" id="queue-policies">
+<h3>Queue Policies<a class="headerlink" href="#queue-policies" title="Permalink to this headline">¶</a></h3>
+<p>Account holders who are comfortable with basic practices of how to use the system productively (understanding basic Linux commands, learning interactive and batch scheduling techniques, developing
+basic strategies for managing large numbers of files etc… ) are able to access higher level queues on
+the system. These can be useful for urgent time constraints such as paper deadlines and for more involved workflows. To request acccess to the priority queue first make sure you are comfortable with the technical and social norms of using a shared system. Then please email <a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a> and indicate that you would like to access higher level queue features.</p>
+<p>A set higher level queues has initially been set up in two configureations, 1 Node with 4 GPUs and 2 Nodes with 8 GPU’s. Job run  length will be capped at 24 hours so please use checkpointing. There will be a limit of 2 parallel jobs per user running during peak times. If these queue setting do not meet your project goals, please email <a class="reference external" href="mailto:support-satori&#37;&#52;&#48;techsquare&#46;com" target="_blank">support-satori<span>&#64;</span>techsquare<span>&#46;</span>com</a> with your needed requirments and we will consider them.</p>
+</div>
+<div class="section" id="running-jobs-in-series">
+<h3>Running jobs in series<a class="headerlink" href="#running-jobs-in-series" title="Permalink to this headline">¶</a></h3>
+<p>Slurm provides numerous mechanisms for chaining jobs together to run unattended in sequence. A simple example of this sort
+of job is shown below</p>
+<p><code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">#!/bin/bash</span>
+<span class="pre">MYSCRIPT=/home/${USER}/foo.slurm</span>
+<span class="pre">MYSUBDIR=/home/${USER}</span>
+<span class="pre">JID=${SLURM_JOB_ID}</span>
+<span class="pre">ssh</span> <span class="pre">service0001</span> <span class="pre">&quot;cd</span> <span class="pre">$MYSUBDIR;</span> <span class="pre">pwd;</span> <span class="pre">sbatch</span> <span class="pre">--dependency=afterok:${JID}</span> <span class="pre">${MYSCRIPT}&quot;</span>
+<span class="pre">sleep</span> <span class="pre">60</span>
+<span class="pre">`</span></code></p>
+<p>submitting this job, for example, as
+<code class="docutils literal notranslate"><span class="pre">`</span>
+<span class="pre">sbatch</span> <span class="pre">--gres=gpu:4</span> <span class="pre">-N</span> <span class="pre">1</span> <span class="pre">--exclusive</span> <span class="pre">--mem=1T</span> <span class="pre">--time</span> <span class="pre">1:00:00</span> <span class="pre">foo.slurm</span>
+<span class="pre">`</span></code></p>
+<p>will create a series of jobs that runs one after another. Together with checkpointing this sort of
+approach can be used to run extended workloads in an largely automated manner. Slurm has many
+feartures for managing sequences of jobs. Some more involved examples can be found [here](<a class="reference external" href="https://hpc.nih.gov/docs/job_dependencies.html" target="_blank">https://hpc.nih.gov/docs/job_dependencies.html</a>).</p>
 </div>
 </div>
 </div>
