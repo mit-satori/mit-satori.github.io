@@ -487,8 +487,8 @@ srun -l bash -c <span class="s1">&#39;hostname&#39;</span> <span class="p">|</sp
 <span class="nb">echo</span> <span class="s2">&quot; &quot;</span>
 <span class="nb">echo</span> <span class="s2">&quot; Nodelist:= &quot;</span> <span class="nv">$SLURM_JOB_NODELIST</span>
 <span class="nb">echo</span> <span class="s2">&quot; Number of nodes:= &quot;</span> <span class="nv">$SLURM_JOB_NUM_NODES</span>
-<span class="nb">echo</span> <span class="s2">&quot; NGPUs per node:= &quot;</span> <span class="nv">$SLURM_GPUS_PER_NODE</span>
-<span class="nb">echo</span> <span class="s2">&quot; Ntasks per node:= &quot;</span>  <span class="nv">$SLURM_NTASKS_PER_NOD</span>
+<span class="nb">echo</span> <span class="s2">&quot; GPUs per node:= &quot;</span> <span class="nv">$SLURM_STEP_GPUS</span>
+<span class="nb">echo</span> <span class="s2">&quot; Ntasks per node:= &quot;</span>  <span class="nv">$SLURM_NTASKS_PER_NODE</span>
 
 
 <span class="c1">####    Use MPI for communication with Horovod - this can be hard-coded during installation as well.</span>
