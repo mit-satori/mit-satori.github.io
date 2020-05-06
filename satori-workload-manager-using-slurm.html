@@ -539,6 +539,11 @@ single node runs, we recommend it in case you need to expand to more nodes.</li>
 <span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCLL
 </pre></div>
 </div>
+<p><strong>Note</strong> you may need to install Horovod by activating your conda environment and installing it. <em>e.g.</em></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda active wlmce-1.6.3.  * &lt;or whatever your conda environment is called&gt;*
+conda install horovod
+</pre></div>
+</div>
 <p>For your convenience additional SLURM batch job templates have been created to cover distributed deep learning trainings across Satori cluster. You can find them <a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">here</a></p>
 <div class="section" id="monitoring-jobs">
 <h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
