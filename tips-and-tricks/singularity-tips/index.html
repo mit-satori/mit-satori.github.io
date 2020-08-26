@@ -439,13 +439,15 @@ machine are described below.</p>
 <p>export DOCKER_CLI_EXPERIMENTAL=enabled</p>
 </li>
 <li><p class="first">Set Docker server to allow experimental features by editing line:</p>
-<p>ExecStart=/usr/bin/dockerd -H fd:// –containerd=/run/containerd/containerd.sock</p>
-</li>
-</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dockerd</span> <span class="o">-</span><span class="n">H</span> <span class="n">fd</span><span class="p">:</span><span class="o">//</span> <span class="o">--</span><span class="n">containerd</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">containerd</span><span class="o">/</span><span class="n">containerd</span><span class="o">.</span><span class="n">sock</span>
+</pre></div>
+</div>
 <p>in file /lib/systemd/system/docker.service to read:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dockerd</span> <span class="o">--</span><span class="n">experimental</span> <span class="o">-</span><span class="n">H</span> <span class="n">fd</span><span class="p">:</span><span class="o">//</span> <span class="o">--</span><span class="n">containerd</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">containerd</span><span class="o">/</span><span class="n">containerd</span><span class="o">.</span><span class="n">sock</span>
 </pre></div>
 </div>
+</li>
+</ol>
 </li>
 </ol>
 <p>Note - the steps above involve installing Docker on an Ubuntu virtual of physical machine. In principle a native install of Docker could work. This does not seem to work reliably in practice on OSX.</p>
