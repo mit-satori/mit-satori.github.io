@@ -464,11 +464,14 @@ machine are described below.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Check that we can work with ppc64le executables in an image:</p>
+<li><p class="first">Check that we can work with ppc64le executables in an image e.g:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">t</span> <span class="o">--</span><span class="n">platform</span> <span class="n">ppc64le</span> <span class="n">ppc64le</span><span class="o">/</span><span class="n">ubuntu</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">file</span>
 <span class="n">file</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span>
+
+<span class="n">should</span> <span class="n">produce</span> <span class="n">output</span> <span class="n">indicating</span> <span class="n">a</span> <span class="n">PowerPC</span> <span class="n">executable</span><span class="p">::</span>
+
 
 <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span><span class="p">:</span> <span class="n">ELF</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">LSB</span> <span class="n">shared</span> <span class="nb">object</span><span class="p">,</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">PowerPC</span> <span class="ow">or</span> <span class="n">cisco</span> <span class="mi">7500</span><span class="p">,</span> <span class="n">version</span> <span class="mi">1</span> <span class="p">(</span><span class="n">SYSV</span><span class="p">),</span> <span class="n">dynamically</span> <span class="n">linked</span><span class="p">,</span> <span class="n">interpreter</span> <span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">ld64</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">BuildID</span><span class="p">[</span><span class="n">sha1</span><span class="p">]</span><span class="o">=</span><span class="n">da9b7dc089cbaee41f4d1af3da65a40d29b25773</span><span class="p">,</span> <span class="k">for</span> <span class="n">GNU</span><span class="o">/</span><span class="n">Linux</span> <span class="mf">3.10</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">stripped</span>
 </pre></div>
