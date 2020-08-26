@@ -436,7 +436,9 @@ machine are described below.</p>
 <li><p class="first">Set docker to allow experimental features</p>
 <ol class="arabic">
 <li><p class="first">Set Docker client to allow experimental features:</p>
-<p>export DOCKER_CLI_EXPERIMENTAL=enabled</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DOCKER_CLI_EXPERIMENTAL</span><span class="o">=</span><span class="n">enabled</span>
+</pre></div>
+</div>
 </li>
 <li><p class="first">Set Docker server to allow experimental features by editing line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dockerd</span> <span class="o">-</span><span class="n">H</span> <span class="n">fd</span><span class="p">:</span><span class="o">//</span> <span class="o">--</span><span class="n">containerd</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">containerd</span><span class="o">/</span><span class="n">containerd</span><span class="o">.</span><span class="n">sock</span>
