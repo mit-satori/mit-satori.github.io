@@ -505,7 +505,14 @@ shown below.</p>
 </div>
 <div class="section" id="import-new-docker-hub-image-into-singularity-on-satori">
 <h2>Import new Docker hub image into Singularity on Satori<a class="headerlink" href="#import-new-docker-hub-image-into-singularity-on-satori" title="Permalink to this headline">¶</a></h2>
-<p>Once your Docker image is ready</p>
+<p>Once your Docker image is ready it can now be imported into Singulariy and executed on Satori, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">40</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">singularity</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span>
+<span class="n">singularity</span> <span class="n">build</span> <span class="n">foo</span><span class="o">.</span><span class="n">sif</span> <span class="n">docker</span><span class="p">:</span><span class="o">//</span><span class="n">christophernhill</span><span class="o">/</span><span class="n">jp</span><span class="o">-</span><span class="n">p9</span><span class="o">-</span><span class="n">sing</span><span class="o">-</span><span class="n">test</span><span class="p">:</span><span class="mf">1.0</span>
+<span class="n">singularity</span> <span class="n">shell</span> <span class="n">foo</span><span class="o">.</span><span class="n">sif</span>
+</pre></div>
+</div>
 </div>
 </div>
 
