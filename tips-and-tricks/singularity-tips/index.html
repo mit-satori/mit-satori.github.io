@@ -397,7 +397,10 @@
 <p>To build an image for Singularity from scratch you generally need to have privileged access to a Power 9 CPU system. This
 is a little awkward since nobody has Power 9 CPU laptops or desktops. Docker ( <a class="reference external" href="https://docs.docker.com/get-docker/" target="_blank">https://docs.docker.com/get-docker/</a> ) has recently added
 features that provide a way to do this, using
-the ppc64le Power 9 emulation that is part of the QEMU (<a class="reference external" href="https://www.qemu.org" target="_blank">https://www.qemu.org</a>) project. Steps to get this set up on a laptop, desktop or virtual
+the ppc64le Power 9 emulation that is part of the QEMU (<a class="reference external" href="https://www.qemu.org" target="_blank">https://www.qemu.org</a>) project. Using this feature is described below.</p>
+<div class="section" id="set-up-to-run-docker-in-ppc64le-mode">
+<h2>#. Set up to run Docker in ppc64le mode<a class="headerlink" href="#set-up-to-run-docker-in-ppc64le-mode" title="Permalink to this headline">¶</a></h2>
+<p>One time steps to get this set up on a laptop, desktop or virtual
 machine are described below.</p>
 <ol class="arabic">
 <li><p class="first">Launch or log in to an Ubuntu 18.04 Linux machine.</p>
@@ -456,8 +459,15 @@ machine are described below.</p>
 </li>
 </ol>
 </li>
+<li><p class="first">Install QEMU emulator binfmt information for ppc64le architecture:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">privileged</span> <span class="n">aptman</span><span class="o">/</span><span class="n">qus</span> <span class="o">-</span><span class="n">s</span> <span class="o">--</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+</li>
+<li></li>
 </ol>
 <p>Note - the steps above involve installing Docker on an Ubuntu virtual of physical machine. In principle a native install of Docker could work. This does not seem to work reliably in practice on OSX.</p>
+</div>
 </div>
 
 
