@@ -459,7 +459,7 @@ machine are described below.</p>
 </li>
 </ol>
 </li>
-<li><p class="first">Install QEMU emulator binfmt information for ppc64le architecture ( see <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> for explanations ):</p>
+<li><p class="first">Install needed QEMU emulator binfmt information for ppc64le architecture ( see <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> for explanations ). Note - the default QEMU install does not seem to work reliably, but the install from <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> does work:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">privileged</span> <span class="n">aptman</span><span class="o">/</span><span class="n">qus</span> <span class="o">-</span><span class="n">s</span> <span class="o">--</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
