@@ -241,6 +241,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">Set up to run Docker in ppc64le mode on an x86 machine</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">Run Docker in ppc64le mode on an x86 machine to generate an image for Satori</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#import-new-docker-hub-image-into-singularity-on-satori">Import new Docker hub image into Singularity on Satori</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-singularity-instead-of-docker">Using Singularity instead of Docker</a></li>
 </ul>
 </li>
 </ul>
@@ -523,28 +524,26 @@ shown below.</p>
 </pre></div>
 </div>
 <p>and used (finally!):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   singularity shell foo.sif
-
-Using Singularity instead of Docker
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Singularity is a little different from Docker in that it restricts access more and shares more environment with the
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">shell</span> <span class="n">foo</span><span class="o">.</span><span class="n">sif</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-singularity-instead-of-docker">
+<h2>Using Singularity instead of Docker<a class="headerlink" href="#using-singularity-instead-of-docker" title="Permalink to this headline">¶</a></h2>
+<p>Singularity is a little different from Docker in that it restricts access more and shares more environment with the
 host system. In particular there is no root access in a running Singularity image and privileged access directories
 are not writable. This means any operations that requires root privileges must be taken as part of the image build.
 Singularity also mounts the home directory for an account on the host system into the container by default. This
-can be useful, but also is not an isolated environment so care must be taken when running ensembles of containers.
-
-A typical Singularity command for executing an image with some isolation on Satori is::
-
-      singularity exec --nv -c -e -B /nobackup/users/cnh:/work/nb foo2.sif  /bin/bash
-
-which launches a container running a shell within an instnace of the image ``foo2.sif``.
-
-- The ``--nv`` option ensures the container can access the host GPU cards.
-
-- The ``-B /nobackup/users/cnh:/work/nb`` option maps the Satori scratch file space of the account to a container directory.
+can be useful, but also is not an isolated environment so care must be taken when running ensembles of containers.</p>
+<p>A typical Singularity command for executing an image with some isolation on Satori is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">exec</span> <span class="o">--</span><span class="n">nv</span> <span class="o">-</span><span class="n">c</span> <span class="o">-</span><span class="n">e</span> <span class="o">-</span><span class="n">B</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">cnh</span><span class="p">:</span><span class="o">/</span><span class="n">work</span><span class="o">/</span><span class="n">nb</span> <span class="n">foo2</span><span class="o">.</span><span class="n">sif</span>  <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
 </div>
+<p>which launches a container running a shell within an instnace of the image <code class="docutils literal notranslate"><span class="pre">foo2.sif</span></code>.</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">--nv</span></code> option ensures the container can access the host GPU cards.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">/nobackup/users/cnh:/work/nb</span></code> option maps the Satori scratch file space of the account to a container directory.</li>
+</ul>
 </div>
 </div>
 
