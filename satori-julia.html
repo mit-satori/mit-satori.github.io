@@ -499,45 +499,49 @@ export JULIA_CUDA_USE_BINARYBUILDER=false
 cd /nobackup/users/cnh/projects/jmpi/
 export JULIA_DEPOT_PATH=`pwd`
 julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
-srun -n 3 julia foo.jl
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   2: Sending   2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
-   0: Sending   0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
-   1: Sending   1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
-   2: Received 1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
-   0: Received 2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
-   1: Received 0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="n">julia</span> <span class="n">foo</span><span class="o">.</span><span class="n">jl</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="p">:</span> <span class="n">Sending</span>   <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">Sending</span>   <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">Sending</span>   <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="mi">2</span><span class="p">:</span> <span class="n">Received</span> <span class="mi">1</span> <span class="o">-&gt;</span> <span class="mi">2</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">]</span>
+<span class="mi">0</span><span class="p">:</span> <span class="n">Received</span> <span class="mi">2</span> <span class="o">-&gt;</span> <span class="mi">0</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]</span>
+<span class="mi">1</span><span class="p">:</span> <span class="n">Received</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">foo</span><span class="o">.</span><span class="n">jl</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>using MPI
+MPI.Init()
 
-cat foo.jl
+comm = MPI.COMM_WORLD
+rank = MPI.Comm_rank(comm)
+size = MPI.Comm_size(comm)
 
-   using MPI
-   MPI.Init()
+dst = mod(rank+1, size)
+src = mod(rank-1, size)
 
-   comm = MPI.COMM_WORLD
-   rank = MPI.Comm_rank(comm)
-   size = MPI.Comm_size(comm)
+N = 4
 
-   dst = mod(rank+1, size)
-   src = mod(rank-1, size)
+send_mesg = Array{Float64}(undef, N)
+recv_mesg = Array{Float64}(undef, N)
 
-   N = 4
+fill!(send_mesg, Float64(rank))
 
-   send_mesg = Array{Float64}(undef, N)
-   recv_mesg = Array{Float64}(undef, N)
+rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)
 
-   fill!(send_mesg, Float64(rank))
+print(&quot;$rank: Sending   $rank -&gt; $dst = $send_mesg\n&quot;)
+sreq = MPI.Isend(send_mesg, dst, rank+32, comm)
 
-   rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)
+stats = MPI.Waitall!([rreq, sreq])
 
-   print(&quot;$rank: Sending   $rank -&gt; $dst = $send_mesg\n&quot;)
-   sreq = MPI.Isend(send_mesg, dst, rank+32, comm)
+print(&quot;$rank: Received $src -&gt; $rank = $recv_mesg\n&quot;)
 
-   stats = MPI.Waitall!([rreq, sreq])
-
-   print(&quot;$rank: Received $src -&gt; $rank = $recv_mesg\n&quot;)
-
-   MPI.Barrier(comm)
+MPI.Barrier(comm)
 </pre></div>
 </div>
 </div>
