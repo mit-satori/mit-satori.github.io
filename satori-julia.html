@@ -480,7 +480,35 @@ julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); P
 <div class="section" id="running-a-multi-process-julia-program-somewhat-interactively">
 <h2>Running a multi-process julia program somewhat interactively<a class="headerlink" href="#running-a-multi-process-julia-program-somewhat-interactively" title="Permalink to this headline">¶</a></h2>
 <p>When debugging and testing it is sometimes to run outside of sbatch but still use multiple GPUs.
-The best way to do this is through the <code class="docutils literal notranslate"><span class="pre">`salloc`</span></code> command.</p>
+The best way to do this is through the Slurm <code class="docutils literal notranslate"><span class="pre">salloc</span></code> command. This command reserves resources
+and then allows multiple job stages to be executed through the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command from a shell as shown:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">3</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+</pre></div>
+</div>
+<p>now use srun to launch individual steps e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module purge &gt; /dev/null 2&gt;&amp;1
+module add spack
+module load gcc/8.3.0
+module load julia/1.4.1
+module load spack-admin/1.0
+module load spack-flat/0.1
+module load openmpi/3.1.4-gcc-8.3.0-cuda-pmi-ucx
+export UCX_ERROR_SIGNALS=&quot;SIGILL,SIGBUS,SIGFPE&quot;
+export JULIA_MPI_BINARY=system
+export JULIA_CUDA_USE_BINARYBUILDER=false
+cd /nobackup/users/cnh/projects/jmpi/
+export JULIA_DEPOT_PATH=`pwd`
+julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
+srun -n 3 julia foo.jl
+
+  2: Sending   2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
+  0: Sending   0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+  1: Sending   1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
+  2: Received 1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
+  0: Received 2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
+  1: Received 0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+</pre></div>
+</div>
 </div>
 </div>
 
