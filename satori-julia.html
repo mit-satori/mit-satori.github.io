@@ -486,27 +486,57 @@ and then allows multiple job stages to be executed through the <code class="docu
 </pre></div>
 </div>
 <p>now use srun to launch individual steps e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module purge &gt; /dev/null 2&gt;&amp;1
-module add spack
-module load gcc/8.3.0
-module load julia/1.4.1
-module load spack-admin/1.0
-module load spack-flat/0.1
-module load openmpi/3.1.4-gcc-8.3.0-cuda-pmi-ucx
-export UCX_ERROR_SIGNALS=&quot;SIGILL,SIGBUS,SIGFPE&quot;
-export JULIA_MPI_BINARY=system
-export JULIA_CUDA_USE_BINARYBUILDER=false
-cd /nobackup/users/cnh/projects/jmpi/
-export JULIA_DEPOT_PATH=`pwd`
-julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
-srun -n 3 julia foo.jl
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span> module purge &gt; /dev/null 2&gt;&amp;1
+ module add spack
+ module load gcc/8.3.0
+ module load julia/1.4.1
+ module load spack-admin/1.0
+ module load spack-flat/0.1
+ module load openmpi/3.1.4-gcc-8.3.0-cuda-pmi-ucx
+ export UCX_ERROR_SIGNALS=&quot;SIGILL,SIGBUS,SIGFPE&quot;
+ export JULIA_MPI_BINARY=system
+ export JULIA_CUDA_USE_BINARYBUILDER=false
+ cd /nobackup/users/cnh/projects/jmpi/
+ export JULIA_DEPOT_PATH=`pwd`
+ julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
+ srun -n 3 julia foo.jl
 
-  2: Sending   2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
-  0: Sending   0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
-  1: Sending   1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
-  2: Received 1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
-  0: Received 2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
-  1: Received 0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+   2: Sending   2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
+   0: Sending   0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+   1: Sending   1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
+   2: Received 1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]
+   0: Received 2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]
+   1: Received 0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]
+
+cat foo.jl
+
+   using MPI
+   MPI.Init()
+
+   comm = MPI.COMM_WORLD
+   rank = MPI.Comm_rank(comm)
+   size = MPI.Comm_size(comm)
+
+   dst = mod(rank+1, size)
+   src = mod(rank-1, size)
+
+   N = 4
+
+   send_mesg = Array{Float64}(undef, N)
+   recv_mesg = Array{Float64}(undef, N)
+
+   fill!(send_mesg, Float64(rank))
+
+   rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)
+
+   print(&quot;$rank: Sending   $rank -&gt; $dst = $send_mesg\n&quot;)
+   sreq = MPI.Isend(send_mesg, dst, rank+32, comm)
+
+   stats = MPI.Waitall!([rreq, sreq])
+
+   print(&quot;$rank: Received $src -&gt; $rank = $recv_mesg\n&quot;)
+
+   MPI.Barrier(comm)
 </pre></div>
 </div>
 </div>
