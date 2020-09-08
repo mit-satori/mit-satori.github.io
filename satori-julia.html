@@ -162,6 +162,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Julia on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-batch-script-example">A simple batch script example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">Recipe for running single GPU, single threaded interactive session with CUDA aware MPI</a></li>
 </ul>
 </li>
@@ -418,6 +419,30 @@ issues please leave a note on the #julia channel on the Satori Slack.</p>
 Julia question the <a class="reference external" href="https://discourse.julialang.org" target="_blank">Julia Discourse</a>  or <a class="reference external" href="https://slackinvite.julialang.org/" target="_blank">Julia Slack</a>
 are the best place to quickly get answers.</p>
 <p>If you have Satori/PowerPC specific questions feel free to reach out to vchuravy either on the Satori Slack or mail.</p>
+</div>
+<div class="section" id="a-simple-batch-script-example">
+<h2>A simple batch script example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline">¶</a></h2>
+<p>A simple batch script for a julia program on Satori is shown below:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J CLIMA_TEST_35</span>
+<span class="c1">#SBATCH -o CLIMA_TEST_35_%j.out</span>
+<span class="c1">#SBATCH -e CLIMA_TEST_35_%j.err</span>
+<span class="c1">#SBATCH --mail-user=XXXXX@mit.edu</span>
+<span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --mem=0</span>
+<span class="c1">#SBATCH --time=2:00:00</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">jars</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">runscripts</span><span class="o">/</span>
+<span class="n">module</span> <span class="n">add</span> <span class="n">spack</span>
+<span class="n">module</span> <span class="n">add</span> <span class="n">spack</span><span class="o">-</span><span class="n">flat</span>
+<span class="n">module</span> <span class="n">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">pmi</span><span class="o">-</span><span class="n">ucx</span>
+<span class="n">date</span>
+<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">julia</span> <span class="o">--</span><span class="n">project</span> <span class="o">../</span><span class="n">CLIMA</span> <span class="n">file_35</span><span class="o">.</span><span class="n">jl</span>
+<span class="n">date</span>
+</pre></div>
+</div>
 </div>
 <div class="section" id="recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">
 <h2>Recipe for running single GPU, single threaded interactive session with CUDA aware MPI<a class="headerlink" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi" title="Permalink to this headline">¶</a></h2>
