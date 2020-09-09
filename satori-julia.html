@@ -516,12 +516,9 @@ julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); P
 </pre></div>
 </div>
 <dl class="docutils">
-<dt>::</dt><dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name" colspan="2">emphasize-lines:</th></tr>
-<tr class="field-odd field"><td>&#160;</td><td class="field-body"><p class="first">using MPI
+<dt>::</dt><dd><p>: :</p>
+<blockquote>
+<div><p>using MPI
 MPI.Init()</p>
 <p>comm = MPI.COMM_WORLD
 rank = MPI.Comm_rank(comm)
@@ -537,11 +534,8 @@ recv_mesg = Array{Float64}(undef, N)</p>
 sreq = MPI.Isend(send_mesg, dst, rank+32, comm)</p>
 <p>stats = MPI.Waitall!([rreq, sreq])</p>
 <p>print(“$rank: Received $src -&gt; $rank = $recv_mesgn”)</p>
-<p class="last">MPI.Barrier(comm)</p>
-</td>
-</tr>
-</tbody>
-</table>
+<p>MPI.Barrier(comm)</p>
+</div></blockquote>
 </dd>
 </dl>
 </div>
