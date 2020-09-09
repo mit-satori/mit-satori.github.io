@@ -512,39 +512,29 @@ julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); P
 <span class="o">|</span>  <span class="mi">1</span><span class="p">:</span> <span class="n">Received</span> <span class="mi">0</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cat foo.jl
-
-::
-
-   using MPI
-   MPI.Init()
-
-   comm = MPI.COMM_WORLD
-   rank = MPI.Comm_rank(comm)
-   size = MPI.Comm_size(comm)
-
-   dst = mod(rank+1, size)
-   src = mod(rank-1, size)
-
-   N = 4
-
-   send_mesg = Array{Float64}(undef, N)
-   recv_mesg = Array{Float64}(undef, N)
-
-   fill!(send_mesg, Float64(rank))
-
-   rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)
-
-   print(&quot;$rank: Sending   $rank -&gt; $dst = $send_mesg\n&quot;)
-   sreq = MPI.Isend(send_mesg, dst, rank+32, comm)
-
-   stats = MPI.Waitall!([rreq, sreq])
-
-   print(&quot;$rank: Received $src -&gt; $rank = $recv_mesg\n&quot;)
-
-   MPI.Barrier(comm)
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">foo</span><span class="o">.</span><span class="n">jl</span>
 </pre></div>
 </div>
+<p>: :</p>
+<blockquote>
+<div><p>using MPI
+MPI.Init()</p>
+<p>comm = MPI.COMM_WORLD
+rank = MPI.Comm_rank(comm)
+size = MPI.Comm_size(comm)</p>
+<p>dst = mod(rank+1, size)
+src = mod(rank-1, size)</p>
+<p>N = 4</p>
+<p>send_mesg = Array{Float64}(undef, N)
+recv_mesg = Array{Float64}(undef, N)</p>
+<p>fill!(send_mesg, Float64(rank))</p>
+<p>rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)</p>
+<p>print(“$rank: Sending   $rank -&gt; $dst = $send_mesgn”)
+sreq = MPI.Isend(send_mesg, dst, rank+32, comm)</p>
+<p>stats = MPI.Waitall!([rreq, sreq])</p>
+<p>print(“$rank: Received $src -&gt; $rank = $recv_mesgn”)</p>
+<p>MPI.Barrier(comm)</p>
+</div></blockquote>
 </div>
 </div>
 
