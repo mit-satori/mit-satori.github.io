@@ -568,7 +568,10 @@ export JULIA_MPI_BINARY=system
 export JULIA_CUDA_USE_BINARYBUILDER=false
 export JULIA_DEPOT_PATH=`pwd`/../.julia
 \rm -fr $JULIA_DEPOT_PATH
-julia -e &#39;using Pkg; Pkg.add(PackageSpec(&quot;Conda&quot;,rev=&quot;maser&quot;)); Pkg.build(&quot;Conda&quot;)&#39;
+julia -e &#39;using Pkg; Pkg.add(PackageSpec(name=&quot;Conda&quot;,rev=&quot;master&quot;)); Pkg.build(&quot;Conda&quot;)&#39;
+julia -e &#39;using Pkg; Pkg.add(&quot;NCDatasets&quot;); Pkg.build(&quot;NCDatasets&quot;)&#39;
+julia -e &#39;using Pkg; Pkg.add(PackageSpec(name=&quot;Dierckx&quot;,rev=&quot;master&quot;)); Pkg.build(&quot;Dierckx&quot;)&#39;
+julia --project=@. -e &#39;using Pkg; Pkg.instantiate(); using ClimateMachine&#39;
 </pre></div>
 </div>
 </li>
