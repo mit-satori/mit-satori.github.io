@@ -541,7 +541,7 @@ sreq = MPI.Isend(send_mesg, dst, rank+32, comm)</p>
 <p>Because Satori is a Power 9 CPU based system some Julia packages require a few extra steps to
 ensure the right binaries are deployed. An example of
 installing and running <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> in a clean enironment
-illustrates some steps</p>
+illustrates some steps that may occaisionally be needed.</p>
 <ul>
 <li><p class="first">Launch a an interactive node session:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
@@ -576,6 +576,11 @@ julia --project=@. -e &#39;using Pkg; Pkg.instantiate(); using ClimateMachine&#3
 </div>
 </li>
 </ul>
+<blockquote>
+<div>In this example the master revision of the Conda and Dierckx packages are used because versions
+with full support for Power 9 were not available and so some small patches had to be introduced.
+Releases of these packages with the patches will be available soon, but the steps shown illustrate
+some of the ways to work around these sorts of occurences generally.</div></blockquote>
 </div>
 </div>
 
