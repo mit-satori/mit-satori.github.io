@@ -543,6 +543,13 @@ ensure the right binaries are deployed. An example of
 installing and running <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> in a clean enironment
 illustrates some steps</p>
 <ol class="arabic">
+<li><p class="first">Launch a an interactive node session:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<ol class="arabic">
 <li><p class="first">Create a fresh directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">myclima</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clima</span><span class="o">/</span><span class="n">climatemachine</span><span class="o">.</span><span class="n">jl</span>
@@ -550,6 +557,9 @@ illustrates some steps</p>
 </pre></div>
 </div>
 </li>
+</ol>
+<ol class="arabic simple">
+<li></li>
 </ol>
 </div>
 </div>
