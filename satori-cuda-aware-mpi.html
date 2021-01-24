@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>&lt;no title&gt; &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Using MPI and CUDA on Satori &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -19,7 +19,7 @@
 
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-software.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-cuda-aware-mpi.html"/>
   
 
   
@@ -39,7 +39,9 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example machine learning LSF jobs" href="lsf-templates/satori-lsf-ml-examples.html" />
+    <link rel="prev" title="Julia on Satori" href="satori-julia.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -84,7 +86,7 @@
               
             
             
-              <ul>
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -168,16 +170,16 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-julia.html#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#compiling">Compiling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#submiting-a-batch-script">Submiting a batch script</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#batch-script-header">Batch script header</a></li>
-<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#assigning-gpus-to-mpi-ranks">Assigning GPUs to MPI ranks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#running-the-mpi-program-within-the-batch-script">Running the MPI program within the batch script</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using MPI and CUDA on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#compiling">Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submiting-a-batch-script">Submiting a batch script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#batch-script-header">Batch script header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#assigning-gpus-to-mpi-ranks">Assigning GPUs to MPI ranks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-mpi-program-within-the-batch-script">Running the MPI program within the batch script</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#a-complete-example-slurm-batch-script">A complete example SLURM batch script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-complete-example-slurm-batch-script">A complete example SLURM batch script</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
@@ -398,14 +400,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>&lt;no title&gt;</li>
+      <li>Using MPI and CUDA on Satori</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-software.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-cuda-aware-mpi.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -419,12 +421,213 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="using-mpi-and-cuda-on-satori">
+<h1>Using MPI and CUDA on Satori<a class="headerlink" href="#using-mpi-and-cuda-on-satori" title="Permalink to this headline">¶</a></h1>
+<p>CUDA aware MPI from Slurm batch scripts is supported through MPI modules using OpenMPI. To use CUDA aware MPI codes, and libraries that
+involve MPI, may need to be recompiled with the correct OpenMPI modules.</p>
+<div class="section" id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
+<p>The following modules are needed to CUDA aware MPI codes</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
+module add spack
+module add cuda/10.1
+module load openmpi/3.1.4-pmi-cuda-ucx
+</pre></div>
+</div>
+</div>
+<div class="section" id="compiling">
+<h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
+<p>Codes and libraries that make MPI calls against CUDA device memory pointers need
+to compiled using the MPI compilation wrappers e.g. <code class="docutils literal notranslate"><span class="pre">mpicc</span></code>, <code class="docutils literal notranslate"><span class="pre">mpiCC</span></code>, <code class="docutils literal notranslate"><span class="pre">mpicxx</span></code>, <code class="docutils literal notranslate"><span class="pre">mpic++</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mpif77</span></code>, <code class="docutils literal notranslate"><span class="pre">mpif90</span></code>, <code class="docutils literal notranslate"><span class="pre">mpifort</span></code>. The CUDA runtime library needs to be added as a link
+library, e.g. <code class="docutils literal notranslate"><span class="pre">-lcudart</span></code>.</p>
+<p>A typical compilation setup is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
+module add spack
+module add cuda/10.1
+module load openmpi/3.1.4-pmi-cuda-ucx
+mpiCC MYFILE.cc -lcudart
+</pre></div>
+</div>
+</div>
+<div class="section" id="submiting-a-batch-script">
+<h2>Submiting a batch script<a class="headerlink" href="#submiting-a-batch-script" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="batch-script-header">
+<h3>Batch script header<a class="headerlink" href="#batch-script-header" title="Permalink to this headline">¶</a></h3>
+<p>The following example SLURM batch script heading illustrates requesting 8 GPUs on 2 nodes with exclusive access. In this
+example we are want to have one MPI rank for each GPU, so we set <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">ntasks-per-core</span></code> and <code class="docutils literal notranslate"><span class="pre">threads-per-core</span></code>
+to <code class="docutils literal notranslate"><span class="pre">1</span></code>.  The start of the bacth scripts selects the modules needed for OpenMPI CUDA aware MPI with SLURM integration.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --ntasks-per-core=1</span>
+<span class="c1">#SBATCH --threads-per-core=1</span>
+<span class="c1">#SBATCH --mem=1T</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH --time 00:05:00</span>
+
+module purge all
+module add spack
+module add cuda/10.1
+module load openmpi/3.1.4-pmi-cuda-ucx
+</pre></div>
+</div>
+</div>
+<div class="section" id="assigning-gpus-to-mpi-ranks">
+<h3>Assigning GPUs to MPI ranks<a class="headerlink" href="#assigning-gpus-to-mpi-ranks" title="Permalink to this headline">¶</a></h3>
+<p>The batch script will allocated 4 GPUs on each node to the batch session. Individual MPI ranks then need to
+be attached to specific GPUs to run in parallel. There are 2 ways to do this.</p>
+<ol class="arabic">
+<li><p class="first">Attach GPU to a rank using a bash script.</p>
+<p>In this approach a bash script is written that is used as a launcher for the MPI program to be run. This
+bash script modifies the environment variable <code class="docutils literal notranslate"><span class="pre">CUDA_VISIBLE_DEVICES</span></code> so that the MPI program will only see
+the GPU it has been allocated. An example script is shown below:</p>
+</li>
+</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># Choose a CUDA device based on ${SLURM_LOCALID}</span>
+<span class="c1">#</span>
+<span class="nv">ngpu</span><span class="o">=</span><span class="sb">`</span>nvidia-smi -L <span class="p">|</span> grep UUID <span class="p">|</span> wc -l<span class="sb">`</span>
+<span class="nv">mygpu</span><span class="o">=</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_LOCALID</span><span class="si">}</span> <span class="o">%</span> <span class="si">${</span><span class="nv">ngpu</span><span class="si">}</span> <span class="k">))</span>
+<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="si">${</span><span class="nv">mygpu</span><span class="si">}</span>
+<span class="nb">exec</span> <span class="nv">$*</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p class="first">Attach a GPU to a rank using CUDA library runtime code.</p>
+<p>In this approach the MPI program source must be modified to include GPU device selection code
+before <code class="docutils literal notranslate"><span class="pre">MPI_Init()</span></code> is invoked. An example code fragment for GPU device selection (based on the
+environment variable SLURM_LOCALID) is shown below:</p>
+</li>
+</ol>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span> <span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span> <span class="p">{</span>
+
+<span class="kt">char</span> <span class="o">*</span> <span class="n">localRankStr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
+<span class="kt">int</span> <span class="n">localrank</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">devCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mydev</span><span class="p">;</span>
+<span class="c1">// We extract the local rank initialization using an environment variable</span>
+<span class="k">if</span> <span class="p">((</span><span class="n">localRankStr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;SLURM_LOCALID&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
+  <span class="n">localrank</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">localRankStr</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devCount</span><span class="p">);</span>
+<span class="n">mydev</span><span class="o">=</span><span class="n">localrank</span> <span class="o">%</span> <span class="n">devCount</span><span class="p">;</span>
+<span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">mydev</span><span class="p">);</span>
+      <span class="o">:</span>
+      <span class="o">:</span>
+<span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+      <span class="o">:</span>
+      <span class="o">:</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-the-mpi-program-within-the-batch-script">
+<h3>Running the MPI program within the batch script<a class="headerlink" href="#running-the-mpi-program-within-the-batch-script" title="Permalink to this headline">¶</a></h3>
+<p>To run the MPI program the SLURM command <code class="docutils literal notranslate"><span class="pre">srun</span></code> is used (and not <code class="docutils literal notranslate"><span class="pre">mpirun</span></code> or <code class="docutils literal notranslate"><span class="pre">mpiexec</span></code>). The <code class="docutils literal notranslate"><span class="pre">srun</span></code> command
+works like the MPI run or exec commands but it creates the environment variables needed to select which rank
+works with which GPU prior to any calls to MIT_Init(). An example of using srun with a launch script is shown
+below.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun ./launch.sh ./a.out
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="a-complete-example-slurm-batch-script">
+<h2>A complete example SLURM batch script<a class="headerlink" href="#a-complete-example-slurm-batch-script" title="Permalink to this headline">¶</a></h2>
+<p>The script below shows a working full example of the steps for CUDA and MPI using multiple GPUs on multiple nodes under SLURM. The example
+shows both the bash script launcher and the CUDA runtime call approaches for assigning GPUs to ranks. Only one of these approaches is
+needed in practice, both are shown to illustrate the two approaches.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#</span>
+<span class="c1"># Example SLURM batch script to run example CUDA aware MPI program with one rank on</span>
+<span class="c1"># each GPU, using two nodes with 4 GPUs on each node.</span>
+<span class="c1">#</span>
+<span class="c1">#SBATCH --nodes=2</span>
+<span class="c1">#SBATCH --ntasks-per-node=4</span>
+<span class="c1">#SBATCH --gres=gpu:4</span>
+<span class="c1">#SBATCH --cpus-per-task=1</span>
+<span class="c1">#SBATCH --ntasks-per-core=1</span>
+<span class="c1">#SBATCH --threads-per-core=1</span>
+<span class="c1">#SBATCH --mem=1T</span>
+<span class="c1">#SBATCH --exclusive</span>
+<span class="c1">#SBATCH --time 00:05:00</span>
+
+module purge all
+module add spack
+module add cuda/10.1
+module load openmpi/3.1.4-pmi-cuda-ucx
+
+cat &gt; launch.sh <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
+<span class="s">#!/bin/bash</span>
+
+<span class="s"># Choose a CUDA device number ($mygpu) based on ${SLURM_LOCALID}, cycling through</span>
+<span class="s"># the available GPU devices ($ngpu) on the node.</span>
+<span class="s">ngpu=`nvidia-smi -L | grep UUID | wc -l`</span>
+<span class="s">mygpu=$((${SLURM_LOCALID} % ${ngpu} ))</span>
+<span class="s">export CUDA_VISIBLE_DEVICES=${mygpu}</span>
+
+<span class="s"># Run MPI program with any arguments</span>
+<span class="s">exec $*</span>
+<span class="s">EOFA</span>
+
+cat &gt; x.cc <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
+<span class="s">#include &lt;mpi.h&gt;</span>
+<span class="s">#include &lt;stdio.h&gt;</span>
+<span class="s">#include &lt;cuda_runtime.h&gt;</span>
+
+<span class="s">int main(int argc, char** argv, char *envp[]) {</span>
+
+<span class="s">  char * localRankStr = NULL;</span>
+<span class="s">  int localrank = 0, devCount = 0, mydev;</span>
+
+<span class="s">  // We extract the local rank initialization using an environment variable</span>
+<span class="s">  if ((localRankStr = getenv(&quot;SLURM_LOCALID&quot;)) != NULL) {</span>
+<span class="s">    localrank = atoi(localRankStr);</span>
+<span class="s">  }</span>
+<span class="s">  cudaGetDeviceCount(&amp;devCount);</span>
+<span class="s">  mydev=localrank % devCount;</span>
+<span class="s">  cudaSetDevice(mydev);</span>
+
+<span class="s">  MPI_Init(NULL, NULL);</span>
+<span class="s">  int world_size;</span>
+<span class="s">  MPI_Comm_size(MPI_COMM_WORLD, &amp;world_size);</span>
+<span class="s">  int world_rank;</span>
+<span class="s">  MPI_Comm_rank(MPI_COMM_WORLD, &amp;world_rank);</span>
+<span class="s">  char processor_name[MPI_MAX_PROCESSOR_NAME];</span>
+<span class="s">  int name_len;</span>
+<span class="s">  MPI_Get_processor_name(processor_name, &amp;name_len);</span>
+
+<span class="s">  // Let check which CUDA device we have</span>
+<span class="s">  char pciBusId[13];</span>
+<span class="s">  cudaDeviceGetPCIBusId ( pciBusId, 13, mydev );</span>
+<span class="s">  printf(&quot;MPI rank %d of %d on host %s is using GPU with PCI id %s.\n&quot;,world_rank,world_size,processor_name,pciBusId);</span>
+
+<span class="s">  MPI_Finalize();</span>
+<span class="s">}</span>
+<span class="s">EOFA</span>
+
+mpic++ x.cc -lcudart
+
+srun ./launch.sh ./a.out
+</pre></div>
+</div>
+</div>
+</div>
+
 
            </div>
            
           </div>
           <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="lsf-templates/satori-lsf-ml-examples.html" class="btn btn-neutral float-right" title="Example machine learning LSF jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="satori-julia.html" class="btn btn-neutral float-left" title="Julia on Satori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 
