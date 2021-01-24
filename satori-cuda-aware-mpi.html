@@ -180,6 +180,7 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#a-complete-example-slurm-batch-script">A complete example SLURM batch script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
@@ -423,11 +424,12 @@
             
   <div class="section" id="using-mpi-and-cuda-on-satori">
 <h1>Using MPI and CUDA on Satori<a class="headerlink" href="#using-mpi-and-cuda-on-satori" title="Permalink to this headline">¶</a></h1>
-<p>CUDA aware MPI from Slurm batch scripts is supported through MPI modules using OpenMPI. To use CUDA aware MPI codes, and libraries that
+<p>Leveraging multiple GPUs in a CUDA program with MPI is supported by CUDA aware MPI installations on Satori.
+CUDA aware MPI from Slurm batch scripts is supported through system MPI modules build on OpenMPI. To use CUDA aware MPI, source codes and libraries that
 involve MPI, may need to be recompiled with the correct OpenMPI modules.</p>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h2>
-<p>The following modules are needed to CUDA aware MPI codes</p>
+<p>The following modules are needed to work with CUDA aware MPI codes</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
 module add spack
 module add cuda/10.1
@@ -438,8 +440,9 @@ module load openmpi/3.1.4-pmi-cuda-ucx
 <div class="section" id="compiling">
 <h2>Compiling<a class="headerlink" href="#compiling" title="Permalink to this headline">¶</a></h2>
 <p>Codes and libraries that make MPI calls against CUDA device memory pointers need
-to compiled using the MPI compilation wrappers e.g. <code class="docutils literal notranslate"><span class="pre">mpicc</span></code>, <code class="docutils literal notranslate"><span class="pre">mpiCC</span></code>, <code class="docutils literal notranslate"><span class="pre">mpicxx</span></code>, <code class="docutils literal notranslate"><span class="pre">mpic++</span></code>,
-<code class="docutils literal notranslate"><span class="pre">mpif77</span></code>, <code class="docutils literal notranslate"><span class="pre">mpif90</span></code>, <code class="docutils literal notranslate"><span class="pre">mpifort</span></code>. The CUDA runtime library needs to be added as a link
+to be compiled using the MPI compilation wrappers e.g. <code class="docutils literal notranslate"><span class="pre">mpicc</span></code>, <code class="docutils literal notranslate"><span class="pre">mpiCC</span></code>, <code class="docutils literal notranslate"><span class="pre">mpicxx</span></code>, <code class="docutils literal notranslate"><span class="pre">mpic++</span></code>,
+<code class="docutils literal notranslate"><span class="pre">mpif77</span></code>, <code class="docutils literal notranslate"><span class="pre">mpif90</span></code>, <code class="docutils literal notranslate"><span class="pre">mpifort</span></code> from the <code class="docutils literal notranslate"><span class="pre">openmpi/3.1.4-pmi-cuda-ucx</span></code> OpenMPI
+module. The CUDA runtime library needs to be added as a link
 library, e.g. <code class="docutils literal notranslate"><span class="pre">-lcudart</span></code>.</p>
 <p>A typical compilation setup is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
@@ -455,8 +458,8 @@ mpiCC MYFILE.cc -lcudart
 <div class="section" id="batch-script-header">
 <h3>Batch script header<a class="headerlink" href="#batch-script-header" title="Permalink to this headline">¶</a></h3>
 <p>The following example SLURM batch script heading illustrates requesting 8 GPUs on 2 nodes with exclusive access. In this
-example we are want to have one MPI rank for each GPU, so we set <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">ntasks-per-core</span></code> and <code class="docutils literal notranslate"><span class="pre">threads-per-core</span></code>
-to <code class="docutils literal notranslate"><span class="pre">1</span></code>.  The start of the bacth scripts selects the modules needed for OpenMPI CUDA aware MPI with SLURM integration.</p>
+example the <em>#SBATCH</em> control commands are requesting one MPI rank for each GPU, so <code class="docutils literal notranslate"><span class="pre">cpus-per-task</span></code>, <code class="docutils literal notranslate"><span class="pre">ntasks-per-core</span></code> and <code class="docutils literal notranslate"><span class="pre">threads-per-core</span></code>
+are set to <code class="docutils literal notranslate"><span class="pre">1</span></code>.  The start of the batch scripts selects the modules needed for OpenMPI CUDA aware MPI with SLURM integration.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH --nodes=2</span>
 <span class="c1">#SBATCH --ntasks-per-node=4</span>
@@ -477,8 +480,8 @@ module load openmpi/3.1.4-pmi-cuda-ucx
 </div>
 <div class="section" id="assigning-gpus-to-mpi-ranks">
 <h3>Assigning GPUs to MPI ranks<a class="headerlink" href="#assigning-gpus-to-mpi-ranks" title="Permalink to this headline">¶</a></h3>
-<p>The batch script will allocated 4 GPUs on each node to the batch session. Individual MPI ranks then need to
-be attached to specific GPUs to run in parallel. There are 2 ways to do this.</p>
+<p>The batch script will be allocated 4 GPUs on each node in the batch session. Individual MPI ranks then need to
+attach to specific GPUs to run in parallel. There are two ways to do this.</p>
 <ol class="arabic">
 <li><p class="first">Attach GPU to a rank using a bash script.</p>
 <p>In this approach a bash script is written that is used as a launcher for the MPI program to be run. This
@@ -533,6 +536,10 @@ works like the MPI run or exec commands but it creates the environment variables
 works with which GPU prior to any calls to MIT_Init(). An example of using srun with a launch script is shown
 below.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun ./launch.sh ./a.out
+</pre></div>
+</div>
+<p>the equivalent without a launch script is</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun ./a.out
 </pre></div>
 </div>
 </div>
@@ -616,6 +623,12 @@ mpic++ x.cc -lcudart
 srun ./launch.sh ./a.out
 </pre></div>
 </div>
+</div>
+<div class="section" id="using-alternate-mpi-builds">
+<h2>Using alternate MPI builds<a class="headerlink" href="#using-alternate-mpi-builds" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to build custom MPI modules in individual user accounts using the
+spack ( <a class="reference external" href="https://spack.readthedocs.io/en/latest/" target="_blank">https://spack.readthedocs.io/en/latest/</a> ) package management tool. These builds should use the UCX communcation
+features and PMI job management features to integrate with SLURM and the Satori high-speed network.</p>
 </div>
 </div>
 
