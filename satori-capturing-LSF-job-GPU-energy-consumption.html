@@ -433,28 +433,35 @@ the GPUs to a file.  Issue the following command <cite>nvidia-smi -h</cite> to s
 The pre-execution processing script below first calls the <cite>nvidia-smi dmon</cite> command and then executes another bash script
 that watches for the pid of the batch or interactive shell to exit.  The <cite>watch.sh</cite> is listed below the <cite>pre-exec.sh</cite>
 script.</p>
-<p><cite>pre-exec.sh</cite> script:</p>
-<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>bash
-#!/bin/bash</p>
-<p>su $LSFUSER -c “nvidia-smi dmon -i 0 -s p -o DT -f /nobackup/users/$LSFUSER/power.$LSB_JOBID.$LSB_JOBINDEX.txt 2&gt;&amp;1 &gt;/dev/null &lt; /dev/zero &amp;”
-su $LSFUSER -c “/nobackup/users/$LSFUSER/watch.sh $LSB_JOBID &amp;”</p>
-<p><a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<p><code class="docutils literal notranslate"><span class="pre">pre-exec.sh</span></code> script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+
+su <span class="nv">$LSFUSER</span> -c <span class="s2">&quot;nvidia-smi dmon -i 0 -s p -o DT -f /nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/power.</span><span class="nv">$LSB_JOBID</span><span class="s2">.</span><span class="nv">$LSB_JOBINDEX</span><span class="s2">.txt 2&gt;&amp;1 &gt;/dev/null &lt; /dev/zero &amp;&quot;</span>
+su <span class="nv">$LSFUSER</span> -c <span class="s2">&quot;/nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/watch.sh </span><span class="nv">$LSB_JOBID</span><span class="s2"> &amp;&quot;</span>
+</pre></div>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">watch.sh</span></code> script:</p>
-<p><a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a>bash
-#!/bin/bash
-echo “Watch is running” &gt;&gt; /nobackup/users/$LSFUSER/watch.txt</p>
-<p>sleep 20
-jobid=$1</p>
-<p>echo $(bjobs -l $jobid | awk ‘/PIDs/ {print $NF}’) &gt;&gt; /nobackup/users/$LSFUSER/watch.txt
-echo $(bjobs -l $jobid | awk ‘/PIDs/ {print $NF}’ | tail -n 1) &gt;&gt; /nobackup/users/$LSFUSER/watch.txt</p>
-<p>watchpid=$(bjobs -l $jobid | awk ‘/PIDs/ {print $NF}’ | tail -n 1)
-killpid=$(ps uxwww | grep nvidia | grep -v grep | awk ‘{print $2}’)</p>
-<p>echo “jobid: $jobid, watchpid: $watchpid, killpid: $killpid” &gt;&gt; /nobackup/users/$LSFUSER/watch.txt</p>
-<p>while sleep 1; do kill -0 $watchpid || break; done</p>
-<p>echo “Done waiting” &gt;&gt; /nobackup/users/$LSFUSER/watch.txt
-kill -2 $killpid
-exit 0</p>
-<p><a href="#id13"><span class="problematic" id="id14">``</span></a><a href="#id15"><span class="problematic" id="id16">`</span></a></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Watch is running&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+
+sleep <span class="m">20</span>
+<span class="nv">jobid</span><span class="o">=</span><span class="nv">$1</span>
+
+<span class="nb">echo</span> <span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span><span class="k">)</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">echo</span> <span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+
+<span class="nv">watchpid</span><span class="o">=</span><span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span>
+<span class="nv">killpid</span><span class="o">=</span><span class="k">$(</span>ps uxwww <span class="p">|</span> grep nvidia <span class="p">|</span> grep -v grep <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;jobid: </span><span class="nv">$jobid</span><span class="s2">, watchpid: </span><span class="nv">$watchpid</span><span class="s2">, killpid: </span><span class="nv">$killpid</span><span class="s2">&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+
+<span class="k">while</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">do</span> <span class="nb">kill</span> -0 <span class="nv">$watchpid</span> <span class="o">||</span> break<span class="p">;</span> <span class="k">done</span>
+
+<span class="nb">echo</span> <span class="s2">&quot;Done waiting&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">kill</span> -2 <span class="nv">$killpid</span>
+<span class="nb">exit</span> <span class="m">0</span>
+</pre></div>
+</div>
 </div>
 
 

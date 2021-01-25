@@ -433,10 +433,10 @@
 <div class="section" id="using-mrsync">
 <h1>Using mrsync<a class="headerlink" href="#using-mrsync" title="Permalink to this headline">¶</a></h1>
 <p><a class="reference external" href="https://github.com/jbd/msrsync" target="_blank">https://github.com/jbd/msrsync</a></p>
-<p>To install
-.. code:: bash</p>
-<blockquote>
-<div>wget <a class="reference external" href="https://raw.githubusercontent.com/jbd/msrsync/master/msrsync" target="_blank">https://raw.githubusercontent.com/jbd/msrsync/master/msrsync</a> &amp;&amp; chmod +x msrsync</div></blockquote>
+<p>To install</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/jbd/msrsync/master/msrsync <span class="o">&amp;&amp;</span> chmod +x msrsync
+</pre></div>
+</div>
 <p>To use</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ msrsync --help
   usage: msrsync <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>--rsync <span class="s2">&quot;rsync-options-string&quot;</span><span class="o">]</span> SRCDIR <span class="o">[</span>SRCDIR2...<span class="o">]</span> DESTDIR
@@ -452,30 +452,15 @@ msrsync options:
   --stats               show additional stats
   -d, --dry-run         <span class="k">do</span> not run rsync processes
   -v, --version         print version
+ rsync options:
+  -r, --rsync ...       MUST be last option. rsync options as a quoted string <span class="o">[</span><span class="s2">&quot;-aS --numeric-ids&quot;</span><span class="o">]</span>. The <span class="s2">&quot;--from0 --files-from=... --quiet --verbose --stats --log-file=...&quot;</span> options will ALWAYS be added, no
+                          matter what. Be aware that this will affect all rsync *from/filter files <span class="k">if</span> you want to use them. See rsync<span class="o">(</span><span class="m">1</span><span class="o">)</span> manpage <span class="k">for</span> details.
+ self-test options:
+  -t, --selftest        run the integrated unit and functional tests
+  -e, --bench           run benchmarks
+  -g, --benchshm        run benchmarks <span class="k">in</span> /dev/shm or the directory <span class="k">in</span> <span class="nv">$SHM</span> environment variable
 </pre></div>
 </div>
-<dl class="docutils">
-<dt>rsync options:</dt><dd><dl class="docutils">
-<dt>-r, –rsync …       MUST be last option. rsync options as a quoted string [“-aS –numeric-ids”]. The “–from0 –files-from=… –quiet –verbose –stats –log-file=…” options will ALWAYS be added, no</dt><dd>matter what. Be aware that this will affect all rsync <a href="#id1"><span class="problematic" id="id2">*</span></a>from/filter files if you want to use them. See rsync(1) manpage for details.</dd>
-</dl>
-</dd>
-<dt>self-test options:</dt><dd><table class="docutils option-list" frame="void" rules="none">
-<col class="option" />
-<col class="description" />
-<tbody valign="top">
-<tr><td class="option-group">
-<kbd><span class="option">-t</span>, <span class="option">--selftest</span></kbd></td>
-<td>run the integrated unit and functional tests</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-e</span>, <span class="option">--bench</span></kbd></td>
-<td>run benchmarks</td></tr>
-<tr><td class="option-group">
-<kbd><span class="option">-g</span>, <span class="option">--benchshm</span></kbd></td>
-<td>run benchmarks in /dev/shm or the directory in $SHM environment variable</td></tr>
-</tbody>
-</table>
-</dd>
-</dl>
 <p>Example:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>[root@service0001 kvtran-test]# ./msrsync -p 24 --stats --rsync &quot;-a --inplace&quot; /data/ImageNet/ILSVRC2012 ILSVRC2012-service0001
 Status: SUCCESS
@@ -500,54 +485,57 @@ Total time: 424.5s
 <p>The copy time is 424.5s using msrsync versus 27m34.417s with cp command.</p>
 <p>For remove the directory,weI used rsync and it took 8 minutes to remove a directory with 1000 subdirectories and  total of 1281167 files on POK env.</p>
 <p>We created an empty directory and used it with rsync –delete as the example below:</p>
-<p>-bash-4.2$ time rsync -a –delete empty-dir/ train2-24/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bash-4.2$ <span class="nb">time</span> rsync -a --delete empty-dir/ train2-24/
 real    8m25.144s
 user    0m2.756s
-sys     0m35.559s</p>
+sys     0m35.559s
+</pre></div>
+</div>
 </div>
 <div class="section" id="using-aspera-for-remote-file-transfer-to-satori-cluster">
 <h1>Using Aspera for remote file transfer to Satori cluster<a class="headerlink" href="#using-aspera-for-remote-file-transfer-to-satori-cluster" title="Permalink to this headline">¶</a></h1>
 <p>Note: Aspera server is enabled on either satori-login-001.mit.edu or satori-login-002.mit.edu login nodes.</p>
-<ol class="arabic">
-<li><p class="first">Install Aspera client or connect on your local machine</p>
+<ol class="arabic simple">
+<li>Install Aspera client or connect on your local machine</li>
+</ol>
 <ul class="simple">
-<li>For Mac, Windows or Linux-x86, please download and install Aspera connect from <a class="reference external" href="https://downloads.asperasoft.com/en/downloads/8?list" target="_blank">https://downloads.asperasoft.com/en/downloads/8?list</a></li>
-</ul>
-<p>To install on Mac or Windows, please following the software installation step to complete the installation. For Linux as non-root user, untar the gz file and run the install script file. After the installation is complete, it will be located at your home directory .aspera/connect</p>
-<ul class="simple">
-<li>For PowerPC (ppc64le) system, please download and install Aspera desktop client from <a class="reference external" href="https://downloads.asperasoft.com/en/downloadsArchive/2" target="_blank">https://downloads.asperasoft.com/en/downloadsArchive/2</a></li>
-</ul>
-<p>To install desktop client on Power system after download deb or rpm file:</p>
-<blockquote>
-<div><ul class="simple">
+<li><dl class="first docutils">
+<dt>For Mac, Windows or Linux-x86, please download and install Aspera connect from <a class="reference external" href="https://downloads.asperasoft.com/en/downloads/8?list" target="_blank">https://downloads.asperasoft.com/en/downloads/8?list</a></dt><dd>To install on Mac or Windows, please following the software installation step to complete the installation. For Linux as non-root user, untar the gz file and run the install script file. After the installation is complete, it will be located at your home directory .aspera/connect</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>For PowerPC (ppc64le) system, please download and install Aspera desktop client from <a class="reference external" href="https://downloads.asperasoft.com/en/downloadsArchive/2" target="_blank">https://downloads.asperasoft.com/en/downloadsArchive/2</a></dt><dd>To install desktop client on Power system after download deb or rpm file:</dd>
+</dl>
+</li>
 <li>on an Ubuntu system</li>
 </ul>
-<p>sudo apt-get install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.deb</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.deb
+</pre></div>
+</div>
 <ul class="simple">
 <li>RHEL|CentOS</li>
 </ul>
-<p>sudo yum install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.rpm</p>
-</div></blockquote>
-</li>
-</ol>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.rpm
+</pre></div>
+</div>
 <p>2. Transfer files using Aspera connect or client
 Note: &lt;asperauser&gt; is your userid on Satori</p>
-<blockquote>
-<div><ul>
-<li><p class="first">on Windows</p>
-<blockquote>
-<div><p>ascp.exe –P 22 –mode=send|recv  pathtofile.txt  &lt;asperauser&gt;&#64;satori-login-002.mit.edu:/path/to/file.txt</p>
-</div></blockquote>
-</li>
-<li><p class="first">on Mac or Linux</p>
-<blockquote>
-<div><p>ascp –P 22 –mode=send|recv  /path/to/file.txt  &lt;asperauser&gt;&#64;satori-login-002.mit.edu:/path/to/file.txt</p>
-<p>The path to ascp command is located at $HOME/.aspera/connect/bin</p>
-<p>Here4’s an estimator for Aspera transfer times <a class="reference external" href="https://www.ibm.com/aspera/file-transfer-calculator/" target="_blank">https://www.ibm.com/aspera/file-transfer-calculator/</a></p>
-</div></blockquote>
-</li>
+<ul class="simple">
+<li>on Windows</li>
 </ul>
-</div></blockquote>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp.exe –P <span class="m">22</span> –mode<span class="o">=</span>send<span class="p">|</span>recv  <span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\f</span>ile.txt  &lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
+</pre></div>
+</div>
+<ul class="simple">
+<li>on Mac or Linux</li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp –P 22 –mode=send|recv  /path/to/file.txt  &lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
+
+The path to ascp command is located at $HOME/.aspera/connect/bin
+
+Here&#39;s an estimator for Aspera transfer times https://www.ibm.com/aspera/file-transfer-calculator/
+</pre></div>
+</div>
 <p>For technical support, Support &lt;<a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a>&gt;</p>
 </div>
 

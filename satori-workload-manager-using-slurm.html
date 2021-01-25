@@ -467,6 +467,9 @@ line are what makes the job “interactive batch”: -Is followed by a shell
 name. For example, to request an interactive batch job (with bash as the
 shell) equivalent to the sample batch script above, you would use the
 command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -l --pty /bin/bash
+</pre></div>
+</div>
 <p>This will request an AC922 node with 4x GPUs from the Satori (normal
 queue) for 1 hour.</p>
 <p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use</p>

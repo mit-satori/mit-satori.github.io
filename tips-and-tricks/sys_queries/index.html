@@ -660,7 +660,9 @@ Job &lt;<span class="m">34446</span>&gt; is submitted to queue &lt;normal&gt;.
 </pre></div>
 </div>
 <p>to</p>
-<p>mpirun helper.sh &gt; my_out</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun helper.sh &gt; my_out
+</pre></div>
+</div>
 <p>where the content of helper.sh (which must be executable: i.e., chmod +x helper.sh) is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</span><span class="si">}</span>

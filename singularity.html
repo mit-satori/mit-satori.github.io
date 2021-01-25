@@ -450,20 +450,13 @@ singularity pull docker://centos:7
 <h2>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Pull your image</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>If you are using an existing image, confirm that arch is <strong>ppc64le</strong></li>
 </ul>
-</div></blockquote>
 </div>
 <div class="section" id="interactive-allocation">
 <h2>Interactive Allocation:<a class="headerlink" href="#interactive-allocation" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Get an allocation (for interactive allocation):</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>Consider the size of your workload, do you need CPU? memory? GPU?</li>
 <li>These are all specified in the bsub request, here is a good <a class="footnote-reference" href="#id4" id="id1">[1]</a></li>
 <li>For example, here is a <cite>bsub</cite> to request allocation for <strong>4 GPUS</strong>, via the <strong>normal</strong> queue, launching an interactive session using <strong>bash</strong> as terminal</li>
@@ -471,19 +464,14 @@ singularity pull docker://centos:7
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
 </pre></div>
 </div>
-</div></blockquote>
 <ul class="simple">
 <li>Submit your payload</li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>Using interactive allocation, we are allocated a node - your interactions with singularity will be generally standard , just like you would in any environments</li>
 <li>Remember you do not have <cite>sudo</cite> access on this cluster, this might impact your workflow</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> centos_7.sif ls /
 </pre></div>
 </div>
-</div></blockquote>
 </div>
 <div class="section" id="non-interactive-batch-mode">
 <h2>Non interactive / batch mode<a class="headerlink" href="#non-interactive-batch-mode" title="Permalink to this headline">¶</a></h2>
@@ -491,9 +479,6 @@ singularity pull docker://centos:7
 <li>Workflow is similar to interactive allocation, however we need to create an application profile prior to submitting the workload</li>
 <li>This mode might be better for headless / non-interactive workloads as the resources can be more easily allocated to the workload</li>
 <li>Create an application profile <a class="footnote-reference" href="#id5" id="id2">[2]</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>For example</li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Begin Application
@@ -503,18 +488,13 @@ singularity pull docker://centos:7
 End Application
 </pre></div>
 </div>
-</div></blockquote>
 <ul class="simple">
 <li>Submit the workload via the application profile <a class="footnote-reference" href="#id6" id="id3">[3]</a></li>
-</ul>
-<blockquote>
-<div><ul class="simple">
 <li>For example</li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsub</span> <span class="o">-</span><span class="n">app</span> <span class="n">singapp</span> <span class="o">./</span><span class="n">myjob</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
-</div></blockquote>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
