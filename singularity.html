@@ -436,7 +436,7 @@ singularity pull docker://centos:7
 <ul class="simple">
 <li>Get an allocation, for example:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -l --pty /bin/bash
 </pre></div>
 </div>
 <ul class="simple">
@@ -461,7 +461,7 @@ singularity pull docker://centos:7
 <li>These are all specified in the bsub request, here is a good <a class="footnote-reference" href="#id4" id="id1">[1]</a></li>
 <li>For example, here is a <cite>bsub</cite> to request allocation for <strong>4 GPUS</strong>, via the <strong>normal</strong> queue, launching an interactive session using <strong>bash</strong> as terminal</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -l --pty /bin/bash
 </pre></div>
 </div>
 <ul class="simple">
@@ -492,7 +492,7 @@ End Application
 <li>Submit the workload via the application profile <a class="footnote-reference" href="#id6" id="id3">[3]</a></li>
 <li>For example</li>
 </ul>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsub</span> <span class="o">-</span><span class="n">app</span> <span class="n">singapp</span> <span class="o">./</span><span class="n">myjob</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sbatch</span> <span class="n">singapp</span> <span class="o">./</span><span class="n">myjob</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <table class="docutils footnote" frame="void" id="id4" rules="none">
