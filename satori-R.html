@@ -174,6 +174,8 @@
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-with-r">Getting Started with R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-packages">Installing Packages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#a-simple-batch-script-example">A Simple Batch Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#r-and-python">R and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#running-r-in-a-container">Running R in a container</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
@@ -453,6 +455,53 @@
 </div>
 <div class="section" id="a-simple-batch-script-example">
 <h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline">¶</a></h2>
+<p>Here is a simple example of a batch script for running a small R job.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="c1">#SBATCH -J my_r_job</span>
+<span class="c1">#SBATCH -o my_r_job.out</span>
+<span class="c1">#SBATCH -e my_r_job.err</span>
+<span class="c1">#SBATCH --mail-user=XXXXXXX@mit.edu</span>
+<span class="c1">#SBATCH --mail-type=ALL</span>
+<span class="c1">#SBATCH --gres=gpu:1</span>
+<span class="c1">#SBATCH --nodes=1</span>
+<span class="c1">#SBATCH --mem=50G</span>
+<span class="c1">#SBATCH --time=2:00:00</span>
+module add spack-flat
+module add r
+Rscript script.R
+</pre></div>
+</div>
+</div>
+<div class="section" id="r-and-python">
+<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this headline">¶</a></h2>
+<p>With the R Spack build, it is possible to interface between R and Python using <cite>rpy2</cite>. However, as this uses multiple environments, it may break things.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load spack-flat
+module load r
+conda activate <span class="o">{</span>env_name<span class="o">}</span>
+<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3 -m pip install rpy2
+<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3 -c <span class="s2">&quot;import rpy2&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="running-r-in-a-container">
+<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible to run R within a container, which has the advantage of letting you work with R in a more closed system. This involves pulling the <cite>docker://ppc64le/r-base</cite> container, which can be done by</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
+<span class="go">singularity pull r-base.img docker://ppc64le/r-base</span>
+</pre></div>
+</div>
+<p>For installation and other interactive tasks you can launch the container in interactive mode</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
+<span class="go">singularity shell r-base.img</span>
+<span class="go">R</span>
+<span class="go">install.packages(&quot;ggplot2&quot;)</span>
+</pre></div>
+</div>
+<p>You can also run R scripts by executing the container. The following example also binds a local folder <cite>/nobackup/users/{username}/project_folder</cite> to the container as <cite>/project_folder</cite> to allow for reading and writing data to disk.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
+<span class="go">singularity exec --bind /nobackup/users/$USER/project_folder:/project_folder r-base.img Rscript script.R</span>
+</pre></div>
+</div>
 </div>
 </div>
 
