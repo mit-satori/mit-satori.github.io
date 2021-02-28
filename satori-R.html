@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Satori Basics &mdash; MIT Satori User Documentation  documentation</title>
+  <title>R on Satori &mdash; MIT Satori User Documentation  documentation</title>
   
 
   
@@ -19,7 +19,7 @@
 
   
   
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-basics.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-R.html"/>
   
 
   
@@ -40,8 +40,8 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Satori Login" href="satori-ssh.html" />
-    <link rel="prev" title="Satori Quick Start Info" href="index.html" /> 
+    <link rel="next" title="Using MPI and CUDA on Satori" href="satori-cuda-aware-mpi.html" />
+    <link rel="prev" title="Julia on Satori" href="satori-julia.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -87,10 +87,10 @@
             
             
               <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Satori Basics</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#what-is-satori">What is Satori?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#how-can-i-get-an-account">How can I get an account?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#getting-help">Getting help?</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a><ul>
@@ -170,9 +170,9 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-julia.html#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="satori-R.html">R on Satori</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="satori-R.html#getting-started-with-r">Getting Started with R</a></li>
-<li class="toctree-l2"><a class="reference internal" href="satori-R.html#installing-packages">Installing Packages</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">R on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#getting-started-with-r">Getting Started with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-packages">Installing Packages</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
@@ -406,14 +406,14 @@
     
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
         
-      <li>Satori Basics</li>
+      <li>R on Satori</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
           
             
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-basics.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-R.rst" class="fa fa-github"> Edit on GitHub</a>
             
           
         
@@ -427,27 +427,19 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="satori-basics">
-<h1>Satori Basics<a class="headerlink" href="#satori-basics" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="what-is-satori">
-<h2>What is Satori?<a class="headerlink" href="#what-is-satori" title="Permalink to this headline">¶</a></h2>
-<p>Satori is a GPU dense, high-performance Power 9 system developed as a collaboration between MIT and IBM.
-It has 64 1TB memory Power 9 nodes. Each node hosts four NVidia V100 32GB memory GPU cards. Within a
-node GPUs are linked by an NVLink2 network thst supports nearly to 200GB/s bi-directional transfer
-between GPUs. A 100Gb/s Infiniband network with microsecond user space latency connects the cluster
-nodes togehter.</p>
+  <div class="section" id="r-on-satori">
+<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this headline">¶</a></h1>
+<p>R’s PowerPC support is currently limited, and there may be issues trying to install it from source. R can instead be run on Satori using either a Spack build or a container.</p>
+<div class="section" id="getting-started-with-r">
+<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this headline">¶</a></h2>
+<p>A fast way to get R running on Satori is to load the Spack build</p>
+<p>..code:: console
+module load spack-flat
+module load r
+R</p>
 </div>
-<div class="section" id="how-can-i-get-an-account">
-<h2>How can I get an account?<a class="headerlink" href="#how-can-i-get-an-account" title="Permalink to this headline">¶</a></h2>
-<p><strong>Satori is currently in a beta test phase</strong>. Access requires active MIT Kerberos credentials (available to all students, employees and sponsored guest accounts <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ). To have your kereberos account activated on Satori during the beta test phase please contact with Chris Hill ( <a class="reference external" href="mailto:cnh&#37;&#52;&#48;mit&#46;edu" target="_blank">cnh<span>&#64;</span>mit<span>&#46;</span>edu</a> ) or John Cohn ( <a class="reference external" href="mailto:johncohn&#37;&#52;&#48;us&#46;ibm&#46;com" target="_blank">johncohn<span>&#64;</span>us<span>&#46;</span>ibm<span>&#46;</span>com</a> ).</p>
-<p>Once beta testing is complete, anyone with active MIT Kerberos credentials (i.e. all students, employees and sponsored
-guest account <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ) will be able to connect to Satori via a portal and a
-starter account will be created. A starter account will be provided somewhat limited access by default. Once a starter account has been created, an account holder can be added as a member to one or more research groups. Different research groups can provide larger scale access to their members.</p>
-</div>
-<div class="section" id="getting-help">
-<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
-<p>If you are stuck and can’t find an answer in the web pages please feel free to
-email our support address <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a> with questions and requests.</p>
+<div class="section" id="installing-packages">
+<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -457,8 +449,8 @@ email our support address <a class="reference external" href="mailto:satori-supp
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="satori-ssh.html" class="btn btn-neutral float-right" title="Satori Login" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="Satori Quick Start Info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="satori-cuda-aware-mpi.html" class="btn btn-neutral float-right" title="Using MPI and CUDA on Satori" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="satori-julia.html" class="btn btn-neutral float-left" title="Julia on Satori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
