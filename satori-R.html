@@ -173,6 +173,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">R on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#getting-started-with-r">Getting Started with R</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-packages">Installing Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#a-simple-batch-script-example">A Simple Batch Script Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
@@ -441,6 +442,17 @@
 </div>
 <div class="section" id="installing-packages">
 <h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<p>To avoid R packages taking up space on home, you can consider setting the R library path inside <cite>/nobackup</cite>, e.g.</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&quot;/nobackup/users/{username}/packages/R&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>R packages can be installed as usual:</p>
+<div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-simple-batch-script-example">
+<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
