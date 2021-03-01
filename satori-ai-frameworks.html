@@ -550,9 +550,17 @@ activated, runining the following command:</p>
 </pre></div>
 </div>
 <p>For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install powerai-rapids
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install tensorflow
+conda install pytorch
+conda install powerai-rapids
 conda install dali
 conda install apex
+</pre></div>
+</div>
+<p>For specific python package versions you can search with conda as in example bellow (by indicaticating the channel if not included as described above) :</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search pytorch
+conda search <span class="nv">pytorch</span><span class="o">==</span><span class="m">1</span>.7.1 -c https://opence.mit.edu
+conda search <span class="s1">&#39;pytorch&gt;=1.6&#39;</span> -c https://opence.mit.edu
 </pre></div>
 </div>
 <p>NOTE: During the conda install, the packages are downloaded from the
