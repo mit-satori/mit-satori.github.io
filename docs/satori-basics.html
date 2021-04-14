@@ -1,0 +1,497 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Satori Basics &mdash; MIT Satori User Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-basics.html"/>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Satori Login" href="satori-ssh.html" />
+    <link rel="prev" title="Satori Quick Start Info" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-can-i-get-an-account">How can I get an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#web-portal-login">Web Portal Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#logging-in-to-satori">Logging in to Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#the-satori-portal">The Satori Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#setting-up-your-environment">Setting up Your Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#transferring-files">Transferring Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#using-scp-or-rysnc">Using scp or rysnc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#satori-portal-file-explorer">Satori Portal File Explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#types-of-jobs">Types of Jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#running-interactive-jobs">Running Interactive Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#running-batch-jobs">Running Batch Jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#project-groups">Project Groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#creating-project-groups">Creating project groups</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-workload-manager-using-slurm.html">Running your AI training jobs on Satori using Slurm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#a-note-on-exclusivity">A Note on Exclusivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#interactive-jobs">Interactive Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#batch-scripts">Batch Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#monitoring-jobs">Monitoring Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#canceling-jobs">Canceling Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#scheduling-policy">Scheduling Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#batch-queue-policy">Batch Queue Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#queue-policies">Queue Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#running-jobs-in-series">Running jobs in series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#note-on-pytorch-1-4">Note on Pytorch 1.4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ai-frameworks.html">IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#install-anaconda">[1] Install Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-and-open-ce-setting-up-the-software-repository">[2] WML-CE and Open-CE: Setting up the software repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-and-open-ce-creating-and-activate-conda-environments-recommended">[3] WML-CE and Open-CE: Creating and activate conda environments (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-installing-all-frameworks-at-the-same-time">[4] WML-CE: Installing all frameworks at the same time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation">[5] WML-CE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#controlling-wml-ce-release-packages">Controlling WML-CE release packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#additional-conda-channels">Additional conda channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai">The WML CE Supplementary channel is available at: https://anaconda.org/powerai/.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access">The WML-CE Early Access channel is available at: https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-large-model-support.html">IBM Large Model Support (LMS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-julia.html">Julia on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-help">Getting help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#a-simple-batch-script-example">A simple batch script example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">Recipe for running single GPU, single threaded interactive session with CUDA aware MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#running-a-multi-process-julia-program-somewhat-interactively">Running a multi-process julia program somewhat interactively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-R.html">R on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#getting-started-with-r">Getting Started with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#installing-packages">Installing Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#a-simple-batch-script-example">A Simple Batch Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#r-and-python">R and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#running-r-in-a-container">Running R in a container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#compiling">Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#submiting-a-batch-script">Submiting a batch script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#batch-script-header">Batch script header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#assigning-gpus-to-mpi-ranks">Assigning GPUs to MPI ranks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#running-the-mpi-program-within-the-batch-script">Running the MPI program within the batch script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#a-complete-example-slurm-batch-script">A complete example SLURM batch script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-multi-node-pytorch-example">A multi-node, pytorch example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-multi-node-pytorch-example-with-the-horovod-conda-environment">A multi-node, pytorch example with the horovod conda environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-howto-videos.html">Satori Howto Video Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#installing-wmcle-on-satori">Installing WMCLE on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#pytorch-with-ddl-on-satori">Pytorch with DDL on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#tensorflow-with-ddl-on-satori">Tensorflow with DDL on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#jupyterlab-with-ssh-tunnel-on-satori">Jupyterlab with SSH Tunnel on Satori</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="singularity.html">Singularity for Satorians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#fast-start">Fast start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#other-notes">Other notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#interactive-allocation">Interactive Allocation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-relion-cryoem.html">Relion Cryoem for Satorians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#other-notes">Other notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html">Copying larger files and large file sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html#using-mrsync">Using mrsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html#using-aspera-for-remote-file-transfer-to-satori-cluster">Using Aspera for remote file transfer to Satori cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-doc-examples-contributing.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/storage/index.html">How can I see disk usage?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="portal-howto/customization.html#steps-to-create-a-kernel">Steps to create a kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/carlos-quick-start-commands/index.html">How do I set up a basic conda environment?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html">System software queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-linux-distribution-version-am-i-running">What Linux distribution version am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-linux-kernel-level-am-i-running">What Linux kernel level am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-software-levels-are-installed-on-the-system">What software levels are installed on the system?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#system-hardware-queries">System hardware queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-is-my-cpu-configuration">What is my CPU configuration?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-much-ram-is-there-on-my-nodes">How much RAM is there on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-smt-mode-are-my-nodes-in">What SMT mode are my nodes in?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-cpu-governor-is-in-effect-on-my-nodes">What CPU governor is in effect on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">What are the logical IDs and UUIDs for the GPUs on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-is-the-ibm-model-of-my-system">What is the IBM model of my system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#which-logical-cpus-belong-to-which-socket">Which logical CPUs belong to which socket?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#questions-about-my-jobs">Questions about my jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">How can I establish which logical CPU IDs my process is bound to?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#can-i-see-the-output-of-my-job-before-it-completes">Can I see the output of my job before it completes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">I have a job waiting in the queue, and I want to modify the options I had selected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-have-submitted-my-job-several-times-but-i-get-no-output">I have submitted my job several times, but I get no output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-set-a-time-limit-on-my-job">How do I set a time limit on my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">Can I make a job’s startup depend on the completion of a previous one?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-select-a-specific-set-of-hosts-for-my-job">How do I select a specific set of hosts for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/ondemand_portal_queries/index.html">Portal queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/ondemand_portal_queries/index.html#i-see-no-active-sessions-in-my-interactive-sessions">I see no active sessions in My Interactive Sessions?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html">How do I build a Singularity image from scratch?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">Set up to run Docker in ppc64le mode on an x86 machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">Run Docker in ppc64le mode on an x86 machine to generate an image for Satori</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#import-new-docker-hub-image-into-singularity-on-satori">Import new Docker hub image into Singularity on Satori</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#using-singularity-instead-of-docker">Using Singularity instead of Docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-tutorial-examples.html">Green Up Hackathon IAP 2020</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-examples/index.html">Tutorial Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html">Pytorch Style Transfer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html">Neural network DNA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html">Pathology Image Classification Transfer Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html">Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#prerequisites-if-you-are-not-yet-running-tensorflow-2-0">Prerequisites if you are not yet running TensorFlow 2.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#what-s-going-on-here">What’s going on here?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html">WMLCE demonstration notebooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html">Finding clusters in high-dimensional data using tSNE and DB-SCAN</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html">BigGAN-PyTorch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-examples/index.html#measuring-resource-use">Measuring Resource Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html">Intergrated energy use profiling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html">Profiling code with nvprof</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#commands-to-run-the-examples">Commands to run the examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-getting-help.html">Getting help on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#email-help">Email help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#slack">Slack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#slack-or-satori-support-techsquare-com">Slack or satori-support&#64;techsquare.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#satori-office-hours">Satori Office Hours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#tips-and-tricks">Tips and Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ause-coc.html">Acceptable Use and Code of Conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#acceptable-use-guidelines">Acceptable Use Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#code-of-conduct">Code of Conduct</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIT Satori User Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Satori Basics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-basics.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="satori-basics">
+<h1>Satori Basics<a class="headerlink" href="#satori-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-satori">
+<h2>What is Satori?<a class="headerlink" href="#what-is-satori" title="Permalink to this headline">¶</a></h2>
+<p>Satori is a GPU dense, high-performance Power 9 system developed as a collaboration between MIT and IBM.
+It has 64 1TB memory Power 9 nodes. Each node hosts four NVidia V100 32GB memory GPU cards. Within a
+node GPUs are linked by an NVLink2 network that supports nearly 200GB/s bi-directional transfer
+between GPUs. A 100Gb/s Infiniband network with microsecond user space latency connects the cluster
+nodes togehter.</p>
+</div>
+<div class="section" id="how-can-i-get-an-account">
+<h2>How can I get an account?<a class="headerlink" href="#how-can-i-get-an-account" title="Permalink to this headline">¶</a></h2>
+<p><strong>Satori is currently in a beta test phase</strong>. Access requires active MIT Kerberos credentials (available to all students, employees and sponsored guest accounts <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ). To have your kereberos account activated on Satori during the beta test phase contact Chris Hill ( <a class="reference external" href="mailto:cnh&#37;&#52;&#48;mit&#46;edu" target="_blank">cnh<span>&#64;</span>mit<span>&#46;</span>edu</a> ) or John Cohn ( <a class="reference external" href="mailto:johncohn&#37;&#52;&#48;us&#46;ibm&#46;com" target="_blank">johncohn<span>&#64;</span>us<span>&#46;</span>ibm<span>&#46;</span>com</a> ).</p>
+<p>Once beta testing is complete, anyone with active MIT Kerberos credentials (i.e. all students, employees and sponsored
+guest account <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ) will be able to connect to Satori via a portal and a
+starter account will be created. A starter account will be provided somewhat limited access by default. Once a starter account has been created, an account holder can be added as a member to one or more research groups. Different research groups can provide larger scale access to their members.</p>
+</div>
+<div class="section" id="getting-help">
+<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>If you are stuck and can’t find an answer in the web pages please feel free to
+email our support address <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a> with questions and requests.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="satori-ssh.html" class="btn btn-neutral float-right" title="Satori Login" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Satori Quick Start Info" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, MIT Satori Project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

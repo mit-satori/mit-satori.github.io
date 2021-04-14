@@ -1,0 +1,745 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Running your AI training jobs on Satori &mdash; MIT Satori User Documentation  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-workload-manager-using-lsf.html"/>
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-basics.html#getting-help">Getting help?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ssh.html">Satori Login</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#web-portal-login">Web Portal Login</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#logging-in-to-satori">Logging in to Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#the-satori-portal">The Satori Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#setting-up-your-environment">Setting up Your Environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#transferring-files">Transferring Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#using-scp-or-rysnc">Using scp or rysnc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#satori-portal-file-explorer">Satori Portal File Explorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#types-of-jobs">Types of Jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#running-interactive-jobs">Running Interactive Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#running-batch-jobs">Running Batch Jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#project-groups">Project Groups</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#creating-project-groups">Creating project groups</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-workload-manager-using-slurm.html">Running your AI training jobs on Satori using Slurm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#a-note-on-exclusivity">A Note on Exclusivity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#interactive-jobs">Interactive Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-workload-manager-using-slurm.html#batch-scripts">Batch Scripts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#monitoring-jobs">Monitoring Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#canceling-jobs">Canceling Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#scheduling-policy">Scheduling Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#batch-queue-policy">Batch Queue Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#queue-policies">Queue Policies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#running-jobs-in-series">Running jobs in series</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-workload-manager-using-slurm.html#note-on-pytorch-1-4">Note on Pytorch 1.4</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-ai-frameworks.html">IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#install-anaconda">[1] Install Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-and-open-ce-setting-up-the-software-repository">[2] WML-CE and Open-CE: Setting up the software repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-and-open-ce-creating-and-activate-conda-environments-recommended">[3] WML-CE and Open-CE: Creating and activate conda environments (recommended)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-installing-all-frameworks-at-the-same-time">[4] WML-CE: Installing all frameworks at the same time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#wml-ce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation">[5] WML-CE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#controlling-wml-ce-release-packages">Controlling WML-CE release packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-ai-frameworks.html#additional-conda-channels">Additional conda channels</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai">The WML CE Supplementary channel is available at: https://anaconda.org/powerai/.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access">The WML-CE Early Access channel is available at: https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/.</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-large-model-support.html">IBM Large Model Support (LMS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-julia.html">Julia on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-help">Getting help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#a-simple-batch-script-example">A simple batch script example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">Recipe for running single GPU, single threaded interactive session with CUDA aware MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#running-a-multi-process-julia-program-somewhat-interactively">Running a multi-process julia program somewhat interactively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-R.html">R on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#getting-started-with-r">Getting Started with R</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#installing-packages">Installing Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#a-simple-batch-script-example">A Simple Batch Script Example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#r-and-python">R and Python</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-R.html#running-r-in-a-container">Running R in a container</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-cuda-aware-mpi.html">Using MPI and CUDA on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#compiling">Compiling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#submiting-a-batch-script">Submiting a batch script</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#batch-script-header">Batch script header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#assigning-gpus-to-mpi-ranks">Assigning GPUs to MPI ranks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="satori-cuda-aware-mpi.html#running-the-mpi-program-within-the-batch-script">Running the MPI program within the batch script</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#a-complete-example-slurm-batch-script">A complete example SLURM batch script</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-multi-node-pytorch-example">A multi-node, pytorch example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-multi-node-pytorch-example-with-the-horovod-conda-environment">A multi-node, pytorch example with the horovod conda environment</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-howto-videos.html">Satori Howto Video Sessions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#installing-wmcle-on-satori">Installing WMCLE on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#pytorch-with-ddl-on-satori">Pytorch with DDL on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#tensorflow-with-ddl-on-satori">Tensorflow with DDL on Satori</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-howto-videos.html#jupyterlab-with-ssh-tunnel-on-satori">Jupyterlab with SSH Tunnel on Satori</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="singularity.html">Singularity for Satorians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#fast-start">Fast start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#other-notes">Other notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#interactive-allocation">Interactive Allocation:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="singularity.html#non-interactive-batch-mode">Non interactive / batch mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-relion-cryoem.html">Relion Cryoem for Satorians</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#quick-start">Quick start</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-relion-cryoem.html#other-notes">Other notes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html">Copying larger files and large file sets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html#using-mrsync">Using mrsync</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-copy-large-filesets.html#using-aspera-for-remote-file-transfer-to-satori-cluster">Using Aspera for remote file transfer to Satori cluster</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-doc-examples-contributing.html">FAQ</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-doc-examples-contributing.html#tips-tricks-and-questions">Tips, tricks and questions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/storage/index.html">How can I see disk usage?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/storage/index.html#where-should-i-put-world-or-project-shared-datasets">Where should I put world or project shared datasets?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="portal-howto/customization.html">How can I create custom Jupyter kernels for the Satori web portal?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="portal-howto/customization.html#steps-to-create-a-kernel">Steps to create a kernel</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/carlos-quick-start-commands/index.html">How do I set up a basic conda environment?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html">System software queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-linux-distribution-version-am-i-running">What Linux distribution version am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-linux-kernel-level-am-i-running">What Linux kernel level am I running?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-software-levels-are-installed-on-the-system">What software levels are installed on the system?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#system-hardware-queries">System hardware queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-is-my-cpu-configuration">What is my CPU configuration?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-much-ram-is-there-on-my-nodes">How much RAM is there on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-smt-mode-are-my-nodes-in">What SMT mode are my nodes in?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-cpu-governor-is-in-effect-on-my-nodes">What CPU governor is in effect on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">What are the logical IDs and UUIDs for the GPUs on my nodes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#what-is-the-ibm-model-of-my-system">What is the IBM model of my system?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#which-logical-cpus-belong-to-which-socket">Which logical CPUs belong to which socket?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#questions-about-my-jobs">Questions about my jobs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">How can I establish which logical CPU IDs my process is bound to?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#can-i-see-the-output-of-my-job-before-it-completes">Can I see the output of my job before it completes?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-have-a-job-waiting-in-the-queue-and-i-want-to-modify-the-options-i-had-selected">I have a job waiting in the queue, and I want to modify the options I had selected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-have-submitted-my-job-several-times-but-i-get-no-output">I have submitted my job several times, but I get no output</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-set-a-time-limit-on-my-job">How do I set a time limit on my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">Can I make a job’s startup depend on the completion of a previous one?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-select-a-specific-set-of-hosts-for-my-job">How do I select a specific set of hosts for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#how-do-i-deselect-specific-nodes-for-my-job">How do I deselect specific nodes for my job?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#my-jobs-runtime-environment-is-different-from-what-i-expected">My job’s runtime environment is different from what I expected</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/sys_queries/index.html#i-want-to-know-precisely-what-my-jobs-runtime-environment-is">I want to know precisely what my job’s runtime environment is</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/ondemand_portal_queries/index.html">Portal queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/ondemand_portal_queries/index.html#i-see-no-active-sessions-in-my-interactive-sessions">I see no active sessions in My Interactive Sessions?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html">How do I build a Singularity image from scratch?</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">Set up to run Docker in ppc64le mode on an x86 machine</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">Run Docker in ppc64le mode on an x86 machine to generate an image for Satori</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#import-new-docker-hub-image-into-singularity-on-satori">Import new Docker hub image into Singularity on Satori</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tips-and-tricks/singularity-tips/index.html#using-singularity-instead-of-docker">Using Singularity instead of Docker</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-tutorial-examples.html">Green Up Hackathon IAP 2020</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-examples/index.html">Tutorial Examples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html">Pytorch Style Transfer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/pytorch-style-transfer/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html">Neural network DNA</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/neural-network-dna-demo/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html">Pathology Image Classification Transfer Learning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/transfer-learning-pathology/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html">Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#prerequisites-if-you-are-not-yet-running-tensorflow-2-0">Prerequisites if you are not yet running TensorFlow 2.0</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#what-s-going-on-here">What’s going on here?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html">WMLCE demonstration notebooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/eric-fiala-wmlce-notebooks-master/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html">Finding clusters in high-dimensional data using tSNE and DB-SCAN</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/unsupervised-learning-on-ocean-ecosystem-model/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html">BigGAN-PyTorch</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/biggan-pytorch/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial-examples/index.html#measuring-resource-use">Measuring Resource Use</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html">Intergrated energy use profiling</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#commands-to-run-this-example">Commands to run this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#code-and-input-data-repositories-for-this-example">Code and input data repositories for this example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/energy-profiling/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html">Profiling code with nvprof</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#description">Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#commands-to-run-the-examples">Commands to run the examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="tutorial-examples/nvprof-profiling/index.html#useful-references">Useful references</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-getting-help.html">Getting help on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#email-help">Email help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#slack">Slack</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#slack-or-satori-support-techsquare-com">Slack or satori-support&#64;techsquare.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#satori-office-hours">Satori Office Hours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-getting-help.html#tips-and-tricks">Tips and Tricks</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ause-coc.html">Acceptable Use and Code of Conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#acceptable-use-guidelines">Acceptable Use Guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ause-coc.html#code-of-conduct">Code of Conduct</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">MIT Satori User Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Running your AI training jobs on Satori</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-workload-manager-using-lsf.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure align-default" id="id1">
+<img alt="Satori" src="_images/lsf.png" />
+<p class="caption"><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+<div class="section" id="running-your-ai-training-jobs-on-satori">
+<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Permalink to this headline">¶</a></h1>
+<p>Computational work on Satori is performed within jobs managed by a
+workload manager (IBM LSF). A typical job consists of several
+components:</p>
+<ul class="simple">
+<li>A submission script</li>
+<li>An executable file (python sript or C/C++ script)</li>
+<li>Training data needed by the ML/DL script</li>
+<li>Output files created by the training/inference job</li>
+</ul>
+<p>There are two types for jobs:</p>
+<ul class="simple">
+<li>interactive / online</li>
+<li>batch</li>
+</ul>
+<p>In general, the process for running a batch job is to:</p>
+<ul class="simple">
+<li>Prepare executables and input files</li>
+<li>Modify provided LSF job template for the batch script or write a new
+one</li>
+<li>Submit the batch script to the Workload Manager</li>
+<li>Monitor the job’s progress before and during execution</li>
+</ul>
+<div class="section" id="a-note-on-exclusivity">
+<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this headline">¶</a></h2>
+<p>To make best use of Satori’s GPU resource  default job submissions are not
+exclusive. That means that unless you ask otherwise, the GPUs on the node(s)
+you are assigned may already be in use by another user. That means if you
+request a node  with 2GPU’s  the 2 other GPUs on that node may be engaged by
+another job. This allows us to more efficently allocate all of the GPU
+resources. This may require some additional checking to make sure you can
+uniquely use  all of the GPU’s on a machine. If you’re in doubt, you can
+request the node to be ‘exclusive’ . See below on how to request exclusive
+access  in an interactive and batch situation.</p>
+</div>
+<div class="section" id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
+<p>Most users will find batch jobs to be the easiest way to interact with
+the system, since they permit you to hand off a job to the scheduler and
+then work on other tasks; however, it is sometimes preferable to run
+interactively on the system. This is especially true when developing,
+modifying, or debugging code.</p>
+<p>Since all compute resources are managed/scheduled by LSF, it is not
+possible to simply log into the system and begin running a parallel code
+interactively. You must request the appropriate resources from the
+system and, if necessary, wait until they are available. This is done
+with an “interactive batch” job. Interactive batch jobs are submitted
+via the command line, which supports the same options that are passed
+via #BSUB parameters in a batch script. The final options on the command
+line are what makes the job “interactive batch”: -Is followed by a shell
+name. For example, to request an interactive batch job (with bash as the
+shell) equivalent to the sample batch script above, you would use the
+command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -q normal -gpu <span class="s2">&quot;num=4&quot;</span> -R <span class="s2">&quot;select[type==any]&quot;</span> -Ip bash
+</pre></div>
+</div>
+<p>This will request an AC922 node with 4x GPUs from the Satori (normal
+queue) for 3 hours.</p>
+<p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -W <span class="m">3</span>:00 -x -q normalx -gpu <span class="s2">&quot;num=4:mode=exclusive_process&quot;</span> -Is /bin/bash
+</pre></div>
+</div>
+<p>this will request exclusive use of an interactive node with 4GPU’s</p>
+</div>
+<div class="section" id="batch-scripts">
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
+<p>The most common way to interact with the batch system is via batch jobs.
+A batch job is simply a shell script with added directives to request
+various resources from or provide certain information to the batch
+scheduling system. Aside from the lines containing LSF options, the
+batch script is simply the series commands needed to set up and run your
+AI job.</p>
+<p>To submit a batch script, use the bsub command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub &lt; myjob.lsf
+</pre></div>
+</div>
+<p>As an example, consider the following batch script for 4x V100 GPUs
+(single AC922 node):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;keras-job-name&quot;</span>
+<span class="c1">#BSUB -o &quot;keras-job-name_o.%J&quot;</span>
+<span class="c1">#BSUB -e &quot;keras-job-name_e.%J&quot;</span>
+<span class="c1">#BSUB -n 4</span>
+<span class="c1">#BSUB -R &quot;span[ptile=4]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normal&quot;</span>
+
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/&lt;your_user_name&gt;
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.6.2
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+
+<span class="nb">cd</span> <span class="nv">$HOME2</span>/projects
+python Keras-ResNet50-training.py --batch<span class="o">=</span><span class="m">64</span>
+</pre></div>
+</div>
+<p>In the above template you can change:</p>
+<ul class="simple">
+<li>line 2-4: with your desire job name, but remember to keep _o for the
+job output file and _e for the file with the related job errors</li>
+<li>line 5: “-n 4” here you can consider the no of GPUs you need,
+multiple of 4 (ie. - n 4, -n 8, -n 16, ….)</li>
+<li>line 11: add your MIT assigned username folder name from the
+/nobackup/users/</li>
+<li>line 12: change to your conda virtual environment defined at
+installation of WMLCE</li>
+<li>line 17-18: change as need for what you will want to run and from
+where</li>
+</ul>
+<p>if you need to request exclusive use of the gpus fr the example above  you can do the following in your template</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;keras-job-name&quot;</span>
+<span class="c1">#BSUB -o &quot;keras-job-name_o.%J&quot;</span>
+<span class="c1">#BSUB -e &quot;keras-job-name_e.%J&quot;</span>
+<span class="c1">#BSUB -n 4</span>
+<span class="c1">#BSUB -R &quot;span[ptile=4]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normalx&quot;</span>
+<span class="c1">#BSUB -x</span>
+
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/&lt;your_user_name&gt;
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.6.2
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+
+<span class="nb">cd</span> <span class="nv">$HOME2</span>/projects
+python Keras-ResNet50-training.py --batch<span class="o">=</span><span class="m">64</span>
+</pre></div>
+</div>
+<p>To request 4 nodes with 16 GPU’s in exclusive use use</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ bsub &lt; template-16GPUs.lsf
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>--- template-16GPUs.lsf ---
+<span class="c1">#BSUB -L /bin/bash</span>
+<span class="c1">#BSUB -J &quot;template-16GPUs&quot;</span>
+<span class="c1">#BSUB -o &quot;template-16GPUs_o.%J&quot;</span>
+<span class="c1">#BSUB -e &quot;template-16GPUs_e.%J&quot;</span>
+<span class="c1">#BSUB -n 16</span>
+<span class="c1">#BSUB -R &quot;span[ptile=4]&quot;</span>
+<span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
+<span class="c1">#BSUB -q &quot;normalx&quot;</span>
+<span class="c1">#BSUB -x</span>
+
+<span class="c1">#</span>
+<span class="c1"># Setup User Environement (Python, WMLCE virtual environment etc)</span>
+<span class="c1">#</span>
+<span class="nv">HOME2</span><span class="o">=</span>/nobackup/users/&lt;user-name&gt;
+<span class="nv">PYTHON_VIRTUAL_ENVIRONMENT</span><span class="o">=</span>wmlce-1.6.2
+<span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
+
+<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+<span class="nb">export</span> <span class="nv">EGO_TOP</span><span class="o">=</span>/opt/ibm/spectrumcomputing
+
+<span class="c1">#</span>
+<span class="c1"># Cleaning CUDA_VISIBLE_DEVICES</span>
+<span class="c1">#</span>
+cat &gt; launch.sh <span class="s">&lt;&lt; EoF_s</span>
+<span class="s">#! /bin/sh</span>
+<span class="s">export CUDA_VISIBLE_DEVICES=0,1,2,3</span>
+<span class="s">exec \$*</span>
+<span class="s">EoF_s</span>
+chmod +x launch.sh
+mpirun --tag-output ./setup.sh
+
+
+<span class="c1">#</span>
+<span class="c1"># Runing the training/inference job</span>
+<span class="c1"># (change only the script name and options after python command)</span>
+<span class="c1">#</span>
+
+ddlrun --mpiarg <span class="s2">&quot;-x EGO_TOP&quot;</span> -v <span class="se">\</span>
+  ./launch.sh python &lt;python-script-name-here&gt;
+
+-------------------------
+</pre></div>
+</div>
+<p>For your convienenice additional LSF batch job templates have been
+created to cover distributed deep learning trainings across Satori
+cluster:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf" target="_blank">Pytorch with IBM Distributed Deep Learning Library
+(DDL)</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-multinode.lsf" target="_blank">TensorFlow with IBM Distributed Deep Learning Library
+(DDL)</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)
+backend</a></li>
+<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-horovod-multinode.lsf" target="_blank">TensorFlow with Horovod + IBM Distributed Deep Learning Library
+(DDL)
+backend</a></li>
+</ul>
+<div class="section" id="job-states">
+<h3>Job States<a class="headerlink" href="#job-states" title="Permalink to this headline">¶</a></h3>
+<p>A job will progress through a number of states through its lifetime. The
+states you’re most likely to see are:</p>
+<ul class="simple">
+<li>PEND: Job is pending</li>
+<li>RUN: Job is running</li>
+<li>DONE: Job completed normally (with an exit code of 0)</li>
+<li>EXIT: Job completed abnormally</li>
+<li>PSUSP: Job was suspended (either by the user or an administrator)
+while pending</li>
+<li>USUSP: Job was suspended (either by the user or an administrator)
+after starting</li>
+<li>SSUSP: Job was suspended by the system after starting</li>
+</ul>
+</div>
+<div class="section" id="monitoring-jobs">
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
+<p>LSF provides several utilities with which you can monitor jobs. These
+include monitoring the queue, getting details about a particular job,
+viewing STDOUT/STDERR of running jobs, and more.</p>
+<p>The most straightforward monitoring is with the bjobs command. This
+command will show the current queue, including both pending and running
+jobs. Running bjobs -l will provide much more detail about a job (or
+group of jobs). For detailed output of a single job, specify the job id
+after the -l. For example, for detailed output of job 12345, you can run
+bjobs -l 12345 . Other options to bjobs are shown below. In general, if
+the command is specified with -u all it will show information for all
+users/all jobs. Without that option, it only shows your jobs. Note that
+this is not an exhaustive list. See man bjobs for more information.</p>
+<ul class="simple">
+<li>bjobs Show your current jobs in the queue</li>
+<li>bjobs -u all Show currently queued jobs for all users</li>
+<li>bjobs -P ABC123 Shows currently-queued jobs for project ABC123</li>
+<li>bjobs -UF Don’t format output (might be useful if you’re using the
+output in a script)</li>
+<li>bjobs -a Show jobs in all states, including recently finished jobs</li>
+<li>bjobs -l Show long/detailed output</li>
+<li>bjobs -l 12345 Show long/detailed output for jobs 12345</li>
+<li>bjobs -d Show details for recently completed jobs</li>
+<li>bjobs -s Show suspended jobs, including the reason(s) they’re
+suspended</li>
+<li>bjobs -r Show running jobs</li>
+<li>bjobs -p Show pending jobs</li>
+<li>bjobs -w Use “wide” formatting for output</li>
+</ul>
+<p>If you want to check the STDOUT/STDERR of a currently running job, you
+can do so with the bpeek command. The command supports several options:</p>
+<ul class="simple">
+<li>bpeek -J jobname Show STDOUT/STDERR for the job you’ve most recently
+submitted with the name jobname</li>
+<li>bpeek 12345 Show STDOUT/STDERR for job 12345</li>
+<li>bpeek -f … Used with other options. Makes bpeek use tail -f and exit
+once the job completes.</li>
+</ul>
+</div>
+<div class="section" id="scheduling-policy">
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline">¶</a></h3>
+<p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
+order. This often does not make effective use of the system. A large job
+may be next in line to run. If the system is using a strict FIFO queue,
+many processors sit idle while the large job waits to run. Backfilling
+would allow smaller, shorter jobs to use those otherwise idle resources,
+and with the proper algorithm, the start time of the large job would not
+be delayed. While this does make more effective use of the system, it
+indirectly encourages the submission of smaller jobs.</p>
+</div>
+<div class="section" id="batch-queue-policy">
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline">¶</a></h3>
+<p>The batch queue is the default queue for production work on Satori. It
+enforces the following policies: Limit of (4) eligible-to-run jobs per
+user. Jobs in excess of the per user limit above will be placed into a
+held state, but will change to eligible-to-run at the appropriate time.
+Users may have only (100) jobs queued at any state at any time.
+Additional jobs will be rejected at submit time.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, MIT Satori Project.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
