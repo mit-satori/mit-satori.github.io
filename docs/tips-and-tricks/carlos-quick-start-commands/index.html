@@ -13,6 +13,8 @@
   
   <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
   <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
 
   
   
@@ -31,6 +33,7 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
@@ -435,11 +438,6 @@ conda create --name wmlce-1.6.2 python=3.6
 conda activate wmlce-1.6.2
 conda install powerai
 conda install -c conda-forge jupyterlab
-</pre></div>
-</div>
-<p>Once the environment is setup.  You can run LSF interactive with:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>bsub -W 3:00 -q normal -gpu “num=4” -R “select[type=any]” -Ip bash
-conda activate wmlce-1.6.2
 </pre></div>
 </div>
 </div>
