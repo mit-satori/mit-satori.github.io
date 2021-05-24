@@ -488,6 +488,14 @@ queue) for 1 hour.</p>
 </pre></div>
 </div>
 <p>this will request exclusive use of an interactive node with 4GPU’s</p>
+<p><strong>Note:</strong> if your Interactive job will not launch it may mean that there are no interactive notes available… Try removing the <em>-I</em> flag which and your job will run when a node becomes available rather than failing immediately.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00  --pty /bin/bash
+</pre></div>
+</div>
+<p>You may also want to lower the memory requested in the <em>–mem=*</em> flag as that may alow you to get interactive time on a shared node.   Eg</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>250G  --time <span class="m">1</span>:00:00  --pty /bin/bash
+</pre></div>
+</div>
 </div>
 <div class="section" id="batch-scripts">
 <h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
