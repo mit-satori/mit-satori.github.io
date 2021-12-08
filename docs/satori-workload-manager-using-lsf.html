@@ -1,73 +1,32 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>Running your AI training jobs on Satori &mdash; MIT Satori User Documentation  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-workload-manager-using-lsf.html"/>
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -75,18 +34,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
 <li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
@@ -356,79 +304,36 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">MIT Satori User Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>Running your AI training jobs on Satori</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-            
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-workload-manager-using-lsf.rst" class="fa fa-github"> Edit on GitHub</a>
-            
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="figure align-default" id="id1">
 <img alt="Satori" src="_images/lsf.png" />
-<p class="caption"><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </div>
 <div class="section" id="running-your-ai-training-jobs-on-satori">
-<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Permalink to this headline">¶</a></h1>
+<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Permalink to this headline"></a></h1>
 <p>Computational work on Satori is performed within jobs managed by a
 workload manager (IBM LSF). A typical job consists of several
 components:</p>
@@ -452,7 +357,7 @@ one</li>
 <li>Monitor the job’s progress before and during execution</li>
 </ul>
 <div class="section" id="a-note-on-exclusivity">
-<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this headline">¶</a></h2>
+<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this headline"></a></h2>
 <p>To make best use of Satori’s GPU resource  default job submissions are not
 exclusive. That means that unless you ask otherwise, the GPUs on the node(s)
 you are assigned may already be in use by another user. That means if you
@@ -464,7 +369,7 @@ request the node to be ‘exclusive’ . See below on how to request exclusive
 access  in an interactive and batch situation.</p>
 </div>
 <div class="section" id="interactive-jobs">
-<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline">¶</a></h2>
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline"></a></h2>
 <p>Most users will find batch jobs to be the easiest way to interact with
 the system, since they permit you to hand off a job to the scheduler and
 then work on other tasks; however, it is sometimes preferable to run
@@ -493,7 +398,7 @@ queue) for 3 hours.</p>
 <p>this will request exclusive use of an interactive node with 4GPU’s</p>
 </div>
 <div class="section" id="batch-scripts">
-<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline">¶</a></h2>
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline"></a></h2>
 <p>The most common way to interact with the batch system is via batch jobs.
 A batch job is simply a shell script with added directives to request
 various resources from or provide certain information to the batch
@@ -623,7 +528,7 @@ backend</a></li>
 backend</a></li>
 </ul>
 <div class="section" id="job-states">
-<h3>Job States<a class="headerlink" href="#job-states" title="Permalink to this headline">¶</a></h3>
+<h3>Job States<a class="headerlink" href="#job-states" title="Permalink to this headline"></a></h3>
 <p>A job will progress through a number of states through its lifetime. The
 states you’re most likely to see are:</p>
 <ul class="simple">
@@ -639,7 +544,7 @@ after starting</li>
 </ul>
 </div>
 <div class="section" id="monitoring-jobs">
-<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline">¶</a></h3>
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline"></a></h3>
 <p>LSF provides several utilities with which you can monitor jobs. These
 include monitoring the queue, getting details about a particular job,
 viewing STDOUT/STDERR of running jobs, and more.</p>
@@ -679,7 +584,7 @@ once the job completes.</li>
 </ul>
 </div>
 <div class="section" id="scheduling-policy">
-<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline">¶</a></h3>
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline"></a></h3>
 <p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
 order. This often does not make effective use of the system. A large job
 may be next in line to run. If the system is using a strict FIFO queue,
@@ -690,7 +595,7 @@ be delayed. While this does make more effective use of the system, it
 indirectly encourages the submission of smaller jobs.</p>
 </div>
 <div class="section" id="batch-queue-policy">
-<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline">¶</a></h3>
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline"></a></h3>
 <p>The batch queue is the default queue for production work on Satori. It
 enforces the following policies: Limit of (4) eligible-to-run jobs per
 user. Jobs in excess of the per user limit above will be placed into a
@@ -703,46 +608,30 @@ Additional jobs will be rejected at submit time.</p>
 
 
            </div>
-           
           </div>
           <footer>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, MIT Satori Project.
-
-    </p>
+    <p>&#169; Copyright 2021, MIT Satori Project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

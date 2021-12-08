@@ -1,75 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>How can I see disk usage? &mdash; MIT Satori User Documentation  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://researchcomputing.mit.edu/tips-and-tricks/storage/index.html"/>
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="../../_static/js/theme.js"></script>
-
-    
+    <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="How can I create custom Jupyter kernels for the Satori web portal?" href="../../portal-howto/customization.html" />
     <link rel="prev" title="Contributed documentation and examples" href="../../satori-doc-examples-contributing.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="../../index.html" class="icon icon-home"> MIT Satori User Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-basics.html#what-is-satori">What is Satori?</a></li>
@@ -358,77 +306,33 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="../../index.html">MIT Satori User Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-        
           <li><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a> &raquo;</li>
-        
       <li>How can I see disk usage?</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-            
               <a href="https://github.com/mit-satori/getting-started/blob/master/tips-and-tricks/storage/index.rst" class="fa fa-github"> Edit on GitHub</a>
-            
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="how-can-i-see-disk-usage">
-<h1>How can I see disk usage?<a class="headerlink" href="#how-can-i-see-disk-usage" title="Permalink to this headline">¶</a></h1>
+<h1>How can I see disk usage?<a class="headerlink" href="#how-can-i-see-disk-usage" title="Permalink to this headline"></a></h1>
 <p>The somewhat obscure commands</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/lpp/mmfs/bin/mmlsquota --block-size 1G -u cnh nbusers
 /usr/lpp/mmfs/bin/mmlsquota --block-size 1G -u cnh home
@@ -441,56 +345,39 @@ Quotas on <code class="docutils literal notranslate"><span class="pre">nbusers</
 need can request increases to their <code class="docutils literal notranslate"><span class="pre">nbusers</span></code> quotas by emailing <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a>.</p>
 </div>
 <div class="section" id="where-should-i-put-world-or-project-shared-datasets">
-<h1>Where should I put world or project shared datasets?<a class="headerlink" href="#where-should-i-put-world-or-project-shared-datasets" title="Permalink to this headline">¶</a></h1>
+<h1>Where should I put world or project shared datasets?<a class="headerlink" href="#where-should-i-put-world-or-project-shared-datasets" title="Permalink to this headline"></a></h1>
 <p>Project directories with group ownership will be coming soon.</p>
 </div>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../../portal-howto/customization.html" class="btn btn-neutral float-right" title="How can I create custom Jupyter kernels for the Satori web portal?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../../satori-doc-examples-contributing.html" class="btn btn-neutral float-left" title="Contributed documentation and examples" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../portal-howto/customization.html" class="btn btn-neutral float-right" title="How can I create custom Jupyter kernels for the Satori web portal?" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, MIT Satori Project.
-
-    </p>
+    <p>&#169; Copyright 2021, MIT Satori Project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

@@ -1,75 +1,34 @@
-
-
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
   <meta charset="utf-8" />
-  
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
   <title>R on Satori &mdash; MIT Satori User Documentation  documentation</title>
-  
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-
-  
-  
-
-  
-  
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-R.html"/>
-  
-
-  
-
-  
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Using MPI and CUDA on Satori" href="satori-cuda-aware-mpi.html" />
     <link rel="prev" title="Julia on Satori" href="satori-julia.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
-
-          
             <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
-          
-
-          
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
     <input type="text" name="q" placeholder="Search docs" />
@@ -77,18 +36,7 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
@@ -358,78 +306,35 @@
 </li>
 </ul>
 
-            
-          
         </div>
-        
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">MIT Satori User Documentation</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content style-external-links">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-        
       <li>R on Satori</li>
-    
-    
       <li class="wy-breadcrumbs-aside">
-        
-          
-            
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-R.rst" class="fa fa-github"> Edit on GitHub</a>
-            
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
+             
   <div class="section" id="r-on-satori">
-<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this headline">¶</a></h1>
+<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this headline"></a></h1>
 <p>R’s PowerPC support is currently limited, and there may be issues trying to install it from source. R can instead be run on Satori using either a Spack build or a container.</p>
 <div class="section" id="getting-started-with-r">
-<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this headline">¶</a></h2>
+<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this headline"></a></h2>
 <p>A fast way to get R running on Satori is to load the Spack build</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load spack-flat</span>
 <span class="go">module load r</span>
@@ -438,7 +343,7 @@
 </div>
 </div>
 <div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline"></a></h2>
 <p>To avoid R packages taking up space on home, you can consider setting the R library path inside <cite>/nobackup</cite>, e.g.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&quot;/nobackup/users/{username}/packages/R&quot;</span><span class="p">)</span>
 </pre></div>
@@ -449,7 +354,7 @@
 </div>
 </div>
 <div class="section" id="a-simple-batch-script-example">
-<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline">¶</a></h2>
+<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline"></a></h2>
 <p>Here is a simple example of a batch script for running a small R job.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J my_r_job</span>
@@ -468,7 +373,7 @@ Rscript script.R
 </div>
 </div>
 <div class="section" id="r-and-python">
-<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this headline">¶</a></h2>
+<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this headline"></a></h2>
 <p>With the R Spack build, it is possible to interface between R and Python using <cite>rpy2</cite>. However, as this uses multiple environments, it may break things.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load spack-flat
 module load r
@@ -479,7 +384,7 @@ conda activate <span class="o">{</span>env_name<span class="o">}</span>
 </div>
 </div>
 <div class="section" id="running-r-in-a-container">
-<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this headline">¶</a></h2>
+<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this headline"></a></h2>
 <p>It is also possible to run R within a container, which has the advantage of letting you work with R in a more closed system. This involves pulling the <cite>docker://ppc64le/r-base</cite> container, which can be done by</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
 <span class="go">singularity pull r-base.img docker://ppc64le/r-base</span>
@@ -502,50 +407,33 @@ conda activate <span class="o">{</span>env_name<span class="o">}</span>
 
 
            </div>
-           
           </div>
-          <footer>
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="satori-cuda-aware-mpi.html" class="btn btn-neutral float-right" title="Using MPI and CUDA on Satori" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="satori-julia.html" class="btn btn-neutral float-left" title="Julia on Satori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="satori-cuda-aware-mpi.html" class="btn btn-neutral float-right" title="Using MPI and CUDA on Satori" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &#169; Copyright 2021, MIT Satori Project.
-
-    </p>
+    <p>&#169; Copyright 2021, MIT Satori Project.</p>
   </div>
-    
-    
-    
-    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
-    
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
     <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
-    
-    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>
