@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -332,13 +333,13 @@
            <div itemprop="articleBody">
              
   <div class="section" id="how-do-i-build-a-singularity-image-from-scratch">
-<h1>How do I build a Singularity image from scratch?<a class="headerlink" href="#how-do-i-build-a-singularity-image-from-scratch" title="Permalink to this headline"></a></h1>
+<h1>How do I build a Singularity image from scratch?<a class="headerlink" href="#how-do-i-build-a-singularity-image-from-scratch" title="Permalink to this heading"></a></h1>
 <p>To build an image for Singularity from scratch you generally need to have privileged access to a Power 9 CPU system. This
 is a little awkward since nobody has Power 9 CPU laptops or desktops. Docker ( <a class="reference external" href="https://docs.docker.com/get-docker/" target="_blank">https://docs.docker.com/get-docker/</a> ) has recently added
 features that provide a way to do this, using
 the ppc64le Power 9 emulation that is part of the QEMU (<a class="reference external" href="https://www.qemu.org" target="_blank">https://www.qemu.org</a>) project. Using this feature is described below.</p>
 <div class="section" id="set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">
-<h2>Set up to run Docker in ppc64le mode on an x86 machine<a class="headerlink" href="#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine" title="Permalink to this headline"></a></h2>
+<h2>Set up to run Docker in ppc64le mode on an x86 machine<a class="headerlink" href="#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine" title="Permalink to this heading"></a></h2>
 <p>The one time steps to get this set up on a laptop, desktop or virtual
 machine are described below.</p>
 <ol class="arabic">
@@ -420,7 +421,7 @@ machine are described below.</p>
 <div>Note - the steps above involve installing Docker on an Ubuntu virtual or physical machine. In principle a native install of Docker could work. In practice, this does not seem to work reliably on OSX.</div></blockquote>
 </div>
 <div class="section" id="run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">
-<h2>Run Docker in ppc64le mode on an x86 machine to generate an image for Satori<a class="headerlink" href="#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori" title="Permalink to this headline"></a></h2>
+<h2>Run Docker in ppc64le mode on an x86 machine to generate an image for Satori<a class="headerlink" href="#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori" title="Permalink to this heading"></a></h2>
 <p>Once you have a machine with Docker fully configured for ppc64le it can be used to generate and push an image to Docker hub. Steps for this are
 shown below.</p>
 <ol class="arabic">
@@ -443,7 +444,7 @@ shown below.</p>
 </ol>
 </div>
 <div class="section" id="import-new-docker-hub-image-into-singularity-on-satori">
-<h2>Import new Docker hub image into Singularity on Satori<a class="headerlink" href="#import-new-docker-hub-image-into-singularity-on-satori" title="Permalink to this headline"></a></h2>
+<h2>Import new Docker hub image into Singularity on Satori<a class="headerlink" href="#import-new-docker-hub-image-into-singularity-on-satori" title="Permalink to this heading"></a></h2>
 <p>Once your Docker image is ready it can now be imported into Singulariy on Satori. To do this
 in a dedicated interactive session (useful for large images), first start lauch an interactive
 session:</p>
@@ -462,7 +463,7 @@ session:</p>
 </div>
 </div>
 <div class="section" id="using-singularity-instead-of-docker">
-<h2>Using Singularity instead of Docker<a class="headerlink" href="#using-singularity-instead-of-docker" title="Permalink to this headline"></a></h2>
+<h2>Using Singularity instead of Docker<a class="headerlink" href="#using-singularity-instead-of-docker" title="Permalink to this heading"></a></h2>
 <p>Singularity is a little different from Docker in that it restricts access more and shares more environment with the
 host system. In particular there is no root access in a running Singularity image and privileged access directories
 are not writable. This means any operations that requires root privileges must be taken as part of the image build.
@@ -495,7 +496,7 @@ from the standard Satori software and can have a fully custom set of tools.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

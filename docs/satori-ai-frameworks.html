@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -331,7 +332,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="ibm-watson-machine-learning-community-edition-wml-ce-and-open-cognitive-environment-open-ce">
-<h1>IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)<a class="headerlink" href="#ibm-watson-machine-learning-community-edition-wml-ce-and-open-cognitive-environment-open-ce" title="Permalink to this headline"></a></h1>
+<h1>IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)<a class="headerlink" href="#ibm-watson-machine-learning-community-edition-wml-ce-and-open-cognitive-environment-open-ce" title="Permalink to this heading"></a></h1>
 <p>Watson Machine Learning Community Edition is an IBM Cognitive Systems
 offering that is designed for the rapidly growing and quickly evolving
 AI category of deep learning.
@@ -365,31 +366,27 @@ and large memory support.</li>
 accelerated x86 architecture servers.</li>
 </ul>
 <div class="section" id="install-anaconda">
-<h2>[1] Install Anaconda<a class="headerlink" href="#install-anaconda" title="Permalink to this headline"></a></h2>
+<h2>[1] Install Anaconda<a class="headerlink" href="#install-anaconda" title="Permalink to this heading"></a></h2>
 <p>All users on Satori will have two folders:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/home/&lt;username&gt;
 /nobackup/users/&lt;username&gt;
 </pre></div>
 </div>
-<p>please download and install Anaconda3 in the: /nobackup/users/&lt;your-username&gt;/anaconda3
-This is because /nobackup disk partition has way much more space compared with /home. In addition all files in /home will be automaticlay backuped compared with /nobackup partition. Anaconda3 can be install at any time in less then 10 minutes, therefore no backup is need.</p>
-<p>To install WMLCE you need to install on your login account <a class="reference external" href="https://www.anaconda.com/distribution/#download-section" target="_blank">Anaconda for
-POWER9/ ppc64le
-architecture</a>.
-download of the Anaconda can be done using <code class="docutils literal notranslate"><span class="pre">wget</span></code>:</p>
+<p>If you choose to use your own Anaconda install, rather than the system-wide modules, please download and install Anaconda3 in: /nobackup/users/&lt;your-username&gt;/anaconda3. This is because the /nobackup disk partition has much more space compared with /home. In addition all files in /home will be automaticlay backuped compared with /nobackup partition. Anaconda3 can be install at any time in less then 10 minutes, therefore no backup is need.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /nobackup/users/<span class="k">$(</span>whoami<span class="k">)</span>
-wget https://repo.anaconda.com/archive/Anaconda3-2019.10-Linux-ppc64le.sh
-sh Anaconda3-2019.10-Linux-ppc64le.sh -f -p /nobackup/users/<span class="k">$(</span>whoami<span class="k">)</span>/anaconda3
+wget https://repo.anaconda.com/archive/Anaconda3-2022.05-Linux-ppc64le.sh
+sh Anaconda3-2022.05-Linux-ppc64le.sh -f -p /nobackup/users/<span class="k">$(</span>whoami<span class="k">)</span>/anaconda3
 <span class="nb">source</span> ~/.bashrc
 </pre></div>
 </div>
 <p>By default Anaconda will be insalled in your home folder under
-<code class="docutils literal notranslate"><span class="pre">anaconda3</span></code> and all the WMLCE pachages will be install in a
+<code class="docutils literal notranslate"><span class="pre">anaconda3</span></code> and all the WMLCE packages will be installed in a
 sub-directory on chosen virtual name/folder (ie.
 anaconda3/envs/wmlce-1.7.0)</p>
+<p>You may also refer to the Using Anaconda page for steps on how to use the system-wide environment modules (suggested method).</p>
 </div>
 <div class="section" id="wml-ce-and-open-ce-setting-up-the-software-repository">
-<h2>[2] WML-CE and Open-CE: Setting up the software repository<a class="headerlink" href="#wml-ce-and-open-ce-setting-up-the-software-repository" title="Permalink to this headline"></a></h2>
+<h2>[2] WML-CE and Open-CE: Setting up the software repository<a class="headerlink" href="#wml-ce-and-open-ce-setting-up-the-software-repository" title="Permalink to this heading"></a></h2>
 <p>The WML-CE and Open-CE MLDL packages are distributed as conda packages in an online
 conda repository. conda must be configured to give priority to
 installing packages from this channel.</p>
@@ -405,16 +402,21 @@ following command:</p>
 https://opence.mit.edu
 </pre></div>
 </div>
-<p>NOTE: Moving forward with new AI frameworks and new related packages OPENCE.MIT.EDU conda channel will the prefered choice (i.e. TensorFlow 2.3.1, 2.4.0, Pytorch 1.6.0, 1.7.1 etc).</p>
+<p>NOTE: Moving forward with new AI frameworks and new related packages, the OPENCE.MIT.EDU conda channel will the prefered choice.</p>
 </div>
 <div class="section" id="wml-ce-and-open-ce-creating-and-activate-conda-environments-recommended">
-<h2>[3] WML-CE and Open-CE: Creating and activate conda environments (recommended)<a class="headerlink" href="#wml-ce-and-open-ce-creating-and-activate-conda-environments-recommended" title="Permalink to this headline"></a></h2>
+<h2>[3] WML-CE and Open-CE: Creating and activate conda environments (recommended)<a class="headerlink" href="#wml-ce-and-open-ce-creating-and-activate-conda-environments-recommended" title="Permalink to this heading"></a></h2>
 <p>With conda, you can create environments that have different versions of
 Python or packages installed in them. Conda environments are optional
 but recommended. If not used, packages are installed in the default
 environment called base, which often has a higher risk of containing
 conflicting packages or dependencies. Switching between environments is
 called activating the environment.</p>
+<div class="line-block">
+<div class="line"><strong>The below information of this sub-section may be deprecated or outdated.</strong></div>
+<div class="line"><em>Please refer to the “Using Anaconda” page for details about creating conda environments.</em></div>
+<div class="line"><br /></div>
+</div>
 <p>The syntax to create and activate a conda environment is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name &lt;environment name&gt; <span class="nv">python</span><span class="o">=</span>&lt;python version&gt;
 conda activate &lt;environment name&gt;
@@ -437,7 +439,7 @@ conda activate opence
 </div>
 </div>
 <div class="section" id="wml-ce-installing-all-frameworks-at-the-same-time">
-<h2>[4] WML-CE: Installing all frameworks at the same time<a class="headerlink" href="#wml-ce-installing-all-frameworks-at-the-same-time" title="Permalink to this headline"></a></h2>
+<h2>[4] WML-CE: Installing all frameworks at the same time<a class="headerlink" href="#wml-ce-installing-all-frameworks-at-the-same-time" title="Permalink to this heading"></a></h2>
 <p>All the MLDL frameworks except RAPIDS packages can be installed at the
 same time by using the powerai meta-package. All the RAPIDS packages can
 be installed using the powerai-rapids meta-package.</p>
@@ -477,7 +479,7 @@ command:</p>
 <p>The license accept has to be done only once on a per user basis.</p>
 </div>
 <div class="section" id="wml-ce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation">
-<h2>[5] WML-CE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation<a class="headerlink" href="#wml-ce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation" title="Permalink to this headline"></a></h2>
+<h2>[5] WML-CE: Testing ML/DL frameworks (Pytorch, TensorFlow etc) installation<a class="headerlink" href="#wml-ce-testing-ml-dl-frameworks-pytorch-tensorflow-etc-installation" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda activate wmlce-1.7.0
 python
 </pre></div>
@@ -559,7 +561,7 @@ pip install &lt;package name&gt;
 <p>If you don’t have any more errors you are ready to submit jobs on the
 compute nodes :)</p>
 <div class="section" id="controlling-wml-ce-release-packages">
-<h3>Controlling WML-CE release packages<a class="headerlink" href="#controlling-wml-ce-release-packages" title="Permalink to this headline"></a></h3>
+<h3>Controlling WML-CE release packages<a class="headerlink" href="#controlling-wml-ce-release-packages" title="Permalink to this heading"></a></h3>
 <p>The conda installer uses a set of rules to determine which packages to
 install. Channel priorities and package versions are weighted heavily,
 but the installer also considers factors such as the number of packages
@@ -616,7 +618,7 @@ greater control:</p>
 </div>
 </div>
 <div class="section" id="additional-conda-channels">
-<h3>Additional conda channels<a class="headerlink" href="#additional-conda-channels" title="Permalink to this headline"></a></h3>
+<h3>Additional conda channels<a class="headerlink" href="#additional-conda-channels" title="Permalink to this heading"></a></h3>
 <p>The main WML CE conda channel is described above. That channel includes
 the formal, supported WML CE releases.</p>
 <p>Additional conda channels are available to complement the main channel.
@@ -628,7 +630,7 @@ they provide and do not need formal support.</p>
 </div>
 </div>
 <div class="section" id="the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai">
-<h2>The WML CE Supplementary channel is available at: <a class="reference external" href="https://anaconda.org/powerai/" target="_blank">https://anaconda.org/powerai/</a>.<a class="headerlink" href="#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai" title="Permalink to this headline"></a></h2>
+<h2>The WML CE Supplementary channel is available at: <a class="reference external" href="https://anaconda.org/powerai/" target="_blank">https://anaconda.org/powerai/</a>.<a class="headerlink" href="#the-wml-ce-supplementary-channel-is-available-at-https-anaconda-org-powerai" title="Permalink to this heading"></a></h2>
 <p>This channel includes packages that are not part of WML CE, but which
 may be useful to WML CE users. The packages are built from recipes in
 the WML CE GitHub repository: <a class="reference external" href="https://github.com/ibm/powerai" target="_blank">https://github.com/ibm/powerai</a>.</p>
@@ -637,7 +639,7 @@ More information about the Supplementary channel can be found in the
 PowerAI Supplementary Channel README.</p>
 </div>
 <div class="section" id="the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access">
-<h2>The WML-CE Early Access channel is available at: <a class="reference external" href="https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/" target="_blank">https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/</a>.<a class="headerlink" href="#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" title="Permalink to this headline"></a></h2>
+<h2>The WML-CE Early Access channel is available at: <a class="reference external" href="https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/" target="_blank">https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/</a>.<a class="headerlink" href="#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" title="Permalink to this heading"></a></h2>
 <p>This channel is updated occasionally with latest versions of various
 packages included in WML CE. The purpose of the channel is to make new
 versions of frameworks available in advance of formal WML CE releases.
@@ -675,7 +677,7 @@ conda install <span class="nv">tensorflow</span><span class="o">=</span><span cl
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

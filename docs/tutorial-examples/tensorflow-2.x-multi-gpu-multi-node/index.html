@@ -14,6 +14,7 @@
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
         <script src="../../_static/jquery.js"></script>
         <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -333,19 +334,19 @@
            <div itemprop="articleBody">
              
   <div class="section" id="multi-node-multi-gpu-tensorflow-2-0-distributed-training-example">
-<h1>Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example<a class="headerlink" href="#multi-node-multi-gpu-tensorflow-2-0-distributed-training-example" title="Permalink to this headline"></a></h1>
+<h1>Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example<a class="headerlink" href="#multi-node-multi-gpu-tensorflow-2-0-distributed-training-example" title="Permalink to this heading"></a></h1>
 <p>Romeo Kienzler ( 1 s t n a m e . l a s t n a m e  a t  c h . i b m . c o m )</p>
 <p>Jerome Nilmeier ( l a s t n a m e  a t  us . i b m . c o m )</p>
 <div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline"></a></h2>
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
 <p>Ported the TensorFlow example to run on Satori</p>
 </div>
 <div class="section" id="prerequisites-if-you-are-not-yet-running-tensorflow-2-0">
-<h2>Prerequisites if you are not yet running TensorFlow 2.0<a class="headerlink" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites if you are not yet running TensorFlow 2.0<a class="headerlink" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0" title="Permalink to this heading"></a></h2>
 <p>Install TensorFlow 2.0 as described here =&gt; IMPORTANT &lt;= this might change, please ask John or Chris =&gt; <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" target="_blank">https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access</a> =&gt; it is important that you name your environment wmlce-ea</p>
 </div>
 <div class="section" id="commands-to-run-this-example">
-<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this headline"></a></h2>
+<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this heading"></a></h2>
 <ol class="arabic simple">
 <li>Login to Satori Login Node</li>
 <li>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></li>
@@ -361,17 +362,17 @@
 <p>watch -n 0.1 nvidia-smi</p>
 </div>
 <div class="section" id="what-s-going-on-here">
-<h2>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Permalink to this headline"></a></h2>
+<h2>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Permalink to this heading"></a></h2>
 <p>All scrips running on all nodes start a Service component which communicates with the other scripts in the background for parameter averaging.</p>
 <p>See <a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a> for more information</p>
 </div>
 <div class="section" id="code-and-input-data-repositories-for-this-example">
-<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this headline"></a></h2>
+<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this heading"></a></h2>
 <p>Code:
 <a class="reference external" href="https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py" target="_blank">https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py</a></p>
 </div>
 <div class="section" id="useful-references">
-<h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this headline"></a></h2>
+<h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/" target="_blank">https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/</a></p>
 <p><a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy" target="_blank">https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a></p>
@@ -389,7 +390,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

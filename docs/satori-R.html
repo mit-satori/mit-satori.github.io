@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -331,10 +332,10 @@
            <div itemprop="articleBody">
              
   <div class="section" id="r-on-satori">
-<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this headline"></a></h1>
+<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this heading"></a></h1>
 <p>R’s PowerPC support is currently limited, and there may be issues trying to install it from source. R can instead be run on Satori using either a Spack build or a container.</p>
 <div class="section" id="getting-started-with-r">
-<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this headline"></a></h2>
+<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this heading"></a></h2>
 <p>A fast way to get R running on Satori is to load the Spack build</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load spack-flat</span>
 <span class="go">module load r</span>
@@ -343,7 +344,7 @@
 </div>
 </div>
 <div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this headline"></a></h2>
+<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this heading"></a></h2>
 <p>To avoid R packages taking up space on home, you can consider setting the R library path inside <cite>/nobackup</cite>, e.g.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&quot;/nobackup/users/{username}/packages/R&quot;</span><span class="p">)</span>
 </pre></div>
@@ -354,7 +355,7 @@
 </div>
 </div>
 <div class="section" id="a-simple-batch-script-example">
-<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this headline"></a></h2>
+<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this heading"></a></h2>
 <p>Here is a simple example of a batch script for running a small R job.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J my_r_job</span>
@@ -373,7 +374,7 @@ Rscript script.R
 </div>
 </div>
 <div class="section" id="r-and-python">
-<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this headline"></a></h2>
+<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this heading"></a></h2>
 <p>With the R Spack build, it is possible to interface between R and Python using <cite>rpy2</cite>. However, as this uses multiple environments, it may break things.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load spack-flat
 module load r
@@ -384,7 +385,7 @@ conda activate <span class="o">{</span>env_name<span class="o">}</span>
 </div>
 </div>
 <div class="section" id="running-r-in-a-container">
-<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this headline"></a></h2>
+<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this heading"></a></h2>
 <p>It is also possible to run R within a container, which has the advantage of letting you work with R in a more closed system. This involves pulling the <cite>docker://ppc64le/r-base</cite> container, which can be done by</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
 <span class="go">singularity pull r-base.img docker://ppc64le/r-base</span>
@@ -416,7 +417,7 @@ conda activate <span class="o">{</span>env_name<span class="o">}</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

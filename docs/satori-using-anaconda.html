@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Julia on Satori &mdash; MIT Satori User Documentation  documentation</title>
+  <title>Using Anaconda on Satori &mdash; MIT Satori User Documentation  documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-julia.html"/>
+    <link rel="canonical" href="https://researchcomputing.mit.edu/satori-using-anaconda.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
@@ -18,9 +18,7 @@
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="R on Satori" href="satori-R.html" />
-    <link rel="prev" title="IBM Large Model Support (LMS)" href="satori-large-model-support.html" /> 
+    <link rel="search" title="Search" href="search.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -38,7 +36,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <ul class="current">
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="satori-basics.html">Satori Basics</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#what-is-satori">What is Satori?</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-basics.html#how-can-i-get-an-account">How can I get an account?</a></li>
@@ -105,13 +103,13 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-distributed-deeplearning.html">Distributed Deep Learning</a></li>
 <li class="toctree-l1"><a class="reference internal" href="satori-large-model-support.html">IBM Large Model Support (LMS)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Julia on Satori</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#getting-started">Getting started</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting help?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-simple-batch-script-example">A simple batch script example</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">Recipe for running single GPU, single threaded interactive session with CUDA aware MPI</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#running-a-multi-process-julia-program-somewhat-interactively">Running a multi-process julia program somewhat interactively</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
+<li class="toctree-l1"><a class="reference internal" href="satori-julia.html">Julia on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-started">Getting started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#getting-help">Getting help?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#a-simple-batch-script-example">A simple batch script example</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">Recipe for running single GPU, single threaded interactive session with CUDA aware MPI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#running-a-multi-process-julia-program-somewhat-interactively">Running a multi-process julia program somewhat interactively</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-julia.html#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">An example of installing https://github.com/clima/climatemachine.jl on Satori</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-R.html">R on Satori</a><ul>
@@ -321,9 +319,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Julia on Satori</li>
+      <li>Using Anaconda on Satori</li>
       <li class="wy-breadcrumbs-aside">
-              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-julia.rst" class="fa fa-github"> Edit on GitHub</a>
+              <a href="https://github.com/mit-satori/getting-started/blob/master/satori-using-anaconda.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
   </ul>
   <hr/>
@@ -331,197 +329,125 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="julia-on-satori">
-<h1>Julia on Satori<a class="headerlink" href="#julia-on-satori" title="Permalink to this heading"></a></h1>
-<p>Julia’s PowerPC support is currently limited and community based, if you run into
-issues please leave a note on the #julia channel on the Satori Slack.</p>
-<div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load julia
+  <div class="section" id="using-anaconda-on-satori">
+<h1>Using Anaconda on Satori<a class="headerlink" href="#using-anaconda-on-satori" title="Permalink to this heading"></a></h1>
+<div class="section" id="using-anaconda">
+<h2>[1] Using Anaconda<a class="headerlink" href="#using-anaconda" title="Permalink to this heading"></a></h2>
+<p>Satori uses Environment Modules to allow users to have access to different software. These modulefiles are built for Satori’s architecture and can be loaded/unloaded from one’s environment on the fly. Anaconda can be accessed by searching for and loading the appropriate module.</p>
+<p>To display a list of modulefiles matching the name ‘anaconda’:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module avail anaconda
+</pre></div>
+</div>
+<p>Loading one of the anaconda modules:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2020.02-2ks5tch
 </pre></div>
 </div>
 </div>
-<div class="section" id="getting-help">
-<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this heading"></a></h2>
-<p>The Julia community has several help channels available, if you have generic
-Julia question the <a class="reference external" href="https://discourse.julialang.org" target="_blank">Julia Discourse</a>  or <a class="reference external" href="https://slackinvite.julialang.org/" target="_blank">Julia Slack</a>
-are the best place to quickly get answers.</p>
-<p>If you have Satori/PowerPC specific questions feel free to reach out to vchuravy either on the Satori Slack or mail.</p>
+<div class="section" id="creating-and-activating-conda-environments">
+<h2>[2] Creating and activating conda environments<a class="headerlink" href="#creating-and-activating-conda-environments" title="Permalink to this heading"></a></h2>
+<p>Once an anaconda module is loaded, you can create environments that have different versions of Python or packages installed in them. Conda environments are optional but recommended. If not used, packages are installed in the default environment called base, which often has a higher risk of containing conflicting packages or dependencies. Switching between environments is called activating the environment.</p>
+<p>The syntax for creating and activating an environment is:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name &lt;environment name&gt; <span class="nv">python</span><span class="o">=</span>&lt;python version&gt;
+<span class="nb">source</span> activate &lt;environment name&gt;
+</pre></div>
 </div>
-<div class="section" id="a-simple-batch-script-example">
-<h2>A simple batch script example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this heading"></a></h2>
-<p>A simple batch script for a julia program on Satori is shown below:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="c1">#SBATCH -J CLIMA_TEST_35</span>
-<span class="c1">#SBATCH -o CLIMA_TEST_35_%j.out</span>
-<span class="c1">#SBATCH -e CLIMA_TEST_35_%j.err</span>
-<span class="c1">#SBATCH --mail-user=XXXXX@mit.edu</span>
-<span class="c1">#SBATCH --mail-type=ALL</span>
-<span class="c1">#SBATCH --gres=gpu:1</span>
-<span class="c1">#SBATCH --nodes=1</span>
-<span class="c1">#SBATCH --mem=0</span>
-<span class="c1">#SBATCH --time=2:00:00</span>
-<span class="c1">#SBATCH --exclusive</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">jars</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">runscripts</span><span class="o">/</span>
-<span class="n">module</span> <span class="n">add</span> <span class="n">spack</span>
-<span class="n">module</span> <span class="n">add</span> <span class="n">spack</span><span class="o">-</span><span class="n">flat</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">pmi</span><span class="o">-</span><span class="n">ucx</span>
-<span class="n">date</span>
-<span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">software</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">1</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">julia</span> <span class="o">--</span><span class="n">project</span> <span class="o">../</span><span class="n">CLIMA</span> <span class="n">file_35</span><span class="o">.</span><span class="n">jl</span>
-<span class="n">date</span>
+<p>To create an anaconda environment in a specfic location, use the <cite>–prefix</cite> flag during creation with the absolute path and name of the environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --prefix<span class="o">=</span>&lt;path/to/env&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --prefix<span class="o">=</span>/nobackup/users/ageod/.conda/envs/test-env01
+<span class="nb">source</span> activate /nobackup/users/ageod/.conda/envs/test-env01
+</pre></div>
+</div>
+<p>NOTE: As a good practice to maintain the disk space usage on Satori please run at regular intervals the following command that will remove unused packages and caches from your Anaconda profile. In addition this command shuld be use before installing a new version of WML-CE/Open-CE on another virtual environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda clean --all
 </pre></div>
 </div>
 </div>
-<div class="section" id="recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">
-<h2>Recipe for running single GPU, single threaded interactive session with CUDA aware MPI<a class="headerlink" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi" title="Permalink to this heading"></a></h2>
-<p>To run a single threaded Julia session on a GPU with MPI enanbled, first start an interactive session on a node:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
+<div class="section" id="setting-up-conda-channels">
+<h2>[3] Setting up conda channels<a class="headerlink" href="#setting-up-conda-channels" title="Permalink to this heading"></a></h2>
+<p>When using conda to search for packages, one or more “channels”, or repositories, may be queried. By default, conda will search its main packages channel for any results that match the queried name and display any results matching packages available for the systems architecture (ppc64le). If no packages are available either under the queried name, or for host system’s architecture, no results will be displayed. Note that not all packages existing for x86 can also be found for ppc64le.</p>
+<p>To add the IBM WML-CE channel to the conda configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
 </pre></div>
 </div>
-<p>then use the following to set environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">purge</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span> <span class="mi">2</span><span class="o">&gt;&amp;</span><span class="mi">1</span>
-<span class="n">module</span> <span class="n">add</span> <span class="n">spack</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">gcc</span><span class="o">/</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">0</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">julia</span><span class="o">/</span><span class="mf">1.4</span><span class="o">.</span><span class="mi">1</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">spack</span><span class="o">-</span><span class="n">admin</span><span class="o">/</span><span class="mf">1.0</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">spack</span><span class="o">-</span><span class="n">flat</span><span class="o">/</span><span class="mf">0.1</span>
-<span class="n">module</span> <span class="n">load</span> <span class="n">openmpi</span><span class="o">/</span><span class="mf">3.1</span><span class="o">.</span><span class="mi">4</span><span class="o">-</span><span class="n">gcc</span><span class="o">-</span><span class="mf">8.3</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">cuda</span><span class="o">-</span><span class="n">pmi</span><span class="o">-</span><span class="n">ucx</span>
-<span class="n">export</span> <span class="n">UCX_ERROR_SIGNALS</span><span class="o">=</span><span class="s2">&quot;SIGILL,SIGBUS,SIGFPE&quot;</span>
-<span class="n">export</span> <span class="n">JULIA_MPI_BINARY</span><span class="o">=</span><span class="n">system</span>
-<span class="n">export</span> <span class="n">JULIA_CUDA_USE_BINARYBUILDER</span><span class="o">=</span><span class="n">false</span>
+<p>To add the MIT Open-CE channel to the conda configuration:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+https://opence.mit.edu
 </pre></div>
 </div>
-<p>to initialize julia packages (one time) use:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>cd /nobackup/users/cnh/julia_cuda
-export JULIA_DEPOT_PATH=`pwd`
-julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
+<p>There are a number of other conda channels that exist which can be added to the conda config in the same manner. By adding the two channels above, your conda searches will be expanded beyond the default repository. See the section entitled <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#ibm-watson-machine-learning-community-edition-wml-ce-and-open-cognitive-environment-open-ce" target="_blank">IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)</a> for more information about these two channels.</p>
+</div>
+<div class="section" id="searching-for-and-installing-conda-packages">
+<h2>[4] Searching for and installing conda packages<a class="headerlink" href="#searching-for-and-installing-conda-packages" title="Permalink to this heading"></a></h2>
+<p>The basic syntax for searching for a package through conda is as follow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search &lt;package-name&gt;
 </pre></div>
 </div>
-<p>running julia:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">using</span> <span class="n">Pkg</span><span class="p">;</span> <span class="n">using</span> <span class="n">MPI</span>
-<span class="n">julia</span><span class="o">&gt;</span> <span class="n">MPI</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
+<p>This command will search the base anaconda channel along with any channels currently added to your conda configuration. You can search a specific channel by explicitly including it in the search:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search -c &lt;channel&gt; &lt;package&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search -c conda-forge pytorch
+</pre></div>
+</div>
+<p>Results from conda searches typically include several available versions for the package queried. If no particular version of a package is specified, conda will install the most appropriate version based on the version of python installed locally. Conda search results may look similar to this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>test2022-14<span class="o">)</span> <span class="o">[</span>ageod@satori-login-001 envs<span class="o">]</span>$ conda search pytorch
+Loading channels: <span class="k">done</span>
+<span class="c1"># Name                       Version           Build  Channel</span>
+pytorch                        <span class="m">1</span>.7.1      hca541ab_1  None
+pytorch                        <span class="m">1</span>.9.0 cuda10.2_py37_1  None
+pytorch                        <span class="m">1</span>.9.0 cuda10.2_py38_1  None
+pytorch                        <span class="m">1</span>.9.0 cuda10.2_py39_1  None
+pytorch                       <span class="m">1</span>.10.2 cpu_py310hef0c51e_0  pkgs/main
+pytorch                       <span class="m">1</span>.10.2 cpu_py37h6f0ae12_0  pkgs/main
+pytorch                       <span class="m">1</span>.10.2 cpu_py38h6f0ae12_0  pkgs/main
+pytorch                       <span class="m">1</span>.10.2 cpu_py39h6f0ae12_0  pkgs/main
+</pre></div>
+</div>
+<p>The output lists the name of the package relevant to the query, the version available, its build, and what channel it exists on. There are several versions of pytorch in the example that show they were built with cuda support, the specific version of cuda used, and the version of python used. There are also versions of pytorch built to utilize CPU’s rather than GPU’s.</p>
+<p>The “pkgs/main” channel refers to the default anaconda repository, whereas the results with the channels listed as “None” are coming from the MIT OpenCE channel.</p>
+<p>To install a package, you must first need to have an environment activated. Again, packages are installed within conda environments. You can specify versions of packages through levels of specificity:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install &lt;package&gt;
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install &lt;package&gt;<span class="o">=</span>&lt;version&gt;
+conda install &lt;package&gt;<span class="o">=</span>&lt;version&gt;<span class="o">=</span>&lt;build&gt;
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pytorch
+conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0
+conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0<span class="o">=</span>cuda10.2_py39_1
 </pre></div>
 </div>
 </div>
-<div class="section" id="running-a-multi-process-julia-program-somewhat-interactively">
-<h2>Running a multi-process julia program somewhat interactively<a class="headerlink" href="#running-a-multi-process-julia-program-somewhat-interactively" title="Permalink to this heading"></a></h2>
-<p>When debugging and testing it is sometimes to run outside of sbatch but still use multiple GPUs.
-The best way to do this is through the Slurm <code class="docutils literal notranslate"><span class="pre">salloc</span></code> command. This command reserves resources
-and then allows multiple job stages to be executed through the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command from a shell as shown:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">salloc</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">3</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span>
+<div class="section" id="listing-the-contents-of-your-conda-environment">
+<h2>[5] Listing the contents of your conda environment<a class="headerlink" href="#listing-the-contents-of-your-conda-environment" title="Permalink to this heading"></a></h2>
+<p>Viewing the packages installed in your environment is easy. Use the following command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda list
 </pre></div>
 </div>
-<p>now use srun to launch individual steps e.g.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module purge &gt; /dev/null 2&gt;&amp;1
-module add spack
-module load gcc/8.3.0
-module load julia/1.4.1
-module load spack-admin/1.0
-module load spack-flat/0.1
-module load openmpi/3.1.4-gcc-8.3.0-cuda-pmi-ucx
-export UCX_ERROR_SIGNALS=&quot;SIGILL,SIGBUS,SIGFPE&quot;
-export JULIA_MPI_BINARY=system
-export JULIA_CUDA_USE_BINARYBUILDER=false
-cd /nobackup/users/cnh/projects/jmpi/
-export JULIA_DEPOT_PATH=`pwd`
-julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); Pkg.precompile()&#39;
+<p>You can be more granular and search for a specific package in your environment by adding the packages name after the above command.</p>
+</div>
+<div class="section" id="leaving-your-conda-environment">
+<h2>[6] Leaving your conda environment<a class="headerlink" href="#leaving-your-conda-environment" title="Permalink to this heading"></a></h2>
+<p>When you are done working in your environment, or want to switch to a different environment, you can deactivate the current environment with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda deactivate
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">-</span><span class="n">n</span> <span class="mi">3</span> <span class="n">julia</span> <span class="n">foo</span><span class="o">.</span><span class="n">jl</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>2: Sending   2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]</p>
-<p>0: Sending   0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]</p>
-<p>1: Sending   1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]</p>
-<p>2: Received 1 -&gt; 2 = [1.0, 1.0, 1.0, 1.0]</p>
-<p>0: Received 2 -&gt; 0 = [2.0, 2.0, 2.0, 2.0]</p>
-<p>1: Received 0 -&gt; 1 = [0.0, 0.0, 0.0, 0.0]</p>
-</div></blockquote>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">foo</span><span class="o">.</span><span class="n">jl</span>
-</pre></div>
-</div>
-<blockquote>
-<div><p>using MPI
-MPI.Init()</p>
-<p>comm = MPI.COMM_WORLD
-rank = MPI.Comm_rank(comm)
-size = MPI.Comm_size(comm)</p>
-<p>dst = mod(rank+1, size)
-src = mod(rank-1, size)</p>
-<p>N = 4</p>
-<p>send_mesg = Array{Float64}(undef, N)
-recv_mesg = Array{Float64}(undef, N)</p>
-<p>fill!(send_mesg, Float64(rank))</p>
-<p>rreq = MPI.Irecv!(recv_mesg, src,  src+32, comm)</p>
-<p>print(“$rank: Sending   $rank -&gt; $dst = $send_mesgn”)
-sreq = MPI.Isend(send_mesg, dst, rank+32, comm)</p>
-<p>stats = MPI.Waitall!([rreq, sreq])</p>
-<p>print(“$rank: Received $src -&gt; $rank = $recv_mesgn”)</p>
-<p>MPI.Barrier(comm)</p>
-</div></blockquote>
-</div>
-<div class="section" id="an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">
-<h2>An example of installing <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> on Satori<a class="headerlink" href="#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori" title="Permalink to this heading"></a></h2>
-<p>Because Satori is a Power 9 CPU based system some Julia packages require a few extra steps to
-ensure the right binaries are deployed. An example of
-installing and running <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> in a clean enironment
-illustrates some steps that may occaisionally be needed.</p>
-<ul>
-<li><p class="first">Launch a an interactive node session:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Create a fresh directory:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">myclima</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clima</span><span class="o">/</span><span class="n">climatemachine</span><span class="o">.</span><span class="n">jl</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">myclima</span>
-</pre></div>
-</div>
-</li>
-<li><p class="first">Set up the Julia environment:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module purge &gt; /dev/null 2&gt;&amp;1
-module add spack
-module load gcc/8.3.0
-module load julia/1.4.1
-module load spack-admin/1.0
-module load spack-flat/0.1
-module load openmpi/3.1.4-gcc-8.3.0-cuda-pmi-ucx
-export UCX_ERROR_SIGNALS=&quot;SIGILL,SIGBUS,SIGFPE&quot;
-export JULIA_MPI_BINARY=system
-export JULIA_CUDA_USE_BINARYBUILDER=false
-export JULIA_DEPOT_PATH=`pwd`/../.julia
-https://github.com/mit-satori/getting-started/blob/master/satori-julia.rst
-</pre></div>
-</div>
-</li>
-</ul>
-<p>One time only setup for clean environment (or to reset from clean):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\rm -fr $JULIA_DEPOT_PATH
-julia -e &#39;using Pkg; Pkg.add(PackageSpec(name=&quot;Conda&quot;,rev=&quot;master&quot;)); Pkg.build(&quot;Conda&quot;)&#39;
-julia -e &#39;using Pkg; Pkg.add(&quot;NCDatasets&quot;); Pkg.build(&quot;NCDatasets&quot;)&#39;
-julia -e &#39;using Pkg; Pkg.add(PackageSpec(name=&quot;Dierckx&quot;,rev=&quot;master&quot;)); Pkg.build(&quot;Dierckx&quot;)&#39;
-julia --project=@. -e &#39;using Pkg; Pkg.instantiate(); using ClimateMachine&#39;
-</pre></div>
-</div>
-<p>In this example the master revision of the Conda and Dierckx packages are used because versions
-with full support for Power 9 were not available and so some small patches had to be introduced.
-Releases of these packages with the patches will be available soon, but the steps shown illustrate
-some of the ways to work around these sorts of occurences generally.</p>
-<p>The UCX and CUDA settings are used to set the conifguration so that optimized versions of
-GPU Direct and CUDA aware MPI will be used.</p>
+<p>Environments retain their state when inactive - as in, the packages installed within them. Simply activate the envionment again to use the installed software.</p>
 </div>
 </div>
 
 
            </div>
           </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="satori-large-model-support.html" class="btn btn-neutral float-left" title="IBM Large Model Support (LMS)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="satori-R.html" class="btn btn-neutral float-right" title="R on Satori" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+          <footer>
 
   <hr/>
 

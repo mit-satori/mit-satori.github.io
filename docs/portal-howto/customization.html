@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -332,7 +333,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="how-can-i-create-custom-jupyter-kernels-for-the-satori-web-portal">
-<h1>How can I create custom Jupyter kernels for the Satori web portal?<a class="headerlink" href="#how-can-i-create-custom-jupyter-kernels-for-the-satori-web-portal" title="Permalink to this headline"></a></h1>
+<h1>How can I create custom Jupyter kernels for the Satori web portal?<a class="headerlink" href="#how-can-i-create-custom-jupyter-kernels-for-the-satori-web-portal" title="Permalink to this heading"></a></h1>
 <p>The Open On Demand (OOD) Satori portal has a set of centrally installed Jupyter kernels that
 include common software. The aims is to cover most
 things needed for frequently used tools. If you start using
@@ -364,7 +365,7 @@ precise kernels that collect specific version combinations of software in an
 immutable state in a per account location can help, although this still requires care and
 diligence!</p>
 <div class="section" id="steps-to-create-a-kernel">
-<h2>Steps to create a kernel<a class="headerlink" href="#steps-to-create-a-kernel" title="Permalink to this headline"></a></h2>
+<h2>Steps to create a kernel<a class="headerlink" href="#steps-to-create-a-kernel" title="Permalink to this heading"></a></h2>
 <p>These instructions assume you are slightly familiar with conda ( <a class="reference external" href="https://docs.conda.io/en/latest/index.html" target="_blank">https://docs.conda.io/en/latest/index.html</a> ), that you are
 starting a brand new conda environment for this kernel. The steps involve a series of terminal commands and assume
 you are familiar with working at the terminal command line ( if you are not you can ask someone for
@@ -381,7 +382,7 @@ can be carried out when logged in from an ssh session, for example via the comma
 <li><strong>Initialise</strong> the interactive python settings for the new environment</li>
 </ol>
 <div class="section" id="commands-to-create-a-new-conda-environment-with-a-custom-python-kernel">
-<h3>Commands to create a new conda environment with a custom Python kernel<a class="headerlink" href="#commands-to-create-a-new-conda-environment-with-a-custom-python-kernel" title="Permalink to this headline"></a></h3>
+<h3>Commands to create a new conda environment with a custom Python kernel<a class="headerlink" href="#commands-to-create-a-new-conda-environment-with-a-custom-python-kernel" title="Permalink to this heading"></a></h3>
 <ol class="arabic">
 <li><p class="first"><strong>Create.</strong> The bash shell commands create a new conda environment. This example uses the account name <code class="docutils literal notranslate"><span class="pre">cnh</span></code>. The new
 environment is placed in a new directory under the scratch space <code class="docutils literal notranslate"><span class="pre">/nobackup/users/cnh/projects/condas</span></code> belonging to
@@ -449,7 +450,7 @@ python -m ipykernel install --user --name=${CKNAME}
 </ol>
 </div>
 <div class="section" id="an-added-bonus-updating-on-the-fly">
-<h3>An added bonus - updating on the fly<a class="headerlink" href="#an-added-bonus-updating-on-the-fly" title="Permalink to this headline"></a></h3>
+<h3>An added bonus - updating on the fly<a class="headerlink" href="#an-added-bonus-updating-on-the-fly" title="Permalink to this heading"></a></h3>
 <p>Once you have created a new kernel conda environment it is ownde by your account, so it can be updated if needed. This
 is unlike the standard system kernels which are currently read-only. For example in the example above the kernel
 environment does not include <code class="docutils literal notranslate"><span class="pre">cuml</span></code> ( <a class="reference external" href="https://anaconda.org/rapidsai/cuml" target="_blank">https://anaconda.org/rapidsai/cuml</a> ). The <code class="docutils literal notranslate"><span class="pre">cuml</span></code> package can be used to
@@ -471,7 +472,7 @@ conda install cuml
 <p>when this completes we can restart the kernel and the new package will be avaiable.</p>
 </div>
 <div class="section" id="some-additional-steps-for-julia-and-octave">
-<h3>Some additional steps for Julia and Octave<a class="headerlink" href="#some-additional-steps-for-julia-and-octave" title="Permalink to this headline"></a></h3>
+<h3>Some additional steps for Julia and Octave<a class="headerlink" href="#some-additional-steps-for-julia-and-octave" title="Permalink to this heading"></a></h3>
 <p>Additionally we might want to include a Julia interactive environment and an Octave interactive environment. This section should document more about how that works. This content is still under development:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">julia</span><span class="o">/</span><span class="mf">1.3</span><span class="o">.</span><span class="mi">0</span>
 <span class="n">julia</span> <span class="o">-</span><span class="n">E</span> <span class="s1">&#39;using Pkg; Pkg.add(&quot;IJulia&quot;)&#39;</span>
@@ -479,7 +480,7 @@ conda install cuml
 </div>
 </div>
 <div class="section" id="files-and-directories">
-<h3>Files and directories<a class="headerlink" href="#files-and-directories" title="Permalink to this headline"></a></h3>
+<h3>Files and directories<a class="headerlink" href="#files-and-directories" title="Permalink to this heading"></a></h3>
 <p>There are several files and directories that are useful to know about. This section will provide some details on these. Some of the key files are listed below. This section is still under development:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">cnh</span><span class="o">-</span><span class="n">awesome</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">environment</span><span class="o">/</span>
 <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span><span class="n">jupyter</span><span class="o">/</span><span class="n">kernels</span><span class="o">/</span><span class="n">cnh</span><span class="o">-</span><span class="n">awesome</span><span class="o">-</span><span class="n">new</span><span class="o">-</span><span class="n">environment</span><span class="o">/</span><span class="n">kernel</span><span class="o">.</span><span class="n">json</span>
@@ -501,7 +502,7 @@ conda install cuml
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

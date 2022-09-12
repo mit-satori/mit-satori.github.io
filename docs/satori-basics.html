@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -331,9 +332,9 @@
            <div itemprop="articleBody">
              
   <div class="section" id="satori-basics">
-<h1>Satori Basics<a class="headerlink" href="#satori-basics" title="Permalink to this headline"></a></h1>
+<h1>Satori Basics<a class="headerlink" href="#satori-basics" title="Permalink to this heading"></a></h1>
 <div class="section" id="what-is-satori">
-<h2>What is Satori?<a class="headerlink" href="#what-is-satori" title="Permalink to this headline"></a></h2>
+<h2>What is Satori?<a class="headerlink" href="#what-is-satori" title="Permalink to this heading"></a></h2>
 <p>Satori is a GPU dense, high-performance Power 9 system developed as a collaboration between MIT and IBM.
 It has 64 1TB memory Power 9 nodes. Each node hosts four NVidia V100 32GB memory GPU cards. Within a
 node GPUs are linked by an NVLink2 network that supports nearly 200GB/s bi-directional transfer
@@ -341,14 +342,16 @@ between GPUs. A 100Gb/s Infiniband network with microsecond user space latency c
 nodes togehter.</p>
 </div>
 <div class="section" id="how-can-i-get-an-account">
-<h2>How can I get an account?<a class="headerlink" href="#how-can-i-get-an-account" title="Permalink to this headline"></a></h2>
-<p><strong>Satori is currently in a beta test phase</strong>. Access requires active MIT Kerberos credentials (available to all students, employees and sponsored guest accounts <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ). To have your kereberos account activated on Satori during the beta test phase contact Chris Hill ( <a class="reference external" href="mailto:cnh&#37;&#52;&#48;mit&#46;edu" target="_blank">cnh<span>&#64;</span>mit<span>&#46;</span>edu</a> ) or John Cohn ( <a class="reference external" href="mailto:johncohn&#37;&#52;&#48;us&#46;ibm&#46;com" target="_blank">johncohn<span>&#64;</span>us<span>&#46;</span>ibm<span>&#46;</span>com</a> ).</p>
-<p>Once beta testing is complete, anyone with active MIT Kerberos credentials (i.e. all students, employees and sponsored
-guest account <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ) will be able to connect to Satori via a portal and a
-starter account will be created. A starter account will be provided somewhat limited access by default. Once a starter account has been created, an account holder can be added as a member to one or more research groups. Different research groups can provide larger scale access to their members.</p>
+<h2>How can I get an account?<a class="headerlink" href="#how-can-i-get-an-account" title="Permalink to this heading"></a></h2>
+<p>Access requires active MIT Kerberos credentials (available to all students, employees and sponsored guest accounts <a class="reference external" href="https://ist.mit.edu/guest-accounts" target="_blank">https://ist.mit.edu/guest-accounts</a> ). To have an account created on Satori please visit the Satori portal (<a class="reference external" href="https://satori-portal.mit.edu/" target="_blank">https://satori-portal.mit.edu/</a>) and log in using MIT Kerberos credentials.</p>
+<p>New user accounts are granted storage in two locations with the following storage (block) and file (inode) quotas:</p>
+<ul class="simple">
+<li>/home/&lt;user&gt; | 20GB &amp; 500,000 files</li>
+<li>/nobackup/users/&lt;user&gt; | 500GB &amp; 1,000,000 files</li>
+</ul>
 </div>
 <div class="section" id="getting-help">
-<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this headline"></a></h2>
+<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this heading"></a></h2>
 <p>If you are stuck and can’t find an answer in the web pages please feel free to
 email our support address <a class="reference external" href="mailto:satori-support&#37;&#52;&#48;techsquare&#46;com" target="_blank">satori-support<span>&#64;</span>techsquare<span>&#46;</span>com</a> with questions and requests.</p>
 </div>
@@ -365,7 +368,7 @@ email our support address <a class="reference external" href="mailto:satori-supp
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

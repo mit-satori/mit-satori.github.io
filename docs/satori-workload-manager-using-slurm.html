@@ -14,6 +14,7 @@
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
         <script src="_static/jquery.js"></script>
         <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -331,7 +332,7 @@
            <div itemprop="articleBody">
              
   <div class="section" id="running-your-ai-training-jobs-on-satori-using-slurm">
-<h1>Running your AI training jobs on Satori using Slurm<a class="headerlink" href="#running-your-ai-training-jobs-on-satori-using-slurm" title="Permalink to this headline"></a></h1>
+<h1>Running your AI training jobs on Satori using Slurm<a class="headerlink" href="#running-your-ai-training-jobs-on-satori-using-slurm" title="Permalink to this heading"></a></h1>
 <p>Computational work on Satori is quickly being migrated to use the Slurm  workload manager. A typical job consists of several
 components:</p>
 <ul class="simple">
@@ -354,7 +355,7 @@ one</li>
 <li>Monitor the job’s progress before and during execution</li>
 </ul>
 <div class="section" id="a-note-on-exclusivity">
-<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this headline"></a></h2>
+<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this heading"></a></h2>
 <p>To make best use of Satori’s GPU resource  default job submissiosn are not
 exclusive. That means that unless you ask otherwise, the GPUs on the node(s)
 you are assigned may already be in use by another user. That means if you
@@ -366,7 +367,7 @@ the node to be ‘exclusive’ . See below on how to request exclusive access  i
 an interactive and batch situation.</p>
 </div>
 <div class="section" id="interactive-jobs">
-<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this headline"></a></h2>
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this heading"></a></h2>
 <p>Most users will find batch jobs to be the easiest way to interact with
 the system, since they permit you to hand off a job to the scheduler and
 then work on other tasks; however, it is sometimes preferable to run
@@ -403,7 +404,7 @@ queue) for 1 hour.</p>
 </div>
 </div>
 <div class="section" id="batch-scripts">
-<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this headline"></a></h2>
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this heading"></a></h2>
 <p>The most common way to interact with the batch system is via batch jobs.
 A batch job is simply a shell script with added directives to request
 various resources from or provide certain information to the batch
@@ -505,7 +506,7 @@ conda install horovod
 </div>
 <p>For your convenience additional SLURM batch job templates have been created to cover distributed deep learning trainings across Satori cluster. You can find them <a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">here</a></p>
 <div class="section" id="monitoring-jobs">
-<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this headline"></a></h3>
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this heading"></a></h3>
 <p>SLURM provides several utilities with which you can monitor jobs. These
 include monitoring the queue, getting details about a particular job,
 viewing STDOUT/STDERR of running jobs, and more.</p>
@@ -517,7 +518,7 @@ viewing STDOUT/STDERR of running jobs, and more.</p>
 jobs.</p>
 </div>
 <div class="section" id="canceling-jobs">
-<h3>Canceling Jobs<a class="headerlink" href="#canceling-jobs" title="Permalink to this headline"></a></h3>
+<h3>Canceling Jobs<a class="headerlink" href="#canceling-jobs" title="Permalink to this heading"></a></h3>
 <p>SLURM allows you to kill jobs you’ve already submitted by using the command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel &lt;jobnumber&gt;
 </pre></div>
@@ -525,7 +526,7 @@ jobs.</p>
 <p>where &lt;jobnumber&gt; is the slurm job number see wiht you submit the job or found by running squeue.</p>
 </div>
 <div class="section" id="scheduling-policy">
-<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this headline"></a></h3>
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this heading"></a></h3>
 <p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
 order. This often does not make effective use of the system. A large job
 may be next in line to run. If the system is using a strict FIFO queue,
@@ -536,7 +537,7 @@ be delayed. While this does make more effective use of the system, it
 indirectly encourages the submission of smaller jobs.</p>
 </div>
 <div class="section" id="batch-queue-policy">
-<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this headline"></a></h3>
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this heading"></a></h3>
 <p>New users are granted access to a default batch queue. It
 enforces the following policies: Limit of (1) executing job per
 user with a maximum wall time of 12 hours. Jobs in excess of the per
@@ -544,7 +545,7 @@ user limit above will be placed into a
 queued state, and will change to eligible-to-run at the appropriate time.</p>
 </div>
 <div class="section" id="queue-policies">
-<h3>Queue Policies<a class="headerlink" href="#queue-policies" title="Permalink to this headline"></a></h3>
+<h3>Queue Policies<a class="headerlink" href="#queue-policies" title="Permalink to this heading"></a></h3>
 <p>Account holders who are comfortable with basic practices of how to use the
 system productively (understanding basic Linux commands, learning interactive
 and batch scheduling techniques, developing basic strategies for managing large
@@ -562,7 +563,7 @@ goals, please email <a class="reference external" href="mailto:support-satori&#3
 and we will consider them.</p>
 </div>
 <div class="section" id="running-jobs-in-series">
-<h3>Running jobs in series<a class="headerlink" href="#running-jobs-in-series" title="Permalink to this headline"></a></h3>
+<h3>Running jobs in series<a class="headerlink" href="#running-jobs-in-series" title="Permalink to this heading"></a></h3>
 <p>Slurm provides numerous mechanisms for chaining jobs together to run unattended in sequence. A simple example of this sort
 of job is shown below</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
@@ -584,7 +585,7 @@ fiddly and time consuming to get going, but once it is in place you no longer ha
 middle of the night to check on every computational experiment.</p>
 </div>
 <div class="section" id="note-on-pytorch-1-4">
-<h3>Note on Pytorch 1.4<a class="headerlink" href="#note-on-pytorch-1-4" title="Permalink to this headline"></a></h3>
+<h3>Note on Pytorch 1.4<a class="headerlink" href="#note-on-pytorch-1-4" title="Permalink to this heading"></a></h3>
 <p>Note.. we have recently updated the CUDA drivers on the part of Satori running Slurm. You can install Pytorch 1.4 for use with Slurm using these commands</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/
 conda create -n wmlce-ea <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
@@ -607,7 +608,7 @@ conda install <span class="nv">pytorch</span><span class="o">=</span><span class
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021, MIT Satori Project.</p>
+    <p>&#169; Copyright 2022, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
