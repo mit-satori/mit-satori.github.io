@@ -16,10 +16,11 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Example machine learning LSF jobs" href="lsf-templates/satori-lsf-ml-examples.html" />
+    <link rel="next" title="Satori Public Datasets" href="satori-public-datasets.html" />
     <link rel="prev" title="R on Satori" href="satori-R.html" /> 
 </head>
 
@@ -50,6 +51,13 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-portal.html">Satori Portal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#accessing-the-portal">[1] Accessing the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-the-portal">[2] Using the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-jupyter-notebooks">[3] Using Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#viewing-and-accessing-notebooks">[4] Viewing and Accessing Notebooks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
@@ -70,6 +78,15 @@
 <li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#creating-project-groups">Creating project groups</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-using-anaconda.html">Using Anaconda on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#using-anaconda">[1] Using Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#creating-and-activating-conda-environments">[2] Creating and activating conda environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#setting-up-conda-channels">[3] Setting up conda channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#searching-for-and-installing-conda-packages">[4] Searching for and installing conda packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#listing-the-contents-of-your-conda-environment">[5] Listing the contents of your conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#leaving-your-conda-environment">[6] Leaving your conda environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
@@ -135,6 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
@@ -416,26 +434,26 @@ before <code class="docutils literal notranslate"><span class="pre">MPI_Init()</
 environment variable SLURM_LOCALID) is shown below:</p>
 </li>
 </ol>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span> <span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
 
-<span class="kt">int</span> <span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span><span class="o">**</span> <span class="n">argv</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">envp</span><span class="p">[])</span> <span class="p">{</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">envp</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
-<span class="kt">char</span> <span class="o">*</span> <span class="n">localRankStr</span> <span class="o">=</span> <span class="nb">NULL</span><span class="p">;</span>
-<span class="kt">int</span> <span class="n">localrank</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">devCount</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">mydev</span><span class="p">;</span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">devCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">mydev</span><span class="p">;</span><span class="w"></span>
 <span class="c1">// We extract the local rank initialization using an environment variable</span>
-<span class="k">if</span> <span class="p">((</span><span class="n">localRankStr</span> <span class="o">=</span> <span class="n">getenv</span><span class="p">(</span><span class="s">&quot;SLURM_LOCALID&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="nb">NULL</span><span class="p">)</span> <span class="p">{</span>
-  <span class="n">localrank</span> <span class="o">=</span> <span class="n">atoi</span><span class="p">(</span><span class="n">localRankStr</span><span class="p">);</span>
-<span class="p">}</span>
-<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devCount</span><span class="p">);</span>
-<span class="n">mydev</span><span class="o">=</span><span class="n">localrank</span> <span class="o">%</span> <span class="n">devCount</span><span class="p">;</span>
-<span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">mydev</span><span class="p">);</span>
-      <span class="o">:</span>
-      <span class="o">:</span>
-<span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
-      <span class="o">:</span>
-      <span class="o">:</span>
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;SLURM_LOCALID&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">localRankStr</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devCount</span><span class="p">);</span><span class="w"></span>
+<span class="n">mydev</span><span class="o">=</span><span class="n">localrank</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">devCount</span><span class="p">;</span><span class="w"></span>
+<span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">mydev</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"></span>
+<span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"></span>
+<span class="w">      </span><span class="o">:</span><span class="w"></span>
 </pre></div>
 </div>
 </div>
@@ -547,7 +565,7 @@ features and PMI job management features to integrate with SLURM and the Satori 
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="satori-R.html" class="btn btn-neutral float-left" title="R on Satori" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="lsf-templates/satori-lsf-ml-examples.html" class="btn btn-neutral float-right" title="Example machine learning LSF jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="satori-public-datasets.html" class="btn btn-neutral float-right" title="Satori Public Datasets" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

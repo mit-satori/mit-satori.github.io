@@ -16,6 +16,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -49,6 +50,13 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-portal.html">Satori Portal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#accessing-the-portal">[1] Accessing the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-the-portal">[2] Using the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-jupyter-notebooks">[3] Using Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#viewing-and-accessing-notebooks">[4] Viewing and Accessing Notebooks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
@@ -69,6 +77,15 @@
 <li class="toctree-l3"><a class="reference internal" href="satori-getting-started.html#creating-project-groups">Creating project groups</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-using-anaconda.html">Using Anaconda on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#using-anaconda">[1] Using Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#creating-and-activating-conda-environments">[2] Creating and activating conda environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#setting-up-conda-channels">[3] Setting up conda channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#searching-for-and-installing-conda-packages">[4] Searching for and installing conda packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#listing-the-contents-of-your-conda-environment">[5] Listing the contents of your conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#leaving-your-conda-environment">[6] Leaving your conda environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
@@ -134,6 +151,7 @@
 <li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
@@ -350,6 +368,13 @@ combined simulation and machine learning intensive research work.</p>
 <li class="toctree-l2"><a class="reference internal" href="satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-portal.html">Satori Portal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#accessing-the-portal">[1] Accessing the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-the-portal">[2] Using the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#using-jupyter-notebooks">[3] Using Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-portal.html#viewing-and-accessing-notebooks">[4] Viewing and Accessing Notebooks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="satori-getting-started.html">Starting up on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
@@ -359,6 +384,15 @@ combined simulation and machine learning intensive research work.</p>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#transferring-files">Transferring Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#types-of-jobs">Types of Jobs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="satori-getting-started.html#project-groups">Project Groups</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="satori-using-anaconda.html">Using Anaconda on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#using-anaconda">[1] Using Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#creating-and-activating-conda-environments">[2] Creating and activating conda environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#setting-up-conda-channels">[3] Setting up conda channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#searching-for-and-installing-conda-packages">[4] Searching for and installing conda packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#listing-the-contents-of-your-conda-environment">[5] Listing the contents of your conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="satori-using-anaconda.html#leaving-your-conda-environment">[6] Leaving your conda environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
@@ -406,6 +440,7 @@ combined simulation and machine learning intensive research work.</p>
 <li class="toctree-l2"><a class="reference internal" href="satori-cuda-aware-mpi.html#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="satori-public-datasets.html">Satori Public Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>

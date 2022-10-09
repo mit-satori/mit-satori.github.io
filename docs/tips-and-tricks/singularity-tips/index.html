@@ -16,6 +16,7 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -50,6 +51,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../../satori-ssh.html#ssh-login">SSH Login</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../satori-portal.html">Satori Portal</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-portal.html#accessing-the-portal">[1] Accessing the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-portal.html#using-the-portal">[2] Using the Portal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-portal.html#using-jupyter-notebooks">[3] Using Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-portal.html#viewing-and-accessing-notebooks">[4] Viewing and Accessing Notebooks</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../satori-getting-started.html">Starting up on Satori</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-getting-started.html#getting-your-account">Getting Your Account</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../satori-getting-started.html#shared-hpc-clusters">Shared HPC Clusters</a></li>
@@ -70,6 +78,15 @@
 <li class="toctree-l3"><a class="reference internal" href="../../satori-getting-started.html#creating-project-groups">Creating project groups</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../satori-using-anaconda.html">Using Anaconda on Satori</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#using-anaconda">[1] Using Anaconda</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#creating-and-activating-conda-environments">[2] Creating and activating conda environments</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#setting-up-conda-channels">[3] Setting up conda channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#searching-for-and-installing-conda-packages">[4] Searching for and installing conda packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#listing-the-contents-of-your-conda-environment">[5] Listing the contents of your conda environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../satori-using-anaconda.html#leaving-your-conda-environment">[6] Leaving your conda environment</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../satori-training.html">Training for faster onboarding in the system HW and SW architecture</a></li>
@@ -135,6 +152,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../satori-cuda-aware-mpi.html#using-alternate-mpi-builds">Using alternate MPI builds</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../satori-public-datasets.html">Satori Public Datasets</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lsf-templates/satori-lsf-ml-examples.html">Example machine learning LSF jobs</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-keras-example">A single node, 4 GPU Keras example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../lsf-templates/satori-lsf-ml-examples.html#a-single-node-4-gpu-caffe-example">A single node, 4 GPU Caffe example</a></li>
@@ -412,7 +430,7 @@ machine are described below.</p>
 </pre></div>
 </div>
 <p>should produce output indicating a PowerPC executable:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span><span class="p">:</span> <span class="n">ELF</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">LSB</span> <span class="n">shared</span> <span class="nb">object</span><span class="p">,</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">PowerPC</span> <span class="ow">or</span> <span class="n">cisco</span> <span class="mi">7500</span><span class="p">,</span> <span class="n">version</span> <span class="mi">1</span> <span class="p">(</span><span class="n">SYSV</span><span class="p">),</span> <span class="n">dynamically</span> <span class="n">linked</span><span class="p">,</span> <span class="n">interpreter</span> <span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">ld64</span><span class="o">.</span><span class="n">so</span><span class="o">.</span><span class="mi">2</span><span class="p">,</span> <span class="n">BuildID</span><span class="p">[</span><span class="n">sha1</span><span class="p">]</span><span class="o">=</span><span class="n">da9b7dc089cbaee41f4d1af3da65a40d29b25773</span><span class="p">,</span> <span class="k">for</span> <span class="n">GNU</span><span class="o">/</span><span class="n">Linux</span> <span class="mf">3.10</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">stripped</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">ls</span><span class="p">:</span> <span class="n">ELF</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">LSB</span> <span class="n">shared</span> <span class="nb">object</span><span class="p">,</span> <span class="mi">64</span><span class="o">-</span><span class="n">bit</span> <span class="n">PowerPC</span> <span class="ow">or</span> <span class="n">cisco</span> <span class="mi">7500</span><span class="p">,</span> <span class="n">version</span> <span class="mi">1</span> <span class="p">(</span><span class="n">SYSV</span><span class="p">),</span> <span class="n">dynamically</span> <span class="n">linked</span><span class="p">,</span> <span class="n">interpreter</span> <span class="o">/</span><span class="n">lib64</span><span class="o">/</span><span class="n">ld64</span><span class="o">.</span><span class="n">so</span><span class="mf">.2</span><span class="p">,</span> <span class="n">BuildID</span><span class="p">[</span><span class="n">sha1</span><span class="p">]</span><span class="o">=</span><span class="n">da9b7dc089cbaee41f4d1af3da65a40d29b25773</span><span class="p">,</span> <span class="k">for</span> <span class="n">GNU</span><span class="o">/</span><span class="n">Linux</span> <span class="mf">3.10.0</span><span class="p">,</span> <span class="n">stripped</span>
 </pre></div>
 </div>
 </li>
