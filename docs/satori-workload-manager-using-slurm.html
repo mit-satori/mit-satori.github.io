@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Running your AI training jobs on Satori using Slurm</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-workload-manager-using-slurm.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -402,22 +404,22 @@ line are what makes the job “interactive batch”: -Is followed by a shell
 name. For example, to request an interactive batch job (with bash as the
 shell) equivalent to the sample batch script above, you would use the
 command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -I --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-I<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>This will request an AC922 node with 4x GPUs from the Satori (normal
 queue) for 1 hour.</p>
 <p>If you need to make sure no one else can allocate the unused GPU’s on the machine you can use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --exclusive --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -I --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-I<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>this will request exclusive use of an interactive node with 4GPU’s</p>
 <p><strong>Note:</strong> if your Interactive job will not launch it may mean that there are no interactive notes available… Try removing the <em>-I</em> flag which and your job will run when a node becomes available rather than failing immediately.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00  --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w">  </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <p>You may also want to lower the memory requested in the <em>–mem=*</em> flag as that may alow you to get interactive time on a shared node.   Eg</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>250G  --time <span class="m">1</span>:00:00  --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>250G<span class="w">  </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w">  </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 </div>
@@ -430,7 +432,7 @@ scheduling system. Aside from the lines containing SLURM options, the
 batch script is simply the series commands needed to set up and run your
 AI job.</p>
 <p>To submit a batch script, use the bsub command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch myjob.slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>myjob.slurm
 </pre></div>
 </div>
 <p>As an example, consider the following batch script for 4x V100 GPUs
@@ -455,37 +457,37 @@ AI job.</p>
 <span class="nv">CONDA_ROOT</span><span class="o">=</span><span class="nv">$HOME2</span>/anaconda3
 
 <span class="c1">## Activate WMLCE virtual environment</span>
-<span class="nb">source</span> <span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
-conda activate <span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
-<span class="nb">ulimit</span> -s unlimited
+<span class="nb">source</span><span class="w"> </span><span class="si">${</span><span class="nv">CONDA_ROOT</span><span class="si">}</span>/etc/profile.d/conda.sh
+conda<span class="w"> </span>activate<span class="w"> </span><span class="nv">$PYTHON_VIRTUAL_ENVIRONMENT</span>
+<span class="nb">ulimit</span><span class="w"> </span>-s<span class="w"> </span>unlimited
 
 <span class="c1">## Creating SLURM nodes list</span>
-<span class="nb">export</span> <span class="nv">NODELIST</span><span class="o">=</span>nodelist.$
-srun -l bash -c <span class="s1">&#39;hostname&#39;</span> <span class="p">|</span>  sort -k <span class="m">2</span> -u <span class="p">|</span> awk -vORS<span class="o">=</span>, <span class="s1">&#39;{print $2&quot;:4&quot;}&#39;</span> <span class="p">|</span> sed <span class="s1">&#39;s/,$//&#39;</span> &gt; <span class="nv">$NODELIST</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">NODELIST</span><span class="o">=</span>nodelist.$
+srun<span class="w"> </span>-l<span class="w"> </span>bash<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;hostname&#39;</span><span class="w"> </span><span class="p">|</span><span class="w">  </span>sort<span class="w"> </span>-k<span class="w"> </span><span class="m">2</span><span class="w"> </span>-u<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span>-vORS<span class="o">=</span>,<span class="w"> </span><span class="s1">&#39;{print $2&quot;:4&quot;}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/,$//&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$NODELIST</span>
 
 <span class="c1">## Number of total processes</span>
-<span class="nb">echo</span> <span class="s2">&quot; &quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot; Nodelist:= &quot;</span> <span class="nv">$SLURM_JOB_NODELIST</span>
-<span class="nb">echo</span> <span class="s2">&quot; Number of nodes:= &quot;</span> <span class="nv">$SLURM_JOB_NUM_NODES</span>
-<span class="nb">echo</span> <span class="s2">&quot; GPUs per node:= &quot;</span> <span class="nv">$SLURM_JOB_GPUS</span>
-<span class="nb">echo</span> <span class="s2">&quot; Ntasks per node:= &quot;</span>  <span class="nv">$SLURM_NTASKS_PER_NODE</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Nodelist:= &quot;</span><span class="w"> </span><span class="nv">$SLURM_JOB_NODELIST</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Number of nodes:= &quot;</span><span class="w"> </span><span class="nv">$SLURM_JOB_NUM_NODES</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; GPUs per node:= &quot;</span><span class="w"> </span><span class="nv">$SLURM_JOB_GPUS</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Ntasks per node:= &quot;</span><span class="w">  </span><span class="nv">$SLURM_NTASKS_PER_NODE</span>
 
 
 <span class="c1">####    Use MPI for communication with Horovod - this can be hard-coded during installation as well.</span>
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
-<span class="nb">export</span> <span class="nv">NCCL_DEBUG</span><span class="o">=</span>DEBUG
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">NCCL_DEBUG</span><span class="o">=</span>DEBUG
 
-<span class="nb">echo</span> <span class="s2">&quot; Running on multiple nodes/GPU devices&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot;&quot;</span>
-<span class="nb">echo</span> <span class="s2">&quot; Run started at:- &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Running on multiple nodes/GPU devices&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;&quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot; Run started at:- &quot;</span>
 date
 
 <span class="c1">## Horovod execution</span>
-horovodrun -np <span class="nv">$SLURM_NTASKS</span> -H <span class="sb">`</span>cat <span class="nv">$NODELIST</span><span class="sb">`</span> python /data/ImageNet/pytorch_mnist.py
+horovodrun<span class="w"> </span>-np<span class="w"> </span><span class="nv">$SLURM_NTASKS</span><span class="w"> </span>-H<span class="w"> </span><span class="sb">`</span>cat<span class="w"> </span><span class="nv">$NODELIST</span><span class="sb">`</span><span class="w"> </span>python<span class="w"> </span>/data/ImageNet/pytorch_mnist.py
 
-<span class="nb">echo</span> <span class="s2">&quot;Run completed at:- &quot;</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Run completed at:- &quot;</span>
 date
 </pre></div>
 </div>
@@ -508,18 +510,18 @@ the GPU resources you’re not using on the node to be shared.</li>
 single node runs, we recommend it in case you need to expand to more nodes.</li>
 <li>The environment variables below can be used to change Horovod communication from MPI to NCCL2; In case of the MPI, allgather allocates an output tensor which is proportionate to the number of processes participating in the training. If you find yourself running out of GPU memory and you can force allgather to happen on CPU by passing device_sparse=’/cpu:0’ to hvd.DistributedOptimizer.</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>MPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLGATHER</span><span class="o">=</span>MPI
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>MPI
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>NCCL
-<span class="nb">export</span> <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCLL
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>NCCL
+<span class="nb">export</span><span class="w"> </span><span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCLL
 </pre></div>
 </div>
 <p><strong>Note</strong> you may need to install Horovod by activating your conda environment and installing it. <em>e.g.</em></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda active wlmce-1.6.3.  &lt;or whatever your conda environment is called&gt;
-conda install horovod
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>active<span class="w"> </span>wlmce-1.6.3.<span class="w">  </span>&lt;or<span class="w"> </span>whatever<span class="w"> </span>your<span class="w"> </span>conda<span class="w"> </span>environment<span class="w"> </span>is<span class="w"> </span>called&gt;
+conda<span class="w"> </span>install<span class="w"> </span>horovod
 </pre></div>
 </div>
 <p>For your convenience additional SLURM batch job templates have been created to cover distributed deep learning trainings across Satori cluster. You can find them <a class="reference external" href="https://github.com/mit-satori/getting-started/tree/master/slurm-templates" target="_blank">here</a></p>
@@ -538,7 +540,7 @@ jobs.</p>
 <div class="section" id="canceling-jobs">
 <h3>Canceling Jobs<a class="headerlink" href="#canceling-jobs" title="Permalink to this heading"></a></h3>
 <p>SLURM allows you to kill jobs you’ve already submitted by using the command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel &lt;jobnumber&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scancel<span class="w"> </span>&lt;jobnumber&gt;
 </pre></div>
 </div>
 <p>where &lt;jobnumber&gt; is the slurm job number see wiht you submit the job or found by running squeue.</p>
@@ -588,12 +590,12 @@ of job is shown below</p>
 <span class="nv">MYSCRIPT</span><span class="o">=</span>/home/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>/foo.slurm
 <span class="nv">MYSUBDIR</span><span class="o">=</span>/home/<span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 <span class="nv">JID</span><span class="o">=</span><span class="si">${</span><span class="nv">SLURM_JOB_ID</span><span class="si">}</span>
-ssh service0001 <span class="s2">&quot;cd </span><span class="nv">$MYSUBDIR</span><span class="s2">; pwd; sbatch --dependency=afterok:</span><span class="si">${</span><span class="nv">JID</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">MYSCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
-sleep <span class="m">60</span>
+ssh<span class="w"> </span>service0001<span class="w"> </span><span class="s2">&quot;cd </span><span class="nv">$MYSUBDIR</span><span class="s2">; pwd; sbatch --dependency=afterok:</span><span class="si">${</span><span class="nv">JID</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">MYSCRIPT</span><span class="si">}</span><span class="s2">&quot;</span>
+sleep<span class="w"> </span><span class="m">60</span>
 </pre></div>
 </div>
 <p>submitting this job, for example, as</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --exclusive --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 foo.slurm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sbatch<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--exclusive<span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>foo.slurm
 </pre></div>
 </div>
 <p>will create a series of jobs that runs one after another. Together with checkpointing this sort of
@@ -605,10 +607,10 @@ middle of the night to check on every computational experiment.</p>
 <div class="section" id="note-on-pytorch-1-4">
 <h3>Note on Pytorch 1.4<a class="headerlink" href="#note-on-pytorch-1-4" title="Permalink to this heading"></a></h3>
 <p>Note.. we have recently updated the CUDA drivers on the part of Satori running Slurm. You can install Pytorch 1.4 for use with Slurm using these commands</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/
-conda create -n wmlce-ea <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
-conda activate wmlce-ea
-conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.4.0<span class="o">=</span><span class="m">23447</span>.g18a1a27
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>channels<span class="w"> </span>https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda-early-access/
+conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>wmlce-ea<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
+conda<span class="w"> </span>activate<span class="w"> </span>wmlce-ea
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.4.0<span class="o">=</span><span class="m">23447</span>.g18a1a27
 </pre></div>
 </div>
 </div>
@@ -626,7 +628,7 @@ conda install <span class="nv">pytorch</span><span class="o">=</span><span class
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Copying larger files and large file sets</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-copy-large-filesets.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -361,31 +363,31 @@
 <h1>Using mrsync<a class="headerlink" href="#using-mrsync" title="Permalink to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/jbd/msrsync" target="_blank">https://github.com/jbd/msrsync</a></p>
 <p>To install</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget https://raw.githubusercontent.com/jbd/msrsync/master/msrsync <span class="o">&amp;&amp;</span> chmod +x msrsync
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://raw.githubusercontent.com/jbd/msrsync/master/msrsync<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>msrsync
 </pre></div>
 </div>
 <p>To use</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ msrsync --help
-  usage: msrsync <span class="o">[</span>options<span class="o">]</span> <span class="o">[</span>--rsync <span class="s2">&quot;rsync-options-string&quot;</span><span class="o">]</span> SRCDIR <span class="o">[</span>SRCDIR2...<span class="o">]</span> DESTDIR
-or: msrsync --selftest
-msrsync options:
-  -p, --processes ...   number of rsync processes to use <span class="o">[</span><span class="m">1</span><span class="o">]</span>
-  -f, --files ...       limit buckets to &lt;files&gt; files number <span class="o">[</span><span class="m">1000</span><span class="o">]</span>
-  -s, --size ...        limit partitions to BYTES size <span class="o">(</span><span class="m">1024</span> suffixes: K, M, G, T, P, E, Z, Y<span class="o">)</span> <span class="o">[</span>1G<span class="o">]</span>
-  -b, --buckets ...     where to put the buckets files <span class="o">(</span>default: auto temporary directory<span class="o">)</span>
-  -k, --keep            <span class="k">do</span> not remove buckets directory at the end
-  -j, --show            show bucket directory
-  -P, --progress        show progress
-  --stats               show additional stats
-  -d, --dry-run         <span class="k">do</span> not run rsync processes
-  -v, --version         print version
- rsync options:
-  -r, --rsync ...       MUST be last option. rsync options as a quoted string <span class="o">[</span><span class="s2">&quot;-aS --numeric-ids&quot;</span><span class="o">]</span>. The <span class="s2">&quot;--from0 --files-from=... --quiet --verbose --stats --log-file=...&quot;</span> options will ALWAYS be added, no
-                          matter what. Be aware that this will affect all rsync *from/filter files <span class="k">if</span> you want to use them. See rsync<span class="o">(</span><span class="m">1</span><span class="o">)</span> manpage <span class="k">for</span> details.
- self-test options:
-  -t, --selftest        run the integrated unit and functional tests
-  -e, --bench           run benchmarks
-  -g, --benchshm        run benchmarks <span class="k">in</span> /dev/shm or the directory <span class="k">in</span> <span class="nv">$SHM</span> environment variable
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>msrsync<span class="w"> </span>--help
+<span class="w">  </span>usage:<span class="w"> </span>msrsync<span class="w"> </span><span class="o">[</span>options<span class="o">]</span><span class="w"> </span><span class="o">[</span>--rsync<span class="w"> </span><span class="s2">&quot;rsync-options-string&quot;</span><span class="o">]</span><span class="w"> </span>SRCDIR<span class="w"> </span><span class="o">[</span>SRCDIR2...<span class="o">]</span><span class="w"> </span>DESTDIR
+or:<span class="w"> </span>msrsync<span class="w"> </span>--selftest
+msrsync<span class="w"> </span>options:
+<span class="w">  </span>-p,<span class="w"> </span>--processes<span class="w"> </span>...<span class="w">   </span>number<span class="w"> </span>of<span class="w"> </span>rsync<span class="w"> </span>processes<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span><span class="o">[</span><span class="m">1</span><span class="o">]</span>
+<span class="w">  </span>-f,<span class="w"> </span>--files<span class="w"> </span>...<span class="w">       </span>limit<span class="w"> </span>buckets<span class="w"> </span>to<span class="w"> </span>&lt;files&gt;<span class="w"> </span>files<span class="w"> </span>number<span class="w"> </span><span class="o">[</span><span class="m">1000</span><span class="o">]</span>
+<span class="w">  </span>-s,<span class="w"> </span>--size<span class="w"> </span>...<span class="w">        </span>limit<span class="w"> </span>partitions<span class="w"> </span>to<span class="w"> </span>BYTES<span class="w"> </span>size<span class="w"> </span><span class="o">(</span><span class="m">1024</span><span class="w"> </span>suffixes:<span class="w"> </span>K,<span class="w"> </span>M,<span class="w"> </span>G,<span class="w"> </span>T,<span class="w"> </span>P,<span class="w"> </span>E,<span class="w"> </span>Z,<span class="w"> </span>Y<span class="o">)</span><span class="w"> </span><span class="o">[</span>1G<span class="o">]</span>
+<span class="w">  </span>-b,<span class="w"> </span>--buckets<span class="w"> </span>...<span class="w">     </span>where<span class="w"> </span>to<span class="w"> </span>put<span class="w"> </span>the<span class="w"> </span>buckets<span class="w"> </span>files<span class="w"> </span><span class="o">(</span>default:<span class="w"> </span>auto<span class="w"> </span>temporary<span class="w"> </span>directory<span class="o">)</span>
+<span class="w">  </span>-k,<span class="w"> </span>--keep<span class="w">            </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>remove<span class="w"> </span>buckets<span class="w"> </span>directory<span class="w"> </span>at<span class="w"> </span>the<span class="w"> </span>end
+<span class="w">  </span>-j,<span class="w"> </span>--show<span class="w">            </span>show<span class="w"> </span>bucket<span class="w"> </span>directory
+<span class="w">  </span>-P,<span class="w"> </span>--progress<span class="w">        </span>show<span class="w"> </span>progress
+<span class="w">  </span>--stats<span class="w">               </span>show<span class="w"> </span>additional<span class="w"> </span>stats
+<span class="w">  </span>-d,<span class="w"> </span>--dry-run<span class="w">         </span><span class="k">do</span><span class="w"> </span>not<span class="w"> </span>run<span class="w"> </span>rsync<span class="w"> </span>processes
+<span class="w">  </span>-v,<span class="w"> </span>--version<span class="w">         </span>print<span class="w"> </span>version
+<span class="w"> </span>rsync<span class="w"> </span>options:
+<span class="w">  </span>-r,<span class="w"> </span>--rsync<span class="w"> </span>...<span class="w">       </span>MUST<span class="w"> </span>be<span class="w"> </span>last<span class="w"> </span>option.<span class="w"> </span>rsync<span class="w"> </span>options<span class="w"> </span>as<span class="w"> </span>a<span class="w"> </span>quoted<span class="w"> </span>string<span class="w"> </span><span class="o">[</span><span class="s2">&quot;-aS --numeric-ids&quot;</span><span class="o">]</span>.<span class="w"> </span>The<span class="w"> </span><span class="s2">&quot;--from0 --files-from=... --quiet --verbose --stats --log-file=...&quot;</span><span class="w"> </span>options<span class="w"> </span>will<span class="w"> </span>ALWAYS<span class="w"> </span>be<span class="w"> </span>added,<span class="w"> </span>no
+<span class="w">                          </span>matter<span class="w"> </span>what.<span class="w"> </span>Be<span class="w"> </span>aware<span class="w"> </span>that<span class="w"> </span>this<span class="w"> </span>will<span class="w"> </span>affect<span class="w"> </span>all<span class="w"> </span>rsync<span class="w"> </span>*from/filter<span class="w"> </span>files<span class="w"> </span><span class="k">if</span><span class="w"> </span>you<span class="w"> </span>want<span class="w"> </span>to<span class="w"> </span>use<span class="w"> </span>them.<span class="w"> </span>See<span class="w"> </span>rsync<span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w"> </span>manpage<span class="w"> </span><span class="k">for</span><span class="w"> </span>details.
+<span class="w"> </span>self-test<span class="w"> </span>options:
+<span class="w">  </span>-t,<span class="w"> </span>--selftest<span class="w">        </span>run<span class="w"> </span>the<span class="w"> </span>integrated<span class="w"> </span>unit<span class="w"> </span>and<span class="w"> </span>functional<span class="w"> </span>tests
+<span class="w">  </span>-e,<span class="w"> </span>--bench<span class="w">           </span>run<span class="w"> </span>benchmarks
+<span class="w">  </span>-g,<span class="w"> </span>--benchshm<span class="w">        </span>run<span class="w"> </span>benchmarks<span class="w"> </span><span class="k">in</span><span class="w"> </span>/dev/shm<span class="w"> </span>or<span class="w"> </span>the<span class="w"> </span>directory<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$SHM</span><span class="w"> </span>environment<span class="w"> </span>variable
 </pre></div>
 </div>
 <p>Example:</p>
@@ -412,10 +414,10 @@ Total time: 424.5s
 <p>The copy time is 424.5s using msrsync versus 27m34.417s with cp command.</p>
 <p>For remove the directory,weI used rsync and it took 8 minutes to remove a directory with 1000 subdirectories and  total of 1281167 files on POK env.</p>
 <p>We created an empty directory and used it with rsync –delete as the example below:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bash-4.2$ <span class="nb">time</span> rsync -a --delete empty-dir/ train2-24/
-real    8m25.144s
-user    0m2.756s
-sys     0m35.559s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-bash-4.2$<span class="w"> </span><span class="nb">time</span><span class="w"> </span>rsync<span class="w"> </span>-a<span class="w"> </span>--delete<span class="w"> </span>empty-dir/<span class="w"> </span>train2-24/
+real<span class="w">    </span>8m25.144s
+user<span class="w">    </span>0m2.756s
+sys<span class="w">     </span>0m35.559s
 </pre></div>
 </div>
 </div>
@@ -436,13 +438,13 @@ sys     0m35.559s
 </li>
 <li>on an Ubuntu system</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.deb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.deb
 </pre></div>
 </div>
 <ul class="simple">
 <li>RHEL|CentOS</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo yum install ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.rpm
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.rpm
 </pre></div>
 </div>
 <p>2. Transfer files using Aspera connect or client
@@ -450,7 +452,7 @@ Note: &lt;asperauser&gt; is your userid on Satori</p>
 <ul class="simple">
 <li>on Windows</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp.exe –P <span class="m">22</span> –mode<span class="o">=</span>send<span class="p">|</span>recv  <span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\f</span>ile.txt  &lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp.exe<span class="w"> </span>–P<span class="w"> </span><span class="m">22</span><span class="w"> </span>–mode<span class="o">=</span>send<span class="p">|</span>recv<span class="w">  </span><span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\f</span>ile.txt<span class="w">  </span>&lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
 </pre></div>
 </div>
 <ul class="simple">
@@ -477,7 +479,7 @@ Here&#39;s an estimator for Aspera transfer times https://www.ibm.com/aspera/fil
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

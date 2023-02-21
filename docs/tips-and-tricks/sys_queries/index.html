@@ -11,10 +11,8 @@
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/jquery.js"></script>
-        <script src="../../_static/underscore.js"></script>
-        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
         <script src="../../_static/sphinx_highlight.js"></script>
     <script src="../../_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../satori-doc-examples-contributing.html">Contributed documentation and examples</a></li>
       <li class="breadcrumb-item active">System software queries</li>
       <li class="wy-breadcrumbs-aside">
@@ -355,33 +357,33 @@
 <div class="section" id="what-linux-distribution-version-am-i-running">
 <h2>What Linux distribution version am I running?<a class="headerlink" href="#what-linux-distribution-version-am-i-running" title="Permalink to this heading"></a></h2>
 <p>The following commands can be used:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat /etc/redhat-release
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cat<span class="w"> </span>/etc/redhat-release
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsb_release -a
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>lsb_release<span class="w"> </span>-a
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-linux-kernel-level-am-i-running">
 <h2>What Linux kernel level am I running?<a class="headerlink" href="#what-linux-kernel-level-am-i-running" title="Permalink to this heading"></a></h2>
 <p>The following command works:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname -r
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>uname<span class="w"> </span>-r
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-software-levels-are-installed-on-the-system">
 <h2>What software levels are installed on the system?<a class="headerlink" href="#what-software-levels-are-installed-on-the-system" title="Permalink to this heading"></a></h2>
 <p>The Module utility is used to install packages on the system. The following will give you a list of available software:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module spider
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>spider
 </pre></div>
 </div>
 <p>If you want to see information about your conda environment, you can issue:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda info
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>info
 </pre></div>
 </div>
 <p>and to see the packages installed, issue:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
 </pre></div>
 </div>
 </div>
@@ -399,7 +401,7 @@ architecture, model name, sockets, cores per socket, threads per core, min/max C
 <div class="section" id="how-much-ram-is-there-on-my-nodes">
 <h2>How much RAM is there on my nodes?<a class="headerlink" href="#how-much-ram-is-there-on-my-nodes" title="Permalink to this heading"></a></h2>
 <p>The amount of RAM that is expected to be available on a system is summarized elsewhere. The command to interrogate a node for the total available memory is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep MemTotal /proc/meminfo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep<span class="w"> </span>MemTotal<span class="w"> </span>/proc/meminfo
 </pre></div>
 </div>
 <p>Note that for Satori system, this will include the available GPU RAM as well.</p>
@@ -407,21 +409,21 @@ architecture, model name, sockets, cores per socket, threads per core, min/max C
 <div class="section" id="what-smt-mode-are-my-nodes-in">
 <h2>What SMT mode are my nodes in?<a class="headerlink" href="#what-smt-mode-are-my-nodes-in" title="Permalink to this heading"></a></h2>
 <p>The command to interrogate a node for the SMT mode is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ppc64_cpu --smt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ppc64_cpu<span class="w"> </span>--smt
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-cpu-governor-is-in-effect-on-my-nodes">
 <h2>What CPU governor is in effect on my nodes?<a class="headerlink" href="#what-cpu-governor-is-in-effect-on-my-nodes" title="Permalink to this heading"></a></h2>
 <p>The command to establish the governor in effect for a node is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>frequency-info <span class="p">|</span> grep -A <span class="m">2</span> <span class="s2">&quot;current policy&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>frequency-info<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-A<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s2">&quot;current policy&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes">
 <h2>What are the logical IDs and UUIDs for the GPUs on my nodes?<a class="headerlink" href="#what-are-the-logical-ids-and-uuids-for-the-gpus-on-my-nodes" title="Permalink to this heading"></a></h2>
 <p>There should be four operational GPUs on every node. The command to obtain a brief pertinent summary for a node is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -L
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi<span class="w"> </span>-L
 </pre></div>
 </div>
 <p>A less terse summary may be obtained from</p>
@@ -429,25 +431,25 @@ architecture, model name, sockets, cores per socket, threads per core, min/max C
 </pre></div>
 </div>
 <p>Detailed information may be obtained from</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi -q
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nvidia-smi<span class="w"> </span>-q
 </pre></div>
 </div>
 </div>
 <div class="section" id="what-is-the-ibm-model-of-my-system">
 <h2>What is the IBM model of my system?<a class="headerlink" href="#what-is-the-ibm-model-of-my-system" title="Permalink to this heading"></a></h2>
 <p>It can also be obtained from the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep <span class="s2">&quot;model&quot;</span> /proc/cpuinfo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>grep<span class="w"> </span><span class="s2">&quot;model&quot;</span><span class="w"> </span>/proc/cpuinfo
 </pre></div>
 </div>
 </div>
 <div class="section" id="which-logical-cpus-belong-to-which-socket">
 <h2>Which logical CPUs belong to which socket?<a class="headerlink" href="#which-logical-cpus-belong-to-which-socket" title="Permalink to this heading"></a></h2>
 <p>Each integrated circuit die on the system is a NUMA node in the output of the command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl --hardware
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl<span class="w"> </span>--hardware
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl -H
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>numactl<span class="w"> </span>-H
 </pre></div>
 </div>
 <p>which will list the available logical CPUs and the NUMA nodes to which they belong.</p>
@@ -458,11 +460,11 @@ architecture, model name, sockets, cores per socket, threads per core, min/max C
 <div class="section" id="how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to">
 <h2>How can I establish which logical CPU IDs my process is bound to?<a class="headerlink" href="#how-can-i-establish-which-logical-cpu-ids-my-process-is-bound-to" title="Permalink to this heading"></a></h2>
 <p>Establish your process’s ID (PID) using, e.g., the ps command,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ps -ef <span class="p">|</span> grep <span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ps<span class="w"> </span>-ef<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span><span class="si">${</span><span class="nv">USER</span><span class="si">}</span>
 </pre></div>
 </div>
 <p>and then use the taskset command</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>taskset -acp PID
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>taskset<span class="w"> </span>-acp<span class="w"> </span>PID
 </pre></div>
 </div>
 <p>against the retrieved PID.</p>
@@ -474,10 +476,10 @@ architecture, model name, sockets, cores per socket, threads per core, min/max C
 </pre></div>
 </div>
 <p>will cat the current output of your job to screen. If your job generates a lot of output, you may prefer to pipe it through other commands: e.g.,</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bpeek <span class="p">|</span> tail
-bpeek <span class="p">|</span> more
-bpeek <span class="p">|</span> less
-bpeek <span class="p">|</span> grep ...
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bpeek<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail
+bpeek<span class="w"> </span><span class="p">|</span><span class="w"> </span>more
+bpeek<span class="w"> </span><span class="p">|</span><span class="w"> </span>less
+bpeek<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>...
 </pre></div>
 </div>
 <p>to control the output or filter it down to what you find interesting.</p>
@@ -510,7 +512,7 @@ You have exhausted your filespace quota.</p>
 <div class="section" id="can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one">
 <h2>Can I make a job’s startup depend on the completion of a previous one?<a class="headerlink" href="#can-i-make-a-jobs-startup-depend-on-the-completion-of-a-previous-one" title="Permalink to this heading"></a></h2>
 <p>Yes. LSF provides significant functionality in this context. As a trivial example, consider the following, where the #BSUB -w “done (first_job)” in second_job ensures that it will only start after first_job is done:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ cat first_job.lsf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>cat<span class="w"> </span>first_job.lsf
 <span class="c1">#BSUB -J first_job</span>
 <span class="c1">#BSUB -e &quot;first_job.stderr.\%J&quot;</span>
 <span class="c1">#BSUB -o &quot;first_job.stdout.\%J&quot;</span>
@@ -520,10 +522,10 @@ You have exhausted your filespace quota.</p>
 <span class="c1">#BSUB -R &quot;rusage[mem=40]&quot;</span>
 <span class="c1">#BSUB -x</span>
 
-<span class="nb">echo</span> -n <span class="s2">&quot;Job first_job started: &quot;</span><span class="p">;</span> date
-sleep <span class="m">180</span>
-<span class="nb">echo</span> -n <span class="s2">&quot;Job first_job ended:   &quot;</span><span class="p">;</span> date
-$ cat second_job.lsf
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Job first_job started: &quot;</span><span class="p">;</span><span class="w"> </span>date
+sleep<span class="w"> </span><span class="m">180</span>
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Job first_job ended:   &quot;</span><span class="p">;</span><span class="w"> </span>date
+$<span class="w"> </span>cat<span class="w"> </span>second_job.lsf
 <span class="c1">#BSUB -J second_job</span>
 <span class="c1">#BSUB -e &quot;second_job.stderr.\%J&quot;</span>
 <span class="c1">#BSUB -o &quot;second_job.stdout.\%J&quot;</span>
@@ -534,10 +536,10 @@ $ cat second_job.lsf
 <span class="c1">#BSUB -w &quot;done (first_job)&quot;</span>
 <span class="c1">#BSUB -x</span>
 
-<span class="nb">echo</span> -n <span class="s2">&quot;Job second_job started: &quot;</span><span class="p">;</span> date
-$ bsub &lt; first_job.lsf<span class="p">;</span> bsub &lt; second_job.lsf
-Job &lt;<span class="m">34445</span>&gt; is submitted to queue &lt;normal&gt;.
-Job &lt;<span class="m">34446</span>&gt; is submitted to queue &lt;normal&gt;.
+<span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;Job second_job started: &quot;</span><span class="p">;</span><span class="w"> </span>date
+$<span class="w"> </span>bsub<span class="w"> </span>&lt;<span class="w"> </span>first_job.lsf<span class="p">;</span><span class="w"> </span>bsub<span class="w"> </span>&lt;<span class="w"> </span>second_job.lsf
+Job<span class="w"> </span>&lt;<span class="m">34445</span>&gt;<span class="w"> </span>is<span class="w"> </span>submitted<span class="w"> </span>to<span class="w"> </span>queue<span class="w"> </span>&lt;normal&gt;.
+Job<span class="w"> </span>&lt;<span class="m">34446</span>&gt;<span class="w"> </span>is<span class="w"> </span>submitted<span class="w"> </span>to<span class="w"> </span>queue<span class="w"> </span>&lt;normal&gt;.
 </pre></div>
 </div>
 <p>The second job will start almost immediately after the completion on the first job. You can use the bjobs command to check the status of the jobs.</p>
@@ -545,7 +547,7 @@ Job &lt;<span class="m">34446</span>&gt; is submitted to queue &lt;normal&gt;.
 <div class="section" id="how-do-i-select-a-specific-set-of-hosts-for-my-job">
 <h2>How do I select a specific set of hosts for my job?<a class="headerlink" href="#how-do-i-select-a-specific-set-of-hosts-for-my-job" title="Permalink to this heading"></a></h2>
 <p>By default, your jobs can be scheduled to any of the hosts that are available to your queue, which may be listed with</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bqueues -l queue_name <span class="p">|</span> grep HOSTS
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bqueues<span class="w"> </span>-l<span class="w"> </span>queue_name<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>HOSTS
 </pre></div>
 </div>
 <p>To ensure that jobs are scheduled to some subset of these, add the bsub group -m “hostname1 hostname2 hostname3 … hostnamen”; for instance, to choose from the three hosts node0002, node0042, node0051 in a batch script, add the #BSUB line</p>
@@ -582,17 +584,17 @@ Job &lt;<span class="m">34446</span>&gt; is submitted to queue &lt;normal&gt;.
 </div>
 <p>to your job script after the #BSUB lines.</p>
 <p>For jobs that employ Spectrum MPI or OpenMPI, do the above, and, in addition, modify the generic invocation</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun ./my_exe my_opts &lt; my_inp &gt; my_out
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>./my_exe<span class="w"> </span>my_opts<span class="w"> </span>&lt;<span class="w"> </span>my_inp<span class="w"> </span>&gt;<span class="w"> </span>my_out
 </pre></div>
 </div>
 <p>to</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun helper.sh &gt; my_out
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mpirun<span class="w"> </span>helper.sh<span class="w"> </span>&gt;<span class="w"> </span>my_out
 </pre></div>
 </div>
 <p>where the content of helper.sh (which must be executable: i.e., chmod +x helper.sh) is</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</span><span class="si">}</span>
-./my_exe my_opts &lt; my_inp &gt; my_out
+env<span class="w"> </span>&gt;<span class="w"> </span>env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</span><span class="si">}</span>
+./my_exe<span class="w"> </span>my_opts<span class="w"> </span>&lt;<span class="w"> </span>my_inp<span class="w"> </span>&gt;<span class="w"> </span>my_out
 </pre></div>
 </div>
 <p>This will generate one file env.${OMPI_COMM_WORLD_RANK} for every extant value of ${OMPI_COMM_WORLD_RANK} in the job.</p>
@@ -610,7 +612,7 @@ env &gt; env.<span class="si">${</span><span class="nv">OMPI_COMM_WORLD_RANK</sp
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

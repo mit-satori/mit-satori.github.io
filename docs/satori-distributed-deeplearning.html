@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Distributed Deep Learning</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-distributed-deeplearning.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -401,36 +403,36 @@ for a better integration</li>
 <ol class="arabic simple" start="0">
 <li>Add ppc64le conda channel for WMLCE</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>channels<span class="w"> </span><span class="se">\</span>
 https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
 </pre></div>
 </div>
 <ol class="arabic simple">
 <li>Create Conda Virtual Environment</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name horovod <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>horovod<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li>Install WMLCE (TF, Pytorch, DDL etc)</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install powerai
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>powerai
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li>Install the packages to build Horovod</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install gxx_linux-ppc64le<span class="o">=</span><span class="m">7</span>.3.0 cffi cudatoolkit-dev
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>gxx_linux-ppc64le<span class="o">=</span><span class="m">7</span>.3.0<span class="w"> </span>cffi<span class="w"> </span>cudatoolkit-dev
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li>Install Horovod with DDL backend</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>DDL pip install horovod --no-cache-dir
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>DDL<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>horovod<span class="w"> </span>--no-cache-dir
 </pre></div>
 </div>
 <p>or with NCCL direct support (recomanded for Pytorch)</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env <span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_NCCL_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span> <span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>NCCL <span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCCL pip install --no-cache horovod
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>env<span class="w"> </span><span class="nv">HOROVOD_CUDA_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span><span class="w"> </span><span class="nv">HOROVOD_NCCL_HOME</span><span class="o">=</span><span class="nv">$CONDA_PREFIX</span><span class="w"> </span><span class="nv">HOROVOD_GPU_ALLREDUCE</span><span class="o">=</span>NCCL<span class="w"> </span><span class="nv">HOROVOD_GPU_BROADCAST</span><span class="o">=</span>NCCL<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--no-cache<span class="w"> </span>horovod
 </pre></div>
 </div>
 <p>Original IBM DDL paper, can be found at this URL:
@@ -448,7 +450,7 @@ https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

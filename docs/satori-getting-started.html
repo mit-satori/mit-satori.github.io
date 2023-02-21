@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Starting up on Satori</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-getting-started.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -398,17 +400,17 @@ should be set up to run many of the popular machine learning frameworks in the J
 </div>
 <div class="section" id="setting-up-your-environment">
 <h2>Setting up Your Environment<a class="headerlink" href="#setting-up-your-environment" title="Permalink to this heading"></a></h2>
-<p>There are two ways we manage software and environemnts in Satori. The first is conda, which is the general package
+<p>There are two ways we manage software and environments in Satori. The first is conda, which is the general package
 manager for the second. The second are environment modules.</p>
 <ol class="arabic simple">
 <li><strong>Environment Modules</strong>: Environment modules are pre-packaged environments for software, tools, and libraries. It allows you to load and unload these as you go. It’s always good to check to see if a module exists for a tool before installing it yourself. To see the full set of modules available, first load the spack module (<cite>module load spack</cite>), then run the <cite>module avail</cite> command. A few common module commands are:</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module avail <span class="c1"># Shows the available modules</span>
-module load MODULENAME <span class="c1"># Load the module MODULENAME</span>
-module list <span class="c1"># List the modules that you have loaded</span>
-module rm MODULENAME <span class="c1"># Unload the module MODULENAME</span>
-module unload MODULENAME <span class="c1"># Unload the module MODULENAME</span>
-module switch MODULE1 MODULE2 <span class="c1"># Unload MODULE1 and load MODULE2</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail<span class="w"> </span><span class="c1"># Shows the available modules</span>
+module<span class="w"> </span>load<span class="w"> </span>MODULENAME<span class="w"> </span><span class="c1"># Load the module MODULENAME</span>
+module<span class="w"> </span>list<span class="w"> </span><span class="c1"># List the modules that you have loaded</span>
+module<span class="w"> </span>rm<span class="w"> </span>MODULENAME<span class="w"> </span><span class="c1"># Unload the module MODULENAME</span>
+module<span class="w"> </span>unload<span class="w"> </span>MODULENAME<span class="w"> </span><span class="c1"># Unload the module MODULENAME</span>
+module<span class="w"> </span>switch<span class="w"> </span>MODULE1<span class="w"> </span>MODULE2<span class="w"> </span><span class="c1"># Unload MODULE1 and load MODULE2</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
@@ -429,12 +431,12 @@ module switch MODULE1 MODULE2 <span class="c1"># Unload MODULE1 and load MODULE2
 like Satori. They both work like cp, but you have to specify the hostname of the remote system. You’ll
 need to know the path to the file or directory that you want to transfer and the path to the location where
 you want to transfer the file or directory. To transfer a file from your computer to Satori, for example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp &lt;local-file.py&gt; your_username@satori-login-001.mit.edu:/path/to/location/
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>&lt;local-file.py&gt;<span class="w"> </span>your_username@satori-login-001.mit.edu:/path/to/location/
 </pre></div>
 </div>
 <p>To transfer a file from Satori you’d do a similar thing, but swap the arguments. For example, to transfer
 to the current directory:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp your_username@satori-login-001.mit.edu:/path/to/file/&lt;remote-file.py&gt; .
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>your_username@satori-login-001.mit.edu:/path/to/file/&lt;remote-file.py&gt;<span class="w"> </span>.
 </pre></div>
 </div>
 <p>To transfer a directory use the -r (recursive) flag as you would with cp and other Linux commands.</p>
@@ -486,7 +488,7 @@ want the errors and output for your job. Print statements in your code can be ve
 for quickly checking the progress of a job. One handy command for watching these files is “tail” with the “-f”
 option. This command will print the last few lines of a file, and with “-f” will wait and print new lines as
 they are written to the file. For example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail -f my_job.log-12345
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>tail<span class="w"> </span>-f<span class="w"> </span>my_job.log-12345
 </pre></div>
 </div>
 <p>Will print the output of the log file my_job.log-12345, where 12345 is the Job ID for this particular job. To
@@ -523,7 +525,7 @@ then be used to manage group membership.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

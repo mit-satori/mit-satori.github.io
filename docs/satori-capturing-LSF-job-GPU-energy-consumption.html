@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -27,11 +25,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -336,7 +338,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Capturing the GPU energy for an LSF Job</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-capturing-LSF-job-GPU-energy-consumption.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -363,30 +365,30 @@ script.</p>
 <p><code class="docutils literal notranslate"><span class="pre">pre-exec.sh</span></code> script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 
-su <span class="nv">$LSFUSER</span> -c <span class="s2">&quot;nvidia-smi dmon -i 0 -s p -o DT -f /nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/power.</span><span class="nv">$LSB_JOBID</span><span class="s2">.</span><span class="nv">$LSB_JOBINDEX</span><span class="s2">.txt 2&gt;&amp;1 &gt;/dev/null &lt; /dev/zero &amp;&quot;</span>
-su <span class="nv">$LSFUSER</span> -c <span class="s2">&quot;/nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/watch.sh </span><span class="nv">$LSB_JOBID</span><span class="s2"> &amp;&quot;</span>
+su<span class="w"> </span><span class="nv">$LSFUSER</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;nvidia-smi dmon -i 0 -s p -o DT -f /nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/power.</span><span class="nv">$LSB_JOBID</span><span class="s2">.</span><span class="nv">$LSB_JOBINDEX</span><span class="s2">.txt 2&gt;&amp;1 &gt;/dev/null &lt; /dev/zero &amp;&quot;</span>
+su<span class="w"> </span><span class="nv">$LSFUSER</span><span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;/nobackup/users/</span><span class="nv">$LSFUSER</span><span class="s2">/watch.sh </span><span class="nv">$LSB_JOBID</span><span class="s2"> &amp;&quot;</span>
 </pre></div>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">watch.sh</span></code> script:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
-<span class="nb">echo</span> <span class="s2">&quot;Watch is running&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Watch is running&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
 
-sleep <span class="m">20</span>
+sleep<span class="w"> </span><span class="m">20</span>
 <span class="nv">jobid</span><span class="o">=</span><span class="nv">$1</span>
 
-<span class="nb">echo</span> <span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span><span class="k">)</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
-<span class="nb">echo</span> <span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>bjobs<span class="w"> </span>-l<span class="w"> </span><span class="nv">$jobid</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/PIDs/ {print $NF}&#39;</span><span class="k">)</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">echo</span><span class="w"> </span><span class="k">$(</span>bjobs<span class="w"> </span>-l<span class="w"> </span><span class="nv">$jobid</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/PIDs/ {print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
 
-<span class="nv">watchpid</span><span class="o">=</span><span class="k">$(</span>bjobs -l <span class="nv">$jobid</span> <span class="p">|</span> awk <span class="s1">&#39;/PIDs/ {print $NF}&#39;</span> <span class="p">|</span> tail -n <span class="m">1</span><span class="k">)</span>
-<span class="nv">killpid</span><span class="o">=</span><span class="k">$(</span>ps uxwww <span class="p">|</span> grep nvidia <span class="p">|</span> grep -v grep <span class="p">|</span> awk <span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+<span class="nv">watchpid</span><span class="o">=</span><span class="k">$(</span>bjobs<span class="w"> </span>-l<span class="w"> </span><span class="nv">$jobid</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;/PIDs/ {print $NF}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<span class="nv">killpid</span><span class="o">=</span><span class="k">$(</span>ps<span class="w"> </span>uxwww<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>nvidia<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-v<span class="w"> </span>grep<span class="w"> </span><span class="p">|</span><span class="w"> </span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;jobid: </span><span class="nv">$jobid</span><span class="s2">, watchpid: </span><span class="nv">$watchpid</span><span class="s2">, killpid: </span><span class="nv">$killpid</span><span class="s2">&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;jobid: </span><span class="nv">$jobid</span><span class="s2">, watchpid: </span><span class="nv">$watchpid</span><span class="s2">, killpid: </span><span class="nv">$killpid</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
 
-<span class="k">while</span> sleep <span class="m">1</span><span class="p">;</span> <span class="k">do</span> <span class="nb">kill</span> -0 <span class="nv">$watchpid</span> <span class="o">||</span> break<span class="p">;</span> <span class="k">done</span>
+<span class="k">while</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-0<span class="w"> </span><span class="nv">$watchpid</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>break<span class="p">;</span><span class="w"> </span><span class="k">done</span>
 
-<span class="nb">echo</span> <span class="s2">&quot;Done waiting&quot;</span> &gt;&gt; /nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
-<span class="nb">kill</span> -2 <span class="nv">$killpid</span>
-<span class="nb">exit</span> <span class="m">0</span>
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Done waiting&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
+<span class="nb">kill</span><span class="w"> </span>-2<span class="w"> </span><span class="nv">$killpid</span>
+<span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
 </div>
@@ -399,7 +401,7 @@ sleep <span class="m">20</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

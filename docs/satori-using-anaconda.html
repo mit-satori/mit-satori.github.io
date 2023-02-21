@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Using Anaconda on Satori</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-using-anaconda.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -355,11 +357,11 @@
 <h2>[1] Using Anaconda<a class="headerlink" href="#using-anaconda" title="Permalink to this heading"></a></h2>
 <p>Satori uses Environment Modules to allow users to have access to different software. These modulefiles are built for Satori’s architecture and can be loaded/unloaded from one’s environment on the fly. Anaconda can be accessed by searching for and loading the appropriate module.</p>
 <p>To display a list of modulefiles matching the name ‘anaconda’:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module avail anaconda
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail<span class="w"> </span>anaconda
 </pre></div>
 </div>
 <p>Loading one of the anaconda modules:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load anaconda3/2020.02-2ks5tch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2020.02-2ks5tch
 </pre></div>
 </div>
 </div>
@@ -367,21 +369,21 @@
 <h2>[2] Creating and activating conda environments<a class="headerlink" href="#creating-and-activating-conda-environments" title="Permalink to this heading"></a></h2>
 <p>Once an anaconda module is loaded, you can create environments that have different versions of Python or packages installed in them. Conda environments are optional but recommended. If not used, packages are installed in the default environment called base, which often has a higher risk of containing conflicting packages or dependencies. Switching between environments is called activating the environment.</p>
 <p>The syntax for creating and activating an environment is:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --name &lt;environment name&gt; <span class="nv">python</span><span class="o">=</span>&lt;python version&gt;
-<span class="nb">source</span> activate &lt;environment name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;environment<span class="w"> </span>name&gt;<span class="w"> </span><span class="nv">python</span><span class="o">=</span>&lt;python<span class="w"> </span>version&gt;
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>&lt;environment<span class="w"> </span>name&gt;
 </pre></div>
 </div>
 <p>To create an anaconda environment in a specfic location, use the <cite>–prefix</cite> flag during creation with the absolute path and name of the environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --prefix<span class="o">=</span>&lt;path/to/env&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--prefix<span class="o">=</span>&lt;path/to/env&gt;
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda create --prefix<span class="o">=</span>/nobackup/users/ageod/.conda/envs/test-env01
-<span class="nb">source</span> activate /nobackup/users/ageod/.conda/envs/test-env01
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--prefix<span class="o">=</span>/nobackup/users/ageod/.conda/envs/test-env01
+<span class="nb">source</span><span class="w"> </span>activate<span class="w"> </span>/nobackup/users/ageod/.conda/envs/test-env01
 </pre></div>
 </div>
 <p>NOTE: As a good practice to maintain the disk space usage on Satori please run at regular intervals the following command that will remove unused packages and caches from your Anaconda profile. In addition this command shuld be use before installing a new version of WML-CE/Open-CE on another virtual environment.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda clean --all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>clean<span class="w"> </span>--all
 </pre></div>
 </div>
 </div>
@@ -389,12 +391,12 @@
 <h2>[3] Setting up conda channels<a class="headerlink" href="#setting-up-conda-channels" title="Permalink to this heading"></a></h2>
 <p>When using conda to search for packages, one or more “channels”, or repositories, may be queried. By default, conda will search its main packages channel for any results that match the queried name and display any results matching packages available for the systems architecture (ppc64le). If no packages are available either under the queried name, or for host system’s architecture, no results will be displayed. Note that not all packages existing for x86 can also be found for ppc64le.</p>
 <p>To add the IBM WML-CE channel to the conda configuration:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>channels<span class="w"> </span><span class="se">\</span>
 https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/
 </pre></div>
 </div>
 <p>To add the MIT Open-CE channel to the conda configuration:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda config --prepend channels <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>channels<span class="w"> </span><span class="se">\</span>
 https://opence.mit.edu
 </pre></div>
 </div>
@@ -403,53 +405,53 @@ https://opence.mit.edu
 <div class="section" id="searching-for-and-installing-conda-packages">
 <h2>[4] Searching for and installing conda packages<a class="headerlink" href="#searching-for-and-installing-conda-packages" title="Permalink to this heading"></a></h2>
 <p>The basic syntax for searching for a package through conda is as follow:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search &lt;package-name&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>&lt;package-name&gt;
 </pre></div>
 </div>
 <p>This command will search the base anaconda channel along with any channels currently added to your conda configuration. You can search a specific channel by explicitly including it in the search:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search -c &lt;channel&gt; &lt;package&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>-c<span class="w"> </span>&lt;channel&gt;<span class="w"> </span>&lt;package&gt;
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda search -c conda-forge pytorch
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>-c<span class="w"> </span>conda-forge<span class="w"> </span>pytorch
 </pre></div>
 </div>
 <p>Results from conda searches typically include several available versions for the package queried. If no particular version of a package is specified, conda will install the most appropriate version based on the version of python installed locally. Conda search results may look similar to this:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>test2022-14<span class="o">)</span> <span class="o">[</span>ageod@satori-login-001 envs<span class="o">]</span>$ conda search pytorch
-Loading channels: <span class="k">done</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">(</span>test2022-14<span class="o">)</span><span class="w"> </span><span class="o">[</span>ageod@satori-login-001<span class="w"> </span>envs<span class="o">]</span>$<span class="w"> </span>conda<span class="w"> </span>search<span class="w"> </span>pytorch
+Loading<span class="w"> </span>channels:<span class="w"> </span><span class="k">done</span>
 <span class="c1"># Name                       Version           Build  Channel</span>
-pytorch                        <span class="m">1</span>.7.1      hca541ab_1  None
-pytorch                        <span class="m">1</span>.9.0 cuda10.2_py37_1  None
-pytorch                        <span class="m">1</span>.9.0 cuda10.2_py38_1  None
-pytorch                        <span class="m">1</span>.9.0 cuda10.2_py39_1  None
-pytorch                       <span class="m">1</span>.10.2 cpu_py310hef0c51e_0  pkgs/main
-pytorch                       <span class="m">1</span>.10.2 cpu_py37h6f0ae12_0  pkgs/main
-pytorch                       <span class="m">1</span>.10.2 cpu_py38h6f0ae12_0  pkgs/main
-pytorch                       <span class="m">1</span>.10.2 cpu_py39h6f0ae12_0  pkgs/main
+pytorch<span class="w">                        </span><span class="m">1</span>.7.1<span class="w">      </span>hca541ab_1<span class="w">  </span>None
+pytorch<span class="w">                        </span><span class="m">1</span>.9.0<span class="w"> </span>cuda10.2_py37_1<span class="w">  </span>None
+pytorch<span class="w">                        </span><span class="m">1</span>.9.0<span class="w"> </span>cuda10.2_py38_1<span class="w">  </span>None
+pytorch<span class="w">                        </span><span class="m">1</span>.9.0<span class="w"> </span>cuda10.2_py39_1<span class="w">  </span>None
+pytorch<span class="w">                       </span><span class="m">1</span>.10.2<span class="w"> </span>cpu_py310hef0c51e_0<span class="w">  </span>pkgs/main
+pytorch<span class="w">                       </span><span class="m">1</span>.10.2<span class="w"> </span>cpu_py37h6f0ae12_0<span class="w">  </span>pkgs/main
+pytorch<span class="w">                       </span><span class="m">1</span>.10.2<span class="w"> </span>cpu_py38h6f0ae12_0<span class="w">  </span>pkgs/main
+pytorch<span class="w">                       </span><span class="m">1</span>.10.2<span class="w"> </span>cpu_py39h6f0ae12_0<span class="w">  </span>pkgs/main
 </pre></div>
 </div>
 <p>The output lists the name of the package relevant to the query, the version available, its build, and what channel it exists on. There are several versions of pytorch in the example that show they were built with cuda support, the specific version of cuda used, and the version of python used. There are also versions of pytorch built to utilize CPU’s rather than GPU’s.</p>
 <p>The “pkgs/main” channel refers to the default anaconda repository, whereas the results with the channels listed as “None” are coming from the MIT OpenCE channel.</p>
 <p>To install a package, you must first need to have an environment activated. Again, packages are installed within conda environments. You can specify versions of packages through levels of specificity:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install &lt;package&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;
 </pre></div>
 </div>
 <p>or</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install &lt;package&gt;<span class="o">=</span>&lt;version&gt;
-conda install &lt;package&gt;<span class="o">=</span>&lt;version&gt;<span class="o">=</span>&lt;build&gt;
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;<span class="o">=</span>&lt;version&gt;
+conda<span class="w"> </span>install<span class="w"> </span>&lt;package&gt;<span class="o">=</span>&lt;version&gt;<span class="o">=</span>&lt;build&gt;
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install pytorch
-conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0
-conda install <span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0<span class="o">=</span>cuda10.2_py39_1
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>pytorch
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0
+conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0<span class="o">=</span>cuda10.2_py39_1
 </pre></div>
 </div>
 </div>
 <div class="section" id="listing-the-contents-of-your-conda-environment">
 <h2>[5] Listing the contents of your conda environment<a class="headerlink" href="#listing-the-contents-of-your-conda-environment" title="Permalink to this heading"></a></h2>
 <p>Viewing the packages installed in your environment is easy. Use the following command:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda list
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
 </pre></div>
 </div>
 <p>You can be more granular and search for a specific package in your environment by adding the packages name after the above command.</p>
@@ -457,7 +459,7 @@ conda install <span class="nv">pytorch</span><span class="o">=</span><span class
 <div class="section" id="leaving-your-conda-environment">
 <h2>[6] Leaving your conda environment<a class="headerlink" href="#leaving-your-conda-environment" title="Permalink to this heading"></a></h2>
 <p>When you are done working in your environment, or want to switch to a different environment, you can deactivate the current environment with:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda deactivate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
 <p>Environments retain their state when inactive - as in, the packages installed within them. Simply activate the envionment again to use the installed software.</p>
@@ -475,7 +477,7 @@ conda install <span class="nv">pytorch</span><span class="o">=</span><span class
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

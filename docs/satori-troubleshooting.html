@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Troubleshooting</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-troubleshooting.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -378,33 +380,33 @@ DDL</a></li>
 <li>Upgrade to latest packages from specific WMLCE version (1.6.0, 1.6.1,
 1.6.2, 1.7.x)</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span> <span class="s2">&quot;powerai-release ==1.6.1&quot;</span> &gt;&gt; <span class="nv">$CONDA_DIR</span>/conda-meta/pinned
-conda update --all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;powerai-release ==1.6.1&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$CONDA_DIR</span>/conda-meta/pinned
+conda<span class="w"> </span>update<span class="w"> </span>--all
 </pre></div>
 </div>
 <ul class="simple">
 <li>Upgrade previously-pinned env to latest WMLCE</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda update powerai --no-pin
-conda update --all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>powerai<span class="w"> </span>--no-pin
+conda<span class="w"> </span>update<span class="w"> </span>--all
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
 <li>WMLE installation when running for the first time</li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install powerai
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>powerai
 </pre></div>
 </div>
 <p>is posible to get the following error:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CondaHTTPError: HTTP <span class="m">500</span> INTERNAL SERVER ERROR <span class="k">for</span> url &lt;https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/linux-ppc64le/current_repodata.json&gt;
-Elapsed: <span class="m">00</span>:00.515998
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>CondaHTTPError:<span class="w"> </span>HTTP<span class="w"> </span><span class="m">500</span><span class="w"> </span>INTERNAL<span class="w"> </span>SERVER<span class="w"> </span>ERROR<span class="w"> </span><span class="k">for</span><span class="w"> </span>url<span class="w"> </span>&lt;https://public.dhe.ibm.com/ibmdl/export/pub/software/server/ibm-ai/conda/linux-ppc64le/current_repodata.json&gt;
+Elapsed:<span class="w"> </span><span class="m">00</span>:00.515998
 
-A remote server error occurred when trying to retrieve this URL.
+A<span class="w"> </span>remote<span class="w"> </span>server<span class="w"> </span>error<span class="w"> </span>occurred<span class="w"> </span>when<span class="w"> </span>trying<span class="w"> </span>to<span class="w"> </span>retrieve<span class="w"> </span>this<span class="w"> </span>URL.
 
-A <span class="m">500</span>-type error <span class="o">(</span>e.g. <span class="m">500</span>, <span class="m">501</span>, <span class="m">502</span>, <span class="m">503</span>, etc.<span class="o">)</span> indicates the server failed to
-fulfill a valid request.  The problem may be spurious, and will resolve itself <span class="k">if</span> you
-try your request again.  If the problem persists, consider notifying the maintainer
-of the remote server.
+A<span class="w"> </span><span class="m">500</span>-type<span class="w"> </span>error<span class="w"> </span><span class="o">(</span>e.g.<span class="w"> </span><span class="m">500</span>,<span class="w"> </span><span class="m">501</span>,<span class="w"> </span><span class="m">502</span>,<span class="w"> </span><span class="m">503</span>,<span class="w"> </span>etc.<span class="o">)</span><span class="w"> </span>indicates<span class="w"> </span>the<span class="w"> </span>server<span class="w"> </span>failed<span class="w"> </span>to
+fulfill<span class="w"> </span>a<span class="w"> </span>valid<span class="w"> </span>request.<span class="w">  </span>The<span class="w"> </span>problem<span class="w"> </span>may<span class="w"> </span>be<span class="w"> </span>spurious,<span class="w"> </span>and<span class="w"> </span>will<span class="w"> </span>resolve<span class="w"> </span>itself<span class="w"> </span><span class="k">if</span><span class="w"> </span>you
+try<span class="w"> </span>your<span class="w"> </span>request<span class="w"> </span>again.<span class="w">  </span>If<span class="w"> </span>the<span class="w"> </span>problem<span class="w"> </span>persists,<span class="w"> </span>consider<span class="w"> </span>notifying<span class="w"> </span>the<span class="w"> </span>maintainer
+of<span class="w"> </span>the<span class="w"> </span>remote<span class="w"> </span>server.
 </pre></div>
 </div>
 <p>to overcome this issue please re-enter your conda command.</p>
@@ -421,7 +423,7 @@ of the remote server.
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

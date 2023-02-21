@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Using MPI and CUDA on Satori</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-cuda-aware-mpi.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -358,10 +360,10 @@ involve MPI may need to be recompiled with the correct OpenMPI modules.</p>
 <div class="section" id="getting-started">
 <h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
 <p>The following modules are needed to work with CUDA aware MPI codes</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
-module add spack
-module add cuda/10.1
-module load openmpi/3.1.4-pmi-cuda-ucx
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge<span class="w"> </span>all
+module<span class="w"> </span>add<span class="w"> </span>spack
+module<span class="w"> </span>add<span class="w"> </span>cuda/10.1
+module<span class="w"> </span>load<span class="w"> </span>openmpi/3.1.4-pmi-cuda-ucx
 </pre></div>
 </div>
 </div>
@@ -373,11 +375,11 @@ to be compiled using the MPI compilation wrappers e.g. <code class="docutils lit
 module. The CUDA runtime library needs to be added as a link
 library, e.g. <code class="docutils literal notranslate"><span class="pre">-lcudart</span></code>.</p>
 <p>A typical compilation setup is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module purge all
-module add spack
-module add cuda/10.1
-module load openmpi/3.1.4-pmi-cuda-ucx
-mpiCC MYFILE.cc -lcudart
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>purge<span class="w"> </span>all
+module<span class="w"> </span>add<span class="w"> </span>spack
+module<span class="w"> </span>add<span class="w"> </span>cuda/10.1
+module<span class="w"> </span>load<span class="w"> </span>openmpi/3.1.4-pmi-cuda-ucx
+mpiCC<span class="w"> </span>MYFILE.cc<span class="w"> </span>-lcudart
 </pre></div>
 </div>
 </div>
@@ -399,10 +401,10 @@ are set to <code class="docutils literal notranslate"><span class="pre">1</span>
 <span class="c1">#SBATCH --exclusive</span>
 <span class="c1">#SBATCH --time 00:05:00</span>
 
-module purge all
-module add spack
-module add cuda/10.1
-module load openmpi/3.1.4-pmi-cuda-ucx
+module<span class="w"> </span>purge<span class="w"> </span>all
+module<span class="w"> </span>add<span class="w"> </span>spack
+module<span class="w"> </span>add<span class="w"> </span>cuda/10.1
+module<span class="w"> </span>load<span class="w"> </span>openmpi/3.1.4-pmi-cuda-ucx
 </pre></div>
 </div>
 </div>
@@ -421,10 +423,10 @@ the GPU it has been allocated. An example script is shown below:</p>
 <span class="c1">#</span>
 <span class="c1"># Choose a CUDA device based on ${SLURM_LOCALID}</span>
 <span class="c1">#</span>
-<span class="nv">ngpu</span><span class="o">=</span><span class="sb">`</span>nvidia-smi -L <span class="p">|</span> grep UUID <span class="p">|</span> wc -l<span class="sb">`</span>
-<span class="nv">mygpu</span><span class="o">=</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_LOCALID</span><span class="si">}</span> <span class="o">%</span> <span class="si">${</span><span class="nv">ngpu</span><span class="si">}</span> <span class="k">))</span>
-<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="si">${</span><span class="nv">mygpu</span><span class="si">}</span>
-<span class="nb">exec</span> <span class="nv">$*</span>
+<span class="nv">ngpu</span><span class="o">=</span><span class="sb">`</span>nvidia-smi<span class="w"> </span>-L<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>UUID<span class="w"> </span><span class="p">|</span><span class="w"> </span>wc<span class="w"> </span>-l<span class="sb">`</span>
+<span class="nv">mygpu</span><span class="o">=</span><span class="k">$((</span><span class="si">${</span><span class="nv">SLURM_LOCALID</span><span class="si">}</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="si">${</span><span class="nv">ngpu</span><span class="si">}</span><span class="w"> </span><span class="k">))</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="si">${</span><span class="nv">mygpu</span><span class="si">}</span>
+<span class="nb">exec</span><span class="w"> </span><span class="nv">$*</span>
 </pre></div>
 </div>
 <ol class="arabic" start="2">
@@ -434,26 +436,26 @@ before <code class="docutils literal notranslate"><span class="pre">MPI_Init()</
 environment variable SLURM_LOCALID) is shown below:</p>
 </li>
 </ol>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
-<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cuda_runtime.h&gt;</span><span class="cp"></span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;mpi.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;stdio.h&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cuda_runtime.h&gt;</span>
 
-<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">envp</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">envp</span><span class="p">[])</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span><span class="w"></span>
-<span class="kt">int</span><span class="w"> </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">devCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">mydev</span><span class="p">;</span><span class="w"></span>
+<span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">;</span>
+<span class="kt">int</span><span class="w"> </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">devCount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">mydev</span><span class="p">;</span>
 <span class="c1">// We extract the local rank initialization using an environment variable</span>
-<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;SLURM_LOCALID&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">localRankStr</span><span class="p">);</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
-<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devCount</span><span class="p">);</span><span class="w"></span>
-<span class="n">mydev</span><span class="o">=</span><span class="n">localrank</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">devCount</span><span class="p">;</span><span class="w"></span>
-<span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">mydev</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="o">:</span><span class="w"></span>
-<span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span><span class="w"></span>
-<span class="w">      </span><span class="o">:</span><span class="w"></span>
-<span class="w">      </span><span class="o">:</span><span class="w"></span>
+<span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">localRankStr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getenv</span><span class="p">(</span><span class="s">&quot;SLURM_LOCALID&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="nb">NULL</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">localrank</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">atoi</span><span class="p">(</span><span class="n">localRankStr</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">cudaGetDeviceCount</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devCount</span><span class="p">);</span>
+<span class="n">mydev</span><span class="o">=</span><span class="n">localrank</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">devCount</span><span class="p">;</span>
+<span class="n">cudaSetDevice</span><span class="p">(</span><span class="n">mydev</span><span class="p">);</span>
+<span class="w">      </span><span class="o">:</span>
+<span class="w">      </span><span class="o">:</span>
+<span class="n">MPI_Init</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<span class="w">      </span><span class="o">:</span>
+<span class="w">      </span><span class="o">:</span>
 </pre></div>
 </div>
 </div>
@@ -463,11 +465,11 @@ environment variable SLURM_LOCALID) is shown below:</p>
 works like the MPI run or exec commands but it creates the environment variables needed to select which rank
 works with which GPU prior to any calls to MIT_Init(). An example of using srun with a launch script is shown
 below.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun ./launch.sh ./a.out
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>./launch.sh<span class="w"> </span>./a.out
 </pre></div>
 </div>
 <p>the equivalent without a launch script is</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun ./a.out
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>./a.out
 </pre></div>
 </div>
 </div>
@@ -492,12 +494,12 @@ needed in practice, both are shown to illustrate the two approaches.</p>
 <span class="c1">#SBATCH --exclusive</span>
 <span class="c1">#SBATCH --time 00:05:00</span>
 
-module purge all
-module add spack
-module add cuda/10.1
-module load openmpi/3.1.4-pmi-cuda-ucx
+module<span class="w"> </span>purge<span class="w"> </span>all
+module<span class="w"> </span>add<span class="w"> </span>spack
+module<span class="w"> </span>add<span class="w"> </span>cuda/10.1
+module<span class="w"> </span>load<span class="w"> </span>openmpi/3.1.4-pmi-cuda-ucx
 
-cat &gt; launch.sh <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>launch.sh<span class="w"> </span><span class="s">&lt;&lt;&#39;EOFA&#39;</span>
 <span class="s">#!/bin/bash</span>
 
 <span class="s"># Choose a CUDA device number ($mygpu) based on ${SLURM_LOCALID}, cycling through</span>
@@ -510,7 +512,7 @@ cat &gt; launch.sh <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
 <span class="s">exec $*</span>
 <span class="s">EOFA</span>
 
-cat &gt; x.cc <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>x.cc<span class="w"> </span><span class="s">&lt;&lt;&#39;EOFA&#39;</span>
 <span class="s">#include &lt;mpi.h&gt;</span>
 <span class="s">#include &lt;stdio.h&gt;</span>
 <span class="s">#include &lt;cuda_runtime.h&gt;</span>
@@ -546,9 +548,9 @@ cat &gt; x.cc <span class="s">&lt;&lt;&#39;EOFA&#39;</span>
 <span class="s">}</span>
 <span class="s">EOFA</span>
 
-mpic++ x.cc -lcudart
+mpic++<span class="w"> </span>x.cc<span class="w"> </span>-lcudart
 
-srun ./launch.sh ./a.out
+srun<span class="w"> </span>./launch.sh<span class="w"> </span>./a.out
 </pre></div>
 </div>
 </div>
@@ -571,7 +573,7 @@ features and PMI job management features to integrate with SLURM and the Satori 
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Relion Cryoem for Satorians</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-relion-cryoem.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -369,29 +371,29 @@ Use satori-login-002.mit.edu</p>
 <li><p class="first">To access the Relion GUI</p>
 <ol class="arabic">
 <li><p class="first">Login:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -Y username@satori-login-002.mit.edu
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-Y<span class="w"> </span>username@satori-login-002.mit.edu
 </pre></div>
 </div>
 </li>
 <li><p class="first">Submit a fake job to access a node:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub -q normal sleep <span class="m">7200</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub<span class="w"> </span>-q<span class="w"> </span>normal<span class="w"> </span>sleep<span class="w"> </span><span class="m">7200</span>
 </pre></div>
 </div>
 </li>
 <li><p class="first">Use bjobs to determine the node of the job ie:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>JOBID   USER    STAT  QUEUE      FROM_HOST   EXEC_HOST   JOB_NAME   SUBMIT_TIME
-<span class="m">45954</span>   seyvos  RUN   normal     service0002 node0028.in sleep <span class="m">7200</span> Mar <span class="m">10</span> <span class="m">13</span>:50
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>JOBID<span class="w">   </span>USER<span class="w">    </span>STAT<span class="w">  </span>QUEUE<span class="w">      </span>FROM_HOST<span class="w">   </span>EXEC_HOST<span class="w">   </span>JOB_NAME<span class="w">   </span>SUBMIT_TIME
+<span class="m">45954</span><span class="w">   </span>seyvos<span class="w">  </span>RUN<span class="w">   </span>normal<span class="w">     </span>service0002<span class="w"> </span>node0028.in<span class="w"> </span>sleep<span class="w"> </span><span class="m">7200</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span>:50
 </pre></div>
 </div>
 </li>
 <li><p class="first">Login into the node:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh -X node0028
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-X<span class="w"> </span>node0028
 </pre></div>
 </div>
 </li>
 <li><p class="first">Add paths to access relion libraries:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
-<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/ibm/spectrum_mpi/profilesupport/lib:/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/ibm/spectrum_mpi/profilesupport/lib:/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
 </li>
@@ -407,7 +409,7 @@ Use satori-login-002.mit.edu</p>
 <li><p class="first">Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the <code class="docutils literal notranslate"><span class="pre">--n</span></code> and <code class="docutils literal notranslate"><span class="pre">--j</span></code> values. Save submission script. Make sure paths for <code class="docutils literal notranslate"><span class="pre">--o</span></code> already exist.</p>
 </li>
 <li><p class="first">Execute job</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub&lt; run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub&lt;<span class="w"> </span>run
 </pre></div>
 </div>
 </li>
@@ -429,15 +431,15 @@ like this.</p>
 <span class="c1">#BSUB -gpu &quot;num=4&quot;</span>
 <span class="c1">#BSUB -q &quot;normal&quot;</span>
 
-<span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
-<span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
 
 <span class="c1">#source ~/anaconda3/bin/activate</span>
 <span class="c1">#conda activate CryoEM</span>
 
-<span class="nb">unset</span> CUDA_VISIBLE_DEVICES
-<span class="nb">export</span> <span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="s2">&quot;0,1,2,3&quot;</span>
-<span class="o">(</span><span class="nb">time</span> -p mpirun -bind-to none -n <span class="m">9</span> relion_refine_mpi --j <span class="m">4</span> --gpu --pool <span class="m">50</span> --dont_combine_weights_via_disc --scratch_dir /dev/shm  --o Refine3D/job005 --auto_refine --split_random_halves --i squirrel2.star --ref Import/job004/postprocess_refine850_resampled_775.mrc --firstiter_cc --ini_high <span class="m">40</span>  --ctf --ctf_corrected_ref --particle_diameter <span class="m">340</span> --flatten_solvent --zero_mask --oversampling <span class="m">1</span> --healpix_order <span class="m">2</span> --auto_local_healpix_order <span class="m">4</span> --offset_range <span class="m">5</span> --offset_step <span class="m">2</span> --sym C1 --low_resol_join_halves <span class="m">40</span> --norm --scale<span class="o">)</span> &gt;run_21x8.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="nb">unset</span><span class="w"> </span>CUDA_VISIBLE_DEVICES
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUDA_VISIBLE_DEVICES</span><span class="o">=</span><span class="s2">&quot;0,1,2,3&quot;</span>
+<span class="o">(</span><span class="nb">time</span><span class="w"> </span>-p<span class="w"> </span>mpirun<span class="w"> </span>-bind-to<span class="w"> </span>none<span class="w"> </span>-n<span class="w"> </span><span class="m">9</span><span class="w"> </span>relion_refine_mpi<span class="w"> </span>--j<span class="w"> </span><span class="m">4</span><span class="w"> </span>--gpu<span class="w"> </span>--pool<span class="w"> </span><span class="m">50</span><span class="w"> </span>--dont_combine_weights_via_disc<span class="w"> </span>--scratch_dir<span class="w"> </span>/dev/shm<span class="w">  </span>--o<span class="w"> </span>Refine3D/job005<span class="w"> </span>--auto_refine<span class="w"> </span>--split_random_halves<span class="w"> </span>--i<span class="w"> </span>squirrel2.star<span class="w"> </span>--ref<span class="w"> </span>Import/job004/postprocess_refine850_resampled_775.mrc<span class="w"> </span>--firstiter_cc<span class="w"> </span>--ini_high<span class="w"> </span><span class="m">40</span><span class="w">  </span>--ctf<span class="w"> </span>--ctf_corrected_ref<span class="w"> </span>--particle_diameter<span class="w"> </span><span class="m">340</span><span class="w"> </span>--flatten_solvent<span class="w"> </span>--zero_mask<span class="w"> </span>--oversampling<span class="w"> </span><span class="m">1</span><span class="w"> </span>--healpix_order<span class="w"> </span><span class="m">2</span><span class="w"> </span>--auto_local_healpix_order<span class="w"> </span><span class="m">4</span><span class="w"> </span>--offset_range<span class="w"> </span><span class="m">5</span><span class="w"> </span>--offset_step<span class="w"> </span><span class="m">2</span><span class="w"> </span>--sym<span class="w"> </span>C1<span class="w"> </span>--low_resol_join_halves<span class="w"> </span><span class="m">40</span><span class="w"> </span>--norm<span class="w"> </span>--scale<span class="o">)</span><span class="w"> </span>&gt;run_21x8.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -458,7 +460,7 @@ like this.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

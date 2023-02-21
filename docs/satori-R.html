@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">R on Satori</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/satori-R.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -385,20 +387,20 @@
 <span class="c1">#SBATCH --nodes=1</span>
 <span class="c1">#SBATCH --mem=50G</span>
 <span class="c1">#SBATCH --time=2:00:00</span>
-module add spack-flat
-module add r
-Rscript script.R
+module<span class="w"> </span>add<span class="w"> </span>spack-flat
+module<span class="w"> </span>add<span class="w"> </span>r
+Rscript<span class="w"> </span>script.R
 </pre></div>
 </div>
 </div>
 <div class="section" id="r-and-python">
 <h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this heading"></a></h2>
 <p>With the R Spack build, it is possible to interface between R and Python using <cite>rpy2</cite>. However, as this uses multiple environments, it may break things.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module load spack-flat
-module load r
-conda activate <span class="o">{</span>env_name<span class="o">}</span>
-<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3 -m pip install rpy2
-<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3 -c <span class="s2">&quot;import rpy2&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>spack-flat
+module<span class="w"> </span>load<span class="w"> </span>r
+conda<span class="w"> </span>activate<span class="w"> </span><span class="o">{</span>env_name<span class="o">}</span>
+<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>rpy2
+<span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import rpy2&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -435,7 +437,7 @@ conda activate <span class="o">{</span>env_name<span class="o">}</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

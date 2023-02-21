@@ -11,10 +11,8 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/sphinx_highlight.js"></script>
     <script src="_static/js/theme.js"></script>
@@ -29,11 +27,15 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> MIT Satori User Documentation
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            MIT Satori User Documentation
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -338,7 +340,7 @@
         <div class="rst-content style-external-links">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Singularity for Satorians</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/mit-satori/getting-started/blob/master/singularity.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -356,20 +358,20 @@
 <ul class="simple">
 <li>Pull your image</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">SINGULARITY_DOCKER_ARCHITECTURE</span><span class="o">=</span>ppc64le
-singularity pull docker://centos:7
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">SINGULARITY_DOCKER_ARCHITECTURE</span><span class="o">=</span>ppc64le
+singularity<span class="w"> </span>pull<span class="w"> </span>docker://centos:7
 </pre></div>
 </div>
 <ul class="simple">
 <li>Get an allocation, for example:</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -l --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-l<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <ul class="simple">
 <li>Submit your payload</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> centos_7.sif ls /
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>centos_7.sif<span class="w"> </span>ls<span class="w"> </span>/
 </pre></div>
 </div>
 </div>
@@ -388,7 +390,7 @@ singularity pull docker://centos:7
 <li>These are all specified in the bsub request, here is a good <a class="footnote-reference" href="#id4" id="id1">[1]</a></li>
 <li>For example, here is a <cite>bsub</cite> to request allocation for <strong>4 GPUS</strong>, via the <strong>normal</strong> queue, launching an interactive session using <strong>bash</strong> as terminal</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun --gres<span class="o">=</span>gpu:4 -N <span class="m">1</span> --mem<span class="o">=</span>1T --time <span class="m">1</span>:00:00 -l --pty /bin/bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>srun<span class="w"> </span>--gres<span class="o">=</span>gpu:4<span class="w"> </span>-N<span class="w"> </span><span class="m">1</span><span class="w"> </span>--mem<span class="o">=</span>1T<span class="w"> </span>--time<span class="w"> </span><span class="m">1</span>:00:00<span class="w"> </span>-l<span class="w"> </span>--pty<span class="w"> </span>/bin/bash
 </pre></div>
 </div>
 <ul class="simple">
@@ -396,7 +398,7 @@ singularity pull docker://centos:7
 <li>Using interactive allocation, we are allocated a node - your interactions with singularity will be generally standard , just like you would in any environments</li>
 <li>Remember you do not have <cite>sudo</cite> access on this cluster, this might impact your workflow</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity <span class="nb">exec</span> centos_7.sif ls /
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>singularity<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>centos_7.sif<span class="w"> </span>ls<span class="w"> </span>/
 </pre></div>
 </div>
 </div>
@@ -408,11 +410,11 @@ singularity pull docker://centos:7
 <li>Create an application profile <a class="footnote-reference" href="#id5" id="id2">[2]</a></li>
 <li>For example</li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Begin Application
-<span class="nv">NAME</span> <span class="o">=</span> singapp
-<span class="nv">CONTAINER</span> <span class="o">=</span> singularity<span class="o">[</span>image<span class="o">(</span>centos_7.sif<span class="o">)]</span>
-<span class="nv">DESCRIPTION</span> <span class="o">=</span> Singularity User Service
-End Application
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>Begin<span class="w"> </span>Application
+<span class="nv">NAME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>singapp
+<span class="nv">CONTAINER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>singularity<span class="o">[</span>image<span class="o">(</span>centos_7.sif<span class="o">)]</span>
+<span class="nv">DESCRIPTION</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>Singularity<span class="w"> </span>User<span class="w"> </span>Service
+End<span class="w"> </span>Application
 </pre></div>
 </div>
 <ul class="simple">
@@ -454,7 +456,7 @@ End Application
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, MIT Satori Project.</p>
+    <p>&#169; Copyright 2023, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
