@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/index.html"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -353,51 +357,51 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="multi-node-multi-gpu-tensorflow-2-0-distributed-training-example">
-<h1>Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example<a class="headerlink" href="#multi-node-multi-gpu-tensorflow-2-0-distributed-training-example" title="Permalink to this heading"></a></h1>
+  <section id="multi-node-multi-gpu-tensorflow-2-0-distributed-training-example">
+<h1>Multi Node Multi GPU TensorFlow 2.0 Distributed Training Example<a class="headerlink" href="#multi-node-multi-gpu-tensorflow-2-0-distributed-training-example" title="Link to this heading"></a></h1>
 <p>Romeo Kienzler ( 1 s t n a m e . l a s t n a m e  a t  c h . i b m . c o m )</p>
 <p>Jerome Nilmeier ( l a s t n a m e  a t  us . i b m . c o m )</p>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>Ported the TensorFlow example to run on Satori</p>
-</div>
-<div class="section" id="prerequisites-if-you-are-not-yet-running-tensorflow-2-0">
-<h2>Prerequisites if you are not yet running TensorFlow 2.0<a class="headerlink" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0" title="Permalink to this heading"></a></h2>
+</section>
+<section id="prerequisites-if-you-are-not-yet-running-tensorflow-2-0">
+<h2>Prerequisites if you are not yet running TensorFlow 2.0<a class="headerlink" href="#prerequisites-if-you-are-not-yet-running-tensorflow-2-0" title="Link to this heading"></a></h2>
 <p>Install TensorFlow 2.0 as described here =&gt; IMPORTANT &lt;= this might change, please ask John or Chris =&gt; <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access" target="_blank">https://mit-satori.github.io/satori-ai-frameworks.html#the-wml-ce-early-access-channel-is-available-at-https-public-dhe-ibm-com-ibmdl-export-pub-software-server-ibm-ai-conda-early-access</a> =&gt; it is important that you name your environment wmlce-ea</p>
-</div>
-<div class="section" id="commands-to-run-this-example">
-<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this heading"></a></h2>
+</section>
+<section id="commands-to-run-this-example">
+<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li>Login to Satori Login Node</li>
-<li>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></li>
-<li>chmod 755 multi_worker_with_keras_numpyArrays.py</li>
-<li>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></li>
-<li>chmod 755 multi_worker_with_keras_runner.py</li>
-<li>bsub -W 3:00 -q normalx -x  -n 8  -gpu “num=4” -R “span[ptile=4]” -I “while (true) do ls &gt; /dev/null; done” (replace 2586 with a number smaller equals than 256 :)</li>
-<li>login to a new shell</li>
-<li>nodes=`bjobs <a href="#id1"><span class="problematic" id="id2">|</span></a>grep 4*node <a href="#id3"><span class="problematic" id="id4">|</span></a>awk -F”*” ‘{print $2}’ <a href="#id5"><span class="problematic" id="id6">|</span></a>awk -F”.” ‘{print $1}’`</li>
-<li>echo $nodes <a href="#id7"><span class="problematic" id="id8">|</span></a>python multi_worker_with_keras_runner.py</li>
+<li><p>Login to Satori Login Node</p></li>
+<li><p>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></p></li>
+<li><p>chmod 755 multi_worker_with_keras_numpyArrays.py</p></li>
+<li><p>wget <a class="reference external" href="https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py" target="_blank">https://raw.githubusercontent.com/mit-satori/getting-started/master/tutorial-examples/tensorflow-2.x-multi-gpu-multi-node/multi_worker_with_keras_runner.py</a></p></li>
+<li><p>chmod 755 multi_worker_with_keras_runner.py</p></li>
+<li><p>bsub -W 3:00 -q normalx -x  -n 8  -gpu “num=4” -R “span[ptile=4]” -I “while (true) do ls &gt; /dev/null; done” (replace 2586 with a number smaller equals than 256 :)</p></li>
+<li><p>login to a new shell</p></li>
+<li><p>nodes=`bjobs <a href="#id1"><span class="problematic" id="id2">|</span></a>grep 4*node <a href="#id3"><span class="problematic" id="id4">|</span></a>awk -F”*” ‘{print $2}’ <a href="#id5"><span class="problematic" id="id6">|</span></a>awk -F”.” ‘{print $1}’`</p></li>
+<li><p>echo $nodes <a href="#id7"><span class="problematic" id="id8">|</span></a>python multi_worker_with_keras_runner.py</p></li>
 </ol>
 <p>Wait until training starts, please run different new terminals on your worker nodes to observe what’s happening</p>
 <p>watch -n 0.1 nvidia-smi</p>
-</div>
-<div class="section" id="what-s-going-on-here">
-<h2>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Permalink to this heading"></a></h2>
+</section>
+<section id="what-s-going-on-here">
+<h2>What’s going on here?<a class="headerlink" href="#what-s-going-on-here" title="Link to this heading"></a></h2>
 <p>All scrips running on all nodes start a Service component which communicates with the other scripts in the background for parameter averaging.</p>
 <p>See <a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a> for more information</p>
-</div>
-<div class="section" id="code-and-input-data-repositories-for-this-example">
-<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this heading"></a></h2>
+</section>
+<section id="code-and-input-data-repositories-for-this-example">
+<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Link to this heading"></a></h2>
 <p>Code:
 <a class="reference external" href="https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py" target="_blank">https://raw.githubusercontent.com/IBM/coursera/master/coursera_ai/week4/multi_worker_with_keras.py</a></p>
-</div>
-<div class="section" id="useful-references">
-<h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this heading"></a></h2>
+</section>
+<section id="useful-references">
+<h2>Useful references<a class="headerlink" href="#useful-references" title="Link to this heading"></a></h2>
 <p><a class="reference external" href="https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/" target="_blank">https://lambdalabs.com/blog/tensorflow-2-0-tutorial-05-distributed-training-multi-node/</a></p>
 <p><a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy" target="_blank">https://www.tensorflow.org/api_docs/python/tf/distribute/experimental/MultiWorkerMirroredStrategy</a></p>
 <p><a class="reference external" href="https://www.youtube.com/watch?v=ZwFPvvAREC8" target="_blank">https://www.youtube.com/watch?v=ZwFPvvAREC8</a></p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -410,7 +414,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

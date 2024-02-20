@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Satori Login &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-ssh.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,44 +355,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="satori-login">
-<h1>Satori Login<a class="headerlink" href="#satori-login" title="Permalink to this heading"></a></h1>
+  <section id="satori-login">
+<h1>Satori Login<a class="headerlink" href="#satori-login" title="Link to this heading"></a></h1>
 <p>You can connect to Satori through</p>
 <ul class="simple">
-<li>a web portal, or</li>
-<li>plain ssh from a terminal or a terminal client like PuTTY (<a class="reference external" href="https://www.putty.org" target="_blank">https://www.putty.org</a>).</li>
+<li><p>a web portal, or</p></li>
+<li><p>plain ssh from a terminal or a terminal client like PuTTY (<a class="reference external" href="https://www.putty.org" target="_blank">https://www.putty.org</a>).</p></li>
 </ul>
-<div class="section" id="web-portal-login">
-<h2>Web Portal Login<a class="headerlink" href="#web-portal-login" title="Permalink to this heading"></a></h2>
+<section id="web-portal-login">
+<h2>Web Portal Login<a class="headerlink" href="#web-portal-login" title="Link to this heading"></a></h2>
 <p>To use the web portal</p>
 <ol class="arabic simple">
-<li>Navigate to <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> in your favorite web browser.</li>
-<li>Select the Globus Auth button.</li>
-<li>When redirected to globus, authenticate via Massachusetts Institute of Technology.</li>
-<li>When successfully logged in, you will be redirected back to Satori Portal!</li>
+<li><p>Navigate to <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> in your favorite web browser.</p></li>
+<li><p>Select the Globus Auth button.</p></li>
+<li><p>When redirected to globus, authenticate via Massachusetts Institute of Technology.</p></li>
+<li><p>When successfully logged in, you will be redirected back to Satori Portal!</p></li>
 </ol>
 <p>you can then launch Jupyter notebook environments running on GPUs</p>
 <ol class="arabic simple">
-<li>Select “Jupyter Notebook” from the “Interactive Apps” dropdown in the top navbar. You can also select “My Interactive Sessions”.</li>
-<li>At the prompt to launch a Jupyter notebook, select the “Anaconda 2019.10 PowerAI [Experimental]” option in the “Choose Anaconda Environment” section.</li>
-<li>Enter (in hours) how long you would like the app to run for.</li>
-<li>Click launch, wait for app to begin running on a compute node and finally, select “Connect to Jupyter”!</li>
+<li><p>Select “Jupyter Notebook” from the “Interactive Apps” dropdown in the top navbar. You can also select “My Interactive Sessions”.</p></li>
+<li><p>At the prompt to launch a Jupyter notebook, select the “Anaconda 2019.10 PowerAI [Experimental]” option in the “Choose Anaconda Environment” section.</p></li>
+<li><p>Enter (in hours) how long you would like the app to run for.</p></li>
+<li><p>Click launch, wait for app to begin running on a compute node and finally, select “Connect to Jupyter”!</p></li>
 </ol>
 <p>the web portal also has sub-menus for</p>
 <ol class="arabic simple">
-<li>a terminal on the front-end node (<strong>Clusters</strong> menu)</li>
-<li>a running job monitoring window (<strong>Jobs</strong> menu). This is also has a batch job preparation form, but
-it is malfunction at the moment!</li>
-<li>a file browsing and transfer client (<strong>Files</strong> menu)</li>
+<li><p>a terminal on the front-end node (<strong>Clusters</strong> menu)</p></li>
+<li><p>a running job monitoring window (<strong>Jobs</strong> menu). This is also has a batch job preparation form, but
+it is malfunction at the moment!</p></li>
+<li><p>a file browsing and transfer client (<strong>Files</strong> menu)</p></li>
 </ol>
-</div>
-<div class="section" id="ssh-login">
-<h2>SSH Login<a class="headerlink" href="#ssh-login" title="Permalink to this heading"></a></h2>
-<div class="figure align-default">
+</section>
+<section id="ssh-login">
+<h2>SSH Login<a class="headerlink" href="#ssh-login" title="Link to this heading"></a></h2>
+<figure class="align-default">
 <img alt="Satori Login" src="http://www.sldcassam.in/images/login.png" />
-</div>
+</figure>
 <ul class="simple">
-<li>Login to Satori cluster is done via SSHv2 as follow:</li>
+<li><p>Login to Satori cluster is done via SSHv2 as follow:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>your_username@satori-login-001.mit.edu
 </pre></div>
@@ -397,22 +401,22 @@ it is malfunction at the moment!</li>
 </pre></div>
 </div>
 <ul class="simple">
-<li>To copy files from your workstation to Satori you can use SCP,
+<li><p>To copy files from your workstation to Satori you can use SCP,
 <a class="reference external" href="https://winscp.net/eng/download.php" target="_blank">WinSCP</a>,
-<a class="reference external" href="https://cyberduck.io/download/" target="_blank">Cyberduck</a> etc</li>
+<a class="reference external" href="https://cyberduck.io/download/" target="_blank">Cyberduck</a> etc</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>scp<span class="w"> </span>&lt;local-file.py&gt;<span class="w"> </span>your_username@satori-login-001.mit.edu:
 </pre></div>
 </div>
 <p>As general rules:</p>
 <ul class="simple">
-<li>satori-login-001.mit.edu - should be used for submiting training jobs
-and related activities</li>
-<li>satori-login-002.mit.edu - should be used for transfering large
+<li><p>satori-login-001.mit.edu - should be used for submiting training jobs
+and related activities</p></li>
+<li><p>satori-login-002.mit.edu - should be used for transfering large
 files/datasets and compiling software requiring nvcc, gcc, XL
-compiler etc</li>
-<li>if one login-node will not be available try the second one</li>
-<li>don’t run large computations on the login nodes</li>
+compiler etc</p></li>
+<li><p>if one login-node will not be available try the second one</p></li>
+<li><p>don’t run large computations on the login nodes</p></li>
 </ul>
 <p>In case you want to work with Jupyter Notebooks but cannot use the <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a> portal, you will
 need to forward Jupyter HTTP ports to your own workstation via SSHv2 tunneling.
@@ -425,8 +429,8 @@ jupyter<span class="w"> </span>notebook<span class="w"> </span>--ip<span class="
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>activate<span class="w"> </span>wmlce-1.6.2
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -439,7 +443,7 @@ jupyter<span class="w"> </span>notebook<span class="w"> </span>--ip<span class="
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

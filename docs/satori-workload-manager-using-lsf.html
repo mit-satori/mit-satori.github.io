@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Running your AI training jobs on Satori &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-workload-manager-using-lsf.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -349,36 +353,38 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="figure align-default" id="id1">
+  <figure class="align-default" id="id1">
 <img alt="Satori" src="_images/lsf.png" />
-<p class="caption"><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
-</div>
-<div class="section" id="running-your-ai-training-jobs-on-satori">
-<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Permalink to this heading"></a></h1>
+<figcaption>
+<p><span class="caption-text">Satori</span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<section id="running-your-ai-training-jobs-on-satori">
+<h1>Running your AI training jobs on Satori<a class="headerlink" href="#running-your-ai-training-jobs-on-satori" title="Link to this heading"></a></h1>
 <p>Computational work on Satori is performed within jobs managed by a
 workload manager (IBM LSF). A typical job consists of several
 components:</p>
 <ul class="simple">
-<li>A submission script</li>
-<li>An executable file (python sript or C/C++ script)</li>
-<li>Training data needed by the ML/DL script</li>
-<li>Output files created by the training/inference job</li>
+<li><p>A submission script</p></li>
+<li><p>An executable file (python sript or C/C++ script)</p></li>
+<li><p>Training data needed by the ML/DL script</p></li>
+<li><p>Output files created by the training/inference job</p></li>
 </ul>
 <p>There are two types for jobs:</p>
 <ul class="simple">
-<li>interactive / online</li>
-<li>batch</li>
+<li><p>interactive / online</p></li>
+<li><p>batch</p></li>
 </ul>
 <p>In general, the process for running a batch job is to:</p>
 <ul class="simple">
-<li>Prepare executables and input files</li>
-<li>Modify provided LSF job template for the batch script or write a new
-one</li>
-<li>Submit the batch script to the Workload Manager</li>
-<li>Monitor the job’s progress before and during execution</li>
+<li><p>Prepare executables and input files</p></li>
+<li><p>Modify provided LSF job template for the batch script or write a new
+one</p></li>
+<li><p>Submit the batch script to the Workload Manager</p></li>
+<li><p>Monitor the job’s progress before and during execution</p></li>
 </ul>
-<div class="section" id="a-note-on-exclusivity">
-<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Permalink to this heading"></a></h2>
+<section id="a-note-on-exclusivity">
+<h2>A Note on Exclusivity<a class="headerlink" href="#a-note-on-exclusivity" title="Link to this heading"></a></h2>
 <p>To make best use of Satori’s GPU resource  default job submissions are not
 exclusive. That means that unless you ask otherwise, the GPUs on the node(s)
 you are assigned may already be in use by another user. That means if you
@@ -388,9 +394,9 @@ resources. This may require some additional checking to make sure you can
 uniquely use  all of the GPU’s on a machine. If you’re in doubt, you can
 request the node to be ‘exclusive’ . See below on how to request exclusive
 access  in an interactive and batch situation.</p>
-</div>
-<div class="section" id="interactive-jobs">
-<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Permalink to this heading"></a></h2>
+</section>
+<section id="interactive-jobs">
+<h2>Interactive Jobs<a class="headerlink" href="#interactive-jobs" title="Link to this heading"></a></h2>
 <p>Most users will find batch jobs to be the easiest way to interact with
 the system, since they permit you to hand off a job to the scheduler and
 then work on other tasks; however, it is sometimes preferable to run
@@ -417,9 +423,9 @@ queue) for 3 hours.</p>
 </pre></div>
 </div>
 <p>this will request exclusive use of an interactive node with 4GPU’s</p>
-</div>
-<div class="section" id="batch-scripts">
-<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Permalink to this heading"></a></h2>
+</section>
+<section id="batch-scripts">
+<h2>Batch Scripts<a class="headerlink" href="#batch-scripts" title="Link to this heading"></a></h2>
 <p>The most common way to interact with the batch system is via batch jobs.
 A batch job is simply a shell script with added directives to request
 various resources from or provide certain information to the batch
@@ -453,16 +459,16 @@ python<span class="w"> </span>Keras-ResNet50-training.py<span class="w"> </span>
 </div>
 <p>In the above template you can change:</p>
 <ul class="simple">
-<li>line 2-4: with your desire job name, but remember to keep _o for the
-job output file and _e for the file with the related job errors</li>
-<li>line 5: “-n 4” here you can consider the no of GPUs you need,
-multiple of 4 (ie. - n 4, -n 8, -n 16, ….)</li>
-<li>line 11: add your MIT assigned username folder name from the
-/nobackup/users/</li>
-<li>line 12: change to your conda virtual environment defined at
-installation of WMLCE</li>
-<li>line 17-18: change as need for what you will want to run and from
-where</li>
+<li><p>line 2-4: with your desire job name, but remember to keep _o for the
+job output file and _e for the file with the related job errors</p></li>
+<li><p>line 5: “-n 4” here you can consider the no of GPUs you need,
+multiple of 4 (ie. - n 4, -n 8, -n 16, ….)</p></li>
+<li><p>line 11: add your MIT assigned username folder name from the
+/nobackup/users/</p></li>
+<li><p>line 12: change to your conda virtual environment defined at
+installation of WMLCE</p></li>
+<li><p>line 17-18: change as need for what you will want to run and from
+where</p></li>
 </ul>
 <p>if you need to request exclusive use of the gpus fr the example above  you can do the following in your template</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#BSUB -L /bin/bash</span>
@@ -538,34 +544,34 @@ ddlrun<span class="w"> </span>--mpiarg<span class="w"> </span><span class="s2">&
 created to cover distributed deep learning trainings across Satori
 cluster:</p>
 <ul class="simple">
-<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf" target="_blank">Pytorch with IBM Distributed Deep Learning Library
-(DDL)</a></li>
-<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-multinode.lsf" target="_blank">TensorFlow with IBM Distributed Deep Learning Library
-(DDL)</a></li>
-<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)
-backend</a></li>
-<li><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-horovod-multinode.lsf" target="_blank">TensorFlow with Horovod + IBM Distributed Deep Learning Library
+<li><p><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-multinode.lsf" target="_blank">Pytorch with IBM Distributed Deep Learning Library
+(DDL)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-multinode.lsf" target="_blank">TensorFlow with IBM Distributed Deep Learning Library
+(DDL)</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-pytorch-horovod-multinode.lsf" target="_blank">Pytorch with Horovod + IBM Distributed Deep Learning Library (DDL)
+backend</a></p></li>
+<li><p><a class="reference external" href="https://github.com/mit-satori/getting-started/blob/master/lsf-templates/template-tf-horovod-multinode.lsf" target="_blank">TensorFlow with Horovod + IBM Distributed Deep Learning Library
 (DDL)
-backend</a></li>
+backend</a></p></li>
 </ul>
-<div class="section" id="job-states">
-<h3>Job States<a class="headerlink" href="#job-states" title="Permalink to this heading"></a></h3>
+<section id="job-states">
+<h3>Job States<a class="headerlink" href="#job-states" title="Link to this heading"></a></h3>
 <p>A job will progress through a number of states through its lifetime. The
 states you’re most likely to see are:</p>
 <ul class="simple">
-<li>PEND: Job is pending</li>
-<li>RUN: Job is running</li>
-<li>DONE: Job completed normally (with an exit code of 0)</li>
-<li>EXIT: Job completed abnormally</li>
-<li>PSUSP: Job was suspended (either by the user or an administrator)
-while pending</li>
-<li>USUSP: Job was suspended (either by the user or an administrator)
-after starting</li>
-<li>SSUSP: Job was suspended by the system after starting</li>
+<li><p>PEND: Job is pending</p></li>
+<li><p>RUN: Job is running</p></li>
+<li><p>DONE: Job completed normally (with an exit code of 0)</p></li>
+<li><p>EXIT: Job completed abnormally</p></li>
+<li><p>PSUSP: Job was suspended (either by the user or an administrator)
+while pending</p></li>
+<li><p>USUSP: Job was suspended (either by the user or an administrator)
+after starting</p></li>
+<li><p>SSUSP: Job was suspended by the system after starting</p></li>
 </ul>
-</div>
-<div class="section" id="monitoring-jobs">
-<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Permalink to this heading"></a></h3>
+</section>
+<section id="monitoring-jobs">
+<h3>Monitoring Jobs<a class="headerlink" href="#monitoring-jobs" title="Link to this heading"></a></h3>
 <p>LSF provides several utilities with which you can monitor jobs. These
 include monitoring the queue, getting details about a particular job,
 viewing STDOUT/STDERR of running jobs, and more.</p>
@@ -579,33 +585,33 @@ the command is specified with -u all it will show information for all
 users/all jobs. Without that option, it only shows your jobs. Note that
 this is not an exhaustive list. See man bjobs for more information.</p>
 <ul class="simple">
-<li>bjobs Show your current jobs in the queue</li>
-<li>bjobs -u all Show currently queued jobs for all users</li>
-<li>bjobs -P ABC123 Shows currently-queued jobs for project ABC123</li>
-<li>bjobs -UF Don’t format output (might be useful if you’re using the
-output in a script)</li>
-<li>bjobs -a Show jobs in all states, including recently finished jobs</li>
-<li>bjobs -l Show long/detailed output</li>
-<li>bjobs -l 12345 Show long/detailed output for jobs 12345</li>
-<li>bjobs -d Show details for recently completed jobs</li>
-<li>bjobs -s Show suspended jobs, including the reason(s) they’re
-suspended</li>
-<li>bjobs -r Show running jobs</li>
-<li>bjobs -p Show pending jobs</li>
-<li>bjobs -w Use “wide” formatting for output</li>
+<li><p>bjobs Show your current jobs in the queue</p></li>
+<li><p>bjobs -u all Show currently queued jobs for all users</p></li>
+<li><p>bjobs -P ABC123 Shows currently-queued jobs for project ABC123</p></li>
+<li><p>bjobs -UF Don’t format output (might be useful if you’re using the
+output in a script)</p></li>
+<li><p>bjobs -a Show jobs in all states, including recently finished jobs</p></li>
+<li><p>bjobs -l Show long/detailed output</p></li>
+<li><p>bjobs -l 12345 Show long/detailed output for jobs 12345</p></li>
+<li><p>bjobs -d Show details for recently completed jobs</p></li>
+<li><p>bjobs -s Show suspended jobs, including the reason(s) they’re
+suspended</p></li>
+<li><p>bjobs -r Show running jobs</p></li>
+<li><p>bjobs -p Show pending jobs</p></li>
+<li><p>bjobs -w Use “wide” formatting for output</p></li>
 </ul>
 <p>If you want to check the STDOUT/STDERR of a currently running job, you
 can do so with the bpeek command. The command supports several options:</p>
 <ul class="simple">
-<li>bpeek -J jobname Show STDOUT/STDERR for the job you’ve most recently
-submitted with the name jobname</li>
-<li>bpeek 12345 Show STDOUT/STDERR for job 12345</li>
-<li>bpeek -f … Used with other options. Makes bpeek use tail -f and exit
-once the job completes.</li>
+<li><p>bpeek -J jobname Show STDOUT/STDERR for the job you’ve most recently
+submitted with the name jobname</p></li>
+<li><p>bpeek 12345 Show STDOUT/STDERR for job 12345</p></li>
+<li><p>bpeek -f … Used with other options. Makes bpeek use tail -f and exit
+once the job completes.</p></li>
 </ul>
-</div>
-<div class="section" id="scheduling-policy">
-<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Permalink to this heading"></a></h3>
+</section>
+<section id="scheduling-policy">
+<h3>Scheduling Policy<a class="headerlink" href="#scheduling-policy" title="Link to this heading"></a></h3>
 <p>In a simple batch queue system, jobs run in a first-in, first-out (FIFO)
 order. This often does not make effective use of the system. A large job
 may be next in line to run. If the system is using a strict FIFO queue,
@@ -614,18 +620,18 @@ would allow smaller, shorter jobs to use those otherwise idle resources,
 and with the proper algorithm, the start time of the large job would not
 be delayed. While this does make more effective use of the system, it
 indirectly encourages the submission of smaller jobs.</p>
-</div>
-<div class="section" id="batch-queue-policy">
-<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Permalink to this heading"></a></h3>
+</section>
+<section id="batch-queue-policy">
+<h3>Batch Queue Policy<a class="headerlink" href="#batch-queue-policy" title="Link to this heading"></a></h3>
 <p>The batch queue is the default queue for production work on Satori. It
 enforces the following policies: Limit of (4) eligible-to-run jobs per
 user. Jobs in excess of the per user limit above will be placed into a
 held state, but will change to eligible-to-run at the appropriate time.
 Users may have only (100) jobs queued at any state at any time.
 Additional jobs will be rejected at submit time.</p>
-</div>
-</div>
-</div>
+</section>
+</section>
+</section>
 
 
            </div>
@@ -635,7 +641,7 @@ Additional jobs will be rejected at submit time.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

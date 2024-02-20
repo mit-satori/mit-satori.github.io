@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Troubleshooting &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-troubleshooting.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,10 +355,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="troubleshooting">
-<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this heading"></a></h1>
+  <section id="troubleshooting">
+<h1>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h1>
 <ol class="arabic simple">
-<li>The NVIDIA CUDA Toolkit provides a development environment for
+<li><p>The NVIDIA CUDA Toolkit provides a development environment for
 creating high performance GPU-accelerated applications. With the CUDA
 Toolkit, you can develop, optimize and deploy your applications on
 GPU-accelerated embedded systems, desktop workstations, enterprise
@@ -363,36 +367,36 @@ toolkit includes GPU-accelerated libraries, debugging and
 optimization tools, a C/C++ compiler and a runtime library to deploy
 your application. This package consists of a post-install script that
 downloads and installs the full cuda toolkit(compiler, libraries,
-with the exception of cuda drivers).</li>
+with the exception of cuda drivers).</p></li>
 </ol>
 <ul class="simple">
-<li>Install CUDA-Development Toolkit with:</li>
+<li><p>Install CUDA-Development Toolkit with:</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cudatoolkit-dev
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS5SF7_1.6.2/navigation/wmlce_ddltips.html" target="_blank">Troubleshooting
-DDL</a></li>
-<li>Anaconda tips:</li>
+<li><p><a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SS5SF7_1.6.2/navigation/wmlce_ddltips.html" target="_blank">Troubleshooting
+DDL</a></p></li>
+<li><p>Anaconda tips:</p></li>
 </ol>
 <ul class="simple">
-<li>Upgrade to latest packages from specific WMLCE version (1.6.0, 1.6.1,
-1.6.2, 1.7.x)</li>
+<li><p>Upgrade to latest packages from specific WMLCE version (1.6.0, 1.6.1,
+1.6.2, 1.7.x)</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;powerai-release ==1.6.1&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span><span class="nv">$CONDA_DIR</span>/conda-meta/pinned
 conda<span class="w"> </span>update<span class="w"> </span>--all
 </pre></div>
 </div>
 <ul class="simple">
-<li>Upgrade previously-pinned env to latest WMLCE</li>
+<li><p>Upgrade previously-pinned env to latest WMLCE</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>update<span class="w"> </span>powerai<span class="w"> </span>--no-pin
 conda<span class="w"> </span>update<span class="w"> </span>--all
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li>WMLE installation when running for the first time</li>
+<li><p>WMLE installation when running for the first time</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>install<span class="w"> </span>powerai
 </pre></div>
@@ -410,7 +414,7 @@ of<span class="w"> </span>the<span class="w"> </span>remote<span class="w"> </sp
 </pre></div>
 </div>
 <p>to overcome this issue please re-enter your conda command.</p>
-</div>
+</section>
 
 
            </div>
@@ -423,7 +427,7 @@ of<span class="w"> </span>the<span class="w"> </span>remote<span class="w"> </sp
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How do I build a Singularity image from scratch? &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/tips-and-tricks/singularity-tips/index.html"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -352,25 +356,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-do-i-build-a-singularity-image-from-scratch">
-<h1>How do I build a Singularity image from scratch?<a class="headerlink" href="#how-do-i-build-a-singularity-image-from-scratch" title="Permalink to this heading"></a></h1>
+  <section id="how-do-i-build-a-singularity-image-from-scratch">
+<h1>How do I build a Singularity image from scratch?<a class="headerlink" href="#how-do-i-build-a-singularity-image-from-scratch" title="Link to this heading"></a></h1>
 <p>To build an image for Singularity from scratch you generally need to have privileged access to a Power 9 CPU system. This
 is a little awkward since nobody has Power 9 CPU laptops or desktops. Docker ( <a class="reference external" href="https://docs.docker.com/get-docker/" target="_blank">https://docs.docker.com/get-docker/</a> ) has recently added
 features that provide a way to do this, using
 the ppc64le Power 9 emulation that is part of the QEMU (<a class="reference external" href="https://www.qemu.org" target="_blank">https://www.qemu.org</a>) project. Using this feature is described below.</p>
-<div class="section" id="set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">
-<h2>Set up to run Docker in ppc64le mode on an x86 machine<a class="headerlink" href="#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine" title="Permalink to this heading"></a></h2>
+<section id="set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine">
+<h2>Set up to run Docker in ppc64le mode on an x86 machine<a class="headerlink" href="#set-up-to-run-docker-in-ppc64le-mode-on-an-x86-machine" title="Link to this heading"></a></h2>
 <p>The one time steps to get this set up on a laptop, desktop or virtual
 machine are described below.</p>
 <ol class="arabic">
-<li><p class="first">Launch or log in to an Ubuntu 18.04 Linux machine.</p>
+<li><p>Launch or log in to an Ubuntu 18.04 Linux machine.</p>
 <p>If you don’t have an Ubuntu machine you can create a virtual machine as follows</p>
 <ol class="arabic">
-<li><p class="first">install Vagrant ( <a class="reference external" href="https://www.vagrantup.com/downloads" target="_blank">https://www.vagrantup.com/downloads</a> )</p>
-</li>
-<li><p class="first">install Virtual Box ( <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a> )</p>
-</li>
-<li><p class="first">launch a Vagrant virtual machine running Ubuntu:</p>
+<li><p>install Vagrant ( <a class="reference external" href="https://www.vagrantup.com/downloads" target="_blank">https://www.vagrantup.com/downloads</a> )</p></li>
+<li><p>install Virtual Box ( <a class="reference external" href="https://www.virtualbox.org/wiki/Downloads" target="_blank">https://www.virtualbox.org/wiki/Downloads</a> )</p></li>
+<li><p>launch a Vagrant virtual machine running Ubuntu:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">up</span> <span class="n">generic</span><span class="o">/</span><span class="n">ubuntu1804</span>
 <span class="n">vagrant</span> <span class="n">ssh</span>
 </pre></div>
@@ -379,7 +381,7 @@ machine are described below.</p>
 </ol>
 <p>Vagrant and Virtual Box should work on most Mac, Windows or Linux hosts.</p>
 </li>
-<li><p class="first">Install Docker on whatever Ubuntu system you selected, if it is not already installed. This requires privileged access. Steps for installing Docker are:</p>
+<li><p>Install Docker on whatever Ubuntu system you selected, if it is not already installed. This requires privileged access. Steps for installing Docker are:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">remove</span> <span class="n">docker</span> <span class="n">docker</span><span class="o">-</span><span class="n">engine</span> <span class="n">docker</span><span class="o">.</span><span class="n">io</span> <span class="n">containerd</span> <span class="n">runc</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apt</span><span class="o">-</span><span class="n">transport</span><span class="o">-</span><span class="n">https</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span> <span class="n">curl</span> <span class="n">gnupg</span><span class="o">-</span><span class="n">agent</span> <span class="n">software</span><span class="o">-</span><span class="n">properties</span><span class="o">-</span><span class="n">common</span>
@@ -391,19 +393,19 @@ machine are described below.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Check docker works:</p>
+<li><p>Check docker works:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="n">hello</span><span class="o">-</span><span class="n">world</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Set docker to allow experimental features</p>
+<li><p>Set docker to allow experimental features</p>
 <ol class="arabic">
-<li><p class="first">Set Docker client to allow experimental features:</p>
+<li><p>Set Docker client to allow experimental features:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">DOCKER_CLI_EXPERIMENTAL</span><span class="o">=</span><span class="n">enabled</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Set Docker server to allow experimental features by editing line:</p>
+<li><p>Set Docker server to allow experimental features by editing line:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">dockerd</span> <span class="o">-</span><span class="n">H</span> <span class="n">fd</span><span class="p">:</span><span class="o">//</span> <span class="o">--</span><span class="n">containerd</span><span class="o">=/</span><span class="n">run</span><span class="o">/</span><span class="n">containerd</span><span class="o">/</span><span class="n">containerd</span><span class="o">.</span><span class="n">sock</span>
 </pre></div>
 </div>
@@ -419,12 +421,12 @@ machine are described below.</p>
 </li>
 </ol>
 </li>
-<li><p class="first">Install needed QEMU emulator binfmt information for ppc64le architecture ( see <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> for explanations ). Note - the default QEMU install does not seem to work reliably, but the install via <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> does seem robust:</p>
+<li><p>Install needed QEMU emulator binfmt information for ppc64le architecture ( see <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> for explanations ). Note - the default QEMU install does not seem to work reliably, but the install via <a class="reference external" href="https://github.com/dbhi/qus" target="_blank">https://github.com/dbhi/qus</a> does seem robust:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">--</span><span class="n">privileged</span> <span class="n">aptman</span><span class="o">/</span><span class="n">qus</span> <span class="o">-</span><span class="n">s</span> <span class="o">--</span> <span class="o">-</span><span class="n">p</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Check that we can work with ppc64le executables in an image e.g:</p>
+<li><p>Check that we can work with ppc64le executables in an image e.g:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">--</span><span class="n">rm</span> <span class="o">-</span><span class="n">i</span> <span class="o">-</span><span class="n">t</span> <span class="o">--</span><span class="n">platform</span> <span class="n">ppc64le</span> <span class="n">ppc64le</span><span class="o">/</span><span class="n">ubuntu</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
 <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">file</span>
@@ -438,33 +440,34 @@ machine are described below.</p>
 </li>
 </ol>
 <blockquote>
-<div>Note - the steps above involve installing Docker on an Ubuntu virtual or physical machine. In principle a native install of Docker could work. In practice, this does not seem to work reliably on OSX.</div></blockquote>
-</div>
-<div class="section" id="run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">
-<h2>Run Docker in ppc64le mode on an x86 machine to generate an image for Satori<a class="headerlink" href="#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori" title="Permalink to this heading"></a></h2>
+<div><p>Note - the steps above involve installing Docker on an Ubuntu virtual or physical machine. In principle a native install of Docker could work. In practice, this does not seem to work reliably on OSX.</p>
+</div></blockquote>
+</section>
+<section id="run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori">
+<h2>Run Docker in ppc64le mode on an x86 machine to generate an image for Satori<a class="headerlink" href="#run-docker-in-ppc64le-mode-on-an-x86-machine-to-generate-an-image-for-satori" title="Link to this heading"></a></h2>
 <p>Once you have a machine with Docker fully configured for ppc64le it can be used to generate and push an image to Docker hub. Steps for this are
 shown below.</p>
 <ol class="arabic">
-<li><p class="first">Generate an image from a Dockerfile, using for example:</p>
+<li><p>Generate an image from a Dockerfile, using for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">christophernhill</span><span class="o">/</span><span class="n">ibmcloudhacks</span><span class="o">/</span><span class="n">master</span><span class="o">/</span><span class="n">ppc64le</span><span class="o">-</span><span class="n">docker</span><span class="o">-</span><span class="n">testing</span><span class="o">/</span><span class="n">jp</span><span class="o">-</span><span class="n">Dockerfile</span> <span class="o">&gt;</span> <span class="n">Dockerfile</span>
 <span class="n">docker</span> <span class="n">build</span> <span class="o">--</span><span class="n">platform</span> <span class="n">ppc64le</span> <span class="o">--</span><span class="n">tag</span> <span class="n">jp</span><span class="o">-</span><span class="n">p9</span><span class="o">-</span><span class="n">sing</span><span class="o">-</span><span class="n">test</span><span class="p">:</span><span class="mf">1.0</span> <span class="o">.</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Tag image for pushing to your docker account, for example:</p>
+<li><p>Tag image for pushing to your docker account, for example:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">tag</span> <span class="n">jp</span><span class="o">-</span><span class="n">p9</span><span class="o">-</span><span class="n">sing</span><span class="o">-</span><span class="n">test</span><span class="p">:</span><span class="mf">1.0</span> <span class="n">christophernhill</span><span class="o">/</span><span class="n">jp</span><span class="o">-</span><span class="n">p9</span><span class="o">-</span><span class="n">sing</span><span class="o">-</span><span class="n">test</span><span class="p">:</span><span class="mf">1.0</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Push image to you docker account:</p>
+<li><p>Push image to you docker account:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">push</span> <span class="n">christophernhill</span><span class="o">/</span><span class="n">jp</span><span class="o">-</span><span class="n">p9</span><span class="o">-</span><span class="n">sing</span><span class="o">-</span><span class="n">test</span><span class="p">:</span><span class="mf">1.0</span>
 </pre></div>
 </div>
 </li>
 </ol>
-</div>
-<div class="section" id="import-new-docker-hub-image-into-singularity-on-satori">
-<h2>Import new Docker hub image into Singularity on Satori<a class="headerlink" href="#import-new-docker-hub-image-into-singularity-on-satori" title="Permalink to this heading"></a></h2>
+</section>
+<section id="import-new-docker-hub-image-into-singularity-on-satori">
+<h2>Import new Docker hub image into Singularity on Satori<a class="headerlink" href="#import-new-docker-hub-image-into-singularity-on-satori" title="Link to this heading"></a></h2>
 <p>Once your Docker image is ready it can now be imported into Singulariy on Satori. To do this
 in a dedicated interactive session (useful for large images), first start lauch an interactive
 session:</p>
@@ -481,9 +484,9 @@ session:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">singularity</span> <span class="n">shell</span> <span class="n">foo</span><span class="o">.</span><span class="n">sif</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-singularity-instead-of-docker">
-<h2>Using Singularity instead of Docker<a class="headerlink" href="#using-singularity-instead-of-docker" title="Permalink to this heading"></a></h2>
+</section>
+<section id="using-singularity-instead-of-docker">
+<h2>Using Singularity instead of Docker<a class="headerlink" href="#using-singularity-instead-of-docker" title="Link to this heading"></a></h2>
 <p>Singularity is a little different from Docker in that it restricts access more and shares more environment with the
 host system. In particular there is no root access in a running Singularity image and privileged access directories
 are not writable. This means any operations that requires root privileges must be taken as part of the image build.
@@ -495,15 +498,15 @@ can be useful, but also is not an isolated environment so care must be taken whe
 </div>
 <p>which launches a container running a shell within an instnace of the image <code class="docutils literal notranslate"><span class="pre">foo2.sif</span></code>.</p>
 <ul class="simple">
-<li>The <code class="docutils literal notranslate"><span class="pre">--nv</span></code> option ensures the container can access the host GPU cards.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">/nobackup/users/cnh:/work/nb</span></code> option maps the Satori scratch file space of the account to a container directory.</li>
-<li>The <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-e</span></code> options create a container that does not mount the host home directory for the account and does not copy
-host account environment variables.</li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">--nv</span></code> option ensures the container can access the host GPU cards.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">-B</span> <span class="pre">/nobackup/users/cnh:/work/nb</span></code> option maps the Satori scratch file space of the account to a container directory.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">-c</span></code> and <code class="docutils literal notranslate"><span class="pre">-e</span></code> options create a container that does not mount the host home directory for the account and does not copy
+host account environment variables.</p></li>
 </ul>
 <p>Together this set of options starts a container that can access the Satori GPUs and shared file system, but that is otherwise isolated
 from the standard Satori software and can have a fully custom set of tools.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -516,7 +519,7 @@ from the standard Satori software and can have a fully custom set of tools.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

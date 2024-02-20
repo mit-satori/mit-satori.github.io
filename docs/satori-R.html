@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>R on Satori &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-R.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,20 +355,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="r-on-satori">
-<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Permalink to this heading"></a></h1>
+  <section id="r-on-satori">
+<h1>R on Satori<a class="headerlink" href="#r-on-satori" title="Link to this heading"></a></h1>
 <p>R’s PowerPC support is currently limited, and there may be issues trying to install it from source. R can instead be run on Satori using either a Spack build or a container.</p>
-<div class="section" id="getting-started-with-r">
-<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Permalink to this heading"></a></h2>
+<section id="getting-started-with-r">
+<h2>Getting Started with R<a class="headerlink" href="#getting-started-with-r" title="Link to this heading"></a></h2>
 <p>A fast way to get R running on Satori is to load the Spack build</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">module load spack-flat</span>
 <span class="go">module load r</span>
 <span class="go">R</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="installing-packages">
-<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Permalink to this heading"></a></h2>
+</section>
+<section id="installing-packages">
+<h2>Installing Packages<a class="headerlink" href="#installing-packages" title="Link to this heading"></a></h2>
 <p>To avoid R packages taking up space on home, you can consider setting the R library path inside <cite>/nobackup</cite>, e.g.</p>
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">.libPaths</span><span class="p">(</span><span class="s">&quot;/nobackup/users/{username}/packages/R&quot;</span><span class="p">)</span>
 </pre></div>
@@ -373,9 +377,9 @@
 <div class="highlight-R notranslate"><div class="highlight"><pre><span></span><span class="nf">install.packages</span><span class="p">(</span><span class="s">&quot;ggplot2&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="a-simple-batch-script-example">
-<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this heading"></a></h2>
+</section>
+<section id="a-simple-batch-script-example">
+<h2>A Simple Batch Script Example<a class="headerlink" href="#a-simple-batch-script-example" title="Link to this heading"></a></h2>
 <p>Here is a simple example of a batch script for running a small R job.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J my_r_job</span>
@@ -392,9 +396,9 @@ module<span class="w"> </span>add<span class="w"> </span>r
 Rscript<span class="w"> </span>script.R
 </pre></div>
 </div>
-</div>
-<div class="section" id="r-and-python">
-<h2>R and Python<a class="headerlink" href="#r-and-python" title="Permalink to this heading"></a></h2>
+</section>
+<section id="r-and-python">
+<h2>R and Python<a class="headerlink" href="#r-and-python" title="Link to this heading"></a></h2>
 <p>With the R Spack build, it is possible to interface between R and Python using <cite>rpy2</cite>. However, as this uses multiple environments, it may break things.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>spack-flat
 module<span class="w"> </span>load<span class="w"> </span>r
@@ -403,9 +407,9 @@ conda<span class="w"> </span>activate<span class="w"> </span><span class="o">{</
 <span class="o">{</span>env_dir<span class="o">}</span>/<span class="o">{</span>env_name<span class="o">}</span>/bin/python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import rpy2&quot;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="running-r-in-a-container">
-<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Permalink to this heading"></a></h2>
+</section>
+<section id="running-r-in-a-container">
+<h2>Running R in a container<a class="headerlink" href="#running-r-in-a-container" title="Link to this heading"></a></h2>
 <p>It is also possible to run R within a container, which has the advantage of letting you work with R in a more closed system. This involves pulling the <cite>docker://ppc64le/r-base</cite> container, which can be done by</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /nobackup/users/$USER/containers</span>
 <span class="go">singularity pull r-base.img docker://ppc64le/r-base</span>
@@ -423,8 +427,8 @@ conda<span class="w"> </span>activate<span class="w"> </span><span class="o">{</
 <span class="go">singularity exec --bind /nobackup/users/$USER/project_folder:/project_folder r-base.img Rscript script.R</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -437,7 +441,7 @@ conda<span class="w"> </span>activate<span class="w"> </span><span class="o">{</
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

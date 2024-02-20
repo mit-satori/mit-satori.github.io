@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intergrated energy use profiling &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/tutorial-examples/energy-profiling/index.html"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -353,40 +357,40 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="intergrated-energy-use-profiling">
-<h1>Intergrated energy use profiling<a class="headerlink" href="#intergrated-energy-use-profiling" title="Permalink to this heading"></a></h1>
+  <section id="intergrated-energy-use-profiling">
+<h1>Intergrated energy use profiling<a class="headerlink" href="#intergrated-energy-use-profiling" title="Link to this heading"></a></h1>
 <p>Florin Manaila  ( <a class="reference external" href="mailto:florin&#46;manaila&#37;&#52;&#48;de&#46;ibm&#46;com" target="_blank">florin<span>&#46;</span>manaila<span>&#64;</span>de<span>&#46;</span>ibm<span>&#46;</span>com</a> )</p>
-<div class="section" id="description">
-<h2>Description<a class="headerlink" href="#description" title="Permalink to this heading"></a></h2>
+<section id="description">
+<h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
 <p>This example shows how to gather detailed energy use information for a code. The example employs several
 commands that will interfere with other workloads and so should only be used on whole nodes under exclusive
 access. The example uses a Tensorflow Convolutional Neural Network benchmark that assumes that a conda
 virtual environment based on WMLCE powerai is active.</p>
-</div>
-<div class="section" id="commands-to-run-this-example">
-<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Permalink to this heading"></a></h2>
+</section>
+<section id="commands-to-run-this-example">
+<h2>Commands to run this example<a class="headerlink" href="#commands-to-run-this-example" title="Link to this heading"></a></h2>
 <p>The example can be run interactively or in batch mode. Here we shown interactive execution on
 one node and using four GPUs.</p>
-<div class="section" id="running-on-a-single-node">
-<h3>Running on a single node<a class="headerlink" href="#running-on-a-single-node" title="Permalink to this heading"></a></h3>
+<section id="running-on-a-single-node">
+<h3>Running on a single node<a class="headerlink" href="#running-on-a-single-node" title="Link to this heading"></a></h3>
 <p>The following commands can be used</p>
 <ol class="arabic">
-<li><p class="first">request a whole node from the scheduler:</p>
+<li><p>request a whole node from the scheduler:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsub</span> <span class="o">-</span><span class="n">n</span> <span class="mi">4</span> <span class="o">-</span><span class="n">R</span> <span class="s2">&quot;span[ptile=4]&quot;</span> <span class="o">-</span><span class="n">gpu</span> <span class="s2">&quot;num=4&quot;</span> <span class="o">-</span><span class="n">Is</span> <span class="n">bash</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">once the node is available, set up the environment under your account. eg:</p>
+<li><p>once the node is available, set up the environment under your account. eg:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">conda</span> <span class="n">activate</span> <span class="n">wmlce</span><span class="o">-</span><span class="mf">1.6.2</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">create a sub directory for the run e.g.:</p>
+<li><p>create a sub directory for the run e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="n">powertest</span><span class="p">;</span> <span class="n">cd</span> <span class="n">powertest</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">load the power profiling tools:</p>
+<li><p>load the power profiling tools:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">module</span> <span class="n">load</span> <span class="n">perftools</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">launch</span><span class="o">.</span><span class="n">sh</span> <span class="o">.</span>
@@ -399,12 +403,12 @@ one node and using four GPUs.</p>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Once the environment is all set, beginin running the power monitoring script</p>
+<li><p>Once the environment is all set, beginin running the power monitoring script</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">setup</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">If things work as expected this should create a file that logs power use
+<li><p>If things work as expected this should create a file that logs power use
 you should be able to see the power  readings using the command <code class="docutils literal notranslate"><span class="pre">cat</span></code> like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.&lt;</span><span class="c1">###&gt;</span>
 </pre></div>
@@ -418,7 +422,7 @@ you should be able to see the power  readings using the command <code class="doc
 </pre></div>
 </div>
 </li>
-<li><p class="first">now we can start an application. First lets use the example from <code class="docutils literal notranslate"><span class="pre">https://github.com/johncohn/pytorchstyletransfer_satori.git</span></code> as follows:</p>
+<li><p>now we can start an application. First lets use the example from <code class="docutils literal notranslate"><span class="pre">https://github.com/johncohn/pytorchstyletransfer_satori.git</span></code> as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    git clone https://github.com/johncohn/pytorchstyletransfer_satori.git
     cd pytorchstyletransfer_satori
     conda install nbconvert
@@ -430,13 +434,13 @@ you should be able to see the power  readings using the command <code class="doc
 </pre></div>
 </div>
 </li>
-<li><p class="first">While the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">TorchTransfer.py</span></code> step is executing you can open another terminal  using <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a>  and look at the output. To do that cd to the dirctory you started the  job in (e.g.  powertest/pytorchstyletransfer_satori) and type:</p>
+<li><p>While the <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">TorchTransfer.py</span></code> step is executing you can open another terminal  using <a class="reference external" href="https://satori-portal.mit.edu" target="_blank">https://satori-portal.mit.edu</a>  and look at the output. To do that cd to the dirctory you started the  job in (e.g.  powertest/pytorchstyletransfer_satori) and type:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tail</span> <span class="o">-</span><span class="n">f</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="o">.&lt;</span><span class="c1">###&gt;</span>
 <span class="n">where</span> <span class="o">&lt;</span><span class="c1">###&gt; is your job number.</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">we can now try and do the same with a four gpu application:</p>
+<li><p>we can now try and do the same with a four gpu application:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    git clone https://github.com/tensorflow/benchmarks
     cd benchmarks
     git checkout 1ef603fd7e568ff75127ec07f160808fcc59911c
@@ -456,41 +460,40 @@ the log too. Unfortunately this example doesn&#39;t quite work yet!
 </pre></div>
 </div>
 </li>
-<li><p class="first">once the application is finished then finish power logging using the command:</p>
+<li><p>once the application is finished then finish power logging using the command:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mpirun</span> <span class="o">--</span><span class="n">tag</span><span class="o">-</span><span class="n">output</span> <span class="o">./</span><span class="n">reset</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 </li>
 </ol>
 <ul>
-<li><p class="first">The power history (recorded as snapshots every 3 seconds) will be written to a file with name
+<li><p>The power history (recorded as snapshots every 3 seconds) will be written to a file with name
 begining <code class="docutils literal notranslate"><span class="pre">energy-consumption.out.</span></code> followed by the LSF job id. This file can be listed to the
 screen e.g.:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="n">energy</span><span class="o">-</span><span class="n">consumption</span><span class="o">.</span><span class="n">out</span><span class="mf">.7843_0</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Example all in one batch script</strong>. To see an example all in one script of the above steps for measuring power and
+<li><p><strong>Example all in one batch script</strong>. To see an example all in one script of the above steps for measuring power and
 capturing energy use use the following commands:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">gist</span><span class="o">.</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">.</span><span class="n">git</span>
 <span class="n">cp</span> <span class="n">bff35521a2fa0c499578c98751be1b3c</span><span class="o">/</span><span class="n">batch</span><span class="o">-</span><span class="n">job</span><span class="o">-</span><span class="n">example</span><span class="o">.</span><span class="n">lsf</span> <span class="o">.</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Congratulations if yuu got this far</strong>. You have earned a cookie and are now in a good state to try measuring and
-optimizing resource use in your favorite project! <strong>GOOD LUCK</strong>.</p>
-</li>
+<li><p><strong>Congratulations if yuu got this far</strong>. You have earned a cookie and are now in a good state to try measuring and
+optimizing resource use in your favorite project! <strong>GOOD LUCK</strong>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="code-and-input-data-repositories-for-this-example">
-<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Permalink to this heading"></a></h2>
+</section>
+</section>
+<section id="code-and-input-data-repositories-for-this-example">
+<h2>Code and input data repositories for this example<a class="headerlink" href="#code-and-input-data-repositories-for-this-example" title="Link to this heading"></a></h2>
 <p>see text above</p>
-</div>
-<div class="section" id="useful-references">
-<h2>Useful references<a class="headerlink" href="#useful-references" title="Permalink to this heading"></a></h2>
-</div>
-</div>
+</section>
+<section id="useful-references">
+<h2>Useful references<a class="headerlink" href="#useful-references" title="Link to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>
@@ -503,7 +506,7 @@ optimizing resource use in your favorite project! <strong>GOOD LUCK</strong>.</p
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

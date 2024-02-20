@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Using Anaconda on Satori &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-using-anaconda.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,10 +355,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="using-anaconda-on-satori">
-<h1>Using Anaconda on Satori<a class="headerlink" href="#using-anaconda-on-satori" title="Permalink to this heading"></a></h1>
-<div class="section" id="using-anaconda">
-<h2>[1] Using Anaconda<a class="headerlink" href="#using-anaconda" title="Permalink to this heading"></a></h2>
+  <section id="using-anaconda-on-satori">
+<h1>Using Anaconda on Satori<a class="headerlink" href="#using-anaconda-on-satori" title="Link to this heading"></a></h1>
+<section id="using-anaconda">
+<h2>[1] Using Anaconda<a class="headerlink" href="#using-anaconda" title="Link to this heading"></a></h2>
 <p>Satori uses Environment Modules to allow users to have access to different software. These modulefiles are built for Satori’s architecture and can be loaded/unloaded from one’s environment on the fly. Anaconda can be accessed by searching for and loading the appropriate module.</p>
 <p>To display a list of modulefiles matching the name ‘anaconda’:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>avail<span class="w"> </span>anaconda
@@ -364,9 +368,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>anaconda3/2020.02-2ks5tch
 </pre></div>
 </div>
-</div>
-<div class="section" id="creating-and-activating-conda-environments">
-<h2>[2] Creating and activating conda environments<a class="headerlink" href="#creating-and-activating-conda-environments" title="Permalink to this heading"></a></h2>
+</section>
+<section id="creating-and-activating-conda-environments">
+<h2>[2] Creating and activating conda environments<a class="headerlink" href="#creating-and-activating-conda-environments" title="Link to this heading"></a></h2>
 <p>Once an anaconda module is loaded, you can create environments that have different versions of Python or packages installed in them. Conda environments are optional but recommended. If not used, packages are installed in the default environment called base, which often has a higher risk of containing conflicting packages or dependencies. Switching between environments is called activating the environment.</p>
 <p>The syntax for creating and activating an environment is:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>&lt;environment<span class="w"> </span>name&gt;<span class="w"> </span><span class="nv">python</span><span class="o">=</span>&lt;python<span class="w"> </span>version&gt;
@@ -386,9 +390,9 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>clean<span class="w"> </span>--all
 </pre></div>
 </div>
-</div>
-<div class="section" id="setting-up-conda-channels">
-<h2>[3] Setting up conda channels<a class="headerlink" href="#setting-up-conda-channels" title="Permalink to this heading"></a></h2>
+</section>
+<section id="setting-up-conda-channels">
+<h2>[3] Setting up conda channels<a class="headerlink" href="#setting-up-conda-channels" title="Link to this heading"></a></h2>
 <p>When using conda to search for packages, one or more “channels”, or repositories, may be queried. By default, conda will search its main packages channel for any results that match the queried name and display any results matching packages available for the systems architecture (ppc64le). If no packages are available either under the queried name, or for host system’s architecture, no results will be displayed. Note that not all packages existing for x86 can also be found for ppc64le.</p>
 <p>To add the IBM WML-CE channel to the conda configuration:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>config<span class="w"> </span>--prepend<span class="w"> </span>channels<span class="w"> </span><span class="se">\</span>
@@ -401,9 +405,9 @@ https://opence.mit.edu
 </pre></div>
 </div>
 <p>There are a number of other conda channels that exist which can be added to the conda config in the same manner. By adding the two channels above, your conda searches will be expanded beyond the default repository. See the section entitled <a class="reference external" href="https://mit-satori.github.io/satori-ai-frameworks.html#ibm-watson-machine-learning-community-edition-wml-ce-and-open-cognitive-environment-open-ce" target="_blank">IBM Watson Machine Learning Community Edition (WML-CE) and Open Cognitive Environment (Open-CE)</a> for more information about these two channels.</p>
-</div>
-<div class="section" id="searching-for-and-installing-conda-packages">
-<h2>[4] Searching for and installing conda packages<a class="headerlink" href="#searching-for-and-installing-conda-packages" title="Permalink to this heading"></a></h2>
+</section>
+<section id="searching-for-and-installing-conda-packages">
+<h2>[4] Searching for and installing conda packages<a class="headerlink" href="#searching-for-and-installing-conda-packages" title="Link to this heading"></a></h2>
 <p>The basic syntax for searching for a package through conda is as follow:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>search<span class="w"> </span>&lt;package-name&gt;
 </pre></div>
@@ -447,24 +451,24 @@ conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pyt
 conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pytorch</span><span class="o">=</span><span class="m">1</span>.9.0<span class="o">=</span>cuda10.2_py39_1
 </pre></div>
 </div>
-</div>
-<div class="section" id="listing-the-contents-of-your-conda-environment">
-<h2>[5] Listing the contents of your conda environment<a class="headerlink" href="#listing-the-contents-of-your-conda-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="listing-the-contents-of-your-conda-environment">
+<h2>[5] Listing the contents of your conda environment<a class="headerlink" href="#listing-the-contents-of-your-conda-environment" title="Link to this heading"></a></h2>
 <p>Viewing the packages installed in your environment is easy. Use the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>list
 </pre></div>
 </div>
 <p>You can be more granular and search for a specific package in your environment by adding the packages name after the above command.</p>
-</div>
-<div class="section" id="leaving-your-conda-environment">
-<h2>[6] Leaving your conda environment<a class="headerlink" href="#leaving-your-conda-environment" title="Permalink to this heading"></a></h2>
+</section>
+<section id="leaving-your-conda-environment">
+<h2>[6] Leaving your conda environment<a class="headerlink" href="#leaving-your-conda-environment" title="Link to this heading"></a></h2>
 <p>When you are done working in your environment, or want to switch to a different environment, you can deactivate the current environment with:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>deactivate
 </pre></div>
 </div>
 <p>Environments retain their state when inactive - as in, the packages installed within them. Simply activate the envionment again to use the installed software.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -477,7 +481,7 @@ conda<span class="w"> </span>install<span class="w"> </span><span class="nv">pyt
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

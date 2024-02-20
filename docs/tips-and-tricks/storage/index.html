@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="../../">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How can I see disk usage? &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/tips-and-tricks/storage/index.html"/>
   <!--[if lt IE 9]>
     <script src="../../_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-        <script src="../../_static/doctools.js"></script>
-        <script src="../../_static/sphinx_highlight.js"></script>
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -352,8 +356,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="how-can-i-see-disk-usage">
-<h1>How can I see disk usage?<a class="headerlink" href="#how-can-i-see-disk-usage" title="Permalink to this heading"></a></h1>
+  <section id="how-can-i-see-disk-usage">
+<h1>How can I see disk usage?<a class="headerlink" href="#how-can-i-see-disk-usage" title="Link to this heading"></a></h1>
 <p>The somewhat obscure commands</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>/usr/lpp/mmfs/bin/mmlsquota<span class="w"> </span>--block-size<span class="w"> </span>1G<span class="w"> </span>-u<span class="w"> </span>cnh<span class="w"> </span>nbusers
 /usr/lpp/mmfs/bin/mmlsquota<span class="w"> </span>--block-size<span class="w"> </span>1G<span class="w"> </span>-u<span class="w"> </span>cnh<span class="w"> </span>home
@@ -364,11 +368,11 @@ scratch file system ( <code class="docutils literal notranslate"><span class="pr
 account limits for space and file count are also shown.
 Quotas on <code class="docutils literal notranslate"><span class="pre">nbusers</span></code> are set relatively low by default. Account holders with a legitimate
 need can request increases to their <code class="docutils literal notranslate"><span class="pre">nbusers</span></code> quotas by emailing <a class="reference external" href="mailto:orcd-help-satori&#37;&#52;&#48;mit&#46;edu" target="_blank">orcd-help-satori<span>&#64;</span>mit<span>&#46;</span>edu</a>.</p>
-</div>
-<div class="section" id="where-should-i-put-world-or-project-shared-datasets">
-<h1>Where should I put world or project shared datasets?<a class="headerlink" href="#where-should-i-put-world-or-project-shared-datasets" title="Permalink to this heading"></a></h1>
+</section>
+<section id="where-should-i-put-world-or-project-shared-datasets">
+<h1>Where should I put world or project shared datasets?<a class="headerlink" href="#where-should-i-put-world-or-project-shared-datasets" title="Link to this heading"></a></h1>
 <p>Project directories with group ownership will be coming soon.</p>
-</div>
+</section>
 
 
            </div>
@@ -381,7 +385,7 @@ need can request increases to their <code class="docutils literal notranslate"><
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

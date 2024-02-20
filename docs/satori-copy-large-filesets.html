@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Copying larger files and large file sets &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-copy-large-filesets.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,16 +355,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="copying-larger-files-and-large-file-sets">
-<h1>Copying larger files and large file sets<a class="headerlink" href="#copying-larger-files-and-large-file-sets" title="Permalink to this heading"></a></h1>
+  <section id="copying-larger-files-and-large-file-sets">
+<h1>Copying larger files and large file sets<a class="headerlink" href="#copying-larger-files-and-large-file-sets" title="Link to this heading"></a></h1>
 <p>cp command is a single threaded process and it does not take advantage of the distributed file systems like GPFS.  If you have a lot of files to copy, or you have very large files, you may want to use  one of the large data set copy facilities supported by Satori. The two methods are:</p>
 <ul class="simple">
-<li>msrsync (<a class="reference external" href="https://github.com/jbd/msrsync" target="_blank">https://github.com/jbd/msrsync</a>) which is a python wrapper around rsync.</li>
-<li>Aspera (<a class="reference external" href="https://www.ibm.com/products/aspera" target="_blank">https://www.ibm.com/products/aspera</a>) which is a high speed data transfer service offered by IBM</li>
+<li><p>msrsync (<a class="reference external" href="https://github.com/jbd/msrsync" target="_blank">https://github.com/jbd/msrsync</a>) which is a python wrapper around rsync.</p></li>
+<li><p>Aspera (<a class="reference external" href="https://www.ibm.com/products/aspera" target="_blank">https://www.ibm.com/products/aspera</a>) which is a high speed data transfer service offered by IBM</p></li>
 </ul>
-</div>
-<div class="section" id="using-mrsync">
-<h1>Using mrsync<a class="headerlink" href="#using-mrsync" title="Permalink to this heading"></a></h1>
+</section>
+<section id="using-mrsync">
+<h1>Using mrsync<a class="headerlink" href="#using-mrsync" title="Link to this heading"></a></h1>
 <p><a class="reference external" href="https://github.com/jbd/msrsync" target="_blank">https://github.com/jbd/msrsync</a></p>
 <p>To install</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget<span class="w"> </span>https://raw.githubusercontent.com/jbd/msrsync/master/msrsync<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>msrsync
@@ -391,21 +395,21 @@ msrsync<span class="w"> </span>options:
 </pre></div>
 </div>
 <p>Example:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>[root@service0001 kvtran-test]# ./msrsync -p 24 --stats --rsync &quot;-a --inplace&quot; /data/ImageNet/ILSVRC2012 ILSVRC2012-service0001
-Status: SUCCESS
-Working directory: /nobackup/projects/kvtran-test
-Command line: ./msrsync -p 24 --stats --rsync -a --inplace /data/ImageNet/ILSVRC2012 ILSVRC2012-service0001
-Total size: 143.1 G
-Total entries: 1331169
-Buckets number: 1332
-Mean entries per bucket: 999
-Mean size per bucket: 110.0 M
-Entries per second: 3136
-Speed: 345.2 M/s
-Rsync workers: 24
-Total rsync&#39;s processes (1332) cumulative runtime: 10116.8s
-Crawl time: 212.5s (50.1% of total runtime)
-Total time: 424.5s
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>root@service0001<span class="w"> </span>kvtran-test<span class="o">]</span><span class="c1"># ./msrsync -p 24 --stats --rsync &quot;-a --inplace&quot; /data/ImageNet/ILSVRC2012 ILSVRC2012-service0001</span>
+Status:<span class="w"> </span>SUCCESS
+Working<span class="w"> </span>directory:<span class="w"> </span>/nobackup/projects/kvtran-test
+Command<span class="w"> </span>line:<span class="w"> </span>./msrsync<span class="w"> </span>-p<span class="w"> </span><span class="m">24</span><span class="w"> </span>--stats<span class="w"> </span>--rsync<span class="w"> </span>-a<span class="w"> </span>--inplace<span class="w"> </span>/data/ImageNet/ILSVRC2012<span class="w"> </span>ILSVRC2012-service0001
+Total<span class="w"> </span>size:<span class="w"> </span><span class="m">143</span>.1<span class="w"> </span>G
+Total<span class="w"> </span>entries:<span class="w"> </span><span class="m">1331169</span>
+Buckets<span class="w"> </span>number:<span class="w"> </span><span class="m">1332</span>
+Mean<span class="w"> </span>entries<span class="w"> </span>per<span class="w"> </span>bucket:<span class="w"> </span><span class="m">999</span>
+Mean<span class="w"> </span>size<span class="w"> </span>per<span class="w"> </span>bucket:<span class="w"> </span><span class="m">110</span>.0<span class="w"> </span>M
+Entries<span class="w"> </span>per<span class="w"> </span>second:<span class="w"> </span><span class="m">3136</span>
+Speed:<span class="w"> </span><span class="m">345</span>.2<span class="w"> </span>M/s
+Rsync<span class="w"> </span>workers:<span class="w"> </span><span class="m">24</span>
+Total<span class="w"> </span>rsync<span class="err">&#39;</span>s<span class="w"> </span>processes<span class="w"> </span><span class="o">(</span><span class="m">1332</span><span class="o">)</span><span class="w"> </span>cumulative<span class="w"> </span>runtime:<span class="w"> </span><span class="m">10116</span>.8s
+Crawl<span class="w"> </span>time:<span class="w"> </span><span class="m">212</span>.5s<span class="w"> </span><span class="o">(</span><span class="m">50</span>.1%<span class="w"> </span>of<span class="w"> </span>total<span class="w"> </span>runtime<span class="o">)</span>
+Total<span class="w"> </span>time:<span class="w"> </span><span class="m">424</span>.5s
 </pre></div>
 </div>
 <p>Note:
@@ -420,29 +424,31 @@ user<span class="w">    </span>0m2.756s
 sys<span class="w">     </span>0m35.559s
 </pre></div>
 </div>
-</div>
-<div class="section" id="using-aspera-for-remote-file-transfer-to-satori-cluster">
-<h1>Using Aspera for remote file transfer to Satori cluster<a class="headerlink" href="#using-aspera-for-remote-file-transfer-to-satori-cluster" title="Permalink to this heading"></a></h1>
+</section>
+<section id="using-aspera-for-remote-file-transfer-to-satori-cluster">
+<h1>Using Aspera for remote file transfer to Satori cluster<a class="headerlink" href="#using-aspera-for-remote-file-transfer-to-satori-cluster" title="Link to this heading"></a></h1>
 <p>Note: Aspera server is enabled on either satori-login-001.mit.edu or satori-login-002.mit.edu login nodes.</p>
 <ol class="arabic simple">
-<li>Install Aspera client or connect on your local machine</li>
+<li><p>Install Aspera client or connect on your local machine</p></li>
 </ol>
 <ul class="simple">
-<li><dl class="first docutils">
-<dt>For Mac, Windows or Linux-x86, please download and install Aspera connect from <a class="reference external" href="https://downloads.asperasoft.com/en/downloads/8?list" target="_blank">https://downloads.asperasoft.com/en/downloads/8?list</a></dt><dd>To install on Mac or Windows, please following the software installation step to complete the installation. For Linux as non-root user, untar the gz file and run the install script file. After the installation is complete, it will be located at your home directory .aspera/connect</dd>
+<li><dl class="simple">
+<dt>For Mac, Windows or Linux-x86, please download and install Aspera connect from <a class="reference external" href="https://downloads.asperasoft.com/en/downloads/8?list" target="_blank">https://downloads.asperasoft.com/en/downloads/8?list</a></dt><dd><p>To install on Mac or Windows, please following the software installation step to complete the installation. For Linux as non-root user, untar the gz file and run the install script file. After the installation is complete, it will be located at your home directory .aspera/connect</p>
+</dd>
 </dl>
 </li>
-<li><dl class="first docutils">
-<dt>For PowerPC (ppc64le) system, please download and install Aspera desktop client from <a class="reference external" href="https://downloads.asperasoft.com/en/downloadsArchive/2" target="_blank">https://downloads.asperasoft.com/en/downloadsArchive/2</a></dt><dd>To install desktop client on Power system after download deb or rpm file:</dd>
+<li><dl class="simple">
+<dt>For PowerPC (ppc64le) system, please download and install Aspera desktop client from <a class="reference external" href="https://downloads.asperasoft.com/en/downloadsArchive/2" target="_blank">https://downloads.asperasoft.com/en/downloadsArchive/2</a></dt><dd><p>To install desktop client on Power system after download deb or rpm file:</p>
+</dd>
 </dl>
 </li>
-<li>on an Ubuntu system</li>
+<li><p>on an Ubuntu system</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.deb
 </pre></div>
 </div>
 <ul class="simple">
-<li>RHEL|CentOS</li>
+<li><p>RHEL|CentOS</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>ibm-aspera-desktopclient-3.9.6.176567-linux-ppc64le.rpm
 </pre></div>
@@ -450,23 +456,23 @@ sys<span class="w">     </span>0m35.559s
 <p>2. Transfer files using Aspera connect or client
 Note: &lt;asperauser&gt; is your userid on Satori</p>
 <ul class="simple">
-<li>on Windows</li>
+<li><p>on Windows</p></li>
 </ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp.exe<span class="w"> </span>–P<span class="w"> </span><span class="m">22</span><span class="w"> </span>–mode<span class="o">=</span>send<span class="p">|</span>recv<span class="w">  </span><span class="se">\p</span>ath<span class="se">\t</span>o<span class="se">\f</span>ile.txt<span class="w">  </span>&lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
 </pre></div>
 </div>
 <ul class="simple">
-<li>on Mac or Linux</li>
+<li><p>on Mac or Linux</p></li>
 </ul>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp –P 22 –mode=send|recv  /path/to/file.txt  &lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ascp<span class="w"> </span>–P<span class="w"> </span><span class="m">22</span><span class="w"> </span>–mode<span class="o">=</span>send<span class="p">|</span>recv<span class="w">  </span>/path/to/file.txt<span class="w">  </span>&lt;asperauser&gt;@satori-login-002.mit.edu:/path/to/file.txt
 
-The path to ascp command is located at $HOME/.aspera/connect/bin
+The<span class="w"> </span>path<span class="w"> </span>to<span class="w"> </span>ascp<span class="w"> </span><span class="nb">command</span><span class="w"> </span>is<span class="w"> </span>located<span class="w"> </span>at<span class="w"> </span><span class="nv">$HOME</span>/.aspera/connect/bin
 
-Here&#39;s an estimator for Aspera transfer times https://www.ibm.com/aspera/file-transfer-calculator/
+Here<span class="err">&#39;</span>s<span class="w"> </span>an<span class="w"> </span>estimator<span class="w"> </span><span class="k">for</span><span class="w"> </span>Aspera<span class="w"> </span>transfer<span class="w"> </span><span class="nb">times</span><span class="w"> </span>https://www.ibm.com/aspera/file-transfer-calculator/
 </pre></div>
 </div>
 <p>For technical support, Support &lt;<a class="reference external" href="mailto:orcd-help-satori&#37;&#52;&#48;mit&#46;edu" target="_blank">orcd-help-satori<span>&#64;</span>mit<span>&#46;</span>edu</a>&gt;</p>
-</div>
+</section>
 
 
            </div>
@@ -479,7 +485,7 @@ Here&#39;s an estimator for Aspera transfer times https://www.ibm.com/aspera/fil
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

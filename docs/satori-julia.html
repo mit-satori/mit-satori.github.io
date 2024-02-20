@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Julia on Satori &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-julia.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,25 +355,25 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="julia-on-satori">
-<h1>Julia on Satori<a class="headerlink" href="#julia-on-satori" title="Permalink to this heading"></a></h1>
+  <section id="julia-on-satori">
+<h1>Julia on Satori<a class="headerlink" href="#julia-on-satori" title="Link to this heading"></a></h1>
 <p>Julia’s PowerPC support is currently limited and community based, if you run into
 issues please leave a note on the #julia channel on the Satori Slack.</p>
-<div class="section" id="getting-started">
-<h2>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading"></a></h2>
+<section id="getting-started">
+<h2>Getting started<a class="headerlink" href="#getting-started" title="Link to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>module<span class="w"> </span>load<span class="w"> </span>julia
 </pre></div>
 </div>
-</div>
-<div class="section" id="getting-help">
-<h2>Getting help?<a class="headerlink" href="#getting-help" title="Permalink to this heading"></a></h2>
+</section>
+<section id="getting-help">
+<h2>Getting help?<a class="headerlink" href="#getting-help" title="Link to this heading"></a></h2>
 <p>The Julia community has several help channels available, if you have generic
 Julia question the <a class="reference external" href="https://discourse.julialang.org" target="_blank">Julia Discourse</a>  or <a class="reference external" href="https://slackinvite.julialang.org/" target="_blank">Julia Slack</a>
 are the best place to quickly get answers.</p>
 <p>If you have Satori/PowerPC specific questions feel free to reach out to vchuravy either on the Satori Slack or mail.</p>
-</div>
-<div class="section" id="a-simple-batch-script-example">
-<h2>A simple batch script example<a class="headerlink" href="#a-simple-batch-script-example" title="Permalink to this heading"></a></h2>
+</section>
+<section id="a-simple-batch-script-example">
+<h2>A simple batch script example<a class="headerlink" href="#a-simple-batch-script-example" title="Link to this heading"></a></h2>
 <p>A simple batch script for a julia program on Satori is shown below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
 <span class="c1">#SBATCH -J CLIMA_TEST_35</span>
@@ -391,9 +395,9 @@ are the best place to quickly get answers.</p>
 <span class="n">date</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">
-<h2>Recipe for running single GPU, single threaded interactive session with CUDA aware MPI<a class="headerlink" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi" title="Permalink to this heading"></a></h2>
+</section>
+<section id="recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi">
+<h2>Recipe for running single GPU, single threaded interactive session with CUDA aware MPI<a class="headerlink" href="#recipe-for-running-single-gpu-single-threaded-interactive-session-with-cuda-aware-mpi" title="Link to this heading"></a></h2>
 <p>To run a single threaded Julia session on a GPU with MPI enanbled, first start an interactive session on a node:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
@@ -423,9 +427,9 @@ julia -e &#39;using Pkg; Pkg.add(&quot;MPI&quot;); Pkg.build(&quot;MPI&quot;); P
 <span class="n">julia</span><span class="o">&gt;</span> <span class="n">MPI</span><span class="o">.</span><span class="n">Init</span><span class="p">()</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="running-a-multi-process-julia-program-somewhat-interactively">
-<h2>Running a multi-process julia program somewhat interactively<a class="headerlink" href="#running-a-multi-process-julia-program-somewhat-interactively" title="Permalink to this heading"></a></h2>
+</section>
+<section id="running-a-multi-process-julia-program-somewhat-interactively">
+<h2>Running a multi-process julia program somewhat interactively<a class="headerlink" href="#running-a-multi-process-julia-program-somewhat-interactively" title="Link to this heading"></a></h2>
 <p>When debugging and testing it is sometimes to run outside of sbatch but still use multiple GPUs.
 The best way to do this is through the Slurm <code class="docutils literal notranslate"><span class="pre">salloc</span></code> command. This command reserves resources
 and then allows multiple job stages to be executed through the <code class="docutils literal notranslate"><span class="pre">srun</span></code> command from a shell as shown:</p>
@@ -481,27 +485,27 @@ sreq = MPI.Isend(send_mesg, dst, rank+32, comm)</p>
 <p>print(“$rank: Received $src -&gt; $rank = $recv_mesgn”)</p>
 <p>MPI.Barrier(comm)</p>
 </div></blockquote>
-</div>
-<div class="section" id="an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">
-<h2>An example of installing <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> on Satori<a class="headerlink" href="#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori" title="Permalink to this heading"></a></h2>
+</section>
+<section id="an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori">
+<h2>An example of installing <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> on Satori<a class="headerlink" href="#an-example-of-installing-https-github-com-clima-climatemachine-jl-on-satori" title="Link to this heading"></a></h2>
 <p>Because Satori is a Power 9 CPU based system some Julia packages require a few extra steps to
 ensure the right binaries are deployed. An example of
 installing and running <a class="reference external" href="https://github.com/clima/climatemachine.jl" target="_blank">https://github.com/clima/climatemachine.jl</a> in a clean enironment
 illustrates some steps that may occaisionally be needed.</p>
 <ul>
-<li><p class="first">Launch a an interactive node session:</p>
+<li><p>Launch a an interactive node session:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">srun</span> <span class="o">--</span><span class="n">gres</span><span class="o">=</span><span class="n">gpu</span><span class="p">:</span><span class="mi">1</span> <span class="o">-</span><span class="n">N</span> <span class="mi">1</span> <span class="o">-</span><span class="n">n</span> <span class="mi">1</span> <span class="o">--</span><span class="n">mem</span> <span class="mi">1</span><span class="n">T</span> <span class="o">-</span><span class="n">t</span> <span class="mi">12</span><span class="p">:</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="o">--</span><span class="n">pty</span> <span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">bash</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Create a fresh directory:</p>
+<li><p>Create a fresh directory:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">myclima</span>
 <span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">clima</span><span class="o">/</span><span class="n">climatemachine</span><span class="o">.</span><span class="n">jl</span>
 <span class="n">cd</span> <span class="o">/</span><span class="n">nobackup</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">cnh</span><span class="o">/</span><span class="n">projects</span><span class="o">/</span><span class="n">myclima</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Set up the Julia environment:</p>
+<li><p>Set up the Julia environment:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>module purge &gt; /dev/null 2&gt;&amp;1
 module add spack
 module load gcc/8.3.0
@@ -532,8 +536,8 @@ Releases of these packages with the patches will be available soon, but the step
 some of the ways to work around these sorts of occurences generally.</p>
 <p>The UCX and CUDA settings are used to set the conifguration so that optimized versions of
 GPU Direct and CUDA aware MPI will be used.</p>
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
@@ -546,7 +550,7 @@ GPU Direct and CUDA aware MPI will be used.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Capturing the GPU energy for an LSF Job &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-capturing-LSF-job-GPU-energy-consumption.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -349,8 +353,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="capturing-the-gpu-energy-for-an-lsf-job">
-<h1>Capturing the GPU energy for an LSF Job<a class="headerlink" href="#capturing-the-gpu-energy-for-an-lsf-job" title="Permalink to this heading"></a></h1>
+  <section id="capturing-the-gpu-energy-for-an-lsf-job">
+<h1>Capturing the GPU energy for an LSF Job<a class="headerlink" href="#capturing-the-gpu-energy-for-an-lsf-job" title="Link to this heading"></a></h1>
 <p>LSF doesn’t currently caputure the power utlization of GPUs for jobs.  However, we can use LSF’s [pre- and post-execution
 processing](<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_admin/chap_pre_post_exec_lsf_admin.html" target="_blank">https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_admin/chap_pre_post_exec_lsf_admin.html</a>) at
 individual job or configuured as part of a [LSF queue](<a class="reference external" href="https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_admin/chap_pre_post_exec_lsf_admin.html" target="_blank">https://www.ibm.com/support/knowledgecenter/SSWRJV_10.1.0/lsf_admin/chap_pre_post_exec_lsf_admin.html</a>)
@@ -384,14 +388,14 @@ sleep<span class="w"> </span><span class="m">20</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;jobid: </span><span class="nv">$jobid</span><span class="s2">, watchpid: </span><span class="nv">$watchpid</span><span class="s2">, killpid: </span><span class="nv">$killpid</span><span class="s2">&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
 
-<span class="k">while</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-0<span class="w"> </span><span class="nv">$watchpid</span><span class="w"> </span><span class="o">||</span><span class="w"> </span>break<span class="p">;</span><span class="w"> </span><span class="k">done</span>
+<span class="k">while</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span>-0<span class="w"> </span><span class="nv">$watchpid</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="k">break</span><span class="p">;</span><span class="w"> </span><span class="k">done</span>
 
 <span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Done waiting&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>/nobackup/users/<span class="nv">$LSFUSER</span>/watch.txt
 <span class="nb">kill</span><span class="w"> </span>-2<span class="w"> </span><span class="nv">$killpid</span>
 <span class="nb">exit</span><span class="w"> </span><span class="m">0</span>
 </pre></div>
 </div>
-</div>
+</section>
 
 
            </div>
@@ -401,7 +405,7 @@ sleep<span class="w"> </span><span class="m">20</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

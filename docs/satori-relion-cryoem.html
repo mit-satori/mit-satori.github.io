@@ -1,20 +1,24 @@
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Relion Cryoem for Satorians &mdash; MIT Satori User Documentation  documentation</title>
-      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+
+  
     <link rel="canonical" href="https://researchcomputing.mit.edu/satori-relion-cryoem.html"/>
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=5929fcd5"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -351,74 +355,69 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <div class="section" id="relion-cryoem-for-satorians">
-<h1>Relion Cryoem for Satorians<a class="headerlink" href="#relion-cryoem-for-satorians" title="Permalink to this heading"></a></h1>
-<div class="section" id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
+  <section id="relion-cryoem-for-satorians">
+<h1>Relion Cryoem for Satorians<a class="headerlink" href="#relion-cryoem-for-satorians" title="Link to this heading"></a></h1>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
 <p>A local installation of an X11 server is required to use the Relion GUI.</p>
 <p>On a Mac computer the XQuartz ( <a class="reference external" href="https://www.xquartz.org" target="_blank">https://www.xquartz.org</a> ) software is a good option.</p>
 <p>On a Window computer Cygwin/X ( <a class="reference external" href="http://x.cygwin.com" target="_blank">http://x.cygwin.com</a> ) software provides a free X server.</p>
-</div>
-<div class="section" id="quick-start">
-<h2>Quick start<a class="headerlink" href="#quick-start" title="Permalink to this heading"></a></h2>
+</section>
+<section id="quick-start">
+<h2>Quick start<a class="headerlink" href="#quick-start" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li>Transfer data</li>
+<li><p>Transfer data</p></li>
 </ul>
 <p>Data should be transferred to:
 /nobackup/users/<code class="docutils literal notranslate"><span class="pre">your_kerbos_id</span></code> .
 Use satori-login-002.mit.edu</p>
 <ul>
-<li><p class="first">To access the Relion GUI</p>
+<li><p>To access the Relion GUI</p>
 <ol class="arabic">
-<li><p class="first">Login:</p>
+<li><p>Login:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-Y<span class="w"> </span>username@satori-login-002.mit.edu
 </pre></div>
 </div>
 </li>
-<li><p class="first">Submit a fake job to access a node:</p>
+<li><p>Submit a fake job to access a node:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub<span class="w"> </span>-q<span class="w"> </span>normal<span class="w"> </span>sleep<span class="w"> </span><span class="m">7200</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Use bjobs to determine the node of the job ie:</p>
+<li><p>Use bjobs to determine the node of the job ie:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>JOBID<span class="w">   </span>USER<span class="w">    </span>STAT<span class="w">  </span>QUEUE<span class="w">      </span>FROM_HOST<span class="w">   </span>EXEC_HOST<span class="w">   </span>JOB_NAME<span class="w">   </span>SUBMIT_TIME
 <span class="m">45954</span><span class="w">   </span>seyvos<span class="w">  </span>RUN<span class="w">   </span>normal<span class="w">     </span>service0002<span class="w"> </span>node0028.in<span class="w"> </span>sleep<span class="w"> </span><span class="m">7200</span><span class="w"> </span>Mar<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="m">13</span>:50
 </pre></div>
 </div>
 </li>
-<li><p class="first">Login into the node:</p>
+<li><p>Login into the node:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ssh<span class="w"> </span>-X<span class="w"> </span>node0028
 </pre></div>
 </div>
 </li>
-<li><p class="first">Add paths to access relion libraries:</p>
+<li><p>Add paths to access relion libraries:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/nobackup/users/ruzhu/RELION/bin:/nobackup/users/ruzhu/CTFfind4/bin:/opt/ibm/spectrum_mpi/bin:<span class="nv">$PATH</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/opt/ibm/spectrum_mpi/profilesupport/lib:/nobackup/users/ruzhu/CTFfind4/lib:<span class="nv">$LD_LIBRARY_PATH</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first">Open Relion by typing:</p>
+<li><p>Open Relion by typing:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>relion
 </pre></div>
 </div>
 </li>
-<li><p class="first">Use GUI to configure your job.</p>
-</li>
-<li><p class="first">Use “Print” command to print job commands to terminal.</p>
-</li>
-<li><p class="first">Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the <code class="docutils literal notranslate"><span class="pre">--n</span></code> and <code class="docutils literal notranslate"><span class="pre">--j</span></code> values. Save submission script. Make sure paths for <code class="docutils literal notranslate"><span class="pre">--o</span></code> already exist.</p>
-</li>
-<li><p class="first">Execute job</p>
+<li><p>Use GUI to configure your job.</p></li>
+<li><p>Use “Print” command to print job commands to terminal.</p></li>
+<li><p>Adjust the relion submission script to incorporate the commands specific to your job. Note: If you have a job that requires a lot of memory, you should alter the <code class="docutils literal notranslate"><span class="pre">--n</span></code> and <code class="docutils literal notranslate"><span class="pre">--j</span></code> values. Save submission script. Make sure paths for <code class="docutils literal notranslate"><span class="pre">--o</span></code> already exist.</p></li>
+<li><p>Execute job</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>bsub&lt;<span class="w"> </span>run
 </pre></div>
 </div>
 </li>
-<li><p class="first">Check job is running with bjobs. Submission script generates a log file.</p>
-</li>
+<li><p>Check job is running with bjobs. Submission script generates a log file.</p></li>
 </ol>
 </li>
-<li><p class="first">Example job</p>
-</li>
+<li><p>Example job</p></li>
 </ul>
 <p>Below is an example of a job file that Relion should generate. The file you generate should look something
 like this.</p>
@@ -443,11 +442,11 @@ like this.</p>
 </pre></div>
 </div>
 </div></blockquote>
-</div>
-<div class="section" id="other-notes">
-<h2>Other notes<a class="headerlink" href="#other-notes" title="Permalink to this heading"></a></h2>
-</div>
-</div>
+</section>
+<section id="other-notes">
+<h2>Other notes<a class="headerlink" href="#other-notes" title="Link to this heading"></a></h2>
+</section>
+</section>
 
 
            </div>
@@ -460,7 +459,7 @@ like this.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2023, MIT Satori Project.</p>
+    <p>&#169; Copyright 2024, MIT Satori Project.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
